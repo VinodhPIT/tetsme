@@ -347,7 +347,7 @@ const Search = ({ data, initialTab, pageNo }) => {
       </div>
 
       {renderCategoryComponent(tab)}
-      <p>{pageNumber}</p>
+    
 
       <button onClick={handleButtonClick} style={{
     'background': '#000',

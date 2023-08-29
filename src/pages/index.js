@@ -74,9 +74,6 @@ export default function Home() {
 
 
 
-    <p>Count: {count}</p>
-      <button onClick={handleButtonClick}>Click me</button>
-
 
 
       </main>
