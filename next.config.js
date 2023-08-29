@@ -1,6 +1,26 @@
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+  
+  images: {
+      domains:['storage.googleapis.com'],
+    },
+   env: {
+    
+    apiDomain: 'https://apiadmin.inckd.com/web/api',
+    googlePlacesApiKey: 'AIzaSyDo8sjdevbkqLGUx_DFpFlYlQFb1FpRAIo',
 
+
+
+      
+    },
+    
+
+  
+    // experimental: {
+    //   serverActions: true,
+    // },
+    
+}
 module.exports = nextConfig

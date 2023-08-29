@@ -1,0 +1,22 @@
+.headConatiner{padding: 30px;
+float: left;
+width: 100%;
+background: #000}
+
+.navmenu  ul li {    display: inline-block;
+    margin: 0px 10px 0px 10px;
+}
+
+.logo{   float: left;
+    width: 6%;
+    text-align: center;
+    display: block;}
+
+    .navmenu {
+    float: right
+    }
+
+    .navmenu  ul li a {color: #fff;padding:10px ;display: block; }
+
+    .logo a {    padding: 10px;
+        display: block;}

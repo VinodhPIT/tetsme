@@ -1,0 +1,23 @@
+.foot h4{
+color: #fff;
+}
+
+.foot{padding: 30px;}
+
+.footDiv div{flex: 1;}
+
+.footDiv div a{color: #fff;}
+
+.footDiv div  li {margin-bottom: 10px}
+
+
+.cccccs{
+
+padding: 10px;
+display: flex;
+justify-content: center;}
+
+
+.cccccs a {color: #fff;}
+
+.cccccs a {margin: 10px;}
