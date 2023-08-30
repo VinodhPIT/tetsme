@@ -11,10 +11,10 @@ import { debounce } from "lodash";
 
 import Autocomplete from "react-google-autocomplete";
 
-const Tattoo = React.lazy(() => import("@/pages/tattoo/index"));
-const Artist = React.lazy(() => import("@/pages/artist/index"));
-const Flash = React.lazy(() => import("@/pages/flash/index"));
-const All = React.lazy(() => import("@/pages/all/page"));
+const Tattoo = React.lazy(() => import("@/components/tattoo/index"));
+// const Artist = React.lazy(() => import("@/pages/artist/index"));
+// const Flash = React.lazy(() => import("@/pages/flash/index"));
+// const All = React.lazy(() => import("@/pages/all/page"));
 
 const Search = ({ data, initialTab, pageNo }) => {
   // const { dispatch } = InckState();
@@ -144,14 +144,14 @@ const Search = ({ data, initialTab, pageNo }) => {
 
   function renderCategoryComponent(tab) {
     switch (tab) {
-      case "all":
-        return (
-          <React.Suspense
-            fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
-          >
-            <All data={category} />
-          </React.Suspense>
-        );
+      // case "all":
+      //   return (
+      //     <React.Suspense
+      //       fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
+      //     >
+      //       <All data={category} />
+      //     </React.Suspense>
+      //   );
 
       case "tattoo":
         return (
@@ -161,24 +161,24 @@ const Search = ({ data, initialTab, pageNo }) => {
             <Tattoo data={category} />
           </React.Suspense>
         );
-      case "artist":
-        return (
-          <React.Suspense fallback={<div>Loading Artist...</div>}>
-            <Artist data={category} />
-          </React.Suspense>
-        );
-      case "flash":
-        return (
-          <React.Suspense
-            fallback={
-              <div style={{ color: "red", fontSize: "1122px" }}>
-                Loading Flash...
-              </div>
-            }
-          >
-            <Flash data={category} />
-          </React.Suspense>
-        );
+      // case "artist":
+      //   return (
+      //     <React.Suspense fallback={<div>Loading Artist...</div>}>
+      //       <Artist data={category} />
+      //     </React.Suspense>
+      //   );
+      // case "flash":
+      //   return (
+      //     <React.Suspense
+      //       fallback={
+      //         <div style={{ color: "red", fontSize: "1122px" }}>
+      //           Loading Flash...
+      //         </div>
+      //       }
+      //     >
+      //       <Flash data={category} />
+      //     </React.Suspense>
+        
       default:
         return null;
     }
@@ -300,19 +300,19 @@ const Search = ({ data, initialTab, pageNo }) => {
             justifyContent: "space-around",
           }}
         >
-          <button
+          {/* <button
             disabled={tab === "all" ? true : false}
             onClick={() => handleTabClick("all")}
           >
             All
-          </button>
+          </button> */}
           <button
             disabled={tab === "tattoo" ? true : false}
             onClick={() => handleTabClick("tattoo")}
           >
             Tattoo
           </button>
-          <button
+          {/* <button
             disabled={tab === "flash" ? true : false}
             onClick={() => handleTabClick("flash")}
           >
@@ -323,7 +323,7 @@ const Search = ({ data, initialTab, pageNo }) => {
             onClick={() => handleTabClick("artist")}
           >
             Artist
-          </button>
+          </button> */}
         </div>
         <div class="custom-select" style={{ width: "200px" }}>
           <select onChange={handleSelectChange}>
