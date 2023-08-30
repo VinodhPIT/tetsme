@@ -7,7 +7,7 @@ export default function Flash({data}) {
       <h1>Flash</h1>
 
       <div className="image_grid">
-        {data==[] ? <h4>No Data Found </h4> :
+        {/* {data==[] ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -31,7 +31,7 @@ export default function Flash({data}) {
                 </div>
               );
             }
-          })}
+          })} */}
       </div>
 
 

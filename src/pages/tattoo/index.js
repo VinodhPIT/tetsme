@@ -8,7 +8,7 @@ export default function Tattoo({ data }) {
   return (
     <div className="pageContainer">
       <div className="image_grid">
-        {data== [] ? (
+        {/* {data== [] ? (
           <h1>No Artist found</h1>
         ) : (
           data.map((item, idx) => {
@@ -36,7 +36,7 @@ export default function Tattoo({ data }) {
               </Link>
             );
           })
-        )}
+        )} */}
       </div>
     </div>
   );
