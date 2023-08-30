@@ -15,7 +15,7 @@ export default function Tattoo({ data }) {
             const key = item._index === "ad" ? `ad-${idx}` : item._id;
 
             return (
-              <Link  href={`/tattoo/${1}`}  key={key}  >
+              <Link  href={`/detail/${1}`}  key={key}  >
       
               <div className="image_item" >
                 {item._index === "ad" ? (

@@ -301,28 +301,25 @@ else {
     }
   }, [state.selectedStyle]);
 
- 
+  // const handleSelectChange = async (event) => {
 
-  const handlePlaceSelected =  (place) => {
-    let latitude = place.geometry.location.lat();
-    let longitude = place.geometry.location.lng();
+  //   setSelectedValue(event.target.value);
 
+  //   // if (tab !== "all") {
+  //   //   const newData = await fetchCategoryData(tab, 0, event.target.value);
+  //   //   setCategory(newData.rows.hits);
+  //   // } else {
+  //   //   const newData = await fetchMultiData(0,event.target.value);
+  //   //   setCategory(newData.data);
+  //   // }
 
+  // };
 
-   fetchCategoryData({...Parameters,latitude ,longitude ,category:state.tab}).then((e)=>{
-    setState((prevState) => ({
-      ...prevState,
-      categoryCollection: e.rows.hits,
-      changeTab: false,
-      totalItems:e.rows.total.value
-    }));
+  const handlePlaceSelected = async (place) => {
+    // let ui = place.geometry.location.lat();
+    // let yu = place.geometry.location.lng();
 
-
-   }).catch((e)=>console.log(e))
-
-
-
-
+    // const newData = await fetchCategoryData(tab, selectedValue, ui, yu);
 
     // setCategory(newData.rows.hits);
 

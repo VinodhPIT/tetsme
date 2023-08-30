@@ -9,18 +9,18 @@ const bookLinks = [
   {
     id: 1,
     title: "Tattoosearch",
-    url: "/tattoosearch",
+    url: `/search?term=${''}&category=${'tattoo'}`,
   },
 
   {
     id: 2,
     title: "Artistsearch",
-    url: "/artistsearch",
+    url: `/search?term=${''}&category=${'artist'}`,
   },
   {
     id: 3,
     title: "Flashsearch",
-    url: "/flashsearch",
+    url: `/search?term=${''}&category=${'flash'}`,
   },
 ];
 

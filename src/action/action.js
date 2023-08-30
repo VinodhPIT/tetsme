@@ -2,39 +2,16 @@
 import { searchParam, prepareRequest2 } from "@/helpers/helper";
 import { postApiCall } from "@/utils/apiUtils";
 
-export const fetchCategoryData = async (category, number, style ,lati ,long) => {
-  console.log(number,"xmxm;clamcl;amcslc")
- 
+export const fetchCategoryData = async (params) => {
+  console.log(params,"xmxm;clamcl;amcslc")
   try {
-
-
     const reposneCategory = await postApiCall(
-      `/${category}/search`,
-      searchParam({
-        category,
-        sort: "newest",
-        page_no: number,
-        paginator_count: 32,
-        search_key: "",
-        style: style ? style : "",
-        latitude:lati ?lati :"",
-        longitude:long ? long :""
-       
-      
-
-      })
+      `/${params.category}/search`,
+      searchParam(params)
     );
     return reposneCategory; // Return the actual data
-
     }
-
-
-
-
-
-
    catch (error) {
-    console.log(error,"cldc")
     // Handle error if needed
     return [];
   }
@@ -82,23 +59,16 @@ export const getStyles = async () => {
 
 
 
-export async function fetchMultiData(number, style) {
+export async function fetchMultiData(param) {
+ 
 
-let json = searchParam({
-  sort: "newest",
-  page_no: number,
-  paginator_count: 32,
-  search_key: "",
-  style: style === undefined ?''  :style
-});
-
-
+try {
   const tattooFetch = fetch(`${process.env.apiDomain}/tattoo/search`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({sort: 'newest', page_no: '0', paginator_count: 10, search_key: '', style: style ? [style] :[]}),
+    body: JSON.stringify(searchParam(param))
   });
 
   const flashFetch = fetch(`${process.env.apiDomain}/flash/search`, {
@@ -106,7 +76,7 @@ let json = searchParam({
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({sort: 'newest', page_no: '0', paginator_count: 10, search_key: '',style: style ? [style] :[]}),
+    body: JSON.stringify(searchParam(param))
   });
 
   const artistsFetch = fetch(`${process.env.apiDomain}/artist/search`, {
@@ -114,7 +84,7 @@ let json = searchParam({
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({sort: 'newest', page_no: '0', paginator_count: 10, search_key: '', style: style ? [style] :[]}),
+    body: JSON.stringify(searchParam(param))
   });
 
   const [tattooRes, flashRes, artistsRes] = await Promise.all([
@@ -134,8 +104,21 @@ let json = searchParam({
     ...flashesResult.rows.hits,
     ...artistsResult.rows.hits,
   ];
+ 
+  const resultsCount =
+            tattoosResult.rows.total.value +
+            flashesResult.rows.total.value +
+            artistsResult.rows.total.value
+
 
   return {
     data: shuffledResults,
+    totalCount:resultsCount
   };
+  
+} catch (error) {
+  console.log(error,"ERROR")
+}
+
+ 
 }
