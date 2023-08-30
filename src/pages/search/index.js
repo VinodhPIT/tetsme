@@ -4,7 +4,7 @@ import {
   getStyles,
   queryDataFetcher,
   fetchMultiData,
-} from "@/pages/action/action";
+} from "@/action/action";
 import Head from "next/head";
 import Image from "next/image";
 import { debounce } from "lodash";

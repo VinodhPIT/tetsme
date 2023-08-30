@@ -83,8 +83,6 @@ export const getStyles = async () => {
 
 
 export async function fetchMultiData(number, style) {
-  console.log(style,",xcx;mclxmcxl;mcx")
-
 
 let json = searchParam({
   sort: "newest",

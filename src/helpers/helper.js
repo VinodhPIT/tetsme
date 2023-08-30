@@ -57,8 +57,7 @@ export const prepareRequest = () => {
   
   
   export const searchParam = (parameters) => {
-    console.log(parameters,"parametersparameters")
-
+   
     
     const request = {
       sort: parameters.sort,

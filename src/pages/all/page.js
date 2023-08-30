@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 function All({data}) {
-    console.log(data,",clc,")
+   
   return (
     <div>
       <h1>All Items</h1>
