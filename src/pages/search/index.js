@@ -11,10 +11,10 @@ import { debounce } from "lodash";
 
 import Autocomplete from "react-google-autocomplete";
 
-// const Tattoo = React.lazy(() => import("@/pages/tattoo/index"));
-// const Artist = React.lazy(() => import("@/pages/artist/index"));
-// const Flash = React.lazy(() => import("@/pages/flash/index"));
-// const All = React.lazy(() => import("@/pages/all/page"));
+const Tattoo = React.lazy(() => import("@/pages/tattoo/index"));
+const Artist = React.lazy(() => import("@/pages/artist/index"));
+const Flash = React.lazy(() => import("@/pages/flash/index"));
+const All = React.lazy(() => import("@/pages/all/page"));
 
 const Search = ({ data, initialTab, pageNo }) => {
   // const { dispatch } = InckState();
@@ -142,47 +142,47 @@ const Search = ({ data, initialTab, pageNo }) => {
     router.push(`/search?term=${value}&category=${"all"}`);
   }
 
-  // function renderCategoryComponent(tab) {
-  //   switch (tab) {
-  //     case "all":
-  //       return (
-  //         <React.Suspense
-  //           fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
-  //         >
-  //           <All data={category} />
-  //         </React.Suspense>
-  //       );
+  function renderCategoryComponent(tab) {
+    switch (tab) {
+      case "all":
+        return (
+          <React.Suspense
+            fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
+          >
+            <All data={category} />
+          </React.Suspense>
+        );
 
-  //     case "tattoo":
-  //       return (
-  //         <React.Suspense
-  //           fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
-  //         >
-  //           <Tattoo data={category} />
-  //         </React.Suspense>
-  //       );
-  //     case "artist":
-  //       return (
-  //         <React.Suspense fallback={<div>Loading Artist...</div>}>
-  //           <Artist data={category} />
-  //         </React.Suspense>
-  //       );
-  //     case "flash":
-  //       return (
-  //         <React.Suspense
-  //           fallback={
-  //             <div style={{ color: "red", fontSize: "1122px" }}>
-  //               Loading Flash...
-  //             </div>
-  //           }
-  //         >
-  //           <Flash data={category} />
-  //         </React.Suspense>
-  //       );
-  //     default:
-  //       return null;
-  //   }
-  // }
+      case "tattoo":
+        return (
+          <React.Suspense
+            fallback={<div style={{ color: "red" }}>Loading Tattoo...</div>}
+          >
+            <Tattoo data={category} />
+          </React.Suspense>
+        );
+      case "artist":
+        return (
+          <React.Suspense fallback={<div>Loading Artist...</div>}>
+            <Artist data={category} />
+          </React.Suspense>
+        );
+      case "flash":
+        return (
+          <React.Suspense
+            fallback={
+              <div style={{ color: "red", fontSize: "1122px" }}>
+                Loading Flash...
+              </div>
+            }
+          >
+            <Flash data={category} />
+          </React.Suspense>
+        );
+      default:
+        return null;
+    }
+  }
 
   async function handleTabClick(category) {
     setCategory([]);
@@ -300,7 +300,7 @@ const Search = ({ data, initialTab, pageNo }) => {
             justifyContent: "space-around",
           }}
         >
-          {/* <button
+          <button
             disabled={tab === "all" ? true : false}
             onClick={() => handleTabClick("all")}
           >
@@ -323,7 +323,7 @@ const Search = ({ data, initialTab, pageNo }) => {
             onClick={() => handleTabClick("artist")}
           >
             Artist
-          </button> */}
+          </button>
         </div>
         <div class="custom-select" style={{ width: "200px" }}>
           <select onChange={handleSelectChange}>
@@ -346,9 +346,9 @@ const Search = ({ data, initialTab, pageNo }) => {
         ) : null}
       </div>
 
-      {/* {renderCategoryComponent(tab)} */}
+      {renderCategoryComponent(tab)}
     
-{/* 
+
       <button onClick={handleButtonClick} style={{
     'background': '#000',
     'border-radius':'30px',
@@ -357,7 +357,7 @@ const Search = ({ data, initialTab, pageNo }) => {
     'margin': '0 auto',
     'width': '200px',
     'display': 'flex',
-      }}>Load more</button> */}
+      }}>Load more</button>
 
     
     </>

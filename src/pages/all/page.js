@@ -8,7 +8,7 @@ export default function  All ({data}) {
       <h1>All Items</h1>
 
       <div className="image_grid">
-        {/* {data==[] ? <h4>No Data Found </h4> :
+        {data==[] ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "tattoo") {
               return (
@@ -41,7 +41,7 @@ export default function  All ({data}) {
                 </div>
               );
             }
-          })} */}
+          })}
       </div>
 
 

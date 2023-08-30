@@ -7,7 +7,7 @@ export default function Flash({data}) {
       <h1>Flash</h1>
 
       <div className="image_grid">
-        {/* {data==[] ? <h4>No Data Found </h4> :
+        {data==[] ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -31,7 +31,7 @@ export default function Flash({data}) {
                 </div>
               );
             }
-          })} */}
+          })}
       </div>
 
 
@@ -42,20 +42,3 @@ export default function Flash({data}) {
 
 
 
-
-// export async function getServerSideProps(context) {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/todos/1`)
-//   const data = await res.json()
-//   console.log(data,"cldsmcklsdckmsdlcmklsdcscs")
- 
-//   if (!data) {
-//     console.log("mxl; mxl; x; ",data)
-//     return {
-//       notFound: true,
-//     }
-//   }
- 
-//   return {
-//     props: { data }, // will be passed to the page component as props
-//   }
-// }

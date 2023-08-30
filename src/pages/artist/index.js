@@ -8,7 +8,7 @@ export default function Artist({data}) {
       <h1>Artist</h1>
 
       <div className="image_grid">
-        {/* {data==[] ? <h4>No Data Found </h4> :
+        {data==[] ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -32,7 +32,7 @@ export default function Artist({data}) {
                 </div>
               );
             }
-          })} */}
+          })}
       </div>
 
 
