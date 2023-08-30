@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-function Flash({data}) {
+export default function Flash({data}) {
   return (
     <div>
       <h1>Flash</h1>
@@ -38,8 +38,6 @@ function Flash({data}) {
     </div>
   )
 }
-
-export default Flash
 
 
 

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from "next/link";
 
 
-function Tattoo({ data }) {
+export default function Tattoo({ data }) {
   return (
     <div className="pageContainer">
       <div className="image_grid">
@@ -42,4 +42,3 @@ function Tattoo({ data }) {
   );
 }
 
-export default Tattoo;

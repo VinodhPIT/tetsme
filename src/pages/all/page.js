@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-function All({data}) {
+export default function  All ({data}) {
    
   return (
     <div>
@@ -49,6 +49,5 @@ function All({data}) {
   )
 }
 
-export default All
 
 

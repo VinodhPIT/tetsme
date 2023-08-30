@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-function Artist({data}) {
+export default function Artist({data}) {
   return (
     <div>
       <h1>Artist</h1>
@@ -39,6 +39,6 @@ function Artist({data}) {
   )
 }
 
-export default Artist
+
 
 
