@@ -3,7 +3,6 @@ import { searchParam, prepareRequest2 } from "@/helpers/helper";
 import { postApiCall } from "@/utils/apiUtils";
 
 export const fetchCategoryData = async (params) => {
-  console.log(params,"xmxm;clamcl;amcslc")
   try {
     const reposneCategory = await postApiCall(
       `/${params.category}/search`,
@@ -12,29 +11,11 @@ export const fetchCategoryData = async (params) => {
     return reposneCategory; // Return the actual data
     }
    catch (error) {
-    // Handle error if needed
     return [];
   }
 };
 
-export const queryDataFetcher = async (category, search_key) => {
-  try {
-    const reposneCategory = await postApiCall(
-      `/${category}/search`,
-      searchParam({
-        sort: "newest",
-        page_no: "0",
-        paginator_count: 10,
-        search_key,
-      })
-    );
 
-    return reposneCategory; // Return the actual data
-  } catch (error) {
-    // Handle error if needed
-    return [];
-  }
-};
 
 export const getStyles = async () => {
   try {
@@ -60,10 +41,8 @@ export const getStyles = async () => {
 
 
 export async function fetchMultiData(param) {
- 
-
 try {
-  const tattooFetch = fetch(`${process.env.apiDomain}/tattoo/search`, {
+  const tattooFetch = await fetch(`${process.env.apiDomain}/tattoo/search`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -71,7 +50,9 @@ try {
     body: JSON.stringify(searchParam(param))
   });
 
-  const flashFetch = fetch(`${process.env.apiDomain}/flash/search`, {
+
+
+  const flashFetch = await fetch(`${process.env.apiDomain}/flash/search`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -79,7 +60,11 @@ try {
     body: JSON.stringify(searchParam(param))
   });
 
-  const artistsFetch = fetch(`${process.env.apiDomain}/artist/search`, {
+
+
+
+
+  const artistsFetch = await fetch(`${process.env.apiDomain}/artist/search`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -105,7 +90,7 @@ try {
     ...artistsResult.rows.hits,
   ];
  
-  const resultsCount =
+           const resultsCount =
             tattoosResult.rows.total.value +
             flashesResult.rows.total.value +
             artistsResult.rows.total.value

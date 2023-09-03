@@ -1,15 +1,20 @@
 import React from 'react'
 import Image from 'next/image'
 
-export default function  All ({data}) {
+export default function  All ({data ,loading}) {
    
   return (
     <div>
       <h1>All Items</h1>
 
+
+
+      {data.length=== 0 ? <h4>No Data Found </h4>    :
+
+
       <div className="image_grid">
-       {data==[] ? <h4>No Data Found </h4> :
-          data.map((item, idx) => {
+ 
+          {data.map((item, idx) => {
             if (item._index === "tattoo") {
               return (
                 <div className="image_item" key={item._id}>
@@ -43,7 +48,7 @@ export default function  All ({data}) {
             }
           })} 
       </div>
-
+}
 
     </div>
   )

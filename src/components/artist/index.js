@@ -1,14 +1,22 @@
 import React from 'react'
 import Image from 'next/image'
+import {useSelector} from 'react-redux'
 //
 
 export default function Artist({data}) {
+
+ 
+
   return (
     <div>
       <h1>Artist</h1>
 
       <div className="image_grid">
-     {data.length===0 ? <h4>No Data Found </h4> :
+
+
+
+
+    {data.length===0 ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -23,7 +31,7 @@ export default function Artist({data}) {
                   
                     src={item._source.image_url}
                     layout="fill"
-                    alt={'l;cm;sdcm;lsdcm;sc'}
+                    alt={'test'}
                     objectFit="contain"
                     priority={true}
                     placeholder="blur"
@@ -35,6 +43,11 @@ export default function Artist({data}) {
               );
             }
           })} 
+
+
+
+
+
       </div>
 
 

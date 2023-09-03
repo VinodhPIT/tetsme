@@ -1,13 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
-
+import {useSelector} from 'react-redux'
+//
 export default function Flash({data}) {
+
+  const isLoading = useSelector((state) => state.category.loading);
+  
+
+
   return (
     <div>
       <h1>Flash</h1>
-
       <div className="image_grid">
-       {data==[] ? <h4>No Data Found </h4> :
+      {isLoading ? <h4>Loading</h4>:
+       data.length===0 ? <h4>No Data Found </h4> :
           data.map((item, idx) => {
             if (item._index === "ad") {
               return (
@@ -21,7 +27,7 @@ export default function Flash({data}) {
                   <Image
                     src={item._source.image}
                     layout="fill"
-                    alt={'l;cm;sdcm;lsdcm;sc'}
+                    alt={item._id}
                     objectFit="contain"
                     priority={true}
                     placeholder="blur"

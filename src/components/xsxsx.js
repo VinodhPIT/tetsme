@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   fetchCategoryData,
   getStyles,
-  queryDataFetcher,
   fetchMultiData,
 } from "@/action/action";
 import Head from "next/head";

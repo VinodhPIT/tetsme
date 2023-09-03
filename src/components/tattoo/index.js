@@ -1,15 +1,22 @@
 import React from 'react';
 import Image from 'next/image';
+import {useSelector} from 'react-redux'
+
+
 
 import Link from "next/link";
 
 
 export default function Tattoo({ data }) {
+  const isLoading = useSelector((state) => state.category.loading);
+
+
   return (
     <div className="pageContainer">
       <div className="image_grid">
-        {data== [] ? (
-          <h1>No Artist found</h1>
+      {isLoading ? <h4>Loading</h4> :
+        data.length === 0  ? (
+          <h1>No Tattoo found</h1>
         ) : (
           data.map((item, idx) => {
             const key = item._index === "ad" ? `ad-${idx}` : item._id;

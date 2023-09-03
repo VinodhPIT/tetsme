@@ -53,12 +53,12 @@ export const prepareRequest2 = (parameters) => {
 };
 
 export const searchParam = (parameters) => {
-  console.log(parameters,",s'c,s'")
+  
 
   const request = {
     sort: "newest",
     page_no: parameters.page_no,
-    paginator_count: parameters.category === "all" ? 10 : 32,
+    paginator_count: parameters.category === "all" ? 10 : 25,
     search_key: parameters.search_key,
   };
 

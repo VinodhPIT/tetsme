@@ -103,7 +103,7 @@ main {
 
 
 .search {
-  border: 1px solid red;
+
   width: 98%;
   margin: 10px auto;
   padding: "20px";
@@ -111,10 +111,10 @@ main {
   height: 300px;
   position: absolute;
   top: 39px;
-  background: #fff; z-index: 99999;
+  background: #c4c4c4;; z-index: 99999;
 
   left: 0;
-  right: 0;
+  right: 0; border-radius: 10px;    padding: 10px;
 
 }
 
