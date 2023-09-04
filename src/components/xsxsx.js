@@ -499,7 +499,7 @@ export async function getServerSideProps(context) {
       };
     }
   } catch (error) {
-    console.log(error,"punda")
+    
     return {
       props: {
         data: null,
