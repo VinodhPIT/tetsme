@@ -91,7 +91,7 @@ router.push(`/search?term=${e}&category=${"all"}`)
 
 
 
-        />
+        /> 
 
               {/* <SearchField handleChange={handleChange}  hints={state.hints}   onclicks={onclicks} handleSubmits={handleSubmits}  value={state.value} /> */}
 

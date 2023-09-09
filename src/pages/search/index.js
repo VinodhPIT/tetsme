@@ -9,18 +9,26 @@ import { useInckd } from "@/context/Context";
 import { useRouter } from "next/router";
 import SearchField from "@/components/searchField/index";
 
-const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
-  const { state, setState, updateApiData } = useInckd();
 
-  const router = useRouter();
+import { useGlobalState } from "@/context/Context";
+
+const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
+  const {
+    state,
+    fetchServerlData,
+    updateTab,
+    loadMore,
+    searchStyle,
+    findArtist,
+  } = useGlobalState();
 
   useEffect(() => {
     try {
-      updateApiData(data, currentTab, pageNo, totalItems, searchKey); // Update the context state
+      fetchServerlData({ data, currentTab, pageNo, totalItems, searchKey });
     } catch (error) {
       console.error("Log Error:", error);
     }
-  }, [data , currentTab, pageNo, totalItems, searchKey]);
+  }, [data]);
 
   const [stylsse, setStyle] = useState([]);
 
@@ -36,34 +44,11 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
     fetchStyles();
   }, []);
 
-  function handleTabClick(categoryName) {
-    // router.push(`search?term=${""}&category=${categoryName}`);
-    setState((prevState) => ({
-      ...prevState,
-      currentTab: categoryName,
-      isTriggered: true,
-      categoryCollection: [],
-      pageNo: 0,
-      latitude: "",
-      longitude: "",
-      value:""
-    }));
-  }
-
   const handlePlaceSelected = async (place) => {
-    // ------  Search Artist  Based on Location ------ //
     const { lat, lng } = place.geometry.location;
-
-    setState((prevState) => ({
-      ...prevState,
-      currentTab: "artist",
-      isTriggered: true,
-      categoryCollection: [],
-      pageNo: 0,
-      latitude: lat(),
-      longitude: lng(),
-      value:""
-    }));
+    const latitude= lat()
+    const  longitude= lng()
+    findArtist({latitude ,longitude});
   };
 
   return (
@@ -73,7 +58,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
         <meta name="description" content="Search Me"></meta>
       </Head>
 
-      <SearchField />
+      <SearchField /> 
 
       <div
         style={{
@@ -95,7 +80,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             <button
               key={tab.id}
               disabled={state.currentTab === tab.id}
-              onClick={() => handleTabClick(tab.id)}
+              onClick={() => updateTab(tab.id)}
             >
               {tab.label}
             </button>
@@ -103,17 +88,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
         </div>
         <div class="custom-select" style={{ width: "200px" }}>
           <select
-            onChange={(event) =>
-              setState((prevState) => ({
-                ...prevState,
-                selectedStyle: event.target.value,
-                pageNo: 0,
-                isTriggered: true,
-                categoryCollection: [],
-                latitude: "",
-                longitude: "",
-              }))
-            }
+            onChange={(event) => searchStyle(event.target.value)}
             value={state.selectedStyle}
           >
             <option value="0">Choose Style</option>
@@ -133,11 +108,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
         )}
       </div>
 
-      {renderCategoryComponent(
-        state.currentTab,
-        state.categoryCollection,
-        state.loading
-      )}
+      {renderCategoryComponent(state.currentTab, state.categoryCollection)}
 
       {state.categoryCollection.length !== 0 &&
         state.categoryCollection.length !== state.totalItems && (
@@ -147,12 +118,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             </p>
             <button
               onClick={() => {
-                setState((prevState) => ({
-                  ...prevState,
-                  pageNo: prevState.pageNo + 1, // Increment the count by 1
-                  isTriggered: true,
-                  value:""
-                }));
+                loadMore();
               }}
               style={{
                 padding: "10px",
@@ -172,14 +138,12 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 export default Search;
 
 export async function getServerSideProps(context) {
- 
   try {
     if (context.query.category === "all") {
       const results = await fetchMultiData({
         ...Parameters,
         category: context.query.category,
-        search_key:context.query.term,
-
+        search_key: context.query.term,
       });
 
       return {
@@ -203,6 +167,7 @@ export async function getServerSideProps(context) {
           currentTab: context.query.category,
           pageNo: 0,
           totalItems: data.rows.total.value,
+          searchKey: context.query.term,
         },
       };
     }

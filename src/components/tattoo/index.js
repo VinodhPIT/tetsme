@@ -8,6 +8,8 @@ import Link from "next/link";
 
 
 export default function Tattoo({ data }) {
+
+
   const isLoading = useSelector((state) => state.category.loading);
 
 
