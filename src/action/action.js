@@ -11,6 +11,7 @@ export const fetchCategoryData = async (params) => {
     return reposneCategory; // Return the actual data
     }
    catch (error) {
+    console.log(error ,"hry error")
     return [];
   }
 };
@@ -102,7 +103,7 @@ try {
   };
   
 } catch (error) {
-  console.log(error,"ERROR")
+  console.log(error,"ERROR111")
 }
 
  

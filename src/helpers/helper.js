@@ -58,7 +58,7 @@ export const searchParam = (parameters) => {
   const request = {
     sort: "newest",
     page_no: parameters.page_no,
-    paginator_count: parameters.category === "all" ? 10 : 25,
+    paginator_count: parameters.category === "all" ? 10 : 19,
     search_key: parameters.search_key,
   };
 

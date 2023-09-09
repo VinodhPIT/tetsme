@@ -7,6 +7,7 @@ const Parameters = {
    latitude:"",
    longitude:"",
    category:"", 
+   call:false
 };
 
 export { Parameters }; // Named export

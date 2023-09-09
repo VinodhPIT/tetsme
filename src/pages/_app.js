@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { wrapper } from "@/redux/store";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+import { InckdProvider } from '@/context/Context';
 
 const  App = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -12,12 +13,16 @@ const  App = ({ Component, pageProps }) => {
 
   return (
    <>
+   <InckdProvider>
+
+
       {!shouldHideHeader && <Header />}
      
       <main>
         <Component {...pageProps} />
       </main>
       <Footer />
+      </InckdProvider>
       </>
   );
 }

@@ -1,41 +1,33 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { fetchCategoryData, getStyles, fetchMultiData } from "@/action/action";
-import { debounce, stubTrue } from "lodash";
+import { debounce } from "lodash";
 import Autocomplete from "react-google-autocomplete";
 import { Parameters, tabs } from "@/components/parameters/params";
 import renderCategoryComponent from "@/components/categoryComponent/categoryComponent";
+import { useInckd } from "@/context/Context";
+import { useRouter } from "next/router";
 import SearchField from "@/components/searchField/index";
-import { useDispatch } from "react-redux";
-import { catgeorySearch } from "@/redux/slices/categorySearch";
 
-const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
-  const [state, setState] = useState({
-    categoryCollection: data,
-    tab: initialTab,
-    changeTab: false,
-    count: page_no,
-    selectedStyle: "",
-    styleCollection: [],
-    totalItems,
-    searchKey,
-    value: "",
-    hints: [],
-    loader: false,
-    errorMessage: false,
-    isChange: false,
-    loading:false
-  });
+const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
+  const { state, setState, updateApiData } = useInckd();
 
-  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    try {
+      updateApiData(data, currentTab, pageNo, totalItems, searchKey); // Update the context state
+    } catch (error) {
+      console.error("Log Error:", error);
+    }
+  }, [data , currentTab, pageNo, totalItems, searchKey]);
+
+  const [stylsse, setStyle] = useState([]);
 
   async function fetchStyles() {
     try {
       const newData = await getStyles();
-      setState((prevState) => ({
-        ...prevState,
-        styleCollection: newData.rows.hits,
-      }));
+      setStyle(newData.rows.hits);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -45,139 +37,32 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
   }, []);
 
   function handleTabClick(categoryName) {
+    // router.push(`search?term=${""}&category=${categoryName}`);
     setState((prevState) => ({
       ...prevState,
-      tab: categoryName,
+      currentTab: categoryName,
+      isTriggered: true,
       categoryCollection: [],
-      changeTab: true,
-      count: 0,
-      searchKey: "",
-      isChange: false,
+      pageNo: 0,
+      latitude: "",
+      longitude: "",
+      value:""
     }));
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-
-        setState((prevState) => ({
-          ...prevState,
-        loading:true
-        }));
-
-        const requestData = {
-          ...Parameters,
-          category: state.tab,
-          page_no: state.count,
-          style: state.selectedStyle,
-          search_key: state.searchKey,
-        };
-        let responseData;
-        if (state.tab === "all") {
-          responseData = await fetchMultiData(requestData);
-        } else {
-          responseData = await fetchCategoryData(requestData);
-        }
-
-        if (state.isChange === true) {
-          setState((prevState) => ({
-            ...prevState,
-            hints:
-              state.tab === "all" ? responseData.data : responseData.rows.hits,
-          }));
-        } else {
-          setState((prevState) => ({
-            ...prevState,
-            errorMessage: false,
-            categoryCollection:
-              state.count === 0
-                ? state.tab === "all"
-                  ? responseData.data
-                  : responseData.rows.hits
-                : [
-                    ...prevState.categoryCollection,
-                    ...(state.tab === "all"
-                      ? responseData.data
-                      : responseData.rows.hits),
-                  ],
-            totalItems:
-              state.tab === "all"
-                ? responseData.totalCount
-                : responseData.rows.total.value,
-            changeTab: false,
-
-            totalItems:
-              state.tab === "all"
-                ? responseData.totalCount
-                : responseData.rows.total.value,
-            changeTab: false,
-            loading:false
-          }));
-        }
-      } catch (error) {
-        // Handle errors here
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [
-    state.changeTab,
-    state.count,
-    state.selectedStyle,
-    state.searchKey,
-    state.value,
-    state.tab,
-  ]);
 
   const handlePlaceSelected = async (place) => {
     // ------  Search Artist  Based on Location ------ //
     const { lat, lng } = place.geometry.location;
-    try {
-      const e = await fetchCategoryData({
-        ...Parameters,
-        latitude: lat(),
-        longitude: lng(),
-        category: state.tab,
-        page_no: state.count,
-      });
-      setState((prevState) => ({
-        ...prevState,
-        categoryCollection: e.rows.hits,
-        changeTab: false,
-        totalItems: e.rows.total.value,
-      }));
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  const handleChange = debounce((event) => {
     setState((prevState) => ({
       ...prevState,
-      searchKey: event,
-      value: event,
-      isChange: true,
-
-      // searchKey:event
-    }));
-  }, 100);
-
-  const handleSubmits = () => {
-    setState((prevState) => ({
-      ...prevState,
-      value: state.value,
-      // searchKey:event
-    }));
-  };
-
-  const onclicks = (e) => {
-    setState((prevState) => ({
-      ...prevState,
-      searchKey: e,
-      count: 0,
-      isChange: false,
-      value: e,
+      currentTab: "artist",
+      isTriggered: true,
+      categoryCollection: [],
+      pageNo: 0,
+      latitude: lat(),
+      longitude: lng(),
+      value:""
     }));
   };
 
@@ -188,13 +73,7 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
         <meta name="description" content="Search Me"></meta>
       </Head>
 
-      <SearchField
-        handleChange={handleChange}
-        hints={state.hints}
-        onclicks={onclicks}
-        handleSubmits={handleSubmits}
-        value={state.value}
-      />
+      <SearchField />
 
       <div
         style={{
@@ -215,7 +94,7 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              disabled={state.tab === tab.id}
+              disabled={state.currentTab === tab.id}
               onClick={() => handleTabClick(tab.id)}
             >
               {tab.label}
@@ -228,14 +107,17 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
               setState((prevState) => ({
                 ...prevState,
                 selectedStyle: event.target.value,
-                count: 0,
-                isChange: false,
+                pageNo: 0,
+                isTriggered: true,
+                categoryCollection: [],
+                latitude: "",
+                longitude: "",
               }))
             }
             value={state.selectedStyle}
           >
             <option value="0">Choose Style</option>
-            {state.styleCollection.map((el) => (
+            {stylsse.map((el) => (
               <option key={el._id} value={el._id}>
                 {el.sort[0]}
               </option>
@@ -243,7 +125,7 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
           </select>
         </div>
 
-        {state.tab === "artist" && (
+        {state.currentTab === "artist" && (
           <Autocomplete
             apiKey={process.env.googlePlacesApiKey}
             onPlaceSelected={handlePlaceSelected}
@@ -251,7 +133,11 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
         )}
       </div>
 
-      {renderCategoryComponent(state.tab, state.categoryCollection ,state.loading)}
+      {renderCategoryComponent(
+        state.currentTab,
+        state.categoryCollection,
+        state.loading
+      )}
 
       {state.categoryCollection.length !== 0 &&
         state.categoryCollection.length !== state.totalItems && (
@@ -263,7 +149,9 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
               onClick={() => {
                 setState((prevState) => ({
                   ...prevState,
-                  count: prevState.count + 1, // Increment the count by 1
+                  pageNo: prevState.pageNo + 1, // Increment the count by 1
+                  isTriggered: true,
+                  value:""
                 }));
               }}
               style={{
@@ -284,18 +172,21 @@ const Search = ({ data, initialTab, page_no, totalItems, searchKey }) => {
 export default Search;
 
 export async function getServerSideProps(context) {
+ 
   try {
     if (context.query.category === "all") {
       const results = await fetchMultiData({
         ...Parameters,
         category: context.query.category,
+        search_key:context.query.term,
+
       });
 
       return {
         props: {
           data: results.data,
-          initialTab: context.query.category,
-          page_no: 0,
+          currentTab: context.query.category,
+          pageNo: 0,
           totalItems: results.totalCount,
           searchKey: context.query.term,
         },
@@ -309,8 +200,8 @@ export async function getServerSideProps(context) {
       return {
         props: {
           data: data.rows.hits,
-          initialTab: context.query.category,
-          page_no: 0,
+          currentTab: context.query.category,
+          pageNo: 0,
           totalItems: data.rows.total.value,
         },
       };

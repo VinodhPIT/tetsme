@@ -1,0 +1,16 @@
+.dropdown{
+    background-color: #eee;
+    padding: 10px;
+    height: 310px;
+    overflow-y: scroll;
+}
+.dropdown button li {
+    padding: 10px ;background-color:#fff;     margin: 10px;
+    text-align: left;
+}
+
+.search_input_container  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}

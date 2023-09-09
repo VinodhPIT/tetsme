@@ -1,31 +1,36 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+
+
+
+import React, { useState, useEffect, useRef  ,useMemo} from 'react';
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useInckd } from "@/context/Context";
+import { debounce, round } from "lodash";
+import style from  './search.module.css'
+import {useRouter} from 'next/router'
 
-const SearchField = (props) => {
-  const searchInputRef = useRef(null);
-  const [searchState, setSearchState] = useState({
-    hints: [],
-    value: props.value ,
-    isDropdownOpen: false,
-  });
 
+
+function SearchBar({isHome}) {
+  const [query, setQuery] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const inputRef = useRef(null);
+  const { state, setState } = useInckd();
+  const router = useRouter()
+
+ 
   useEffect(() => {
-    setSearchState((prevState) => ({
-      ...prevState,
-      hints: props.hints,
-      value:props.value
-    }));
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
 
 
-
-  }, [props.hints ,props.value]); // This effect will run whenever getHints changes
 
   const generateHintsToDisplay = useMemo(() => {
     const hintsToDisplay = [];
-
-    if (searchState.hints !== undefined) {
-      searchState.hints.forEach((el) => {
+    if (state.searchData !== undefined) {
+      state.searchData.forEach((el) => {
         if (el._index === "artist") {
           const artist = el._source;
           const namesToCheck = [
@@ -50,68 +55,90 @@ const SearchField = (props) => {
     }
 
     return hintsToDisplay;
-  }, [searchState.hints]);
+   }, [state.searchData]);
 
-  const handleFocus = () => {
-    setSearchState({ ...searchState, isDropdownOpen: true });
+
+  const handleChange = debounce((e) => {
+    setQuery(e);
+    setState((prevState) => ({
+      ...prevState,
+      value: e,
+
+      isTriggered: true,
+    }));
+  }, 100);
+
+
+
+  const handleSubmit = (e) => {
+       e.preventDefault();
+   console.log(e ,"kcskcpks[pcsd")
+    // e.preventDefault();
+    // setShowDropdown(false);
+    // setState((prevState) => ({
+    //   ...prevState,
+    //   value: " ",
+    //   searchKey: e,
+    //   isTriggered: true,
+    //   pageNo: 0,
+    // }));
+
+
+
   };
 
-  // useEffect(() => {
-  //   setSearchState({
-  //     ...searchState,
-  //     hints: props.hints,
-  //     value: props.value,
-  //   });
-  // }, [props.hints, props.value]);
+  const handleOutsideClick = (e) => {
+    if (inputRef.current && !inputRef.current.contains(e.target)) {
+      setShowDropdown(false);
+      // hintsToDisplay=[]
 
-  // const handleClickOutside = (event) => {
-  //   if (
-  //     searchInputRef.current &&
-  //     !searchInputRef.current.contains(event.target)
-  //   ) {
-  //     setSearchState({ ...searchState, isDropdownOpen: false });
-  //   }
-  // };
 
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
+    }
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-   props.handleSubmits()
+  const handleItemClick = (item) => {
+    setQuery(item); // Set the selected item in the input field
+    setShowDropdown(false);
+
+if(isHome!==undefined){
+
+  router.push(`/search?term=${item}&category=${"all"}`)
+
+
+}
+
+
+else{    
+
+    setState((prevState) => ({
+      ...prevState,
+      value: "",
+      searchKey: item,
+      isTriggered: true,
+      pageNo: 0,
+    }));
+  }
+
 
   };
 
   return (
-    <>
-      <div className="search-input-container">
-
-        <form onSubmit={handleSubmit}  >
-
+    <div className="search-bar">
+      <form onSubmit={handleSubmit}>
+        <div className={style.search_input_container}ref={inputRef}>
           <input
-            type="search"
-            className="search-input"
-            ref={searchInputRef}
-            onFocus={handleFocus}
-            placeholder="Search..."
-            style={{ padding: "14px", borderRadius: "40px", width: "100%" }}
-            onChange={(event) => props.handleChange(event.target.value)}
-            value={props.value}
+            type="text"
+            placeholder="Search Google"
+            value={query}
+            onChange={(event) => handleChange(event.target.value)}
+            onFocus={() => setShowDropdown(true)}
           />
-        </form>
-
-       
-
-        {searchState.isDropdownOpen && (
-          <div className="search">
-            {generateHintsToDisplay.map((result, index) => (
+          {showDropdown && (
+            <div className={style.dropdown}>
+               {generateHintsToDisplay.map((result, index) => (
               <button
                 key={index}
-                onClick={() =>[props.onclicks(result), setSearchState({ ...searchState, isDropdownOpen: false })]}
+                onClick={() => handleItemClick(result)}
                 style={{
                   display: "block",
                   width: "100%",
@@ -120,18 +147,8 @@ const SearchField = (props) => {
                   cursor: "pointer",
                 }}
               >
-                {/* <Link
-                href={`/search?term=${result}&category=${"all"}`} */}
-
                 <li
-                // onClick={}
-                  style={{
-                    padding: "10px",
-                    background: "#eee",
-                    marginBottom: "10px",
-                    "list-style": "none",
-                    "text-align": "left",
-                  }}
+                  
                   key={index}
                 >
                   {result}
@@ -139,11 +156,7 @@ const SearchField = (props) => {
               </button>
             ))}
 
-            {/* {generateHintsToDisplay.length===0 ? (
-              <h4> We couldnt find any results for --- {searchState.value}</h4>
-            ) : null} */}
-
-            {generateHintsToDisplay.length === 0 && (
+           {generateHintsToDisplay.length === 0 && (
               <div>
                 <p>Get inspired by styles</p>
                 <div className="styleTattoo">
@@ -151,11 +164,18 @@ const SearchField = (props) => {
                 </div>
               </div>
             )}
-          </div>
-        )}
-      </div>
-    </>
-  );
-};
 
-export default SearchField;
+
+
+            </div>
+          )}
+        </div>
+        <button type="submit">Search</button>
+      </form>
+    
+    </div>
+  );
+}
+
+export default SearchBar;
+
