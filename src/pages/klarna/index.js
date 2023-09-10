@@ -1,6 +1,6 @@
 import React from 'react'
 
-import 'react-tabs/style/react-tabs.css';
+
 
 import Head from "next/head";
 
