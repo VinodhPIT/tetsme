@@ -1,38 +1,3 @@
-export const prepareRequest = () => {
-  const request = {
-    sort: "newest",
-    page_no: "0",
-    paginator_count: 30,
-    search_key: "",
-  };
-
-  // if (parameters.location && parameters.category == 'artists') {
-  //   request.longitude = parameters.location.lon || parameters.location.lon
-  //   request.latitude = parameters.location.lat || parameters.location.lat
-  // }
-
-  // request.style = parameters.style ? [parameters.style] : []
-
-  return request;
-};
-
-export const prepareRequest1 = (parameters) => {
-  const request = {
-    sort: "newest",
-    page_no: parameters.page || "0",
-    paginator_count: parameters.category === "all" ? 10 : 32,
-    search_key: parameters.term,
-  };
-
-  if (parameters.location && parameters.category == "artists") {
-    request.longitude = parameters.location.lon || parameters.location.lon;
-    request.latitude = parameters.location.lat || parameters.location.lat;
-  }
-
-  request.style = parameters.style ? [parameters.style] : [];
-
-  return request;
-};
 
 export const prepareRequest2 = (parameters) => {
   const request = {
@@ -71,8 +36,6 @@ export const searchParam = (parameters) => {
   
   return request;
 };
-
-
 
 
 

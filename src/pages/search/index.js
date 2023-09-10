@@ -32,6 +32,8 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 
   const [stylsse, setStyle] = useState([]);
 
+  const router = useRouter()
+
   async function fetchStyles() {
     try {
       const newData = await getStyles();
@@ -80,7 +82,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             <button
               key={tab.id}
               disabled={state.currentTab === tab.id}
-              onClick={() => updateTab(tab.id)}
+              onClick={() => updateTab(tab.id ,router)}
             >
               {tab.label}
             </button>

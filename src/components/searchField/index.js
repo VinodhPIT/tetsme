@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import Link from "next/link";
-import { useInckd } from "@/context/Context";
 import { debounce, round } from "lodash";
 import style from "./search.module.css";
 import { useRouter } from "next/router";
@@ -8,9 +6,9 @@ import { useGlobalState } from "@/context/Context";
 
 function SearchBar({ isHome }) {
   const { state, getHintsBySearch, searchData } = useGlobalState();
-
   const [query, setQuery] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [searchHistory, setSearchHistory] = useState([]);
   const inputRef = useRef(null);
   const router = useRouter();
 
@@ -20,6 +18,18 @@ function SearchBar({ isHome }) {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  useEffect(() => {
+    const storedHistory = localStorage.getItem("searchHistory");
+    if (storedHistory) {
+      setSearchHistory(JSON.parse(storedHistory));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Saving search history to local storage whenever it changes
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
 
   const hintsToDisplay = [];
 
@@ -52,46 +62,17 @@ function SearchBar({ isHome }) {
     });
   }
 
-  // const generateHintsToDisplay = useMemo(() => {
-  //   const hintsToDisplay = [];
-  //   if (state.hints !== undefined) {
-  //     state.hints.forEach((el) => {
-  //       if (el._index === "artist") {
-  //         const artist = el._source;
-  //         const namesToCheck = [
-  //           artist.artist_name,
-  //           artist.first_name,
-  //           artist.last_name,
-  //         ];
-  //         namesToCheck.forEach((name) => {
-  //           if (name && !hintsToDisplay.includes(name)) {
-  //             hintsToDisplay.push(name);
-  //           }
-  //         });
-  //       } else if (el._index === "tattoo") {
-  //         const nameSuggestions = el._source.name_suggest || [];
-  //         nameSuggestions.forEach((nameSuggest) => {
-  //           if (!hintsToDisplay.includes(nameSuggest)) {
-  //             hintsToDisplay.push(nameSuggest);
-  //           }
-  //         });
-  //       }
-  //     });
-  //   }
-
-  //   return hintsToDisplay;
-  // }, [state.hints]);
-
   const handleChange = debounce((e) => {
     setQuery(e);
-    getHintsBySearch(e);
+    getHintsBySearch(e, router);
   }, 100);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // router.push(`/search?term=${query}&category=${state.currentTab}`)
 
-    console.log(query, "dcdcds");
-    searchData(query);
+    e.preventDefault();
+    searchData(query, router);
+    setSearchHistory((prevHistory) => [query, ...prevHistory]);
   };
 
   const handleOutsideClick = (e) => {
@@ -101,16 +82,23 @@ function SearchBar({ isHome }) {
   };
 
   const handleItemClick = (item) => {
-    setQuery(item); // Set the selected item in the input field
+    setSearchHistory((prevHistory) => [item, ...prevHistory]);
+    setQuery(item);
     setShowDropdown(false);
     if (isHome !== undefined) {
       router.push(`/search?term=${item}&category=${"all"}`);
     } else {
-      searchData(item);
+      searchData(item, router);
+
+      // router.push(`/search?term=${item}&category=${state.currentTab}`);
     }
   };
 
-  // };
+  const clear = (el) => {
+    const updatedHistory = searchHistory.filter((e) => e !== el);
+    setSearchHistory(updatedHistory);
+    localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
+  };
 
   return (
     <div className="search-bar">
@@ -144,6 +132,37 @@ function SearchBar({ isHome }) {
                 </li>
               ))}
 
+              {state.errorMessage === true ? (
+                <div>
+                  <p>Results</p>
+
+                  <h5>We couldnt find any results for {query}</h5>
+                </div>
+              ) : null}
+
+              {/* {searchHistory.length >0  ?   <div> 
+  
+  <h1> Latest Search</h1 >
+
+
+<div className={style.listt}>
+{searchHistory.map((el)=>{
+
+return  <div key={el} onClick={()=>clear(el)}   style={{"position":"relative","backgroundColor":"#000", "padding":"10px"}} > <div className={style.close}>x </div> <p >{el}</p></div>
+
+})}
+</div>
+
+
+
+
+</div>
+
+
+
+
+:null} */}
+
               {hintsToDisplay.length === 0 && (
                 <div>
                   <p>Get inspired by styles</p>
@@ -162,71 +181,3 @@ function SearchBar({ isHome }) {
 }
 
 export default SearchBar;
-
-// import React, { useState, useEffect, useRef } from 'react';
-
-// function SearchBar() {
-//   const [query, setQuery] = useState('');
-//   const [showDropdown, setShowDropdown] = useState(false);
-//   const [selectedItem, setSelectedItem] = useState('');
-//   const inputRef = useRef(null);
-
-//   useEffect(() => {
-//     document.addEventListener('mousedown', handleOutsideClick);
-//     return () => {
-//       document.removeEventListener('mousedown', handleOutsideClick);
-//     };
-//   }, []);
-
-//   const handleInputChange = (e) => {
-//     setQuery(e.target.value);
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Handle your search logic here.
-//     console.log('Search query:', query);
-//   };
-
-//   const handleOutsideClick = (e) => {
-//     if (inputRef.current && !inputRef.current.contains(e.target)) {
-//       setShowDropdown(false);
-//     }
-//   };
-
-//   const handleItemClick = (item) => {
-//     setQuery(item); // Set the selected item in the input field
-//     setSelectedItem(item);
-//     setShowDropdown(false);
-//   };
-
-//   return (
-//     <div className="search-bar">
-//       <form onSubmit={handleSubmit}>
-//         <div className="search-input-container" ref={inputRef}>
-//           <input
-//             type="text"
-//             placeholder="Search Google"
-//             value={query}
-//             onChange={handleInputChange}
-//             onFocus={() => setShowDropdown(true)}
-//           />
-//           {showDropdown && (
-//             <div className="dropdown">
-//               <ul>
-//                 <li onClick={() => handleItemClick('Item 1')}>Item 1</li>
-//                 <li onClick={() => handleItemClick('Item 2')}>Item 2</li>
-//                 <li onClick={() => handleItemClick('Item 3')}>Item 3</li>
-//                 {/* Add more items as needed */}
-//               </ul>
-//             </div>
-//           )}
-//         </div>
-//         <button type="submit">Search</button>
-//       </form>
-//       {selectedItem && <p>Selected Item: {selectedItem}</p>}
-//     </div>
-//   );
-// }
-
-// export default SearchBar;

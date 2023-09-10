@@ -14,3 +14,15 @@
     padding: 10px;
     border-radius: 10px;
 }
+.listt  {display: flex;
+    flex-flow: wrap;
+    /* margin: 10px; */
+    gap: 10px;    
+    color: #fff;
+}
+
+.close{    position: absolute;
+    right: 0;
+    background: red;
+    padding: 4px;
+    border-radius: 4px;}
