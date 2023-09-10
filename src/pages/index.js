@@ -50,13 +50,13 @@ router.push(`/search?term=${""}&category=${tets}`)
           </Link>
           <Link
            href={'/'}
-            onClick={() => test("Artist")}
+            onClick={() => test("artist")}
           >
             Artist
           </Link>
           <Link
              href={'/'}
-            onClick={() => test("Flash")}
+            onClick={() => test("flash")}
           >
             Flash
           </Link>
@@ -64,7 +64,7 @@ router.push(`/search?term=${""}&category=${tets}`)
 
 
        
-   {state.serverLoad &&   <HomLoading/> }
+{state.serverLoad &&   <HomLoading/> } 
 
       </main>
     </>
