@@ -1,7 +1,7 @@
 // GlobalState.js
 import React, { createContext, useReducer, useContext } from "react";
 import { fetchCategoryData, fetchMultiData } from "@/action/action";
-import { Parameters} from "@/components/parameters/params";
+import { Parameters } from "@/components/parameters/params";
 
 const initialState = {
   categoryCollection: [],
@@ -19,22 +19,22 @@ const initialState = {
   latitude: "",
   longitude: "",
   searchData: [],
-  serverLoad:false
+  serverLoad: false,
 };
-
-
-
-
 
 const reducer = (state, action) => {
   let data, currentTab, totalItems, searchKey, pageNo;
 
   switch (action.type) {
-
-    case "ON-LOAD" :
+    case "ON-LOAD":
       return {
         ...state,
-        serverLoad :action.payload
+        serverLoad: action.payload,
+      };
+    case "IS_LOADING":
+      return {
+        ...state,
+        loading: action.payload,
       };
 
     case "INITIAL_SERVER_DATA":
@@ -46,7 +46,7 @@ const reducer = (state, action) => {
         totalItems,
         searchKey,
         pageNo,
-        serverLoad:false
+        serverLoad: false,
       };
 
     case "ACTIVE_TAB":
@@ -66,17 +66,18 @@ const reducer = (state, action) => {
       const data = action.payload;
       return {
         ...state,
-          categoryCollection:
+        categoryCollection:
           state.currentTab === "all" ? data.data : data.rows.hits,
-          totalItems:
+        totalItems:
           state.currentTab === "all" ? data.totalCount : data.rows.total.value,
-          pageNo: 0,
+        pageNo: 0,
+        loading: false,
       };
     case "LOAD_MORE":
       return {
-           ...state,
-           categoryCollection:
-           state.currentTab === "all"
+        ...state,
+        categoryCollection:
+          state.currentTab === "all"
             ? [...state.categoryCollection, ...action.payload.data]
             : [...state.categoryCollection, ...action.payload.rows.hits],
       };
@@ -87,9 +88,9 @@ const reducer = (state, action) => {
       return {
         ...state,
         categoryCollection:
-        state.currentTab === "all" ? getStyle.data : getStyle.rows.hits,
+          state.currentTab === "all" ? getStyle.data : getStyle.rows.hits,
         totalItems:
-        state.currentTab === "all"
+          state.currentTab === "all"
             ? getStyle.totalCount
             : getStyle.rows.total.value,
         pageNo: 0,
@@ -109,8 +110,7 @@ const reducer = (state, action) => {
           state.currentTab === "all" || state.currentTab === ""
             ? action.payload.data
             : action.payload.rows.hits,
-            errorMessage:state.hints.length===0 ? true:false
-
+        errorMessage: state.hints.length === 0 ? true : false,
       };
 
     case "SEARCH_QUERY":
@@ -122,15 +122,15 @@ const reducer = (state, action) => {
     case "SEARCH_DATA":
       return {
         ...state,
-          categoryCollection:
-          state.currentTab === "all"|| state.currentTab === ""
+        categoryCollection:
+          state.currentTab === "all" || state.currentTab === ""
             ? action.payload.data
             : action.payload.rows.hits,
-            totalItems:
-            state.currentTab === "all"|| state.currentTab === ""
+        totalItems:
+          state.currentTab === "all" || state.currentTab === ""
             ? action.payload.data.totalCount
             : action.payload.rows.total.value,
-           pageNo: 0,
+        pageNo: 0,
       };
 
     default:
@@ -145,20 +145,12 @@ export const useGlobalState = () => useContext(GlobalStateContext);
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
-
   const serverLoad = async (payload) => {
-
-    dispatch({ type:"ON-LOAD" ,payload});
-   
+    dispatch({ type: "ON-LOAD", payload });
   };
 
-
-
-
-
-  
-  const fetchServerlData = async (payload) => {// ---------------- Fetching Server Data on Initial Page Load --------- //
+  const fetchServerlData = async (payload) => {
+    // ---------------- Fetching Server Data on Initial Page Load --------- //
     try {
       dispatch({ type: "INITIAL_SERVER_DATA", payload: payload });
     } catch (error) {
@@ -166,12 +158,13 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
+  const updateTab = async (payload, router, load) => {
+    // ---------------- Fetching  Data Based On ActiveTab --------- //
 
+   await router.push(`/search?term=${state.searchKey}&category=${payload}`)
 
-  const updateTab = async (payload ,router) => {  // ---------------- Fetching  Data Based On ActiveTab --------- //
+    dispatch({ type: "IS_LOADING", payload: load });
 
-    //  router.push(`/search?term=${state.searchKey}&category=${payload}`)
-  
     dispatch({ type: "ACTIVE_TAB", payload: payload });
     try {
       const requestData = {
@@ -190,7 +183,8 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-  const loadMore = async () => {  // ---------------- Load More Data With Previous Data  --------- //
+  const loadMore = async () => {
+    // ---------------- Load More Data With Previous Data  --------- //
     const updatedPageNo = state.pageNo + 1;
     dispatch({ type: "COUNT", payload: updatedPageNo });
     try {
@@ -213,9 +207,8 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-
-
-  const searchStyle = async (payload) => {  // ----------------Fetch Data Based On Styles  --------- //
+  const searchStyle = async (payload) => {
+    // ----------------Fetch Data Based On Styles  --------- //
     dispatch({ type: "CURRENT_STYLE", payload });
     try {
       const requestData = {
@@ -228,7 +221,6 @@ export const GlobalStateProvider = ({ children }) => {
         responseData = await fetchMultiData(requestData);
       } else {
         responseData = await fetchCategoryData(requestData);
-        console.log(responseData, "c[sdplc[slcs");
       }
       dispatch({ type: "SEARCH_STYLE", payload: responseData });
     } catch (error) {
@@ -236,8 +228,8 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-
-  const findArtist = async (payload) => {  // ----------------Fetch Artist Based On Location  --------- //
+  const findArtist = async (payload) => {
+    // ----------------Fetch Artist Based On Location  --------- //
     try {
       const requestData = {
         ...Parameters,
@@ -255,9 +247,8 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-
-
-  const getHintsBySearch = async (payload) => {  // -----------------  Get Hints Based On keyword--------- //
+  const getHintsBySearch = async (payload) => {
+    // -----------------  Get Hints Based On keyword--------- //
     try {
       const requestData = {
         ...Parameters,
@@ -270,17 +261,15 @@ export const GlobalStateProvider = ({ children }) => {
       } else {
         responseData = await fetchCategoryData(requestData);
       }
-      console.log(responseData ,"cdkcpd[")
+      console.log(responseData, "cdkcpd[");
       dispatch({ type: "GET_HINTS", payload: responseData });
     } catch (error) {
       console.error("Error Fetching Hints:", error);
     }
   };
 
-  const searchData = async (payload ,router) => {
+  const searchData = async (payload) => {
     dispatch({ type: "SEARCH_QUERY", payload });
-
-
     try {
       const requestData = {
         ...Parameters,
@@ -288,19 +277,11 @@ export const GlobalStateProvider = ({ children }) => {
         search_key: payload,
       };
       let responseData;
-      if (state.currentTab === "all") {
+      if (state.currentTab === "all" || state.currentTab == "") {
         responseData = await fetchMultiData(requestData);
       } else {
         responseData = await fetchCategoryData(requestData);
-
-   
-
       }
-     
-
-console.log(responseData ,"responseData")
-
-
       dispatch({ type: "SEARCH_DATA", payload: responseData });
     } catch (error) {
       console.error("Error On Search:", error);
@@ -317,7 +298,8 @@ console.log(responseData ,"responseData")
         searchStyle,
         findArtist,
         getHintsBySearch,
-        searchData,serverLoad
+        searchData,
+        serverLoad,
       }}
     >
       {children}

@@ -82,7 +82,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             <button
               key={tab.id}
               disabled={state.currentTab === tab.id}
-              onClick={() => updateTab(tab.id ,router)}
+              onClick={() =>     updateTab(tab.id ,router ,true)}
             >
               {tab.label}
             </button>

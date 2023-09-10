@@ -3,12 +3,16 @@ import { debounce, round } from "lodash";
 import style from "./search.module.css";
 import { useRouter } from "next/router";
 import { useGlobalState } from "@/context/Context";
+import { v4 as uuidv4 } from "uuid";
 
 function SearchBar({ isHome }) {
   const { state, getHintsBySearch, searchData } = useGlobalState();
-  const [query, setQuery] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [searchHistory, setSearchHistory] = useState([]);
+  const [searchState, setSearchState] = useState({
+    query: "",
+    showDropdown: false,
+    searchHistory: [],
+  });
+
   const inputRef = useRef(null);
   const router = useRouter();
 
@@ -22,14 +26,20 @@ function SearchBar({ isHome }) {
   useEffect(() => {
     const storedHistory = localStorage.getItem("searchHistory");
     if (storedHistory) {
-      setSearchHistory(JSON.parse(storedHistory));
+      setSearchState((prevSearchState) => ({
+        ...prevSearchState,
+        searchHistory: JSON.parse(storedHistory),
+      }));
     }
   }, []);
 
   useEffect(() => {
     // Saving search history to local storage whenever it changes
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  }, [searchHistory]);
+    localStorage.setItem(
+      "searchHistory",
+      JSON.stringify(searchState.searchHistory)
+    );
+  }, [searchState.searchHistory]);
 
   const hintsToDisplay = [];
 
@@ -63,40 +73,64 @@ function SearchBar({ isHome }) {
   }
 
   const handleChange = debounce((e) => {
-    setQuery(e);
+    setSearchState((prevSearchState) => ({
+      ...prevSearchState,
+      query: e,
+    }));
     getHintsBySearch(e, router);
   }, 100);
 
   const handleSubmit = (e) => {
-    // router.push(`/search?term=${query}&category=${state.currentTab}`)
-
     e.preventDefault();
-    searchData(query, router);
-    setSearchHistory((prevHistory) => [query, ...prevHistory]);
+    searchData(searchState.query, router);
+
+    addToSearchHistory(searchState.query);
   };
+
 
   const handleOutsideClick = (e) => {
     if (inputRef.current && !inputRef.current.contains(e.target)) {
-      setShowDropdown(false);
+      setSearchState((prevSearchState) => ({
+        ...prevSearchState,
+        showDropdown: false,
+      }));
     }
   };
 
   const handleItemClick = (item) => {
-    setSearchHistory((prevHistory) => [item, ...prevHistory]);
-    setQuery(item);
-    setShowDropdown(false);
-    if (isHome !== undefined) {
-      router.push(`/search?term=${item}&category=${"all"}`);
-    } else {
-      searchData(item, router);
+router.push(`/search?term=${item}&category=${state.currentTab}`).then(()=>{
+  setSearchState((prevSearchState) => ({
+    ...prevSearchState,
+    query: item,
+    showDropdown: false,
+  }));
+  if (isHome) {
+    router.push(`/search?term=${item}&category=${'all'}`);
+  } else {
+    searchData(item, router);
+  }
+  addToSearchHistory(item);
 
-      // router.push(`/search?term=${item}&category=${state.currentTab}`);
-    }
+}).catch((e)=> console.log(e))
+
+  };
+
+  const addToSearchHistory = (name) => {
+    const newItem = { id: uuidv4(), name };
+    setSearchState((prevSearchState) => ({
+      ...prevSearchState,
+      searchHistory: [newItem, ...prevSearchState.searchHistory],
+    }));
   };
 
   const clear = (el) => {
-    const updatedHistory = searchHistory.filter((e) => e !== el);
-    setSearchHistory(updatedHistory);
+    const updatedHistory = searchState.searchHistory.filter(
+      (item) => item.id !== el.id
+    );
+    setSearchState((prevSearchState) => ({
+      ...prevSearchState,
+      searchHistory: updatedHistory,
+    }));
     localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
   };
 
@@ -107,11 +141,16 @@ function SearchBar({ isHome }) {
           <input
             type="text"
             placeholder="Search Google"
-            value={query}
+            value={searchState.query}
             onChange={(event) => handleChange(event.target.value)}
-            onFocus={() => setShowDropdown(true)}
+            onFocus={() =>
+              setSearchState((prevSearchState) => ({
+                ...prevSearchState,
+                showDropdown: true,
+              }))
+            }
           />
-          {showDropdown && (
+          {searchState.showDropdown && (
             <div className={style.dropdown}>
               {hintsToDisplay.map((result, index) => (
                 <li
@@ -132,36 +171,33 @@ function SearchBar({ isHome }) {
                 </li>
               ))}
 
-              {state.errorMessage === true ? (
+              {state.errorMessage && (
                 <div>
                   <p>Results</p>
-
-                  <h5>We couldnt find any results for {query}</h5>
+                  <h5>We couldnt find any results for {searchState.query}</h5>
                 </div>
-              ) : null}
-
-              {/* {searchHistory.length >0  ?   <div> 
-  
-  <h1> Latest Search</h1 >
-
-
-<div className={style.listt}>
-{searchHistory.map((el)=>{
-
-return  <div key={el} onClick={()=>clear(el)}   style={{"position":"relative","backgroundColor":"#000", "padding":"10px"}} > <div className={style.close}>x </div> <p >{el}</p></div>
-
-})}
-</div>
-
-
-
-
-</div>
-
-
-
-
-:null} */}
+              )}
+              {searchState.searchHistory.length > 0 && (
+                <div>
+                  <h1>Latest Search</h1>
+                  <div className={style.listt}>
+                    {searchState.searchHistory.map((el) => (
+                      <div
+                        key={el.id}
+                        onClick={() => clear(el)}
+                        style={{
+                          position: "relative",
+                          backgroundColor: "#000",
+                          padding: "10px",
+                        }}
+                      >
+                        <div className={style.close}>x </div>
+                        <p>{el.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {hintsToDisplay.length === 0 && (
                 <div>
