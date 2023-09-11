@@ -1,11 +1,8 @@
 import React from 'react'
+import style from  './loading.module.css'
 
 export default function PageLoad() {
   return (
-    <div >
-
-        <h1>Load......</h1>
-      
-    </div>
+    <div className={style.loader}></div>
   )
 }

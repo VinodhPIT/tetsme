@@ -8,7 +8,7 @@ import styles from '@/styles/Home.module.css'
 import { APP_LINK_APPLE, APP_LINK_GOOGLE ,blurDataURL,} from "@/constants/constants";
 import { useGlobalState } from "@/context/Context";
 import {useRouter} from 'next/router'
-import HomLoading from '@/components/Loading/homeLoading'
+import HomLoading from '@/components/homeLoading'
  import SearchField from "@/components/searchField";
 
 
@@ -19,11 +19,7 @@ export default function Home() {
   } = useGlobalState();
   // href={`}
 
-  const onNav = (category)=>{
-    serverLoad(true)
-   router.push(`/search?term=${""}&category=${category}`)
-
-  }
+  
 
 
 
@@ -42,9 +38,13 @@ const changeImage = () => {
 
 
 
+
+
   return (    
+    <>
     <div className="page_wrapper">
-      <div className="header_cookies">
+     
+     <div className="header_cookies">
         <div className="header_cookie_img">
           <svg
             width="68"
@@ -74,6 +74,8 @@ const changeImage = () => {
           </p>
         </div>
       </div>
+
+
 
       <div className={styles.home_banner_block}>
         <div className={styles.home_banner_wrap}>
@@ -110,9 +112,8 @@ const changeImage = () => {
                         <h6>Categories</h6>
                       </span>
                       <ul className="trend_list">
-                        <li className="list_inline_item">
-                          <Link   href={`/search?term=${""}&category=${'tattoo'}`}
-                           >
+                        <li className="list_inline_item" >
+                        <Link  href={`/search?term=${""}&category=${'tattoo'}`} onClick={()=>serverLoad(true)}>
                             <svg
                               width="26"
                               height="26"
@@ -129,10 +130,10 @@ const changeImage = () => {
                               </g>
                             </svg>
                             Tattoos
-                          </Link>
+                    </Link>
                         </li>
                         <li className="list_inline_item">
-                          <Link  href={`/search?term=${""}&category=${'flash'}`}>
+                          <Link  href={`/search?term=${""}&category=${'flash'}`} onClick={()=>serverLoad(true)}>
           
                             <svg
                               width="26"
@@ -153,7 +154,7 @@ const changeImage = () => {
                           </Link>
                         </li>
                         <li className="list_inline_item">
-                        <Link   href={`/search?term=${""}&category=${'artist'}`}>
+                        <Link  href={`/search?term=${""}&category=${'flash'}`} onClick={()=>serverLoad(true)}>
                            
                             <svg
                               width="26"
@@ -1467,8 +1468,15 @@ const changeImage = () => {
         </div>
       </section>
 
-    {/* <HomLoading/>  */}
+  
 
     </div>
+ {state.serverLoad && <HomLoading/> } 
+ 
+
+
+
+      
+       </>
   );
 }

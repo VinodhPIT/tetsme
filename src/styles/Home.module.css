@@ -106,6 +106,16 @@
 
 
 /* responsive */
+
+@media screen and (max-width:1199px) {
+.home_banner_block {
+
+	margin-top:0px;
+
+}
+}
+
+
 @media screen and (max-width: 767.98px) {
 	.home_banner_block {
 		min-height: 40rem;
@@ -139,6 +149,9 @@
 		line-height: 100%;
 		letter-spacing: -3.3px;
 	}
+
+
+
 }
 @media screen and (min-width: 768px) {
 	.home_banner_block {

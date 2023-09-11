@@ -8,15 +8,19 @@ import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
 } from "@/constants/constants";
-import { Figtree } from "next/font/google";
+import { useGlobalState } from "@/context/Context";
 
-const figtree = Figtree({
-  style: ["normal"],
-  weight: ["400", "700", "900", "600"],
-  subsets: ["latin"],
-});
+
+
 
 export default function Footer() {
+
+  const {
+    serverLoad
+  } = useGlobalState();
+  // href={`}
+
+
   const bookLinks = [
     {
       id: 1,
@@ -83,7 +87,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className={figtree.className}>
+    <footer >
       <div className="footer">
         <div class="container">
           <section class="footer_block">
@@ -556,7 +560,7 @@ export default function Footer() {
                 </li>
                 {bookLinks.map((link) => (
                   <li key={link.id}>
-                    <Link href={link.url}>{link.title}</Link>
+                    <Link href={link.url} onClick={()=>serverLoad(true)} >{link.title}</Link>
                   </li>
                 ))}
               </ul>
