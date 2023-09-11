@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import * as Yup from "yup";
 
-import PageLoad from '../loading/pageLoad'
+
 
 
 
@@ -152,7 +152,7 @@ const _Form = () => {
         )}
       </Formik>
 
-      {/* <PageLoad/> */}
+=
       
     </div>
   );
