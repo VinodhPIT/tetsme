@@ -80,12 +80,19 @@ function SearchBar({ isHome }) {
     getHintsBySearch(e, router);
   }, 100);
 
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchData(searchState.query, router);
-
+    if (isHome) {
+      router.push(`/search?term=${searchState.query}&category=all`);
+    } else {
+      searchData(searchState.query, router,);
+    }
     addToSearchHistory(searchState.query);
   };
+
 
 
   const handleOutsideClick = (e) => {
@@ -98,7 +105,7 @@ function SearchBar({ isHome }) {
   };
 
   const handleItemClick = (item) => {
-router.push(`/search?term=${item}&category=${state.currentTab}`).then(()=>{
+
   setSearchState((prevSearchState) => ({
     ...prevSearchState,
     query: item,
@@ -111,7 +118,7 @@ router.push(`/search?term=${item}&category=${state.currentTab}`).then(()=>{
   }
   addToSearchHistory(item);
 
-}).catch((e)=> console.log(e))
+
 
   };
 

@@ -247,7 +247,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-  const getHintsBySearch = async (payload) => {
+  const getHintsBySearch = async (payload ) => {
     // -----------------  Get Hints Based On keyword--------- //
     try {
       const requestData = {
@@ -282,6 +282,7 @@ export const GlobalStateProvider = ({ children }) => {
       } else {
         responseData = await fetchCategoryData(requestData);
       }
+      console.log(responseData ,'ipipojcpojcs;jc')
       dispatch({ type: "SEARCH_DATA", payload: responseData });
     } catch (error) {
       console.error("Error On Search:", error);
