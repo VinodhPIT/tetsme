@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { debounce, round } from "lodash";
+import React, { useState, useEffect, useRef} from "react";
+import { debounce} from "lodash";
 import style from "./search.module.css";
 import { useRouter } from "next/router";
 import { useGlobalState } from "@/context/Context";
 import { v4 as uuidv4 } from "uuid";
 
-function SearchBar({ isHome }) {
+function SearchBar({ isPage }) {
   const { state, getHintsBySearch, searchData } = useGlobalState();
   const [searchState, setSearchState] = useState({
     query: "",
@@ -85,7 +85,7 @@ function SearchBar({ isHome }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isHome) {
+    if (isPage) {
       router.push(`/search?term=${searchState.query}&category=all`);
     } else {
       searchData(searchState.query, router,);
@@ -111,7 +111,7 @@ function SearchBar({ isHome }) {
     query: item,
     showDropdown: false,
   }));
-  if (isHome) {
+  if (isPage) {
     router.push(`/search?term=${item}&category=${'all'}`);
   } else {
     searchData(item, router);
