@@ -1,28 +1,51 @@
-.dropdown{
-    background-color: #eee;
-    padding: 10px;
-    height: 310px;
-    overflow-y: scroll;
-}
-.dropdown button li {
-    padding: 10px ;background-color:#fff;     margin: 10px;
-    text-align: left;
+.searchTitle{    font-size: 32px;     line-height: 40px;
+    margin: 0 0px 15px 0px;
+    }
+
+.dropdown {
+  background-color: #fff;
+  padding: 10px;
+  height: 310px;
+  overflow-y: scroll;
+  margin-top: 10px;
+  border-radius: 17px;
+ 
 }
 
-.search_input_container  input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-}
-.listt  {display: flex;
-    flex-flow: wrap;
-    /* margin: 10px; */
-    gap: 10px;    
-    color: #fff;
+.dropdown li:hover {
+  background: #c0ffd5;
+  border-radius: 20px;
 }
 
-.close{    position: absolute;
-    right: 0;
-    background: red;
-    padding: 4px;
-    border-radius: 4px;}
+.itemWrapper {
+  display: flex;
+  flex-flow: wrap;
+  gap: 10px;
+  color: var(--white);
+  align-items: center;
+}
+
+.clearhistory {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  background: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 39px;
+  justify-content: center;
+  display: flex;
+  margin: 0px 0px 0px 10px;
+}
+
+.searcheditems {
+  background-color: #030403;
+  padding: 11px 13px;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  min-width: 100px;
+}
+.trim{margin: 0; overflow:hidden; white-space: nowrap;  text-overflow: ellipsis;}
+
+.searchLabel{float: left;width: 90%;}

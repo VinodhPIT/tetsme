@@ -17,7 +17,7 @@
 //   } = useGlobalState();
 //   // href={`}
 
-//   const test = (tets)=>{
+//   const onNav = (tets)=>{
 //     serverLoad(true)
     
 // router.push(`/search?term=${""}&category=${tets}`)
@@ -45,19 +45,19 @@
 //         >
 //           <Link
 //            href={'/'}
-//             onClick={() => test("tattoo")}
+//             onClick={() => onNav("tattoo")}
 //           >
 //             Tattoo
 //           </Link>
 //           <Link
 //            href={'/'}
-//             onClick={() => test("artist")}
+//             onClick={() => onNav("artist")}
 //           >
 //             Artist
 //           </Link>
 //           <Link
 //              href={'/'}
-//             onClick={() => test("flash")}
+//             onClick={() => onNav("flash")}
 //           >
 //             Flash
 //           </Link>
@@ -83,10 +83,26 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from '@/styles/Home.module.css'
 import { APP_LINK_APPLE, APP_LINK_GOOGLE ,blurDataURL,} from "@/constants/constants";
-
+import { useGlobalState } from "@/context/Context";
+import {useRouter} from 'next/router'
+import HomLoading from '@/components/Loading/homeLoading'
+ import SearchField from "@/components/searchField";
 
 
 export default function Home() {
+  const router =useRouter()
+  const {
+    state ,serverLoad
+  } = useGlobalState();
+  // href={`}
+
+  const onNav = (category)=>{
+    serverLoad(true)
+   router.push(`/search?term=${""}&category=${category}`)
+
+  }
+
+
   return (    
     <div className="page_wrapper">
       <div className="header_cookies">
@@ -143,53 +159,12 @@ export default function Home() {
 
                 <div className="search_form">
                   <div className="search_form_wrap">
-                    <form className="position_relative">
-                      <div className="input_group position_relative">
-                        <input
-                          placeholder="Search"
-                          type="text"
-                          required="required"
-                          className="form_control form_control_lg input_txt"
-                        />
-                        <button
-                          type="submit"
-                          tabindex="-1"
-                          className="btn btn_rounded btn_lg btn_icon btn_search"
-                        >
-                          <svg
-                            width="17"
-                            height="17"
-                            viewBox="0 0 17 17"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="ui-svg-inline"
-                          >
-                            <g
-                              id="Outline / Search / Magnifer"
-                              clip-path="url(#clip0_8807_21230)"
-                            >
-                              <path
-                                id="Vector"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M8.63509 1.89648C5.41343 1.89648 2.80176 4.50816 2.80176 7.72982C2.80176 10.9515 5.41343 13.5632 8.63509 13.5632C11.8568 13.5632 14.4684 10.9515 14.4684 7.72982C14.4684 4.50816 11.8568 1.89648 8.63509 1.89648ZM1.80176 7.72982C1.80176 3.95587 4.86115 0.896484 8.63509 0.896484C12.409 0.896484 15.4684 3.95587 15.4684 7.72982C15.4684 9.43683 14.8425 10.9976 13.8077 12.1953L15.9886 14.3763C16.1839 14.5715 16.1839 14.8881 15.9886 15.0834C15.7934 15.2786 15.4768 15.2786 15.2815 15.0834L13.1006 12.9024C11.9029 13.9372 10.3421 14.5632 8.63509 14.5632C4.86115 14.5632 1.80176 11.5038 1.80176 7.72982Z"
-                                fill="#B9B9B9"
-                              />
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_8807_21230">
-                                <rect
-                                  width="16"
-                                  height="16"
-                                  fill="white"
-                                  transform="translate(0.968262 0.0625)"
-                                />
-                              </clipPath>
-                            </defs>
-                          </svg>
-                        </button>
-                      </div>
-                    </form>
+
+                    <SearchField isPage={"all"} />
+
+
+
+                    
                     <div className="trend_list_wrap">
                       <span className="trend_list_label">
                         <p>Search by</p>
@@ -197,7 +172,8 @@ export default function Home() {
                       </span>
                       <ul className="trend_list">
                         <li className="list_inline_item">
-                          <Link href={`/search?term=${""}&category=${"tattoo"}`}>
+                          <Link   href={`/search?term=${""}&category=${'tattoo'}`}
+                           >
                             <svg
                               width="26"
                               height="26"
@@ -217,7 +193,8 @@ export default function Home() {
                           </Link>
                         </li>
                         <li className="list_inline_item">
-                          <Link href={`/search?term=${""}&category=${"flash"}`}>
+                          <Link  href={`/search?term=${""}&category=${'flash'}`}>
+          
                             <svg
                               width="26"
                               height="26"
@@ -237,7 +214,8 @@ export default function Home() {
                           </Link>
                         </li>
                         <li className="list_inline_item">
-                          <Link href={`/search?term=${""}&category=${"artist"}`}>
+                        <Link   href={`/search?term=${""}&category=${'artist'}`}>
+                           
                             <svg
                               width="26"
                               height="26"
@@ -1553,6 +1531,9 @@ export default function Home() {
             </div>          
         </div>
       </section>
+
+    {/* <HomLoading/>  */}
+
     </div>
   );
 }

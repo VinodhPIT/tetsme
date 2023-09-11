@@ -68,7 +68,7 @@
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none!important;
 }
 
 a:hover {
@@ -110,8 +110,11 @@ header.header_wrapper {
   width: 100%;
   margin: 0;
   transition: height 225ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  position: relative;
+  position:absolute;
   z-index: 1;
+  float: left;
+  width: 100%;
+  margin-top: 40px;
 }
 
 header ul.nav.main_nav {
@@ -125,7 +128,7 @@ header ul.nav.main_nav {
 }
 
 header ul.nav.main_nav>li {
-  padding: 0;
+  list-style-type: none;
   margin: 0 16px;
 }
 
@@ -141,29 +144,42 @@ header ul.nav.main_nav>li>a {
   margin: 0;
 }
 
-header .header_right {
-  margin-top: 24px;
-}
+
 
 header .header_right button.btn_tattoo-art {
   margin-right: 32px;
 }
 
-header .navbar_collapse {
-  padding-top: 0 !important;
-  align-self: flex-end;
-  place-content: flex-end;
-}
 
-header .navbar_collapse.collapse:not(.show) {
+/* header .navbar_collapse.collapse:not(.show) {
   display: none !important;
-}
+} */
 
 header .navbar {
   width: 100%;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 11px;
 }
 
+.logo-Section{width: 14%;}
+.nav-block{
+  width: 50%;
+}
+
+.header_right{
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+
+};
+
+
+
+/* 
 header .navbar .navbar_collapse {
   display: block !important;
   position: absolute;
@@ -172,7 +188,7 @@ header .navbar .navbar_collapse {
   top: 100%;
   padding-right: 0;
   padding-left: 0;
-}
+} */
 
 header .navbar .navbar_nav {
   flex-direction: column;
@@ -954,7 +970,7 @@ main {
   line-height: 150%;
   display: flex;
   align-items: center;
-  color: #C3C3C3;
+  color: #000;border: 0;
 }
 
 .search_form .search_form_wrap .input_group input.form_control.input_txt::placeholder {
@@ -964,9 +980,11 @@ main {
 
 .search_form .search_form_wrap .input_group .btn_search {
   position: absolute;
-  top: 2px;
-  right: 0;
+  top: 4px;
+  right: 11px;
   color: var(--gray-450);
+  background: transparent;
+  border: 0;cursor: pointer;
 }
 
 .trend_list_wrap {
@@ -1426,6 +1444,61 @@ ul.download_app li.download_app_title h6 {
     justify-content: center !important;
   }
 }
+
+
+ /* Tab page UI  For Testing */
+
+.image_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  grid-gap: 7px; padding: 10px 0px 10px 0px;
+}
+
+
+.styleTattoo {
+
+  display: grid;
+  grid-template-columns: repeat(2, 2fr); /* Display two columns of equal width */
+
+  grid-gap: 7px; padding: 10px 0px 10px 0px; padding: 30px;
+}
+
+.styleTattoo1{
+  border: 1px solid #ddd;
+  padding: 8px; position: relative; width: 160px; height: 208px;border-radius:8px; position: relative;
+}
+
+
+.image_item {
+  border: 1px solid #ddd;
+  padding: 8px; position: relative;   height: 208px;border-radius:8px;
+}
+
+
+.search {
+
+  width: 98%;
+  margin: 10px auto;
+  padding: "20px";
+  overflow-y: scroll;
+  height: 300px;
+  position: absolute;
+  top: 39px;
+  background: #c4c4c4;; z-index: 99999;
+
+  left: 0;
+  right: 0; border-radius: 10px;    padding: 10px;
+
+}
+
+.search-input-container{position: relative;}
+
+
+ /* Tab page UI  For Testing */
+
+
+
+
 @media screen and (min-width: 768px) {
   .container {
     padding-left: 5.5vw;
@@ -1539,10 +1612,12 @@ ul.download_app li.download_app_title h6 {
     padding-top: 8px !important;
   }
 }
+
+
 @media screen and (min-width: 992px) {
-  header .header_right {
+  /* header .header_right {
     display: flex;
-  }
+  } */
 
   header .nav-right-block {
     width: calc(100% - 105px);

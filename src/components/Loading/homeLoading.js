@@ -18,7 +18,7 @@ export default function HomeLoading() {
     transform: 'translate(-50%, -50%)',
 
     }}>
-        <h1 >Loading</h1>
+        <h1 style={{"color":"#fff"}}>Loading</h1>
 
 
         </div>
