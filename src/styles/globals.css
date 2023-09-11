@@ -952,7 +952,7 @@ main {
   width: 100%;
 }
 
-/* */
+/* * */
 
 .search_form {
   margin: 0 auto;
@@ -1209,6 +1209,16 @@ ul.download_app li.download_app_title h6 {
 }
 
 
+
+
+.imageFader {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.imageFader.active {
+  opacity: 1;
+}
 
 
 

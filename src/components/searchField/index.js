@@ -1,5 +1,5 @@
-//
-import React, { useState, useEffect, useRef } from "react";
+///
+import React, { useState, useEffect, useRef} from "react";
 import { debounce } from "lodash";
 import style from "./search.module.css";
 import { useRouter } from "next/router";
@@ -7,6 +7,9 @@ import { useGlobalState } from "@/context/Context";
 import { v4 as uuidv4 } from "uuid";
 
 function SearchBar({ isPage }) {
+
+
+  
   const { state, getHintsBySearch, searchData } = useGlobalState();
   const [searchState, setSearchState] = useState({
     query: "",
