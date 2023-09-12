@@ -10,10 +10,6 @@ import {
 } from "@/constants/constants";
 
 
-
-
-
-
 export default function StyleGuide() {
   return (
     <div className="page-wrapper">
