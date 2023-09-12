@@ -151,7 +151,7 @@ header ul.nav.main_nav>li>a {
 }
 
 .header_right {
-  width: 50%;
+  width: 46%;
   display: flex;
   justify-content: end;
   gap: 30px;
