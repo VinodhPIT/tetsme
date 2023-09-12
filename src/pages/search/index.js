@@ -5,7 +5,6 @@ import { debounce } from "lodash";
 import Autocomplete from "react-google-autocomplete";
 import { Parameters, tabs } from "@/components/parameters/params";
 import renderCategoryComponent from "@/components/categoryComponent/categoryComponent";
-import { useInckd } from "@/context/Context";
 import { useRouter } from "next/router";
 import SearchField from "@/components/searchField/index";
 

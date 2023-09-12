@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import PageLoad from "@/components/Loading/pageLoad";
+import PageLoad from "@/components/pageLoad";
 import { useGlobalState } from "@/context/Context";
 
 import Link from "next/link";

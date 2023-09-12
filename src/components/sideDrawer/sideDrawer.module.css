@@ -1,0 +1,33 @@
+
+.sideDrawer{
+    background: #fff;
+    position: absolute;
+    width: 320px; padding: 100px 15px 15px 15px;
+    height: 100%;
+    z-index: 99; 
+    right: 0}
+
+    .sideDrawer ul {padding: 0;}
+    .menuList li {display:block;list-style-type:none ;text-align: center; padding-bottom: 35px;}
+    .menuList li a {font-size: 16px;color: #000;font-weight: 600;}
+
+    .closeWrapper {color: transparent;
+        position: absolute;
+        right: 9px;
+        top: 13px;}
+
+
+
+
+        /* @media screen and (max-width:340px) {
+
+
+.sideDrawer{display:none}
+
+            
+
+
+        } */
+
+
+

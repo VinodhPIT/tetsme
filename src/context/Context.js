@@ -20,6 +20,7 @@ const initialState = {
   longitude: "",
   searchData: [],
   serverLoad: false,
+  toggle: false,
 };
 
 const reducer = (state, action) => {
@@ -145,6 +146,10 @@ export const useGlobalState = () => useContext(GlobalStateContext);
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const onToggle = (payload) => {
+    dispatch({ type: "ON-TOGGLE", payload });
+  };
+
   const serverLoad = async (payload) => {
     dispatch({ type: "ON-LOAD", payload });
   };
@@ -161,7 +166,7 @@ export const GlobalStateProvider = ({ children }) => {
   const updateTab = async (payload, router, load) => {
     // ---------------- Fetching  Data Based On ActiveTab --------- //
 
-   await router.push(`/search?term=${state.searchKey}&category=${payload}`)
+    await router.push(`/search?term=${state.searchKey}&category=${payload}`);
 
     dispatch({ type: "IS_LOADING", payload: load });
 
@@ -247,7 +252,7 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-  const getHintsBySearch = async (payload ) => {
+  const getHintsBySearch = async (payload) => {
     // -----------------  Get Hints Based On keyword--------- //
     try {
       const requestData = {
@@ -282,7 +287,7 @@ export const GlobalStateProvider = ({ children }) => {
       } else {
         responseData = await fetchCategoryData(requestData);
       }
-      console.log(responseData ,'ipipojcpojcs;jc')
+      console.log(responseData, "ipipojcpojcs;jc");
       dispatch({ type: "SEARCH_DATA", payload: responseData });
     } catch (error) {
       console.error("Error On Search:", error);

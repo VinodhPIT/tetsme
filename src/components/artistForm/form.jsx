@@ -1,7 +1,10 @@
-"use client";
-import React from "react";
+
+import React, { useState} from "react";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
+
 import * as Yup from "yup";
+
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -16,12 +19,24 @@ const validationSchema = Yup.object().shape({
 });
 
 const dropdownOptions = [
+
   { value: "US", label: "Newyork" },
   { value: "london", label: "London" },
   { value: "mexico", label: "Mexico" },
 ];
 
+
+
+
+
 const _Form = () => {
+
+  const [state, setState] = useState({
+    successMessage: false,
+    loader:false
+  });
+
+
   return (
     <div style={{ margin: "0 auto", padding: "40px" }}>
       <Formik
@@ -34,6 +49,11 @@ const _Form = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
+          setState((prevSearchState) => ({
+            ...prevSearchState,
+            loader:true
+          }));
+
           
           fetch(
             `https://admin.inckd.com/api/profile/artist/verification/request`,
@@ -54,8 +74,15 @@ const _Form = () => {
               }),
             }
           )
-            .then((e) => {
-              console.log(e);
+            .then((response) => {
+
+              if (response.ok) { 
+                setState((prevSearchState) => ({
+                  ...prevSearchState,
+                  success:true,
+                  loader:false
+                }));
+              }
             })
             .catch((e) => console.log(e));
 
@@ -117,9 +144,13 @@ const _Form = () => {
               />
             </div>
             <button type="submit">Submit</button>
+
           </Form>
         )}
       </Formik>
+
+=
+      
     </div>
   );
 };
