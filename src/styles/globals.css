@@ -54,12 +54,14 @@
   --green-light-100: #eaffc0;
   --color_aero_blue: #C0FFD5;
   --color_aero_blue_lite: #C0FFF4;
+  --aero_blue_lite: #C0FFF4;
 
   --yellow-400: #FFF4C0;
 
   --red-600: #850101;
 
   --pink: #F5B6C7;
+  --pink-200: #ffbbbb;
 
   --orange-light-200: #FFD5C0;
 }
@@ -117,8 +119,7 @@ header.header_wrapper {
   transition: height 225ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
   position: absolute;
   z-index: 1;
-  margin-top: 40px;
-
+  margin-top: 2px;
 }
 
 header ul.nav.main_nav {
@@ -128,13 +129,13 @@ header ul.nav.main_nav {
   align-items: center;
   margin-right: auto;
   margin-top: 25px;
- 
+  margin-left: 8%;
 }
 
 header ul.nav.main_nav>li {
   padding: 0;
-  margin: 0 16px;    list-style-type: none;
-
+  margin: 0 16px;
+  list-style-type: none;
 }
 
 header ul.nav.main_nav>li>a {
@@ -149,38 +150,52 @@ header ul.nav.main_nav>li>a {
   margin: 0;
 }
 
-.header_right{
-   width: 50%;
-    display: flex;
- justify-content: end;
-    gap: 30px;
-  }
-  
+.header_right {
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+}
 
 header .header_right button.btn_tattoo-art {
   margin-right: 32px;
 }
+/*
+header .navbar_collapse {
+  padding-top: 0 !important;
+  align-self: flex-end;
+  place-content: flex-end;
+}
 
-
-
+header .navbar_collapse.collapse:not(.show) {
+  display: none !important;
+}*/
 
 header .navbar {
   width: 100%;
   padding: 0;
-
- width: 100%;	  padding: 0;	   display: flex;  justify-content: center;	    align-items: center;		   margin-top: 11px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 11px;
 }
+/*
+header .navbar .navbar_collapse {
+  display: block !important;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}*/
+
 .logo-Section{
-    width: 14%;
-  }
-
-  .nav-block{
-   width: 50%;
-    }
-    
-
-
+  width: 14%;
+}
+.nav-block{
+  width: 50%;
+}
 
 header .navbar .navbar_nav {
   flex-direction: column;
@@ -628,7 +643,9 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 .block_bg_pink {
   background-color: var(--pink);
 }
-
+.block_bg_pink_200 {
+  background-color: var(--pink-200);
+}
 .block_bg_yellow {
   background-color: var(--yellow-400);
 }
@@ -649,15 +666,23 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 .block_bg_aero_blue {
   background-color: var(--color_aero_blue);
 }
-
+.block_bg_aero_blue_lite {
+  background-color: var(--aero_blue_lite);
+}
 .block_bg_gray_150 {
   background-color: var(--gray-light-150);
+}
+.block_bg_white {
+  background-color: var(--white);  
 }
 
 .color_pink {
   color: var(--pink);
 }
 
+.color_pink_200 {
+  color: var(--pink-200);
+}
 .color_yellow {
   color: var(--yellow-400);
 }
@@ -690,11 +715,18 @@ body.theme_dark footer .foot_links ul.links li a:hover {
   color: var(--gray-light-150);
 }
 
+.color_white {
+  color: var(--white);
+}
+
 .md_max_75 {
   max-width: 75%;
 }
 .w_100pc {
   width: 100%!important;
+}
+.w_auto {
+  width: auto!important;
 }
 .max_w_100pc {
   max-width: 100%!important;
@@ -793,6 +825,11 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 .mb_0 {
   margin-bottom: 0px!important;
 }
+
+.pb_0 {
+  padding-bottom: 0px!important;
+}
+
 .no_space_center {
   padding-left: 10px!important;
   padding-right: 10px!important;
@@ -818,6 +855,14 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 .after_none:after {
   content: none!important;
 }
+
+.object_fit_contain {
+  object-fit: contain!important;
+}
+.object_position {
+  object-position: bottom!important;
+}
+
 /* button style */
 .btn_primary {
   display: inline-flex;
@@ -1035,6 +1080,13 @@ body.theme_dark footer .foot_links ul.links li a:hover {
   color: var(--white);
   background: var(--gray-600);
   text-decoration: none;
+}
+
+.btn_custom_m {
+  height: 56px;
+  padding: 8px 32px;
+  line-height: 40px;
+  border-radius: 8px;
 }
 
 /* content styles */
@@ -1352,11 +1404,59 @@ ul.download_app li.download_app_title h6 {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-
 .imageFader.active {
   opacity: 1;
 }
+/** custom listing */
+ul.custom-listing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 48px 0 0 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
 
+ul.custom-listing li {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 0 40px 0;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+ul.custom-listing li img {
+  margin-right: 23px;
+  position: relative;
+  top: 1px;
+}
+
+/* font resize */
+.custom_fs_20 {
+  font-size: 20px!important;
+  line-height: 40px!important;
+}
+
+.full-block-wrap .img_text_box_inner .text_box_content_inner {
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+.full-block-wrap .img_text_box_inner .text_box_content_inner h3 {
+  color: var(--black);
+  text-align: center;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -2.4px;
+  margin: 0 0 40px 0;
+  padding: 0;
+}
 
 
 /* responsive */
@@ -1611,6 +1711,10 @@ ul.download_app li.download_app_title h6 {
     font-size: 14px;
     line-height: 21px;
   }
+  .btn_custom_m {
+    height: 48px;
+    padding: 8px 24px;
+  }
   .klarna_bg {
     right: 20px;
     top: 20px;
@@ -1620,6 +1724,44 @@ ul.download_app li.download_app_title h6 {
     line-height: 50px!important;
     letter-spacing: -2px !important;
   }  
+  .custom_fs_m_16 {
+    font-size: 16px!important;
+    line-height: 24px!important;    
+  }
+  /** custom listing */
+  ul.custom-listing {
+    margin-top: 35px;
+  }
+
+  ul.custom-listing li {
+    margin-bottom: 25px;
+    font-size: 16px;
+  }
+  ul.custom-listing li:last-child {
+    margin-bottom: 0;
+  }
+
+  ul.custom-listing li img {
+    margin-right: 15px;
+  }
+
+  .full-block-wrap .img_text_box_inner .text_box_content_inner {
+    max-width: 100%;
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  .full-block-wrap .img_text_box_inner .text_box_content_inner h3 {    
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: -1.28px;
+    margin-bottom: 30px;
+  }
+  .fortattoo_artists .text_box_wrap.left .img_text_box_inner .text_box_content {
+    order: 1;
+  }
+  .fortattoo_artists .text_box_wrap.left .img_text_box_inner .img_box_wrap {
+    order: 2;
+  } 
 }
 
 @media screen and (min-width: 768px) {
@@ -1665,6 +1807,7 @@ ul.download_app li.download_app_title h6 {
   header .header_right {
     margin-top: 0;
     display: flex;
+  
   }
 
   header .nav-right-block {
@@ -1870,11 +2013,14 @@ ul.download_app li.download_app_title h6 {
 
 
 @media screen and (max-width: 1199px) {
+
+
   .nav-block {
    display: none;
 }
       
 .header_right  .btn_tattoo_art{display: none;}
+
 .logo-Section {
   width: 50%;
 }
@@ -1883,9 +2029,11 @@ padding: 0px 13px;
 
 }
 
-header.header_wrapper {
+/* header.header_wrapper {
+
 margin-top: 90px;
-}
+
+} */
 
 
   }

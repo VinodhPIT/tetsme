@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
   
 
   const router = useRouter();
-  const hideHeaderRoutes = ["/search"]; // Add the routes where you want to hide the header
+  const hideHeaderRoutes = ["/search" ,'/']; // Add the routes where you want to hide the header
   const shouldHideHeader = hideHeaderRoutes.includes(router.pathname);
 
   
