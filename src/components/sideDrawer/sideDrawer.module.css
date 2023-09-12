@@ -4,7 +4,7 @@
     position: absolute;
     width: 320px; padding: 100px 15px 15px 15px;
     height: 100%;
-    z-index: 99; 
+    z-index: 99;     top: 0;
     right: 0}
 
     .sideDrawer ul {padding: 0;}
