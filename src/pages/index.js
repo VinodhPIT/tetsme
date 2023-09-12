@@ -1,5 +1,5 @@
 
-//
+///
 
 import React from "react";
 import { useEffect, useRef ,useState } from "react";
@@ -309,7 +309,7 @@ const changeImage = () => {
                     <div class="text_box_content_inner">
                       <h2 class="letter_spacing_05">Boost your <br/>business with <br/>inckd.</h2>
                       <p>
-                      Grow your tattoo business by fulfilling your customers' tattoo vision and offering them flexible payment options.
+                      Grow your tattoo business by fulfilling your customers tattoo vision and offering them flexible payment options.
                       </p>
                       <a href="#" class="btn btn_default btn_xxl btn_sm_m">
                         Learn more
