@@ -1,18 +1,25 @@
-
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
+import { useGlobalState } from "@/context/Context";
+import HomLoading from "@/components/homeLoading";
+import SearchField from "@/components/searchField";
+import Header from "@/components/header/header";
 import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
   blurDataURL,
 } from "@/constants/constants";
-import { useGlobalState } from "@/context/Context";
-import HomLoading from "@/components/homeLoading";
-import SearchField from "@/components/searchField";
-import Header from "@/components/header/header";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { EffectCoverflow, Navigation, Pagination } from "swiper";
+import CarouselComponent from "@/components/carousel/Carousel";
+SwiperCore.use([Autoplay]);
 export default function Home() {
   const { state, serverLoad } = useGlobalState();
   // href={`}
@@ -28,6 +35,42 @@ export default function Home() {
     "./path428.svg",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const items = [
+    {
+      image: "./Group 82721.png",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+    {
+      image: "./Group.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Cancer",
+    },
+    {
+      image: "./Group 82677.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+    {
+      image: "./Group 82674.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+    {
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(changeImage, 2000);
@@ -44,7 +87,7 @@ export default function Home() {
         <div className="header_cookie_img">
           <img src="./logo-cookies.svg" alt="" />
         </div>
-        <div className="header_cookie_txt">
+        <div className="header_cookie_txt ">
           <p>
             <span>
               Get tattoo now, pay later.{" "}
@@ -254,29 +297,80 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="text_box_wrap right block_bg_black">
-              <div class="img_text_box_inner">
-                <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner">
-                    <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
-                    <p>
-                      We hand-pick every tattoo artist to ensure your tattoo
-                      experience is handled with care, quality and inclusivity.
-                    </p>
-                    <a href="#" class="btn btn_default btn_xxl btn_sm_m">
-                      Find artists
-                      <img
-                        src="./alt-arrow-right-black.svg"
-                        alt=""
-                        class="ml-8 mt-2"
-                      />
-                    </a>
+              <div class="text_box_wrap right block_bg_black">
+                <div class="img_text_box_inner">
+                  <div class="text_box_content justify_content_start">
+                    <div class="text_box_content_inner">
+                      <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
+                      <p>
+                        We hand-pick every tattoo artist to ensure your tattoo
+                        experience is handled with care, quality and
+                        inclusivity.
+                      </p>
+                      <a href="#" class="btn btn_default btn_xxl btn_sm_m">
+                        Find artists
+                        <img
+                          src="./alt-arrow-right-black.svg"
+                          alt=""
+                          class="ml-8 mt-2"
+                        />
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div class="img_box_wrap">
-                  <img src="./pitched_please.png" alt="" />
+                  <div class="img_box_wrap bg-light d-block">
+                    {/* <Swiper  style={{"--swiper-pagination-bullet-horizontal-gap": "6px"}}
+                      loop={true}
+                      loopFillGroupWithBlank={true}
+                      pagination={{clickable: true}}
+                      spaceBetween={110}
+                      centeredSlides={true}
+                      navigation={true}
+                      slidesPerView={"auto"}
+                      modules={[EffectCoverflow, Pagination, Navigation]}
+                      className="mySwiper"
+                      effect={"coverflow"}
+                      coverflowEffect={{
+                      rotate: 0,
+                      stretch: 80,
+                      depth: 150,
+                      modifier: 1,
+                      slideShadows: false,
+                      }}
+                      breakpoints={{
+                      640: {
+                      slidesPerView: 1,
+                      spaceBetween: 110,
+                      },
+                       768: {
+                      slidesPerView: 2,
+                      spaceBetween: 110,
+                      },
+                      1024: {
+                      slidesPerView: 2,
+                       spaceBetween: 110,
+                       },
+                       }}
+                               > 
+                               <SwiperSlide className=" ">
+                             <div className="testimonials-profile-circle">
+                                                       <img style={{ height:"320px",width:"350px",borderRadius:"20px"}} src="./dragon.png" alt=""/>
+                                   </div>
+                                          </SwiperSlide>
+                                   <SwiperSlide className=" ">
+                                   <div className="testimonials-profile-circle">
+                                             <img style={{ height:"320px",width:"350px",borderRadius:"20px"}} src="./egyptian.jpeg" alt=""/>
+                                                    </div>
+                                     </SwiperSlide> 
+                                   <SwiperSlide className=" ">
+                                                    <div className="testimonials-profile-circle">
+                                               <img style={{ height:"320px",width:"350px",borderRadius:"20px"}} src="./butterfly.jpeg" alt=""/>
+                                               </div>
+                                                         </SwiperSlide> 
+                                                      </Swiper> */}
+
+                    <CarouselComponent items={items} />
+                  </div>
                 </div>
               </div>
             </div>
