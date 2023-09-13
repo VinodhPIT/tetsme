@@ -1,9 +1,18 @@
 import React from 'react'
 import Head from "next/head";
 import Image from "next/image";
-
 import Link from "next/link";
-// import CarouselComponent from "@/components/carousel/Carousel";
+import CarouselComponent from "@/components/carousel/Carousel";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { EffectCoverflow, Navigation, Pagination } from "swiper";
+SwiperCore.use([Autoplay]);
+
+
 
 export default   function Dictionary() {
 
@@ -129,6 +138,7 @@ export default   function Dictionary() {
                     <div class="text_box_content_inner max_w_100pc w_100pc">
 {/* 
                        <CarouselComponent items={items} />            */}
+                        <CarouselComponent items={items} />
                     </div>
                   </div>
                 </div>
@@ -140,6 +150,8 @@ export default   function Dictionary() {
                     <div class="text_box_content justify_content_start p_0">                    
                       <div class="text_box_content_inner max_w_100pc w_100pc">
                         {/* <img src="./slider-dummy-2.png" alt="Zodiac Signs" class="w_100pc"/>                      */}
+
+                        <CarouselComponent items={items} />
                       </div>
                   </div>
                   <div class="img_box_wrap block_bg_gradient_2 justify_content_right">                    
@@ -203,6 +215,8 @@ export default   function Dictionary() {
                   </div>
                   <div class="text_box_content justify_content_start p_0">                    
                     <div class="text_box_content_inner max_w_100pc w_100pc">
+
+                    <CarouselComponent items={items} />
                       {/* <img src="./slider-dummy-2.png" alt="Aztec Symbols" class="w_100pc"/>                      */}
                     </div>
                   </div>

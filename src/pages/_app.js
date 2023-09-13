@@ -1,12 +1,11 @@
-// pages/_app.js
-import "@/styles/globals.css";
 
 import { useRouter } from "next/router";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { GlobalStateProvider } from "@/context/Context";
 import { Figtree } from 'next/font/google'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "@/styles/globals.css";
 
 const figtree = Figtree({
   style: ['normal'],
@@ -14,13 +13,7 @@ const figtree = Figtree({
   subsets: ['latin'],
 })
 
-
-
 function MyApp({ Component, pageProps }) {
-
- 
-
-  
 
   const router = useRouter();
   const hideHeaderRoutes = ["/search" ,'/']; // Add the routes where you want to hide the header
