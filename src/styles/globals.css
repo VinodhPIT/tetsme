@@ -128,7 +128,6 @@ header ul.nav.main_nav {
   align-items: center;
   margin-right: auto;
   margin-top: 25px;
-  margin-left: 8%;
 }
 
 header ul.nav.main_nav>li {
@@ -872,12 +871,15 @@ body.theme_dark footer .foot_links ul.links li a:hover {
   object-position: bottom!important;
 }
 
-.hidden {
-  display: none!important
-}
+
 .z_index_1 {
   z-index: 1!important;
 }
+
+.d_grid {
+  display: grid!important;
+}
+
 
 .custom_full_block {
   max-width: 90%!important;
@@ -1812,6 +1814,69 @@ ul.custom-listing-grid li span {
   display: block;
 }
 
+/* radio block */
+form.form_floating .form_group.radio_block > label {
+  position: relative;
+  pointer-events: auto;
+  left: inherit;
+  padding: 0 0 0 28px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(33, 33, 33, 1);
+  margin-right: 25px;
+  height: auto;
+}
+.radio_block .form_radio input[type="radio"] {   
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(225, 228, 232, 1);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+.radio_block .form_radio input[type="radio"]:focus {
+  border: 5px solid var(--black-500);
+}
+.radio_block .form_radio input[type=radio]:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;    
+}
+.radio_block .form_radio input[type=radio]:checked {
+  border: 5px solid var(--black-500);
+}
+.radio_block .form_radio input[type=radio]:checked:before {
+  transform: scale(1);
+  background-color: var(--white);
+}
+.radio_form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+/* contact form */
+.contact_form_block .form_block_left p {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 32px; 
+  color: var(--white);
+  max-width: 60%;
+}
+
 /* responsive */
 
 @media screen and (max-width: 360px) {
@@ -2163,6 +2228,11 @@ ul.custom-listing-grid li span {
   ul.custom-listing.how_work_list li img {
     width: 24px;
   }
+  .contact_form_block .form_block_left p {
+    font-size: 16px;
+    line-height: 24px; 
+    max-width: 100%;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -2302,6 +2372,23 @@ ul.custom-listing-grid li span {
     margin-bottom: 20px;
     padding-top: 8px !important;
   }
+
+  .nav-block {
+    display: none;
+  }
+  .header_right  .btn_tattoo_art{
+    display: none;
+  }
+  .logo-Section {
+    width: 50%;
+  }
+  header .navbar {
+    padding: 0px 13px;
+  }
+  /* header.header_wrapper {
+    margin-top: 90px;
+  } */
+
 }
 
 @media screen and (min-width: 992px) {
@@ -2445,9 +2532,9 @@ ul.custom-listing-grid li span {
   }
 }
 
-
-
 @media screen and (max-width: 1199px) {
+
+
   .nav-block {
    display: none;
 }
@@ -2461,6 +2548,7 @@ header .navbar {
 padding: 0px 13px;
 
 }
+
 
 
 
