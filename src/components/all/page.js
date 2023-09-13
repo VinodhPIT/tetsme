@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import styles from '@/components/styles/search.module.css'
+
 
 export default function  All ({data ,loading}) {
    
@@ -12,17 +14,17 @@ export default function  All ({data ,loading}) {
       {data.length=== 0 ? <h4>No Data Found </h4>    :
 
 
-      <div className="image_grid">
+      <div className={styles.gridWrapper}>
  
           {data.map((item, idx) => {
             if (item._index === "tattoo") {
               return (
-                <div className="image_item" key={item._id}>
+                <div className={styles.gridItem} key={item._id}>
                 <Image
                   src={item._source.image}
                   layout="fill"
                   alt={'l;cm;sdcm;lsdcm;sc'}
-                  objectFit="contain"
+                  objectFit="cover"
                   priority={true}
                   placeholder="blur"
                   blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
@@ -32,12 +34,12 @@ export default function  All ({data ,loading}) {
               );
             } else {
               return (
-                <div className="image_item" key={item._id}>
+                <div className={styles.gridItem}key={item._id}>
                   <Image
                     src={item._source.image_url}
                     layout="fill"
                     alt={'l;cm;sdcm;lsdcm;sc'}
-                    objectFit="contain"
+                    objectFit="cover"
                     priority={true}
                     placeholder="blur"
                     blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='

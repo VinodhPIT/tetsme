@@ -1,49 +1,49 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+import PageLoad from "@/components/pageLoad";
+import { useGlobalState } from "@/context/Context";
+import styles from '@/components/styles/search.module.css'
 
-//
-export default function Flash({data}) {
 
 
+import Link from "next/link";
 
+export default function Flash({ data }) {
+  const { state } = useGlobalState();
 
   return (
-    <div>
-      <h1>Flash</h1>
-      <div className="image_grid">
-     {
-       data.length===0 ? <h4>No Data Found </h4> :
+    <div className="pageContainer">
+      <div className={styles.gridWrapper}>
+        {state.loading ? (
+          <PageLoad />
+        ) : data.length === 0 ? (
+          <h4>No Data Found</h4>
+        ) : (
           data.map((item, idx) => {
-            if (item._index === "ad") {
-              return (
-                <div className="image_item" key={`ad-${idx}`}>
-                  <p>Add</p>
+            const key = item._index === "ad" ? `ad-${idx}` : item._id;
+
+            return (
+              <Link href={`/detail/${1}`} key={key}>
+                <div className={styles.gridItem}>
+                  {item._index === "ad" ? (
+                    <p>Add</p>
+                  ) : (
+                    <Image
+                      priority={true}
+                      src={item._source.image}
+                      layout="fill"
+                      alt={item.artist_name}
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=="
+                    />
+                  )}
                 </div>
-              );
-            } else {
-              return (
-                <div className="image_item" key={item._id}>
-                  <Image
-                    src={item._source.image}
-                    layout="fill"
-                    alt={item._id}
-                    objectFit="contain"
-                    priority={true}
-                    placeholder="blur"
-                    blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
-                       
-                  />
-                </div>
-              );
-            }
-          })} 
+              </Link>
+            );
+          })
+        )}
       </div>
-
-
     </div>
-  )
+  );
 }
-
-
-
-

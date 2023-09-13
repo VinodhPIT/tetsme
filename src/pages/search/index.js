@@ -5,8 +5,11 @@ import { debounce } from "lodash";
 import Autocomplete from "react-google-autocomplete";
 import { Parameters, tabs } from "@/components/parameters/params";
 import renderCategoryComponent from "@/components/categoryComponent/categoryComponent";
+import style from "@/pages/search/search.module.css";
 import { useRouter } from "next/router";
 import SearchField from "@/components/searchField/index";
+import Header from "@/components/header/header";
+import {addAdsToResults} from '@/helpers/helper'
 
 
 import { useGlobalState } from "@/context/Context";
@@ -21,6 +24,8 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
     findArtist,
   } = useGlobalState();
 
+
+
   useEffect(() => {
     try {
       fetchServerlData({ data, currentTab, pageNo, totalItems, searchKey });
@@ -31,7 +36,7 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 
   const [stylsse, setStyle] = useState([]);
 
-  const router = useRouter()
+  const router = useRouter();
 
   async function fetchStyles() {
     try {
@@ -47,19 +52,46 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 
   const handlePlaceSelected = async (place) => {
     const { lat, lng } = place.geometry.location;
-    const latitude= lat()
-    const  longitude= lng()
-    findArtist({latitude ,longitude});
+    const latitude = lat();
+    const longitude = lng();
+    findArtist({ latitude, longitude });
   };
 
   return (
-    <>
+    <div className={style.pageWrapper}>
       <Head>
         <title>Inckd Search Page</title>
         <meta name="description" content="Search Me"></meta>
       </Head>
 
-      <SearchField /> 
+      <Header />
+
+      <div className={style.filter_container}>
+        <div className={style.wrapper1}>
+          <SearchField />
+        </div>
+
+        <div className={style.wrapper2}>
+          <Autocomplete
+            apiKey={process.env.googlePlacesApiKey}
+            onPlaceSelected={handlePlaceSelected}
+          />
+        </div>
+
+        <div className={style.wrapper3}>
+          <select
+            onChange={(event) => searchStyle(event.target.value)}
+            value={state.selectedStyle}
+          >
+            <option value="0">Choose Style</option>
+            {stylsse.map((el) => (
+              <option key={el._id} value={el._id}>
+                {el.sort[0]}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       <div
         style={{
@@ -81,37 +113,27 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             <button
               key={tab.id}
               disabled={state.currentTab === tab.id}
-              onClick={() =>     updateTab(tab.id ,router ,true)}
+              onClick={() => updateTab(tab.id, router, true)}
             >
               {tab.label}
             </button>
           ))}
         </div>
-        <div class="custom-select" style={{ width: "200px" }}>
-          <select
-            onChange={(event) => searchStyle(event.target.value)}
-            value={state.selectedStyle}
-          >
-            <option value="0">Choose Style</option>
-            {stylsse.map((el) => (
-              <option key={el._id} value={el._id}>
-                {el.sort[0]}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {state.currentTab === "artist" && (
-          <Autocomplete
-            apiKey={process.env.googlePlacesApiKey}
-            onPlaceSelected={handlePlaceSelected}
-          />
-        )}
       </div>
 
       {renderCategoryComponent(state.currentTab, state.categoryCollection)}
 
-      {state.categoryCollection.length !== 0 &&
+
+
+
+
+
+
+
+
+{!state.loading && 
+
+      state.categoryCollection.length !== 0 &&
         state.categoryCollection.length !== state.totalItems && (
           <div>
             <p>
@@ -132,7 +154,10 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             </button>
           </div>
         )}
-    </>
+            
+
+
+    </div>
   );
 };
 
@@ -147,9 +172,11 @@ export async function getServerSideProps(context) {
         search_key: context.query.term,
       });
 
+      let addData = await addAdsToResults(results.data)
+
       return {
         props: {
-          data: results.data,
+          data: addData,  
           currentTab: context.query.category,
           pageNo: 0,
           totalItems: results.totalCount,
@@ -161,10 +188,12 @@ export async function getServerSideProps(context) {
         ...Parameters,
         category: context.query.category,
       });
+      
+    let addData = await addAdsToResults(data.rows.hits)
 
       return {
         props: {
-          data: data.rows.hits,
+          data:addData,
           currentTab: context.query.category,
           pageNo: 0,
           totalItems: data.rows.total.value,
@@ -173,6 +202,7 @@ export async function getServerSideProps(context) {
       };
     }
   } catch (error) {
+    console.log(error,"error")
     return {
       props: {
         data: null,
