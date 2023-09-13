@@ -3,13 +3,7 @@ import React from 'react';
 
 
 class MyDocument extends Document {
-
-  
-  
   static async getInitialProps(ctx) {
-
-    
-
     const initialProps = await Document.getInitialProps(ctx);
 
     // You can set a dynamic class name based on the page here
@@ -34,11 +28,6 @@ class MyDocument extends Document {
         <body className={this.props.bodyClassName}>
           <Main />
           <NextScript />
-
-
-
-  
-          
         </body>
       </Html>
     );

@@ -31,7 +31,7 @@ export default function SideDrawer({onCloseToggle}) {
     {
       id: 5,
       title: "For tattoo artists",
-      url: "/fortatooartists",
+      url: "/fortattooartists",
     },
 
     {
