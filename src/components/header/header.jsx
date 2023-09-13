@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import SideDrawer from "@/components/sideDrawer/sideDrawer";
-
+import Image from 'next/image'
 
 
 export default function Header() {
@@ -60,7 +60,18 @@ export default function Header() {
             <nav className="navbar">
               <div className="logo-Section">
                 <Link href={"/"} className="navbar_brand">
-                  <img className="logo" src="./inckd-logo.svg" alt="" />
+
+             <Image
+        src="/inckd-logo.svg"
+        alt="Picture of the author"
+        width={105}
+        height={31}
+        priority
+      /> 
+                  
+
+
+
                 </Link>
               </div>
 
