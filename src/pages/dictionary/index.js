@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from "next/head";
 import Image from "next/image";
-import styles from '@/styles/Home.module.css'
+
 import Link from "next/link";
-import CarouselComponent from "@/components/carousel/Carousel";
+// import CarouselComponent from "@/components/carousel/Carousel";
 
 export default   function Dictionary() {
 
