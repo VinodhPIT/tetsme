@@ -1,8 +1,8 @@
+//
+
 import React from "react";
 import Image from "next/image";
-
 import Link from "next/link";
-
 import styles from "./custom.module.css";
 import {
   APP_LINK_APPLE,
@@ -29,7 +29,7 @@ export default function klarna() {
                 <div className={styles.banner_caption}>
                   <Image
                     src="/Klarna-logotype(white.svg)-19.svg"
-                    alt="klarna logo"
+                    alt="klarna-logo"
                     width={186}
                     height={41}
                     priority
