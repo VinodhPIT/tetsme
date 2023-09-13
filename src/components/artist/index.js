@@ -1,73 +1,56 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+import PageLoad from "@/components/pageLoad";
+import { useGlobalState } from "@/context/Context";
+import styles from '@/components/styles/search.module.css'
 
-//
 
-export default function Artist({data}) {
 
- 
+import Link from "next/link";
+
+export default function Artist({ data }) {
+  const { state } = useGlobalState();
 
   return (
-    <div>
-      <h1>Artist</h1>
+    <div className="pageContainer">
+ {!state.loading ?    <PageLoad />   : 
 
-      <div className="image_grid">
+      
+      <div className={styles.gridWrapper}>
+      {data.length === 0 ? 
+          <h4>No Data Found</h4>
+         : data.map((item, idx) => {
+          const key = item._index === "ad" ? `ad-${idx}` : item._id;
 
-
-
-
-    {data.length===0 ? <h4>No Data Found </h4> :
-          data.map((item, idx) => {
-            if (item._index === "ad") {
-              return (
-                <div className="image_item" key={`ad-${idx}`}>
+          return (
+            <Link href={`/detail/${1}`} key={key}>
+              <div className={styles.gridItem}>
+                {item._index === "ad" ? (
                   <p>Add</p>
-                </div>
-              );
-            } else {
-              return (
-                <div className="image_item" key={item._id}>
+                ) : (
                   <Image
-                  
+                    priority={true}
                     src={item._source.image_url}
                     layout="fill"
-                    alt={'test'}
-                    objectFit="contain"
-                    priority={true}
+                    alt={item.artist_name}
+                    objectFit="cover"
                     placeholder="blur"
-                    
-                    blurDataURL= 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
-                       
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=="
                   />
-                </div>
-              );
-            }
-          })} 
+                )}
+              </div>
+            </Link>
+          );
 
 
+          
+        })
 
-
-
+      }
       </div>
 
+    }
 
     </div>
-  )
+  );
 }
-
-
-
-
-
-
-// export async function getServerSideProps(contex) {
-//   console.log(contex,"cldsc")
-
-//   // Fetch data from external API
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-//   const data = await res.json()
-//   console.log(data,"dlmcd;mc;ldcldsc;mdc")
- 
-//   // Pass data to the page via props
-//   return { props: { data } }
-// }

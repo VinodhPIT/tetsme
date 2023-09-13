@@ -115,10 +115,10 @@ header.header_wrapper {
   width: 100%;
   margin: 0;
   transition: height 225ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  position: absolute;
+ position: absolute; 
   z-index: 1;
-  margin-top: 40px;
-
+margin-top: 40px; 
+ 
 }
 
 header ul.nav.main_nav {

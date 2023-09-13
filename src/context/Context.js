@@ -2,6 +2,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 import { fetchCategoryData, fetchMultiData } from "@/action/action";
 import { Parameters } from "@/components/parameters/params";
+import {addAdsToResults} from '@/helpers/helper'
 
 const initialState = {
   categoryCollection: [],
@@ -42,7 +43,7 @@ const reducer = (state, action) => {
       ({ data, currentTab, totalItems, searchKey, pageNo } = action.payload);
       return {
         ...state,
-        categoryCollection: data,
+        categoryCollection:data,
         currentTab,
         totalItems,
         searchKey,
@@ -60,7 +61,7 @@ const reducer = (state, action) => {
 
     case "COUNT":
       const pageNo = action.payload;
-      console.log(pageNo, "pageNo");
+    
       return { ...state, pageNo };
 
     case "CHANGE_TAB":
@@ -146,18 +147,25 @@ export const useGlobalState = () => useContext(GlobalStateContext);
 export const GlobalStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const onToggle = (payload) => {
-    dispatch({ type: "ON-TOGGLE", payload });
-  };
 
   const serverLoad = async (payload) => {
     dispatch({ type: "ON-LOAD", payload });
   };
 
   const fetchServerlData = async (payload) => {
-    // ---------------- Fetching Server Data on Initial Page Load --------- //
     try {
+      console.log(payload,'cmdpckpsdckopskc')
+
+   
+
       dispatch({ type: "INITIAL_SERVER_DATA", payload: payload });
+
+     
+
+    
+   
+
+
     } catch (error) {
       console.error("Error updating data:", error);
     }
@@ -166,7 +174,7 @@ export const GlobalStateProvider = ({ children }) => {
   const updateTab = async (payload, router, load) => {
     // ---------------- Fetching  Data Based On ActiveTab --------- //
 
-    await router.push(`/search?term=${state.searchKey}&category=${payload}`);
+    // await router.push(`/search?term=${state.searchKey}&category=${payload}`);
 
     dispatch({ type: "IS_LOADING", payload: load });
 
@@ -179,8 +187,12 @@ export const GlobalStateProvider = ({ children }) => {
       let responseData;
       if (payload === "all") {
         responseData = await fetchMultiData(requestData);
+
+
       } else {
+
         responseData = await fetchCategoryData(requestData);
+
       }
       dispatch({ type: "CHANGE_TAB", payload: responseData });
     } catch (error) {
@@ -203,8 +215,13 @@ export const GlobalStateProvider = ({ children }) => {
       let responseData;
       if (state.currentTab === "all") {
         responseData = await fetchMultiData(requestData);
+
+        
       } else {
+
         responseData = await fetchCategoryData(requestData);
+
+
       }
       dispatch({ type: "LOAD_MORE", payload: responseData });
     } catch (error) {
@@ -262,11 +279,14 @@ export const GlobalStateProvider = ({ children }) => {
       };
       let responseData;
       if (state.currentTab === "all" || state.currentTab === "") {
+
         responseData = await fetchMultiData(requestData);
+
+
+
       } else {
         responseData = await fetchCategoryData(requestData);
       }
-      console.log(responseData, "cdkcpd[");
       dispatch({ type: "GET_HINTS", payload: responseData });
     } catch (error) {
       console.error("Error Fetching Hints:", error);
@@ -283,11 +303,17 @@ export const GlobalStateProvider = ({ children }) => {
       };
       let responseData;
       if (state.currentTab === "all" || state.currentTab == "") {
+
         responseData = await fetchMultiData(requestData);
+
+        
+
+
+
       } else {
         responseData = await fetchCategoryData(requestData);
+
       }
-      console.log(responseData, "ipipojcpojcs;jc");
       dispatch({ type: "SEARCH_DATA", payload: responseData });
     } catch (error) {
       console.error("Error On Search:", error);
