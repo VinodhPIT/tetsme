@@ -18,7 +18,6 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Navigation, Pagination } from "swiper";
-import CarouselComponent from "@/components/carousel/Carousel";
 SwiperCore.use([Autoplay]);
 export default function Home() {
   const { state, serverLoad } = useGlobalState();
@@ -35,42 +34,7 @@ export default function Home() {
     "./path428.svg",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const items = [
-    {
-      image: "./Group 82721.png",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
-    },
-    {
-      image: "./Group.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Cancer",
-    },
-    {
-      image: "./Group 82677.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
-    },
-    {
-      image: "./Group 82674.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
-    },
-    {
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
-    },
-  ];
+ 
 
   useEffect(() => {
     const timer = setInterval(changeImage, 2000);
@@ -318,11 +282,14 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div class="img_box_wrap bg-light d-block">
-                    {/* <Swiper  style={{"--swiper-pagination-bullet-horizontal-gap": "6px"}}
+                  <div class="img_box_wrap ">
+                    <Swiper
+                      style={{
+                        "--swiper-pagination-bullet-horizontal-gap": "6px",
+                      }}
                       loop={true}
                       loopFillGroupWithBlank={true}
-                      pagination={{clickable: true}}
+                      pagination={{ clickable: true }}
                       spaceBetween={110}
                       centeredSlides={true}
                       navigation={true}
@@ -331,45 +298,68 @@ export default function Home() {
                       className="mySwiper"
                       effect={"coverflow"}
                       coverflowEffect={{
-                      rotate: 0,
-                      stretch: 80,
-                      depth: 150,
-                      modifier: 1,
-                      slideShadows: false,
+                        rotate: 0,
+                        stretch: 80,
+                        depth: 150,
+                        modifier: 1,
+                        slideShadows: false,
                       }}
                       breakpoints={{
-                      640: {
-                      slidesPerView: 1,
-                      spaceBetween: 110,
-                      },
-                       768: {
-                      slidesPerView: 2,
-                      spaceBetween: 110,
-                      },
-                      1024: {
-                      slidesPerView: 2,
-                       spaceBetween: 110,
-                       },
-                       }}
-                               > 
-                               <SwiperSlide className=" ">
-                             <div className="testimonials-profile-circle">
-                                                       <img style={{ height:"320px",width:"350px",borderRadius:"20px"}} src="./dragon.png" alt=""/>
-                                   </div>
-                                          </SwiperSlide>
-                                   <SwiperSlide className=" ">
-                                   <div className="testimonials-profile-circle">
-                                             <img style={{ height:"320px",width:"350px",borderRadius:"20px"}} src="./egyptian.jpeg" alt=""/>
-                                                    </div>
-                                     </SwiperSlide> 
-                                   <SwiperSlide className=" ">
-                                                    <div className="testimonials-profile-circle">
-                                               <img style={{ height:"320px",width:"350px",borderRadius:"20px"}} src="./butterfly.jpeg" alt=""/>
-                                               </div>
-                                                         </SwiperSlide> 
-                                                      </Swiper> */}
-
-                    <CarouselComponent items={items} />
+                        640: {
+                          slidesPerView: 1,
+                          spaceBetween: 110,
+                        },
+                        768: {
+                          slidesPerView: 2,
+                          spaceBetween: 110,
+                        },
+                        1024: {
+                          slidesPerView: 2,
+                          spaceBetween: 110,
+                        },
+                      }}
+                    >
+                      <SwiperSlide className=" ">
+                        <div className="testimonials-profile-circle">
+                          <img
+                            style={{
+                              height: "400px",
+                              width: "400px",
+                              borderRadius: "20px",
+                            }}
+                            src="./dragon.png"
+                            alt=""
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide className=" ">
+                        <div className="testimonials-profile-circle">
+                          <img
+                            style={{
+                              height: "400px",
+                              width: "400px",
+                              borderRadius: "20px",
+                            }}
+                            src="./egyptian.jpeg"
+                            alt=""
+                          />
+                        </div>
+                      </SwiperSlide>
+                      <SwiperSlide className=" ">
+                        <div className="testimonials-profile-circle">
+                          <img
+                            style={{
+                              height: "400px",
+                              width: "400px",
+                              borderRadius: "20px",
+                            }}
+                            src="./butterfly.jpeg"
+                            alt=""
+                          />
+                        </div>
+                      </SwiperSlide>
+                    </Swiper>
+                    {/* <CarouselComponent items={items} /> */}
                   </div>
                 </div>
               </div>
@@ -430,8 +420,7 @@ export default function Home() {
                         />
                       </svg>
                     </div>
-                 
-                    </div>
+                  </div>
 
                   <div class="text_box_content_inner">
                     <h2 class="letter_spacing_025">Whats your Style?</h2>
@@ -446,7 +435,7 @@ export default function Home() {
                         class="ml-8 mt-2"
                       />
                     </a>
-  </div>
+                  </div>
                 </div>
               </div>
             </div>

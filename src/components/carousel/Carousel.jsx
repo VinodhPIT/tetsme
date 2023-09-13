@@ -6,10 +6,10 @@ const CarouselComponent = ({ items }) => {
   return (
     <Carousel >
       {items.map((item, index) => item.image?(
-        <div key={index} className='d-flex flex-column bg-light custom-container '>
+        <div key={index} className='d-flex flex-column  custom-container '>
           <div className='d-flex justify-content-end gap-2'>
-          <h4 className="bg-dark text-light fs-5 px-2 py-1">{item.button1}</h4>
-          <h4 className="bg-dark text-light fs-5 px-2 py-1">{item.button2}</h4>
+          <h4 className="bg-dark text-light fs-3 px-2 py-1">{item.button1}</h4>
+          <h4 className="bg-dark text-light fs-3 px-2 py-1">{item.button2}</h4>
           </div>
           <img className=' align-self-center carousel-image'  src={item.image} alt={`Slide ${index}`} />
           <h2 className=' align-self-start  fw-bold' >{item.heading}</h2>
