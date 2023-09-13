@@ -30,8 +30,11 @@ const router = useRouter()
   };
 
   return (
+  <div class="form_right_wrap">
     <div style={{ margin: "0 auto", padding: "0px" }}>
       {state.isShown === false ? (
+        <div>
+        <h4>Enter detatils</h4>
         <Formik
           initialValues={{
             name: "",
@@ -194,8 +197,8 @@ const router = useRouter()
             </Form>
           )}
         </Formik>
-      ) : (
-        state.isShown && (
+        </div>
+      ) : 
           <div class="form_submit_block hidden">
             <img src="./success-tick.svg" alt="Form submitted" />
             <h4>Form submitted</h4>
@@ -212,8 +215,9 @@ const router = useRouter()
               Ok.got it !
             </button>
           </div>
-        )
-      )}
+        
+      }
+    </div>
     </div>
   );
 };
