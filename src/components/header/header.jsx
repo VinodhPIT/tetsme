@@ -57,7 +57,7 @@ export default function Header() {
       <header className="header_wrapper">
         <div>
           <div className="container">
-            <nav className="navbar">
+            <nav className="navs">
               <div className="logo-Section">
                 <Link href={"/"} className="navbar_brand">
 
@@ -89,25 +89,24 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => router.push("/fortattooartists")}
-                  className="btn btn_tattoo_art navbar_collapse collapse"
+                  className="btn btn_tattoo_art "
                 >
                   For Tattoo Artists
                 </button>
 
-                <button
-                  onClick={() => onToggle(true)}
-                  className="navbar_toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarNavDropdown"
-                  aria-controls="navbarNavDropdown"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
+
+                <Image
+                 onClick={() => onToggle(true)}
+        src="/Hamburger Menu.png"
+        alt="Picture of the author"
+        width={30}
+        height={30}
+        priority
+        
+      /> 
+
+           
+
               </div>
             </nav>
           </div>

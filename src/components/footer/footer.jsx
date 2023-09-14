@@ -13,6 +13,7 @@ import { useGlobalState } from "@/context/Context";
 
 
 
+
 export default function Footer() {
 
   const {
@@ -60,11 +61,7 @@ export default function Footer() {
   ];
 
   const businesstLinks = [
-    {
-      id: 1,
-      title: "For Tattoostudios",
-      url: "/fortattoostudios",
-    },
+    
 
     {
       id: 2,

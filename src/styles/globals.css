@@ -169,7 +169,7 @@ header .navbar_collapse.collapse:not(.show) {
   display: none !important;
 }*/
 
-header .navbar {
+header .navs {
   width: 100%;
   padding: 0;
   display: flex;
@@ -837,6 +837,12 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 .p_0 {
   padding: 0px!important;
 }
+.pl_0 {
+  padding-left: 0!important;
+}
+.pr_2_pc {
+  padding-right: 5%!important;
+}
 
 .no_space_center {
   padding-left: 10px!important;
@@ -871,7 +877,9 @@ body.theme_dark footer .foot_links ul.links li a:hover {
   object-position: bottom!important;
 }
 
-
+.hidden {
+  display: none!important
+}
 .z_index_1 {
   z-index: 1!important;
 }
@@ -1151,6 +1159,14 @@ main {
 .block_bg_gradient_1:before {
   content: "";
   background: linear-gradient(1deg, rgba(13, 13, 13, 0.7) 16.96%, rgba(13, 13, 13, 0.05) 55.01%, rgba(13, 13, 13, 0.05) 98.26%);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.block_bg_gradient_2:before {
+  content: "";
+  background: linear-gradient(180deg, rgba(28, 28, 28, 0.00) 23.12%, #1C1C1C 100%);;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -1468,6 +1484,10 @@ ul.custom-listing li img {
   font-size: 20px!important;
   line-height: 40px!important;
 }
+.custom_fs_22 {
+  font-size: 22px!important;
+  line-height: 33px!important;
+}
 
 .full-block-wrap .img_text_box_inner .text_box_content_inner {
   text-align: center;
@@ -1653,6 +1673,11 @@ form.form_floating .form_group {
   font-weight: 400;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.forms_section form textarea.form_control {
+  height: auto;
+  min-height: 98px;
+  padding-top: 23px!important;
+}
 
 form.form_floating .form_group .form_control:focus, 
 form.form_floating .form_group .form_control:not(:placeholder-shown) {
@@ -1680,10 +1705,7 @@ form.form_floating .form_group .form_control:not(:placeholder-shown) ~ label {
   color: var(--gray-300);
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
-form.form_floating .form_group .form_control:-webkit-autofill {
-  color: var(--gray-300);
-  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
-}
+
 .forms_section form .form_control_select {
   border-radius: 4px;
   height: 58px;
@@ -1779,8 +1801,8 @@ div.error {
   flex-direction: column;
 }
 
-/* klarna wrap */
 
+/* klarna wrap */
 .klarna_wrap ul.custom-listing li {
   color: var(--black);
 }
@@ -1876,6 +1898,72 @@ form.form_floating .form_group.radio_block > label {
   color: var(--white);
   max-width: 60%;
 }
+
+/* full banner custom slider */
+.full_banner_custom_slider {
+  padding-top: 135px;
+  padding-bottom: 35px;
+}
+.full-block-wrap .img_text_box_inner .text_box_find_tattoo {
+  width: 100%;
+  margin: 0;
+  max-width: 100%;
+  text-align: left;
+  padding-bottom: 40px;
+  padding-top: 10px;
+}
+.find_tattoo_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.find_tattoo_wrap .find_tattoo_left {
+  max-width: 550px;
+  width: 100%;
+}
+.text_box_find_tattoo .find_tattoo_wrap .find_tattoo_left h3 {
+  text-align: left;
+  color: var(--black);
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -2.4px;
+  margin: 0;
+  padding: 35px 0 0 0;
+}
+.find_tattoo_wrap .find_tattoo_right {
+  max-width: 550px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+.find_tattoo_right ul.download_app {
+  margin: 0;
+}
+.keywords_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.keywords_wrap ul.keywords_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.keywords_wrap ul.keywords_list li {
+  display: inline-block;
+  border-radius: 12px;
+  background: #212121;
+  padding: 3px 16px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 33px;
+  color: #fff;
+  margin: 0 8px;
+}
+
+
 
 /* responsive */
 
@@ -2233,6 +2321,33 @@ form.form_floating .form_group.radio_block > label {
     line-height: 24px; 
     max-width: 100%;
   }
+  .max_m_w_100pc {
+    max-width: 100%!important;
+  }
+  
+  .full-block-wrap .img_text_box_inner .text_box_find_tattoo {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .find_tattoo_wrap {
+    flex-direction: column;
+  }
+  .find_tattoo_wrap .find_tattoo_left {
+      max-width: 100%;
+  }
+  .find_tattoo_wrap .find_tattoo_right {
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 20px;
+  }
+
+
+  .text_box_find_tattoo .find_tattoo_wrap .find_tattoo_left h3 {
+    font-size: 50px;
+    line-height: 50px;
+    letter-spacing: -2px;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -2268,6 +2383,13 @@ form.form_floating .form_group.radio_block > label {
   .text_box_wrap.block_bg_yellow .img_text_box_inner .text_box_content {
     text-align: center;
   }
+  .custom_spc_left_d_430 {
+    max-width: 430px!important;
+  }
+  .custom_spc_right_d_430 {
+    max-width: 430px!important;
+  }
+  
 }
 @media screen and (min-width: 768px) and (max-width: 991.98px) {
   .form_right_wrap {
@@ -2302,7 +2424,7 @@ form.form_floating .form_group.radio_block > label {
   header .header_right {
     margin-top: 0;
     display: flex;
-    flex-direction: column;
+    
   }
 
   header .nav-right-block {
@@ -2385,9 +2507,36 @@ form.form_floating .form_group.radio_block > label {
   header .navbar {
     padding: 0px 13px;
   }
-  /* header.header_wrapper {
-    margin-top: 90px;
-  } */
+  header.header_wrapper {
+    margin-top: 18px;
+  }
+
+  .keywords_wrap ul.keywords_list {
+    width: 80%;
+    margin: 0;
+    padding-bottom:5px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+  }
+  .keywords_wrap ul.keywords_list li {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+  }  
+  ul.keywords_list::-webkit-scrollbar {
+    height: 10px
+  }
+  ul.keywords_list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ul.keywords_list::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ul.keywords_list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
 }
 
@@ -2524,6 +2673,10 @@ form.form_floating .form_group.radio_block > label {
   ul.custom-listing-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .text_box_find_tattoo .find_tattoo_wrap .find_tattoo_left h3 {
+    font-size: 50px;
+    line-height: 50px;
+  }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
@@ -2532,24 +2685,172 @@ form.form_floating .form_group.radio_block > label {
   }
 }
 
+
+
 @media screen and (max-width: 1199px) {
-
-
   .nav-block {
    display: none;
+  }
+
+}
+
+
+
+
+
+ /* siddique styles ------   12 sep */
+
+
+.swiper-slide {
+  /* width:"100px "; */
+  /* max-width: 240px; */
+  background-color: transparent;
+  border-radius: 10px;
+  background-size: cover;
+  /* border: 1px solid white; */
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  /* background-image: url(./assets/slideBG.png); */
+  color: #ffffff;
+}
+.testimonials-profile-circle {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.testimonial-avatar {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #1d8ba0;
+  border-radius: 50%;
+}
+.review-by {
+  color: #1d8ba0;
+  font-size: 18px;
+}
+.head {
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  font-weight: 500;
+  font-family: "Courier New", Courier, monospace;
 }
       
-.header_right  .btn_tattoo_art{display: none;}
 
-.logo-Section {
-  width: 50%;
-}
+
 header .navbar {
 padding: 0px 13px;
+}
+ .swiper-pagination-bullet:first-of-type,.swiper-pagination-bullet:last-of-type{
+  width: 8px !important;
+  height: 8px !important;
+  position:relative;
+  top:-1px;
+}
+.swiper-pagination-bullet {
+  background-color: #f7fafa !important;
+  /* border: 2px solid #626464 !important; */
+  /* padding: 1px !important; */
+  border-radius: 30px !important;
+  /* padding-left: 5px !important; */
+  width: 10px !important;
+  height: 10px !important;
+  /* padding-right: 5px !important; */
+
+}
+.swiper-slide .swiper-slide-prev{
+  transform: translate3d(665.2119px, 0px, -176.647px) rotateX(0deg) rotateY(0deg) scale(1) !important;
+}
+.swiper-pagination {
+  position: absolute;
+  bottom: -25px; 
+}
+.swiper{
+  transform: none  !important;
+}
+
+ .swiper-slide-prev{
+  width: 247.5px;
+  transition-duration: 0ms;transform: translate3d(275px, 0px, -216.364px) rotateX(0deg) rotateY(0deg)  !important;
+  margin-right: 100px;
+
+}
+.swiper-slide-next{
+  width: 247.5px;
+  transition-duration: 0ms;transform: translate3d(-274.556px, 0px, -216.667px) rotateX(0deg) rotateY(0deg)  !important;
+  z-index: 0;
+  margin-right: 110px;
 
 }
 
+.swiper-slide-duplicate-next,.swiper-slide-duplicate-prev{
+  border:5px solid red;
+  visibility: hidden;
+}
+.swiper-slide-duplicate-active{
+  visibility: hidden;
+}
+.swiper-second{
+  display:flex;
+  flex-direction:column;
+  background-color: blue;
+}
+.swiper-second img{
+  height:200px;
+  width:289.14px;
+}
 
+.thumbs-wrapper{
+  display:none
+}
+.carousel button{
+  display:none
+}
+.slider-custom{
+  height: 200px;
+}
+.custom-container{
+  margin-top: 30px;
+  margin-right: 30px;
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
 
+.carousel .control-dots .dot{
+background: grey !important;
+}
+.dot{
+box-shadow: none !important;
 
-  }
+}
+.carousel-status{
+  display: none;
+}
+/* .control-dots li:first-of-type,li:last-of-type{
+  width: 6px !important;
+  height: 6px !important;
+  position:relative;
+  top:-1px;
+} */
+.carousel-image{
+  height:200px !important;
+  width:289px !important;
+  border-radius:20px;
+  margin-bottom: 50px;
+}
+.custom-margin{
+  margin-top:100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.download-link-image{
+  height:41px !important;
+  width:279px !important;
+}
+
+ /* siddique styles ------   12 sep */

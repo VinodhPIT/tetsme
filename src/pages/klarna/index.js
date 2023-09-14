@@ -9,8 +9,45 @@ import {
   APP_LINK_GOOGLE,
   blurDataURL,
 } from "@/constants/constants";
+import CarouselComponent from "@/components/carousel/Carousel";
 
 export default function klarna() {
+  const items = [
+    {
+      image: "./Group 82721.png",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+    {
+      image: "./Group.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Cancer",
+    },
+    {
+      image: "./Group 82677.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+    {
+      image: "./Group 82674.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+    {
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Wake",
+      button2: "Trust",
+      heading: "Itzscuintli",
+    },
+  ];
   return (
     <div className="page-wrapper">
       <div className={styles.banner_block}>
@@ -144,7 +181,7 @@ export default function klarna() {
               </div>
             </div>
 
-            <div class="text_box_wrap left block_bg_pink">
+            <div class="text_box_wrap left ">
               <div class="img_text_box_inner">
                 <div class="img_box_wrap block_bg_gradient_1">
                   <div class="klarna_bg">
@@ -169,13 +206,10 @@ export default function klarna() {
                     layout="responsive"
                   />
                 </div>
-                <div class="text_box_content justify_content_start p_0">
+                <div class="text_box_content justify_content_start">
                   <div class="text_box_content_inner max_w_100pc w_100pc">
-                    <img
-                      src="./pay-later.png"
-                      alt="How it Works!"
-                      class="w_100pc"
-                    />
+                    <CarouselComponent items={items} />
+
                   </div>
                 </div>
               </div>

@@ -36,8 +36,8 @@ export default function SideDrawer({onCloseToggle}) {
 
     {
       id: 6,
-      title: "contactus",
-      url: "/Contact Us",
+      title: "Contact Us",
+      url: "/contactus",
     },
   ];
 
