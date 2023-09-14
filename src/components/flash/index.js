@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import PageLoad from "@/components/pageLoad";
 import { useGlobalState } from "@/context/Context";
-import styles from "@/components/styles/search.module.css";
+import styles from "@/components/styles/listing.module.css";
 
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ export default function Flash({ data }) {
 
   return (
     <div className="pageContainer">
-      <div className={styles.gridWrapper}>
+      <div className={styles.grid_wrapper}>
         {state.loading ? (
           <PageLoad />
         ) : data.length === 0 ? (
@@ -24,10 +24,11 @@ export default function Flash({ data }) {
             //   item._index === "ad" ? styles.gridItem : styles.spanTwo;
 
             return item._index === "ad" ? (
-              <div className={styles.spanTwo}></div>
+              item.add===1 ?  <div className={styles.spanTwo}><p>Add 1 </p></div> :
+              item.add===2  ?  <div className={styles.spanTwo}><p>Add 2 </p></div>  : <div className={styles.spanTwo}><p>Add 3 </p></div>
             ) : (
               <div>
-                <div className={styles.gridItem }>
+                <div className={styles.listing_gridItem }>
                   <Image
                     priority={true}
                     src={item._source.image}
@@ -43,6 +44,14 @@ export default function Flash({ data }) {
           })
         )}
       </div>
+      <Link
+        href={'/tattoodetail'}                         
+
+                          >
+
+                                                     Flash
+
+                          </Link>
     </div>
   );
 }

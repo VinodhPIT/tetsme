@@ -57,7 +57,7 @@
   --aero_blue_lite: #C0FFF4;
 
   --yellow-400: #FFF4C0;
-
+  --yellow-500: #F8E8CA;
   --red-600: #850101;
 
   --pink: #F5B6C7;
@@ -648,7 +648,9 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 .block_bg_yellow {
   background-color: var(--yellow-400);
 }
-
+.block_bg_yellow_500 {
+  background-color: var(--yellow-500);
+}
 .block_bg_black {
   background-color: var(--black-550);
 }
@@ -828,6 +830,9 @@ body.theme_dark footer .foot_links ul.links li a:hover {
 }
 .mb_0 {
   margin-bottom: 0px!important;
+}
+.mr_0 {
+  margin-right: 0px!important;
 }
 .pb_0 {
   padding-bottom: 0px!important;
@@ -1118,13 +1123,24 @@ body.theme_dark footer .foot_links ul.links li a:hover {
   background: var(--gray-600);
   text-decoration: none;
 }
-
 .btn_custom_m {
   height: 56px;
   padding: 8px 32px;
   line-height: 40px;
   border-radius: 8px;
 }
+button.btn_view_more {
+  align-items: center;
+  text-transform: uppercase;
+  padding: 1.56em 1.5em 1.31em;
+  border-radius: 56px;
+  font-size: 14px;
+  font-weight: 800;
+  color: white;
+  max-width: 350px;
+  width: 100%;
+}
+
 
 /* content styles */
 main {
@@ -2341,13 +2357,36 @@ form.form_floating .form_group.radio_block > label {
       align-items: flex-start;
       margin-top: 20px;
   }
-
-
   .text_box_find_tattoo .find_tattoo_wrap .find_tattoo_left h3 {
     font-size: 50px;
     line-height: 50px;
     letter-spacing: -2px;
   }
+  .full_banner_custom_slider .img_text_box_inner .img_box_wrap {
+    order: 1;
+  }
+  .full_banner_custom_slider .img_text_box_inner .text_box_content {
+    order: 2;
+    padding-right: 0!important;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .img_box_wrap ul.app_download_img_list {
+    padding-bottom: 30px;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .img_box_wrap {
+      order: 2;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .text_box_content {
+      padding-bottom: 20px;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .text_box_content ul.download_app li.download_app_title {
+      margin-bottom: 15px;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .text_box_content ul.download_app li.download_app_title p {
+      margin-bottom: 10px;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .img_box_wrap ul.app_download_img_list li {
+      display: inline;
+  }  
 
 }
 
@@ -2380,7 +2419,6 @@ form.form_floating .form_group.radio_block > label {
   .text_box_wrap.app_download_box_wrap .img_text_box_inner .text_box_content {
     padding-left: 6.5vw;
   }
-
   .text_box_wrap.block_bg_yellow .img_text_box_inner .text_box_content {
     text-align: center;
   }
@@ -2389,6 +2427,13 @@ form.form_floating .form_group.radio_block > label {
   }
   .custom_spc_right_d_430 {
     max-width: 430px!important;
+  }  
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .img_box_wrap {
+    width: 50%;
+  }
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .text_box_content {
+    width: 50%;
+    padding-left: 6.5vw;
   }
   
 }
@@ -2421,13 +2466,11 @@ form.form_floating .form_group.radio_block > label {
   main {
     min-height: 48vh;
   }
-
   header .header_right {
     margin-top: 0;
     display: flex;
     
   }
-
   header .nav-right-block {
     width: calc(100% - 105px);
     display: flex;
@@ -2629,9 +2672,9 @@ form.form_floating .form_group.radio_block > label {
   .text_box_wrap.app_download_box_wrap .img_text_box_inner .text_box_content {
     padding-left: 11.4583333333%;
   }
-}
-
-@media screen and (min-width: 1200px) {
+  .app_download_box_wrap.dictionary_app .img_text_box_inner .text_box_content {
+    padding-left: 60px;
+  }
   .text_box_wrap .img_text_box_inner .img_box_wrap {
     min-height: 550px;
   }
@@ -2688,12 +2731,12 @@ form.form_floating .form_group.radio_block > label {
 
 
 
-@media screen and (max-width: 1199px) {
+/* @media screen and (max-width: 1199px) {
   .nav-block {
    display: none;
   }
 
-}
+} */
 
 
 

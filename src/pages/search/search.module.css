@@ -1,19 +1,17 @@
-.pageWrapper{
+/*.pageWrapper{
     width: 1527px;
     margin: 0 auto;
     max-width: 100%;
     padding: 0px 15px;
 
+}*/
+
+.page_search_wrapper {
+
 }
-
-
-
 .filter_container{
     float: left;width: 100%;
 margin-top: 28px;}
-
-
-
 .filter_container .search-bar{
 float: left;
 width: 50%;
@@ -33,11 +31,24 @@ width: 50%;
     color: #C3C3C3;
     border: 0;
 }
-
-
-
-
-
-
 .wrapper2{float: left;width:10%}
 .wrapper3{float: left;width:10%;}
+
+
+
+
+/***** */
+.grid_more_view {
+    text-align: center;
+    margin: 60px 0;
+}
+.grid_more_view p {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.btn_wrapper {
+    width: 100%;
+}

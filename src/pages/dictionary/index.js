@@ -10,9 +10,12 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Navigation, Pagination } from "swiper";
+import {
+  APP_LINK_APPLE,
+  APP_LINK_GOOGLE,
+  blurDataURL,
+} from "@/constants/constants";
 SwiperCore.use([Autoplay]);
-
-
 
 export default   function Dictionary() {
 
@@ -87,7 +90,7 @@ export default   function Dictionary() {
                 </div>
               </div>
 
-              <div class="text_box_wrap full-block-wrap block_bg_yellow">
+              <div class="text_box_wrap full-block-wrap block_bg_yellow_500">
                 <div class="img_text_box_inner">
                   <div class="justify_content_start container w_100pc">
                     <div class="text_box_find_tattoo">
@@ -144,6 +147,59 @@ export default   function Dictionary() {
                 </div>
               </div>
 
+              <div class="text_box_wrap left app_download_box_wrap mb_0 block_bg_yellow_500 dictionary_app">
+                <div class="img_text_box_inner">                  
+                  <div class="img_box_wrap">                    
+                    <ul class="app_download_img_list mt_mb_6pc after_none justify_content_right text_center mr_0">                      
+                      <li>
+                        <Image
+              priority={true}
+                        src="/iPhone-192.png"
+                        width={215}
+                        height={443}
+                        alt="Picture of the author"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              layout="responsive"
+                      />
+                      </li>
+                      <li>
+                        <Image
+              priority={true}
+                        src="/iPhone-192.png"
+                        width={215}
+                        height={443}
+                        alt="Picture of the author"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              layout="responsive"
+                      />
+                      </li>
+                    </ul>                    
+                  </div>
+                  <div class="text_box_content justify_content_start">
+                    <div class="text_box_content_inner w_100pc">
+                      <ul class="download_app ml_0 w_100pc max_w_100pc">
+                        <li class="download_app_title">
+                          <h6>Explore more in the App</h6>
+                          <p>Learn more about greek mythology and find the tattoo with the right meaning for you in the app...</p>
+                        </li>
+                        <li>
+                          <Link href={APP_LINK_APPLE} target="_blank">
+                            <img src="./app-store.svg" alt="" />
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={APP_LINK_GOOGLE} target="_blank">
+                            <img src="./g-play.svg" alt="" />
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 
               <div class="text_box_wrap right">
                 <div class="img_text_box_inner">
@@ -166,7 +222,7 @@ export default   function Dictionary() {
                 </div>
               </div>
 
-              <div class="text_box_wrap full-block-wrap block_bg_yellow">
+              <div class="text_box_wrap full-block-wrap block_bg_yellow_500">
                 <div class="img_text_box_inner">
                   <div class="justify_content_start container w_100pc">
                     <div class="text_box_find_tattoo">

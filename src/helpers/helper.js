@@ -40,28 +40,38 @@ export const searchParam = (parameters) => {
 
 
 export const addAdsToResults = async (results) => {
-  const totalCount = results.length;
+
+  const totalCount = results.length; 
 
   if (totalCount < 15) {
+
     return results;
-  }
+
+  } 
 
   // Calculate the number of ads to add (2 ads for every 19 products)
-  const adsCount = Math.floor(totalCount / 19) * 2;
+
+  const adsCount = Math.floor(totalCount / 19) * 3;
 
   for (let i = 0; i < adsCount; i++) {
-    const randomizedIndex = Math.floor(Math.random() * 19);
-    results.splice((i + 1) * 19 - randomizedIndex, 0, { _index: "ad", colspan: 2 });
-  }
 
+    const randomizedIndex = Math.floor(Math.random() * 19);
+
+    const adItem = { _index: "ad", colspan: 2, add: i + 1 };
+
+    results.splice((i + 1) * 19 - randomizedIndex, 0, adItem);
+
+  }
   results.forEach((item) => {
+
     if (item._index !== "ad") {
+
       item.colspan = 1;
+
     }
+
   });
 
-  
-
   return results;
-};
 
+};

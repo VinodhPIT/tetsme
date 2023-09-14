@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import SearchField from "@/components/searchField/index";
 import Header from "@/components/header/header";
 import {addAdsToResults} from '@/helpers/helper'
+import styles from "./search.module.css";
 
 
 import { useGlobalState } from "@/context/Context";
@@ -58,7 +59,8 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
   };
 
   return (
-    <div className={style.pageWrapper}>
+    <div className={style.page_search_wrapper}>
+      <div className="container">
       <Head>
         <title>Inckd Search Page</title>
         <meta name="description" content="Search Me"></meta>
@@ -135,28 +137,25 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 
       state.categoryCollection.length !== 0 &&
         state.categoryCollection.length !== state.totalItems && (
-          <div>
+          <div className={styles.grid_more_view}>
             <p>
               See out of {state.categoryCollection.length}/{state.totalItems}
             </p>
-            <button
-              onClick={() => {
-                loadMore();
-              }}
-              style={{
-                padding: "10px",
-                margin: "0 auto",
-                width: "200px",
-                display: "flex",
-              }}
-            >
-              Load more
-            </button>
+            <div className={styles.btn_wrapper}>
+              <button
+                onClick={() => {
+                  loadMore();
+                }}
+                className="btn_primary btn_view_more"          
+              >
+                Load more
+              </button>
+              </div>
           </div>
         )}
             
 
-
+            </div>
     </div>
   );
 };
