@@ -6,7 +6,7 @@ import styles from "@/components/styles/search.module.css";
 
 import Link from "next/link";
 
-export default function Flash({ data }) {
+export default function All({ data }) {
   const { state } = useGlobalState();
 
   return (
@@ -30,7 +30,7 @@ export default function Flash({ data }) {
                 <div className={styles.gridItem }>
                   <Image
                     priority={true}
-                    src={item._source.image}
+                    src={item._index==="tattoo" ? item._source.image : item._source.image_url}
                     layout="fill"
                     alt={item.artist_name}
                     objectFit="cover"

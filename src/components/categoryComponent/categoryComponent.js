@@ -1,6 +1,6 @@
 import React from "react";
 
-import All from '@/components/all/page'
+import All from '@/components/all/index'
 import Flash from '@/components/flash/index'
 import Artist from '@/components/artist/index'
 import Tattoo from '@/components/tattoo/index'
