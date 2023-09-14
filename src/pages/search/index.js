@@ -64,11 +64,11 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
         <meta name="description" content="Search Me"></meta>
       </Head>
 
-      <Header />
+     
 
       <div className={style.filter_container}>
         <div className={style.wrapper1}>
-          <SearchField />
+  <SearchField /> 
         </div>
 
         <div className={style.wrapper2}>

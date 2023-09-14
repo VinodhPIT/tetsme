@@ -13,7 +13,7 @@ export default function Artist({ data }) {
 
   return (
     <div className="pageContainer">
- {!state.loading ?    <PageLoad />   : 
+ {state.loading ?    <PageLoad />   : 
 
       
       <div className={styles.gridWrapper}>

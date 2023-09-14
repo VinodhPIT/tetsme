@@ -152,7 +152,8 @@ header ul.nav.main_nav>li>a {
   width: 50%;
   display: flex;
   justify-content: end;
-  gap: 30px;
+  gap: 30px;    align-items: center;
+
 }
 
 header .header_right button.btn_tattoo-art {
@@ -2541,9 +2542,9 @@ form.form_floating .form_group.radio_block > label {
 }
 
 @media screen and (min-width: 992px) {
-  header .header_right {
+  /* header .header_right {
     display: flex;
-  }
+  } */
 
   header .nav-right-block {
     width: calc(100% - 105px);
