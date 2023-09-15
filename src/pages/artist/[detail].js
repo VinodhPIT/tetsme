@@ -15,7 +15,7 @@ export default function ArtistDetail({param}) {
       <div className="container">
         <div className={styles.search_profile_block}>
           <div className={styles.search_profile_pic}>
-            <img src="./profile-pic-1.png" alt="profile pic" />
+            <img src="/profile-pic-1.png" alt="profile pic" />
           </div> 
           <div className={styles.search_profile}>            
             <div className={styles.search_profile_content}>
@@ -31,10 +31,10 @@ export default function ArtistDetail({param}) {
                 Get in Touch
               </a>            
               <a href="/" target="_blank" className={styles.profile_bookmark}>              
-                <img src="./bookmark-icon.svg" alt="bookmark icon" />
+                <img src="/bookmark-icon.svg" alt="bookmark icon" />
               </a>
               <a href="/" target="_blank" className={styles.profile_share}>
-                <img src="./share-icon.svg" alt="share icon" />
+                <img src="/share-icon.svg" alt="share icon" />
               </a>
             </div>
           </div>          
