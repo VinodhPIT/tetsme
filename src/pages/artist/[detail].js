@@ -39,8 +39,47 @@ export default function ArtistDetail({param}) {
             </div>
           </div>          
         </div>
+
+
+        <div className={styles.product_info_col}>   
+          <div className={styles.product_style}>            
+            <span className={styles.product_style_label}>Styles</span>
+            <ul className={styles.product_style_list}>
+              <li><a href="#">Abstract Realism <img src="/arrow-right-gray.svg" alt="Abstract Realism" /></a></li>
+              <li><a href="#">Fineline <img src="/arrow-right-gray.svg" alt="Fineline" /></a></li>
+              <li><a href="#">Geometric <img src="/arrow-right-gray.svg" alt="Geometric" /></a></li>
+              <li><a href="#">Black work <img src="/arrow-right-gray.svg" alt="Black work" /></a></li>
+            </ul>         
+          </div>
+
+          <div className={styles.product_info_wrap}>
+            <div className={styles.product_detail_location}>
+              <span className={styles.product_location_label}>Locations</span>
+              <div className={styles.product_location_list}>
+                <span className={styles.product_loc_title}>
+                <img src="/location-small.svg" alt="Berlin, Germany" />Berlin, Germany</span>
+              </div>
+              <div className={styles.product_location_list}>
+                <span className={styles.product_loc_title}>
+                <img src="/location-small.svg" alt="Zurich, Switzerland" />Zurich, Switzerland</span>
+              </div>
+              <div className={styles.product_location_list}>
+                <span className={styles.product_loc_title}>
+                <img src="/location-small.svg" alt="Paris, France" />Paris, France</span>
+              </div>  
+            </div>
+            <div className={styles.product_style}>            
+              <span className={styles.product_style_label}>Languages</span>
+              <ul className={styles.product_style_list}>
+                <li><a href="#">French</a></li>
+                <li><a href="#">German</a></li>
+                <li><a href="#">English</a></li>
+              </ul>         
+            </div>
+          </div>
         </div>
 
+      </div>
     </div>
   )
 }
