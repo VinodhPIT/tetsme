@@ -1,0 +1,130 @@
+.search_profile_block {
+    display: flex;
+    margin: 0;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #F8F8F8;
+}
+.search_profile_pic {
+    width: 88px;
+    height: 88px;
+    display: inline-block;
+    margin-right: 15px;
+}
+.search_profile_pic img {
+    border-radius: 50%;
+    height: 88px;
+    object-fit: cover;
+    object-position: center;
+    width: 88px
+}
+.search_profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.search_profile_content {
+
+}
+.search_profile_name {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 27px;
+    color: #212121;
+    width: 100%;
+    display: inline-block;
+}
+.search_profile_details {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #212121;
+    width: 100%;
+    display: inline-block;
+}
+.search_profile_link {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+.search_profile_link .profile_getin {
+    order: 1;
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 6px 32px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    border: 0;
+    background: var(--black-450);
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    min-width: 125px;
+}
+.search_profile_link .profile_getin:hover {
+    color: var(--white);
+    background: var(--gray-600);
+    text-decoration: none;
+}
+.search_profile_link .profile_bookmark {
+    order: 3;
+}
+.search_profile_link .profile_share {
+    order: 2;
+}
+
+@media screen and (max-width: 380px) {
+    .search_profile_pic {       
+        margin-right: 10px;
+    }
+    .search_profile_link .profile_getin {
+        padding: 6px 10px;
+        min-width: 100px;
+    }    
+}
+
+@media screen and (max-width: 767.98px) {
+    .search_profile_block {
+        background: #fff;
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .search_profile {
+        flex-flow: column;
+        align-items: flex-start;
+    }
+    .search_profile_name {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .search_profile_details {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+    }    
+    .search_profile_link {
+        margin-top: 8px;
+        grid-gap: 16px;
+    }
+    .search_profile_link .profile_bookmark svg,
+    .search_profile_link .profile_share svg {
+        width: 16px;
+        height: 16px;
+    }   
+}
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+    .search_profile_link .profile_getin {
+        padding: 6px 15px;
+    }
+}
