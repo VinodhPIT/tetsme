@@ -41,6 +41,7 @@ const reducer = (state, action) => {
 
     case "INITIAL_SERVER_DATA":
       ({ data, currentTab, totalItems, searchKey, pageNo } = action.payload);
+      // console.log(data[0]._source.tattoo_uid,'cmscopsc')
       return {
         ...state,
         categoryCollection:data,
@@ -171,14 +172,10 @@ export const GlobalStateProvider = ({ children }) => {
     }
   };
 
-  const updateTab = async (payload, router, load) => {
-    // ---------------- Fetching  Data Based On ActiveTab --------- //
-
-    // await router.push(`/search?term=${state.searchKey}&category=${payload}`);
-
-    dispatch({ type: "IS_LOADING", payload: load });
-
+  const updateTab = async (payload, router, load) => {    // ---------------- Fetching  Data Based On ActiveTab --------- //
     dispatch({ type: "ACTIVE_TAB", payload: payload });
+    router.push(`/search?term=${state.searchKey}&category=${payload}`);
+    dispatch({ type: "IS_LOADING", payload: load });
     try {
       const requestData = {
         ...Parameters,
@@ -188,15 +185,12 @@ export const GlobalStateProvider = ({ children }) => {
       if (payload === "all") {
         responseData = await fetchMultiData(requestData);
 
-
       } else {
-
         responseData = await fetchCategoryData(requestData);
-
       }
       dispatch({ type: "CHANGE_TAB", payload: responseData });
     } catch (error) {
-      console.error("Error occurs On Updating New Tab Data:", error);
+    
     }
   };
 
@@ -215,17 +209,12 @@ export const GlobalStateProvider = ({ children }) => {
       let responseData;
       if (state.currentTab === "all") {
         responseData = await fetchMultiData(requestData);
-
-        
       } else {
-
-        responseData = await fetchCategoryData(requestData);
-
+        responseData = await fetchCategoryData(requestData)
 
       }
       dispatch({ type: "LOAD_MORE", payload: responseData });
     } catch (error) {
-      console.error("Error On Load More:", error);
     }
   };
 
@@ -246,7 +235,6 @@ export const GlobalStateProvider = ({ children }) => {
       }
       dispatch({ type: "SEARCH_STYLE", payload: responseData });
     } catch (error) {
-      console.error("Error Fetching Style:", error);
     }
   };
 
@@ -260,17 +248,14 @@ export const GlobalStateProvider = ({ children }) => {
         longitude: payload.longitude,
       };
       let responseData;
-
       responseData = await fetchCategoryData(requestData);
-
       dispatch({ type: "FIND_ARTIST", payload: responseData });
     } catch (error) {
-      console.error("Error Fetching  Based on Location:", error);
     }
   };
 
-  const getHintsBySearch = async (payload) => {
-    // -----------------  Get Hints Based On keyword--------- //
+  const getHintsBySearch = async (payload) => {// -----------------  Get Hints Based On keyword--------- //
+    
     try {
       const requestData = {
         ...Parameters,
@@ -279,17 +264,12 @@ export const GlobalStateProvider = ({ children }) => {
       };
       let responseData;
       if (state.currentTab === "all" || state.currentTab === "") {
-
         responseData = await fetchMultiData(requestData);
-
-
-
       } else {
         responseData = await fetchCategoryData(requestData);
       }
       dispatch({ type: "GET_HINTS", payload: responseData });
     } catch (error) {
-      console.error("Error Fetching Hints:", error);
     }
   };
 
@@ -303,20 +283,12 @@ export const GlobalStateProvider = ({ children }) => {
       };
       let responseData;
       if (state.currentTab === "all" || state.currentTab == "") {
-
         responseData = await fetchMultiData(requestData);
-
-        
-
-
-
       } else {
         responseData = await fetchCategoryData(requestData);
-
       }
       dispatch({ type: "SEARCH_DATA", payload: responseData });
     } catch (error) {
-      console.error("Error On Search:", error);
     }
   };
 

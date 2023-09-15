@@ -168,7 +168,7 @@ const _Form = () => {
         </Formik>
         </div>
       ) : 
-          <div class="form_submit_block hidden">
+          <div class="form_submit_block">
             <img src="./success-tick.svg" alt="Form submitted" />
 
             <h4>Form submitted</h4>

@@ -94,6 +94,7 @@ export default function Home() {
 
                 <div className="search_form">
                   <div className="search_form_wrap">
+                    
                     <SearchField isPage={"all"} />
 
                     {/* <form className="position_relative">
@@ -150,6 +151,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+
+
+
+
 
                 <ul className="download_app">
                   <li className="download_app_title">

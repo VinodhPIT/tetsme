@@ -1,6 +1,6 @@
 // actions.js//
 import { searchParam, prepareRequest2 } from "@/helpers/helper";
-import { postApiCall } from "@/utils/apiUtils";
+import { postApiCall ,getApiCall } from "@/utils/apiUtils";
 
 export const fetchCategoryData = async (params) => {
   try {
@@ -108,3 +108,19 @@ try {
 
  
 }
+
+
+
+
+
+
+export const fetchTattooDetail = async (params) => {
+  try {
+    const reponse = await getApiCall(`/tattoo/detail?tattoo_uid=${params}`);
+    return reponse;
+    }
+   catch (error) {
+    console.log(error ,"error")
+    return [];
+  }
+};

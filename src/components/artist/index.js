@@ -5,6 +5,7 @@ import { useGlobalState } from "@/context/Context";
 import styles from "@/components/styles/listing.module.css";
 
 import Link from "next/link";
+import {blurDataURL} from  '@/constants/constants'
 
 export default function Artist({ data }) {
   const { state } = useGlobalState();
@@ -23,49 +24,49 @@ export default function Artist({ data }) {
             //   item._index === "ad" ? styles.gridItem : styles.spanTwo;
 
             return item._index === "ad" ? (
-              <div className={styles.spanTwo}></div>
+             null
             ) : (
-                <div className={styles.listing_gridItem }>                   
+                <Link href={`/artist/${item._source.slug}`} className={styles.listing_gridItem }>                   
                     <div className={styles.grid_item_block}>
                       <div className={styles.grid_img_wrap}>
                         <div className={styles.grid_img_bg}>
                           <div className={styles.grid_img_col}>
                             <Image
                               priority={true}
-                              src={item._source.image_url}
+                              src={item._source.tattoos[0].image}
                               layout="fill"
-                              alt={item.artist_name}
+                              alt={item._source.slug}
                               objectFit="cover"
                               placeholder="blur"
-                              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=="
+                              blurDataURL={blurDataURL}
                             />
                             </div>
                           </div>
                         </div>
                         <div className={styles.grid_content_wrap}>
                           <div className={styles.grid_img_profile}>
-                            <Image
+                          <Image
                               priority={true}
-                              src={item._source.image}
+                              src={item._source.image_url}
                               layout="fill"
-                              alt={item.artist_name}
+                              alt={item._source.name}
                               objectFit="cover"
                               placeholder="blur"
-                              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=="
+                              blurDataURL={blurDataURL}
                             />
                           </div>
                           <div className={styles.grid_profile_details}>
-                            <h6 className={styles.grid_profile_title}>Paul samuel</h6>
-                            <span className={styles.grid_profile_address}>Zurich, Switzerland</span>
+                            <h6 className={styles.grid_profile_title}>{item._source.name}</h6>
+                            <span className={styles.grid_profile_address}>{item._source.locations[0].city} {item._source.locations[0].country} </span>
                             <div className={styles.grid_profile_link}>
-                              <a href="#">
+                            <Link href={`/artist/${item._source.slug}`} >
                                 <span>Check profile</span>
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </div>
                     </div> 
-                </div>
+                </Link>
             );
           })
         )}

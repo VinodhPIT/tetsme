@@ -70,15 +70,27 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 
       <div className={style.filter_container}>
         <div className={style.wrapper1}>
+
+        <div className="search_form">
+                  <div className="search_form_wrap">
+
   <SearchField /> 
+</div>
+</div>
+
+
         </div>
 
+
+   {state.currentTab==="artist" &&
         <div className={style.wrapper2}>
           <Autocomplete
             apiKey={process.env.googlePlacesApiKey}
             onPlaceSelected={handlePlaceSelected}
           />
         </div>
+}
+
 
         <div className={style.wrapper3}>
           <select
@@ -96,30 +108,30 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
       </div>
 
       <div
-        style={{
-          display: "flex",
-          "justify-content": "space-between",
-          padding: "10px",
-          margin: "30px 0px 30px 0px",
-        }}
+        
       >
         <div
-          style={{
-            width: " 400px",
-            /* justify-content: space-between; */
-            display: "flex",
-            justifyContent: "space-around",
-          }}
+         className={style.tabSection}
         >
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              disabled={state.currentTab === tab.id}
-              onClick={() => updateTab(tab.id, router, true)}
-            >
-              {tab.label}
-            </button>
-          ))}
+      
+<ul>
+{tabs.map((tab) => (
+    <li
+      key={tab.id}
+      
+      className={state.currentTab === tab.id ? style.activeTab : style.inActivetab}
+       onClick={() => updateTab(tab.id, router ,true)}
+    >
+     
+     <div  className={style.tabBox}>
+      <img src={state.currentTab === tab.id ? tab.activeImage: tab.image  } /> 
+ 
+    <p style={{"margin":"0"}}>{tab.label}</p> 
+   </div>  
+    </li>
+  ))}
+</ul>
+
         </div>
       </div>
 
