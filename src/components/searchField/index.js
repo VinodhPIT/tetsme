@@ -1,5 +1,5 @@
 ///
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { debounce } from "lodash";
 import style from "./search.module.css";
 import { useRouter } from "next/router";
@@ -7,9 +7,6 @@ import { useGlobalState } from "@/context/Context";
 import { v4 as uuidv4 } from "uuid";
 
 function SearchBar({ isPage }) {
-
-
-  
   const { state, getHintsBySearch, searchData } = useGlobalState();
   const [searchState, setSearchState] = useState({
     query: "",
@@ -151,7 +148,6 @@ function SearchBar({ isPage }) {
             onFocus={() =>
               setSearchState((prevSearchState) => ({
                 ...prevSearchState,
-                showDropdown: true,
               }))
             }
             value={searchState.query}
@@ -205,7 +201,7 @@ function SearchBar({ isPage }) {
 
                     cursor: "pointer",
                     padding: "10px",
-          
+
                     marginBottom: "10px",
                   }}
                   key={index}
@@ -217,9 +213,10 @@ function SearchBar({ isPage }) {
               {state.errorMessage && (
                 <div>
                   <h4 className={style.searchTitle}>Results</h4>
-                  <p>We couldn&apos;t find any results for &lt;&lt;&lt; {searchState.query} &gt;&gt;&gt;</p>
-
-
+                  <p>
+                    We couldn&apos;t find any results for &lt;&lt;&lt;{" "}
+                    {searchState.query} &gt;&gt;&gt;
+                  </p>
                 </div>
               )}
               {searchState.searchHistory.length > 0 && (
@@ -232,11 +229,11 @@ function SearchBar({ isPage }) {
                         onClick={() => clear(el)}
                         className={style.searcheditems}
                       >
-                            <div className={style.searchLabel} >
-                            <p  className={style.trim}>{el.name}</p>
-                            </div>
+                        <div className={style.searchLabel}>
+                          <p className={style.trim}>{el.name}</p>
+                        </div>
 
-                        <div className={style.clearhistory} >x </div>
+                        <div className={style.clearhistory}>x </div>
                       </div>
                     ))}
                   </div>

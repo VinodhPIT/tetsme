@@ -9,8 +9,7 @@ import style from "@/pages/search/search.module.css";
 import { useRouter } from "next/router";
 import SearchField from "@/components/searchField/index";
 import Header from "@/components/header/header";
-import {addAdsToResults} from '@/helpers/helper'
-
+import { addAdsToResults } from "@/helpers/helper";
 
 import { useGlobalState } from "@/context/Context";
 
@@ -23,8 +22,6 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
     searchStyle,
     findArtist,
   } = useGlobalState();
-
-
 
   useEffect(() => {
     try {
@@ -64,11 +61,9 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
         <meta name="description" content="Search Me"></meta>
       </Head>
 
-     
-
       <div className={style.filter_container}>
         <div className={style.wrapper1}>
-  <SearchField /> 
+          <SearchField />
         </div>
 
         <div className={style.wrapper2}>
@@ -123,17 +118,8 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
 
       {renderCategoryComponent(state.currentTab, state.categoryCollection)}
 
-
-
-
-
-
-
-
-
-{!state.loading && 
-
-      state.categoryCollection.length !== 0 &&
+      {!state.loading &&
+        state.categoryCollection.length !== 0 &&
         state.categoryCollection.length !== state.totalItems && (
           <div>
             <p>
@@ -154,9 +140,6 @@ const Search = ({ data, currentTab, pageNo, totalItems, searchKey }) => {
             </button>
           </div>
         )}
-            
-
-
     </div>
   );
 };
@@ -172,11 +155,11 @@ export async function getServerSideProps(context) {
         search_key: context.query.term,
       });
 
-      let addData = await addAdsToResults(results.data)
+      let addData = await addAdsToResults(results.data);
 
       return {
         props: {
-          data: addData,  
+          data: addData,
           currentTab: context.query.category,
           pageNo: 0,
           totalItems: results.totalCount,
@@ -188,12 +171,12 @@ export async function getServerSideProps(context) {
         ...Parameters,
         category: context.query.category,
       });
-      
-    let addData = await addAdsToResults(data.rows.hits)
+
+      let addData = await addAdsToResults(data.rows.hits);
 
       return {
         props: {
-          data:addData,
+          data: addData,
           currentTab: context.query.category,
           pageNo: 0,
           totalItems: data.rows.total.value,
@@ -202,7 +185,7 @@ export async function getServerSideProps(context) {
       };
     }
   } catch (error) {
-    console.log(error,"error")
+    console.log(error, "error");
     return {
       props: {
         data: null,

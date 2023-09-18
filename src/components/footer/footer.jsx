@@ -65,7 +65,7 @@ export default function Footer() {
 
     {
       id: 2,
-      title: "For Tattooartists",
+      title: "For tattoo artists",
       url: "/fortattooartists",
     },
   ];

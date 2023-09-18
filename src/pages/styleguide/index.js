@@ -153,6 +153,7 @@ export default function StyleGuide() {
                         <Image
               priority={true}
                         src="/iPhone-192.png"
+                        className="image_author"
                         width={215}
                         height={443}
                         alt="Picture of the author"
@@ -165,6 +166,7 @@ export default function StyleGuide() {
                         <Image
               priority={true}
                         src="/iPhone-192.png"
+                        className="image_author"
                         width={215}
                         height={443}
                         alt="Picture of the author"
@@ -177,6 +179,7 @@ export default function StyleGuide() {
                         <Image
               priority={true}
                         src="/iPhone-192.png"
+                        className="image_author"
                         width={215}
                         height={443}
                         alt="Picture of the author"
