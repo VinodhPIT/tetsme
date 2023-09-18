@@ -7,3 +7,8 @@ export const INSTAGRAM_PROFILE_LINK = 'https://www.instagram.com/inckd_com/'
 export const LINKEDIN_PROFILE_LINK = 'https://www.linkedin.com/company/inckd'
 export const blurDataURL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcLPW/CQAFZAJAYAMfpQAAAABJRU5ErkJggg=='
+
+
+
+  // Pink base64 image
+

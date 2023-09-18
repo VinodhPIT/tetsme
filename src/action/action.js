@@ -1,5 +1,5 @@
 // actions.js//
-import { searchParam, prepareRequest2 } from "@/helpers/helper";
+import { searchParam, prepareRequest } from "@/helpers/helper";
 import { postApiCall ,getApiCall } from "@/utils/apiUtils";
 
 export const fetchCategoryData = async (params) => {
@@ -28,10 +28,10 @@ export const getStyles = async () => {
   try {
     const reposneStyles = await postApiCall(
       `/style/search`,
-      prepareRequest2({
+      prepareRequest({
         sort: "alphabetical",
         page_no: 0,
-        paginator_count: 40,
+        paginator_count: 20,
         search_key: "",
       })
     );

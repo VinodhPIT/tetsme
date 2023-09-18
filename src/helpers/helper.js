@@ -1,18 +1,11 @@
 
-export const prepareRequest2 = (parameters) => {
+export const prepareRequest = (parameters) => {
   const request = {
     sort: parameters.sort,
     page_no: "0",
     paginator_count: parameters.paginator_count,
     search_key: "",
   };
-
-  // if (parameters.location && parameters.category == 'artists') {
-  //   request.longitude = parameters.location.lon || parameters.location.lon
-  //   request.latitude = parameters.location.lat || parameters.location.lat
-  // }
-
-  // request.style = parameters.style ? [parameters.style] : []
 
   return request;
 };

@@ -1,16 +1,37 @@
 import React,{useState ,useEffect} from "react";
 import Image from "next/image";
 import styles from "./artistdetail.module.css";
-
+import Header from '@/components/pageHeader/Header'
 import { useRouter } from "next/router";
 import { fetchArtistDetail } from "@/action/action";
 import { blurDataURL } from "@/constants/constants";
+import SearchField from "@/components/tattooSearch/index";
+import Autocomplete from "react-google-autocomplete";
+import style from "@/pages/search/search.module.css";
+import { getStyles,} from "@/action/action";
+import { useGlobalState } from "@/context/Context";
 
-export default function ArtistDetail({ data }) {
+
+
+export default function Detail({ data }) {
+  const router =useRouter()
 
 
  const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
+
+  const {
+    state,
+
+    searchStyle,
+    findArtist,
+  } = useGlobalState();
+
+
+
+
+
+
 
 
   useEffect(() => {
@@ -30,6 +51,15 @@ export default function ArtistDetail({ data }) {
   }, []);
 
 
+  const handlePlaceSelected = async (place) => {
+
+    const { lat, lng } = place.geometry.location;
+    const latitude = lat();
+    const longitude = lng();
+    findArtist({ latitude, longitude } ,router);
+
+
+  };
 
 
 
@@ -40,8 +70,60 @@ export default function ArtistDetail({ data }) {
 
 
   return (
+    <>
+    <Header logo={'/tattooSearch.svg'} theme={'white'} isPosition={false} />
+
+
     <div className="page_wrapper">
       <div className="container">
+
+      <div className={style.filter_container}>
+          <div className={style.tattoo_search_wrap}>
+            <div className={style.search_form}>
+              <div className="search_form_wrap">
+                <SearchField />
+              </div>
+            </div>
+          </div>
+
+         <div className={style.main_wrap}>
+           
+              <div className={style.wrapper_block}>
+                <img
+                  src="/location-small.svg"
+                  alt="location"
+                  className={style.location_icon}
+                />
+                <Autocomplete
+                  apiKey={process.env.googlePlacesApiKey}
+                  onPlaceSelected={handlePlaceSelected}
+                />
+              </div>
+         
+
+            <div className={style.wrapper_filter}>
+              <img
+                src="/setting_tuning.svg"
+                alt="location"
+                className={style.filter_icon}
+              />
+              <select
+                onChange={(event) => searchStyle(event.target.value ,router)}
+                value={state.selectedStyle}
+              >
+                <option value="0">Choose Style</option>
+                {state.styleCollection.map((el) => (
+                  <option key={el._id} value={el._id}>
+                    {el.sort[0]}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div> 
+        </div>
+
+
+
         <div className={styles.search_profile_block}>
           <div className={styles.search_profile_pic}>
             <Image
@@ -81,6 +163,13 @@ export default function ArtistDetail({ data }) {
         <div className={styles.product_info_col}>
           <div className={styles.product_style}>
             <span className={styles.product_style_label}>Styles</span>
+
+
+
+
+
+
+            
 
             <ul className={styles.product_style_list}>
               {data.style.length > 0 &&
@@ -148,6 +237,7 @@ export default function ArtistDetail({ data }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

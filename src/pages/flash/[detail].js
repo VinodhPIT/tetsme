@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Header from '@/components/pageHeader/Header'
 import Image from "next/image";
 import styles from "@/pages/tattoo/tattoodetail.module.css";
 import { fetchTattooDetail } from "@/action/action";
@@ -10,13 +11,34 @@ import {
 } from "@/constants/constants";
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
+import style from "@/pages/search/search.module.css";
+import { getStyles} from "@/action/action";
+import { useGlobalState } from "@/context/Context";
+import SearchField from "@/components/tattooSearch/index";
+import Autocomplete from "react-google-autocomplete";
+import {useRouter} from 'next/router'
 
-export default function Flash({ data, status }) {
- 
+
+
+
+
+
+export default function Detail({ data, status }) {
+const router = useRouter()
+  const {
+    state,
+
+    searchStyle,
+    findArtist,
+  } = useGlobalState();
+
+
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
   const [getStyle, setStyle] = useState([]);
   const [location, setLocation] = useState([]);
+
+
 
   useEffect(() => {
     if (!data) {
@@ -40,9 +62,69 @@ export default function Flash({ data, status }) {
     return null;
   }
 
+
+
+
+
+
+
+
   return (
+<><Header logo={'/tattooSearch.svg'} theme={'white'} isPosition={false} />
+
+
     <div className="page_wrapper">
       <div className="container">
+
+      <div className={style.filter_container}>
+          <div className={style.tattoo_search_wrap}>
+            <div className={style.search_form}>
+              <div className="search_form_wrap">
+                <SearchField />
+              </div>
+            </div>
+          </div>
+
+         <div className={style.main_wrap}>
+           
+              {/* <div className={style.wrapper_block}>
+                <img
+                  src="/location-small.svg"
+                  alt="location"
+                  className={style.location_icon}
+                />
+                <Autocomplete
+                  apiKey={process.env.googlePlacesApiKey}
+                  onPlaceSelected={handlePlaceSelected}
+                />
+              </div> */}
+         
+
+            <div className={style.wrapper_filter}>
+              <img
+                src="/setting_tuning.svg"
+                alt="location"
+                className={style.filter_icon}
+              />
+              <select
+                onChange={(event) => searchStyle(event.target.value ,router)}
+                value={state.selectedStyle}
+              >
+                <option value="0">Choose Style</option>
+                {state.styleCollection.map((el) => (
+                  <option key={el._id} value={el._id}>
+                    {el.sort[0]}
+                  </option>
+                ))}
+              </select>
+
+
+
+            </div>
+          </div> 
+        </div>
+
+
         <div className={styles.product_detail_wrap}>
           <div className={styles.product_media}>
             <Image
@@ -79,7 +161,7 @@ export default function Flash({ data, status }) {
                   </div> */}
                 </div>
                 <div className={styles.search_profile_link}>
-                  <Link href="/contactus" className={styles.profile_getin}>
+                  <Link href={`/artist/${data.artist.slug}`} className={styles.profile_getin}>
                     Get in Touch
                   </Link>
                   <a
@@ -183,6 +265,7 @@ export default function Flash({ data, status }) {
         ) : null}
       </div>
     </div>
+    </>
   );
 }
 

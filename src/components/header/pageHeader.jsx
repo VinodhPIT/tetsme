@@ -3,13 +3,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SideDrawer from "@/components/sideDrawer/sideDrawer";
 import Image from 'next/image'
+import style from './header.module.css'
 
 
-export default function Header() {
-
-
-
-  
+export default function PageHeader({logo ,theme}) {
 
   const [toggle, setToggle] = useState(false);
 
@@ -43,12 +40,6 @@ export default function Header() {
       title: "Klarna",
       url: "/klarna",
     },
-
-    // {
-    //   id: 5,
-    //   title: "Join Artist",
-    //   url: "/joinartist",
-    // },
   ];
 
   const router = useRouter();
@@ -57,13 +48,13 @@ export default function Header() {
       <header className="header_wrapper">
         <div>
           <div className="container">
-            <nav className="header_navigation">
-              <div className="header_logo">
+            <nav className="navheader">
+              <div className="logo-Section">
                 <Link href={"/"} className="navbar_brand">
 
              <Image
-        src="/inckd-logo.svg"
-        alt="Picture of the author"
+        src={logo}
+        alt="Logo"
         width={105}
         height={31}
         priority
@@ -75,11 +66,11 @@ export default function Header() {
                 </Link>
               </div>
 
-              <div className="nav_block">
-                <ul className="nav main_nav navbar_collapse collapse">
+              <div className="nav-block">
+                <ul className={style.headerList}>
                   {links.map((link) => (
-                    <li key={link.id} className="nav_item">
-                      <Link href={link.url} style={{"color":"#fff"}} >{link.title}</Link>
+                    <li key={link.id} >
+                      <Link href={link.url} className={theme === "black" ? 'white-text' :'balck_text'}>{link.title}</Link>
                     </li>
                   ))}
                 </ul>
@@ -90,18 +81,17 @@ export default function Header() {
                   type="button"
                   onClick={() => router.push("/fortattooartists")}
                   className="btn btn_tattoo_art "
-                  style={{"background":"#000",color:"#fff"}}
                 >
                   For Tattoo Artists
                 </button>
 
 
                 <Image
-                 onClick={() => onToggle(true)} className="nav_btn_toggle"
+                 onClick={() => onToggle(true)}
         src="/Hamburger Menu.png"
         alt="Picture of the author"
-        width={32}
-        height={32}
+        width={30}
+        height={30}
         priority
         
       /> 
