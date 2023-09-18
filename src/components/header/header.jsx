@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 
 export default function Header({logo}) {
-  console.log(logo ,"knlckcnsdc")
+
   const [toggle, setToggle] = useState(false);
 
   const onToggle = () => {

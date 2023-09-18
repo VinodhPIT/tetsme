@@ -1,6 +1,6 @@
 // GlobalState.js
 import React, { createContext, useReducer, useContext } from "react";
-import { fetchCategoryData, fetchMultiData } from "@/action/action";
+import { fetchCategoryData, fetchMultiData  ,getStyles} from "@/action/action";
 import { Parameters } from "@/components/parameters/params";
 
 const initialState = {
@@ -21,12 +21,22 @@ const initialState = {
   searchData: [],
   serverLoad: false,
   toggle: false,
+
+ 
+
+
 };
 
 const reducer = (state, action) => {
   let data, currentTab, totalItems, searchKey, selectedStyle, pageNo;
 
+
   switch (action.type) {
+
+
+
+
+
     case "ON-LOAD":
       return {
         ...state,
@@ -144,6 +154,17 @@ const reducer = (state, action) => {
         pageNo: 0,
       };
 
+
+      case "STYLE_COLLECTION":
+        return {
+          ...state,
+          styleCollection:action.payload
+
+        }
+  
+
+
+
     default:
       return state;
   }
@@ -225,7 +246,7 @@ export const GlobalStateProvider = ({ children }) => {
 
   const searchStyle = async (payload, router) => {
     let url = `/search?term=${state.searchKey}&category=${
-      state.currentTab || "all"
+      state.currentTab 
     }&style=${payload}`;
 
     if (state.latitude !== "" && state.longitude !== "") {
@@ -253,7 +274,25 @@ export const GlobalStateProvider = ({ children }) => {
     } catch (error) {}
   };
 
-  const findArtist = async (payload) => {
+  const findArtist = async (payload ,router) => {
+
+
+    let url = `/search?term=${state.searchKey}&category=${
+      state.currentTab 
+    }&lon=${payload.longitude}&lat=${payload.latitude}`;
+
+    if (state.selectedStyle !== "") {
+
+     url = `style=${state.selectedStyle}`
+
+     
+    }
+
+    router.push(url);
+
+
+
+
     try {
       const requestData = {
         ...Parameters,
@@ -265,6 +304,10 @@ export const GlobalStateProvider = ({ children }) => {
       responseData = await fetchCategoryData(requestData);
       dispatch({ type: "FIND_ARTIST", payload: responseData });
     } catch (error) {}
+
+
+
+
   };
 
   const getHintsBySearch = async (payload) => {
@@ -314,35 +357,59 @@ export const GlobalStateProvider = ({ children }) => {
     } catch (error) {}
   };
 
-  const onClearText = async (payload,router ,load) => {
-    dispatch({ type: "IS_LOADING", payload: load });
+  // const onClearText = async (payload,router ,load) => {
+  //   dispatch({ type: "IS_LOADING", payload: load });
 
-    let url = `/search?term=${payload}&category=${
-      state.currentTab
-    }`;
-    if (state.selectedStyle !== "") {
-      url += `&style=${state.selectedStyle}`;
-    }
-    router.push(url)
+  //   let url = `/search?term=${payload}&category=${
+  //     state.currentTab
+  //   }`;
+  //   if (state.selectedStyle !== "") {
+  //     url += `&style=${state.selectedStyle}`;
+  //   }
+  //   router.push(url)
 
-    dispatch({ type: "SEARCH_QUERY", payload });
-    try {
-      const requestData = {
-        ...Parameters,
-        category: state.currentTab,
-        search_key: payload,
+  //   dispatch({ type: "SEARCH_QUERY", payload });
+  //   try {
+  //     const requestData = {
+  //       ...Parameters,
+  //       category: state.currentTab,
+  //       search_key: payload,
 
-      };
+  //     };
    
-      let responseData;
-      if (state.currentTab === "all" || state.currentTab == "") {
-        responseData = await fetchMultiData(requestData);
-      } else {
-        responseData = await fetchCategoryData(requestData);
-      }
-      dispatch({ type: "SEARCH_DATA", payload: responseData });
+  //     let responseData;
+  //     if (state.currentTab === "all" || state.currentTab == "") {
+  //       responseData = await fetchMultiData(requestData);
+  //     } else {
+  //       responseData = await fetchCategoryData(requestData);
+  //     }
+  //     dispatch({ type: "SEARCH_DATA", payload: responseData });
+  //   } catch (error) {}
+  // };
+
+
+
+
+
+  const styleCollection = async () => {
+    
+try {
+        let  responseData = await getStyles();
+  
+        console.log(responseData,"dck[dkc")
+      
+      dispatch({ type: "STYLE_COLLECTION", payload: responseData.rows.hits });
+
+
     } catch (error) {}
   };
+
+
+
+
+
+
+
 
 
 
@@ -357,7 +424,7 @@ export const GlobalStateProvider = ({ children }) => {
         findArtist,
         getHintsBySearch,
         searchData,
-        serverLoad,onClearText
+        serverLoad,styleCollection 
       }}
     >
       {children}

@@ -5,80 +5,146 @@
     padding: 0px 15px;
 
 }*/
+.main_wrap {}
+.page_search_wrapper {}
 
-.page_search_wrapper {
-
-}
-.filter_container{
-    float: left;width: 100%;
-margin-top: 28px;}
-.filter_container .search-bar{
-float: left;
-width: 50%;
-}
-.wrapper1{float: left;width: 80%;}
-
-.wrapper1 .input_txt {
-    border-radius: 49px;
+.filter_container {
+    float: left;
     width: 100%;
-    height: 52px;
-    padding: 12px 50px 12px 20px;
+    margin-top: 23px;
+}
+.filter_container .search-bar {
+    float: left;
+    width: 50%;
+}
+.tattoo_search_wrap {
+    float: left;
+    max-width: 100%;
+    width: calc(100% - 321px);
+    margin-right: 21px;
+}
+.search_form {
+    margin: 0;
+    max-width: 100%;
+}
+.wrapper_block {
+    float: left;
+    position: relative;
+    width: 100%;
+    max-width: 156px;
+    margin: 0 16px 0 0;
+}
+.wrapper_block .location_icon {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+}
+.wrapper_block input {
+    padding: 6px 20px 7px 31px;
+    border-radius: 34px;
+    border: 1px solid #101010;
     font-size: 18px;
     font-weight: 400;
-    line-height: 150%;
-    display: flex;
-    align-items: center;
-    color: #C3C3C3;
-    border: 0;
+    line-height: 27px;
+    width: 100%;
+    height: 40px;
+    color: #212121;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    outline: none;
 }
-.wrapper2{float: left;width:10%}
-.wrapper3{float: left;width:10%;}
+.wrapper_block input::placeholder {
+    color: #212121;
+    opacity: 1;
+}
 
-
-
+.wrapper_filter {
+    float: left;
+    position: relative;
+    width: 100%;
+    max-width: 128px;
+    margin: 0;
+}
+.wrapper_filter .filter_icon {
+    position: absolute;
+    top: 10px;
+    left: 17px;
+}
+.wrapper_filter select {
+    padding: 7px 10px 6px 48px;
+    border-radius: 31px;
+    border: 1px solid #E1E4E8;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    height: 40px;
+    color: #212121;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+}
 
 /***** */
 .grid_more_view {
     text-align: center;
     margin: 60px 0;
 }
+
 .grid_more_view p {
     display: inline-block;
     font-size: 18px;
     font-weight: 400;
     line-height: 21px;
 }
-
 .btn_wrapper {
     width: 100%;
 }
-
-
-
-.tabSection  ul {padding: 0;    margin: 0; text-align: center;
-    border-bottom: 2px solid #eee;     margin-bottom: 27px;
+.tabSection ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 27px;
 }
-
-.tabSection  ul > li  {list-style: none; display:inline-block ;   padding: 16px 36px; 
+.tabSection ul>li {
+    list-style: none;
+    display: inline-block;
+    padding: 16px 36px;
 }
-.tabBox{
-
-
-
+.tabBox {
     display: FLEX;
     align-items: center;
     gap: 11px;
-
 }
-
 .tabSection button {
-    background-color: transparent; border: 0;     padding: 10px 40px;
+    background-color: transparent;
+    border: 0;
+    padding: 10px 40px;
+}
+.activeTab {
+    border-bottom: 2px solid #000;
+    color: var(--black)
+}
+.inActivetab {
+    color: var(--gray-400)
 }
 
-
-.activeTab{
-    border-bottom: 2px solid #000; color:var(--black)
-
+@media screen and (max-width: 640px) {
+    .filter_container {
+        display: flex;
+        flex-direction: column;
+    }
+    .tattoo_search_wrap {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 21px;
+    }
+    .main_wrap {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }   
 }
-.inActivetab{color:var(--gray-400)}
-

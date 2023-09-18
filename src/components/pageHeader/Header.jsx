@@ -86,16 +86,25 @@ export default function PageHeader({logo ,theme ,isPosition}) {
 </button>
 
 
+
+{theme==="white" ? 
                 <Image
                  onClick={() => onToggle(true)}
-        src="/Hamburger Menu.png"
-        alt="Picture of the author"
+        src="/blackHamburger.svg"
+        alt="hamburger"
         width={30}
         height={30}
         priority
         
-      /> 
-
+      />   :  
+<Image
+                 onClick={() => onToggle(true)}
+        src="/Hamburger Menu.png"
+        alt="hamburger"
+        width={30}
+        height={30}
+        priority/>
+                  }
            
 
               </div>

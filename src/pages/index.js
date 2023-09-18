@@ -25,7 +25,9 @@ SwiperCore.use([Autoplay]);
 
 export default function Home() {
 
-  const { state, serverLoad } = useGlobalState();
+  const { state, serverLoad ,styleCollection} = useGlobalState();
+
+
   // href={`}
 
   const imagePaths = [
@@ -42,6 +44,7 @@ export default function Home() {
  
 
   useEffect(() => {
+    styleCollection()
     const timer = setInterval(changeImage, 2000);
     return () => clearInterval(timer);
   }, []);
