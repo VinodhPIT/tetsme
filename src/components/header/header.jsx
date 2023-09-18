@@ -57,8 +57,8 @@ export default function Header() {
       <header className="header_wrapper">
         <div>
           <div className="container">
-            <nav className="navs">
-              <div className="logo-Section">
+            <nav className="header_navigation">
+              <div className="header_logo">
                 <Link href={"/"} className="navbar_brand">
 
              <Image
@@ -75,7 +75,7 @@ export default function Header() {
                 </Link>
               </div>
 
-              <div className="nav-block">
+              <div className="nav_block">
                 <ul className="nav main_nav navbar_collapse collapse">
                   {links.map((link) => (
                     <li key={link.id} className="nav_item">
@@ -96,11 +96,11 @@ export default function Header() {
 
 
                 <Image
-                 onClick={() => onToggle(true)}
+                 onClick={() => onToggle(true)} className="nav_btn_toggle"
         src="/Hamburger Menu.png"
         alt="Picture of the author"
-        width={30}
-        height={30}
+        width={32}
+        height={32}
         priority
         
       /> 

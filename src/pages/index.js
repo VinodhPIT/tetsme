@@ -7,6 +7,7 @@ import { useGlobalState } from "@/context/Context";
 import HomLoading from "@/components/homeLoading";
 import SearchField from "@/components/searchField";
 import Header from "@/components/header/header";
+import ImageSlider from "@/components/ImageSlider";
 import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
@@ -45,22 +46,37 @@ export default function Home() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
   };
 
+  const [isMobileView, setIsMobileView] = useState(false);
+  useEffect(() => {
+    // Check the window width and set isMobileView accordingly
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 767.98); // Adjust the breakpoint as needed
+    };
+    // Initially check the width and add a resize event listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+
+  }, []);
+
   return (
     <div className="page_wrapper tete">
       <div className="header_cookies">
         <div className="header_cookie_img">
           <img src="./logo-cookies.svg" alt="" />
         </div>
-        <div className="header_cookie_txt ">
+        <div className="header_cookie_txt">
           <p>
             <span>
-              Get tattoo now, pay later.{" "}
+              Get tattoo now, pay later.</span>{" "}
               <span className="header_cookie_mob">
                 That&apos;s right, there&apos;s a new way to get tattooed
-                smoooth!
-              </span>
-              <a href="#">Learn more</a>
-            </span>{" "}
+                smoooth! <a href="#">Learn more</a>
+              </span>             
+            {" "}
           </p>
         </div>
       </div>
@@ -82,7 +98,7 @@ export default function Home() {
                   <h1 class="color_aero_blue">
                     <span>
                       Book your dream{" "}
-                      <span className="highlight_border">tattoo</span> now!
+                      <span className={styles.highlight_border}>tattoo</span> now!
                     </span>
                   </h1>
                 </div>
@@ -111,7 +127,7 @@ export default function Home() {
                     </form> */}
                     <div className="trend_list_wrap">
                       <span className="trend_list_label">
-                        <p>Search by</p>
+                        <p>Search by </p>
                         <h6>Categories</h6>
                       </span>
                       <ul className="trend_list">
@@ -178,7 +194,7 @@ export default function Home() {
             <div class="text_box_wrap right">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_03">
                       Find the right Artist for your next Tattoo!
                     </h2>
@@ -249,7 +265,7 @@ export default function Home() {
                   <div class="klarna_bg">
                     <img src="./klarna.svg" alt="" />
                   </div>
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_02">Tattoo now, Pay later</h2>
                     <p>
                       Get tattoo now, pay later. That&apos;s right, there&apos;s
@@ -270,7 +286,7 @@ export default function Home() {
               <div class="text_box_wrap right block_bg_black">
                 <div class="img_text_box_inner">
                   <div class="text_box_content justify_content_start">
-                    <div class="text_box_content_inner">
+                    <div class="text_box_content_inner m_pr_0">
                       <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
                       <p>
                         We hand-pick every tattoo artist to ensure your tattoo
@@ -414,12 +430,12 @@ export default function Home() {
 
                  
 
-                  <div class="text_box_content_inner">
-                    <h2 class="letter_spacing_025">Whats your Style?</h2>
+                  <div class="text_box_content_inner w_100pc pr_0">
+                    <h2 class="letter_spacing_025">Whats your <br />Style?</h2>
                     <br />
                     <br />
                     <br />
-                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m">
+                    <a href="#" class="btn btn_secondary btn_xxl custom_fs_20">
                       Check the Styleguide
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -434,7 +450,7 @@ export default function Home() {
             <div class="text_box_wrap right block_bg_black">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start align_item_end txt-btm-7pc">
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_05">
                       Boost your <br />
                       business with <br />
@@ -479,7 +495,7 @@ export default function Home() {
            <div class="text_box_wrap right app_download_box_wrap block_bg_orange" >
               <div class="img_text_box_inner" >
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <ul class="download_app">
                       <li class="download_app_title">
                         <h6>Download the App & Explore more!</h6>
@@ -496,47 +512,50 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                </div>
-                <div class="img_box_wrap"  >
-                  <ul class="app_download_img_list img_box_img_m20pc">
-                    <li >
-                      <Image
-                        priority={true}
-                        src="/img-mobile-new-01.png"
-                        width={218}
-                        height={1446}
-                        alt="Picture of the author"
-                        placeholder="empty"
-                        className="image_author"
-                      />
-                    </li>
-                    <li>
-                      <Image
-                        priority={true}
-                        src="/img-mobile-new-01.png"
-                        width={218}
-                        height={446}
-                        alt="Picture of the author"
-                        placeholder="empty"
-                        layout="responsive"
-                        className="image_author"
-                      />
-                    </li>
-                    <li>
-                      <Image
-                        priority={true}
-                        src="/img-mobile-new-01.png"
-                        width={218}
-                        height={446}
-                        alt="Picture of the author"
-                        placeholder="empty"
-                        layout="responsive"
-                        className="image_author"
-                      />
-                    </li>
-                  </ul>
-                </div>
+                </div>  
+                  {!isMobileView ? (
+                    <div class="img_box_wrap">
+                      <ul class="app_download_img_list img_box_img_m20pc">
+                        <li>
+                          <Image
+                            priority={true}
+                            src="/img-mobile-new-01.png"
+                            width={218}
+                            height={1446}
+                            alt="Picture of the author"
+                            placeholder="empty"
+                            className="image_shadow_bg"
+                          />
+                        </li>
+                        <li>
+                          <Image
+                            priority={true}
+                            src="/img-mobile-new-01.png"
+                            width={218}
+                            height={446}
+                            alt="Picture of the author"
+                            placeholder="empty"
+                            layout="responsive"
+                            className="image_shadow_bg"
+                          />
+                        </li>
+                        <li>
+                          <Image
+                            priority={true}
+                            src="/img-mobile-new-01.png"
+                            width={218}
+                            height={446}
+                            alt="Picture of the author"
+                            placeholder="empty"
+                            layout="responsive"
+                            className="image_shadow_bg"
+                          />
+                        </li>
+                      </ul>
+                    </div>
+                    ) : ("")}
               </div>
+              {isMobileView ? <ImageSlider></ImageSlider> : ""}
             </div> 
             
           </div>

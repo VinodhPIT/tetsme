@@ -1,33 +1,71 @@
-
-.sideDrawer{
+.sideDrawer {
     background: #fff;
     position: absolute;
-    width: 320px; padding: 100px 15px 15px 15px;
+    /* width: 320px; */
+    padding: 120px 15px 15px 15px;
     height: 100%;
-    z-index: 99;     top: 0;
-    right: 0}
+    z-index: 99;
+    top: 0;
+    right: 0;
+    max-width: 633px;
+    width: 100%;
+}
 
-    .sideDrawer ul {padding: 0;}
-    .menuList li {display:block;list-style-type:none ;text-align: center; padding-bottom: 35px;}
-    .menuList li a {font-size: 16px;color: #000;font-weight: 600;}
+.sideDrawer ul {
+    padding: 0;
+    padding-left: 22%;
+}
 
-    .closeWrapper {color: transparent;
-        position: absolute;
-        right: 9px;
-        top: 13px;}
+.menuList li {
+    display: block;
+    list-style-type: none;
+    text-align: left;
+    padding: 18px 0;
+}
+
+.menuList li a {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+    color: #000;
+    font-weight: 600;
+}
+
+.closeWrapper {
+    color: transparent;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 991.98px) {
+    .sideDrawer { 
+        width: 100%;
+    }
+    
+    .sideDrawer ul {
+        padding-left: 0;
+    }
+    
+    .menuList li {
+        padding: 25px 0;
+        text-align: center;
+    }    
+    .menuList li a {
+        font-size: 24px;
+        line-height: 24px;
+        letter-spacing: -0.96px;
+    }    
+   
+
+}
 
 
-
-
-        /* @media screen and (max-width:340px) {
-
-
-.sideDrawer{display:none}
-
-            
-
-
-        } */
-
-
-
+@media screen and (max-width: 767.98px) {
+    .sideDrawer {       
+        padding: 60px 15px 15px 15px;
+        max-width: 100%;
+        width: 100%;
+    } 
+}
