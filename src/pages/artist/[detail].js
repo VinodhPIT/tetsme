@@ -1,12 +1,12 @@
 import React,{useState ,useEffect} from "react";
 import Image from "next/image";
 import styles from "./artistdetail.module.css";
-
+import Header from '@/components/pageHeader/Header'
 import { useRouter } from "next/router";
 import { fetchArtistDetail } from "@/action/action";
 import { blurDataURL } from "@/constants/constants";
 
-export default function ArtistDetail({ data }) {
+export default function Detail({ data }) {
 
 
  const [loading, setLoading] = useState(false);
@@ -40,6 +40,10 @@ export default function ArtistDetail({ data }) {
 
 
   return (
+    <>
+    <Header logo={'/tattooSearch.svg'} theme={'white'} isPosition={false} />
+
+
     <div className="page_wrapper">
       <div className="container">
         <div className={styles.search_profile_block}>
@@ -148,6 +152,7 @@ export default function ArtistDetail({ data }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

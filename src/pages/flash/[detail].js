@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Header from '@/components/pageHeader/Header'
 import Image from "next/image";
 import styles from "@/pages/tattoo/tattoodetail.module.css";
 import { fetchTattooDetail } from "@/action/action";
@@ -11,7 +12,7 @@ import {
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
 
-export default function Flash({ data, status }) {
+export default function Detail({ data, status }) {
  
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
@@ -41,6 +42,9 @@ export default function Flash({ data, status }) {
   }
 
   return (
+<><Header logo={'/tattooSearch.svg'} theme={'white'} isPosition={false} />
+
+
     <div className="page_wrapper">
       <div className="container">
         <div className={styles.product_detail_wrap}>
@@ -183,6 +187,7 @@ export default function Flash({ data, status }) {
         ) : null}
       </div>
     </div>
+    </>
   );
 }
 

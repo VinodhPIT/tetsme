@@ -3,10 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SideDrawer from "@/components/sideDrawer/sideDrawer";
 import Image from 'next/image'
+import style from './header.module.css'
 
 
-export default function Header({logo}) {
-  console.log(logo ,"knlckcnsdc")
+export default function PageHeader({logo ,theme}) {
+
   const [toggle, setToggle] = useState(false);
 
   const onToggle = () => {
@@ -52,7 +53,7 @@ export default function Header({logo}) {
                 <Link href={"/"} className="navbar_brand">
 
              <Image
-        src="/inckd-logo.svg"
+        src={logo}
         alt="Logo"
         width={105}
         height={31}
@@ -66,10 +67,10 @@ export default function Header({logo}) {
               </div>
 
               <div className="nav-block">
-                <ul className="nav main_nav navbar_collapse collapse">
+                <ul className={style.headerList}>
                   {links.map((link) => (
-                    <li key={link.id} className="nav_item">
-                      <Link href={link.url} className="textWhite">{link.title}</Link>
+                    <li key={link.id} >
+                      <Link href={link.url} className={theme === "black" ? 'white-text' :'balck_text'}>{link.title}</Link>
                     </li>
                   ))}
                 </ul>
@@ -79,8 +80,7 @@ export default function Header({logo}) {
                 <button
                   type="button"
                   onClick={() => router.push("/fortattooartists")}
-                  className="btn btn_tattoo_art"
-                  style={{"background":"#000" ,color:"#fff"}}
+                  className="btn btn_tattoo_art "
                 >
                   For Tattoo Artists
                 </button>

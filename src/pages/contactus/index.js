@@ -1,6 +1,8 @@
 import React from 'react'
 import _Form from '@/components/form/form'
 import Head from "next/head";
+import Header from '@/components/pageHeader/Header'
+
 
 
 export default function Contact() {
@@ -8,6 +10,13 @@ export default function Contact() {
 
 
   return (  
+<>
+<Header logo={'/inckd-logo.svg'} theme={'black'} isPosition={true}/>
+
+
+<main>
+
+
     <div className="page-wrapper">
       <section class="forms_section default_form_block contact_form_block">
         <div class="container">
@@ -28,6 +37,7 @@ export default function Contact() {
         </div>
       </section>
     </div>
-
+    </main>
+    </>
   )
 }

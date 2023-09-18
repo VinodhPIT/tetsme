@@ -5,8 +5,10 @@ import SideDrawer from "@/components/sideDrawer/sideDrawer";
 import Image from 'next/image'
 
 
-export default function Header({logo}) {
-  console.log(logo ,"knlckcnsdc")
+export default function PageHeader({logo ,theme ,isPosition}) {
+
+
+
   const [toggle, setToggle] = useState(false);
 
   const onToggle = () => {
@@ -44,7 +46,7 @@ export default function Header({logo}) {
   const router = useRouter();
   return (
     <>
-      <header className="header_wrapper">
+      <header className= {isPosition === true ? "header_wrapper" : null}>
         <div>
           <div className="container">
             <nav className="navheader">
@@ -52,7 +54,7 @@ export default function Header({logo}) {
                 <Link href={"/"} className="navbar_brand">
 
              <Image
-        src="/inckd-logo.svg"
+        src={logo}
         alt="Logo"
         width={105}
         height={31}
@@ -69,21 +71,19 @@ export default function Header({logo}) {
                 <ul className="nav main_nav navbar_collapse collapse">
                   {links.map((link) => (
                     <li key={link.id} className="nav_item">
-                      <Link href={link.url} className="textWhite">{link.title}</Link>
+                      <Link href={link.url} className= {theme==="black" ? 'textWhite' :"textBlack"}>{link.title}</Link>
                     </li>
                   ))}
                 </ul>
               </div>
 
               <div className="header_right">
-                <button
-                  type="button"
-                  onClick={() => router.push("/fortattooartists")}
-                  className="btn btn_tattoo_art"
-                  style={{"background":"#000" ,color:"#fff"}}
-                >
-                  For Tattoo Artists
-                </button>
+              <button
+  type="button"
+  onClick={() => router.push("/fortattooartists")}
+  className={`btn btn_tattoo_art ${theme === "black" ? 'bgWhite' : 'bgBlack'}`}>
+  For Tattoo Artists
+</button>
 
 
                 <Image

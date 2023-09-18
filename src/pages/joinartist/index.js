@@ -1,8 +1,20 @@
 import React from "react";
 import _Form from "@/components/artistForm/form";
+import Header from '@/components/pageHeader/Header'
 
 export default function JoinArtist() {
+
+
+
+
   return (
+
+<>
+
+<Header logo={'/inckd-logo.svg'} theme={'black'} isPosition={true}  />
+
+
+
     <div className="page-wrapper">
       <section class="forms_section default_form_block artist_tattoo_form_block">
         <div class="container">
@@ -39,5 +51,7 @@ export default function JoinArtist() {
         </div>
       </section>
     </div>
+    </>
+
   );
 }
