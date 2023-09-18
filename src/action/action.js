@@ -8,10 +8,16 @@ export const fetchCategoryData = async (params) => {
       `/${params.category}/search`,
       searchParam(params)
     );
+
+
+  
     return reposneCategory; // Return the actual data
+
+
     }
    catch (error) {
-    console.log(error ,"error")
+    console.log(error ,"Error")
+   
     return [];
   }
 };
@@ -103,7 +109,8 @@ try {
   };
   
 } catch (error) {
-  console.log(error,"Error")
+  console.log(error ,"Error")
+
 }
 
  
@@ -120,7 +127,20 @@ export const fetchTattooDetail = async (params) => {
     return reponse;
     }
    catch (error) {
-    console.log(error ,"error")
+
+    return [];
+  }
+};
+
+
+export const fetchArtistDetail = async (slug) => {
+ 
+  try {
+    const reponse = await getApiCall(`/artist/detail/${slug}`);
+    return reponse;
+    }
+   catch (error) {
+
     return [];
   }
 };

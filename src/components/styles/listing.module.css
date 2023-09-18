@@ -11,7 +11,7 @@
   height: 208px;
   border-radius: 8px;
 }*/
-
+.pageContainer{float: left;width: 100%;}
 
 .custom_adv_block_1 {
   padding: 9px;
@@ -354,6 +354,10 @@
   position: relative;
   height: 230px;
 }
+
+.blockCenter{display: flex;  justify-content: center; align-items:center ; min-height :52vh ;text-align:center}
+  
+
 
 @media screen and (max-width: 768px) {
   .custom_adv_block_1 .custom_adv_content h6,

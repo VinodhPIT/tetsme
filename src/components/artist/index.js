@@ -3,7 +3,7 @@ import Image from "next/image";
 import PageLoad from "@/components/pageLoad";
 import { useGlobalState } from "@/context/Context";
 import styles from "@/components/styles/listing.module.css";
-
+import NoData from '@/components/noDatafound/noData'
 import Link from "next/link";
 import {blurDataURL} from  '@/constants/constants'
 
@@ -11,22 +11,19 @@ export default function Artist({ data }) {
   const { state } = useGlobalState();
 
   return (
+    <div className={styles.pageContainer}>
+
+{state.loading ? <div className={styles.blockCenter}>  <PageLoad /> </div>  : data.length === 0 ?   <div className={styles.blockCenter}> <NoData/> </div>  :
+
       <div className={styles.grid_wrapper}>
-        {state.loading ? (
-          <PageLoad />
-        ) : data.length === 0 ? (
-          <h4>No Data Found</h4>
-        ) : (
+        
+    {
           data.map((item, idx) => {
             const key = item._index === "ad" ? `ad-${idx}` : item._id;
-
-            // const gridItemClass =
-            //   item._index === "ad" ? styles.gridItem : styles.spanTwo;
-
             return item._index === "ad" ? (
              null
             ) : (
-                <Link href={`/artist/${item._source.slug}`} className={styles.listing_gridItem }>                   
+                <Link href={`/artist/${item._source.slug}`} className={styles.listing_gridItem } key={key}>                   
                     <div className={styles.grid_item_block}>
                       <div className={styles.grid_img_wrap}>
                         <div className={styles.grid_img_bg}>
@@ -69,7 +66,9 @@ export default function Artist({ data }) {
                 </Link>
             );
           })
-        )}
+        }
+      </div>
+}
       </div>
   );
 }

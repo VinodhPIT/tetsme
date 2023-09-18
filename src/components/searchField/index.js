@@ -1,5 +1,5 @@
 ///
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { debounce } from "lodash";
 import style from "./search.module.css";
 import { useRouter } from "next/router";
@@ -7,14 +7,13 @@ import { useGlobalState } from "@/context/Context";
 import { v4 as uuidv4 } from "uuid";
 
 function SearchBar({ isPage }) {
+  const { state, getHintsBySearch, searchData, serverLoad ,onClearText } = useGlobalState();
 
-
-  
-  const { state, getHintsBySearch, searchData } = useGlobalState();
   const [searchState, setSearchState] = useState({
     query: "",
     showDropdown: false,
     searchHistory: [],
+    clearText:false
   });
 
   const inputRef = useRef(null);
@@ -88,8 +87,11 @@ function SearchBar({ isPage }) {
     e.preventDefault();
     if (isPage) {
       router.push(`/search?term=${searchState.query}&category=all`);
+      serverLoad(true);
     } else {
-      searchData(searchState.query, router);
+      serverLoad(true);
+
+      searchData(searchState.query, router, true);
     }
     addToSearchHistory(searchState.query);
   };
@@ -152,6 +154,8 @@ function SearchBar({ isPage }) {
               setSearchState((prevSearchState) => ({
                 ...prevSearchState,
                 showDropdown: true,
+                clearText:true
+
               }))
             }
             value={searchState.query}
@@ -205,7 +209,7 @@ function SearchBar({ isPage }) {
 
                     cursor: "pointer",
                     padding: "10px",
-          
+
                     marginBottom: "10px",
                   }}
                   key={index}
@@ -217,9 +221,10 @@ function SearchBar({ isPage }) {
               {state.errorMessage && (
                 <div>
                   <h4 className={style.searchTitle}>Results</h4>
-                  <p>We couldn&apos;t find any results for &lt;&lt;&lt; {searchState.query} &gt;&gt;&gt;</p>
-
-
+                  <p>
+                    We couldn&apos;t find any results for &lt;&lt;&lt;{" "}
+                    {searchState.query} &gt;&gt;&gt;
+                  </p>
                 </div>
               )}
               {searchState.searchHistory.length > 0 && (
@@ -232,11 +237,11 @@ function SearchBar({ isPage }) {
                         onClick={() => clear(el)}
                         className={style.searcheditems}
                       >
-                            <div className={style.searchLabel} >
-                            <p  className={style.trim}>{el.name}</p>
-                            </div>
+                        <div className={style.searchLabel}>
+                          <p className={style.trim}>{el.name}</p>
+                        </div>
 
-                        <div className={style.clearhistory} >x </div>
+                        <div className={style.clearhistory}>x </div>
                       </div>
                     ))}
                   </div>
@@ -254,6 +259,7 @@ function SearchBar({ isPage }) {
             </div>
           )}
         </div>
+        {searchState.query &&  <button onClick={()=>onClearText()}>X</button> }
       </form>
     </div>
   );

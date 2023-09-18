@@ -90,14 +90,14 @@
 .product_detail_wrap {
     display: flex;
 }
-.product_media {
+.product_media {position: relative;
     width: 50%;
 }
-.product_media img {
+/* .product_media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
 .product_info_col {
     padding-left: 36px;
     padding-right: 5.5%;
@@ -158,7 +158,7 @@
     line-height: 21px;
     color: var(--black);
     display: inline-block;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 0;display: block;
 }
 .product_loc_title img {
     margin-right: 8px;
@@ -390,7 +390,8 @@ ul.download_app li.download_app_title h6 {
   .grid_wrapper_tattoo {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 2px;
+    grid-gap: 2px;margin-top: 18px;
+
   }
   .grid_wrapper_tattoo .listing_gridItem {
     position: relative;

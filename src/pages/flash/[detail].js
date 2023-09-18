@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "./tattoodetail.module.css";
+import styles from "@/pages/tattoo/tattoodetail.module.css";
 import { fetchTattooDetail } from "@/action/action";
 import PageLoad from "@/components/pageLoad";
 import {
@@ -11,8 +11,8 @@ import {
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
 
-export default function Detail({ data, status }) {
-  
+export default function Flash({ data, status }) {
+ 
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
   const [getStyle, setStyle] = useState([]);
@@ -36,10 +36,6 @@ export default function Detail({ data, status }) {
     }
   }, []);
 
-
-
-
-  
   if (!data) {
     return null;
   }
@@ -50,7 +46,7 @@ export default function Detail({ data, status }) {
         <div className={styles.product_detail_wrap}>
           <div className={styles.product_media}>
             <Image
-              alt={data.style.name}
+             alt={data.style.name}
               priority
               src={data.tattoo.image}
               layout="fill"
@@ -78,9 +74,9 @@ export default function Detail({ data, status }) {
                   <div className={styles.search_profile_name}>
                     {data.artist.artist_name}
                   </div>
-                  <div className={styles.search_profile_details}>
-                    Switzerland, Germany
-                  </div>
+                  {/* <div className={styles.search_profile_details}>
+                   dd Switzerland, Germany
+                  </div> */}
                 </div>
                 <div className={styles.search_profile_link}>
                   <Link href="/contactus" className={styles.profile_getin}>
@@ -127,14 +123,29 @@ export default function Detail({ data, status }) {
               </div>
             </div>
 
-            {/* <div className={styles.product_price_block}>
+            <div className={styles.product_price_block}>
               <div className={styles.product_price_wrap}>
-                <span className={styles.product_price_label}>Fixed price</span>                
-                <span className={styles.product_price_value}>CHF 200</span>
-                <span className={styles.product_price_to}>to</span>
-                <span className={styles.product_price_value}>CHF 400</span>
+
+
+
+              {data.tattoo.max_price !== null && data.tattoo.min_price !== null ? (
+  <div>
+    <span className={styles.product_price_label}>Fixed price</span>
+    <span className={styles.product_price_value}>{data.tattoo.max_price}</span>
+    <span className={styles.product_price_to}>to</span>
+    <span className={styles.product_price_value}>{data.tattoo.min_price}</span>
+  </div>
+) : (
+  <div>
+    <span className={styles.product_price_label}>This Flash doesn&apos;t have a price</span>
+  </div>
+)}
+
+             
+
+
               </div>
-            </div> */}
+            </div>
             <ul className={styles.download_app}>
               <li className={styles.download_app_title}>
                 <h6>Download our app from</h6>
@@ -194,6 +205,7 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
+    console.log(error, "error");
     return {
       props: {
         data: null,
