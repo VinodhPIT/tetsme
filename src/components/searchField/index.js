@@ -7,11 +7,13 @@ import { useGlobalState } from "@/context/Context";
 import { v4 as uuidv4 } from "uuid";
 
 function SearchBar({ isPage }) {
-  const { state, getHintsBySearch, searchData } = useGlobalState();
+  const { state, getHintsBySearch, searchData, serverLoad ,onClearText } = useGlobalState();
+
   const [searchState, setSearchState] = useState({
     query: "",
     showDropdown: false,
     searchHistory: [],
+    clearText:false
   });
 
   const inputRef = useRef(null);
@@ -85,8 +87,11 @@ function SearchBar({ isPage }) {
     e.preventDefault();
     if (isPage) {
       router.push(`/search?term=${searchState.query}&category=all`);
+      serverLoad(true);
     } else {
-      searchData(searchState.query, router);
+      serverLoad(true);
+
+      searchData(searchState.query, router, true);
     }
     addToSearchHistory(searchState.query);
   };
@@ -148,6 +153,9 @@ function SearchBar({ isPage }) {
             onFocus={() =>
               setSearchState((prevSearchState) => ({
                 ...prevSearchState,
+               
+                clearText:true
+
               }))
             }
             value={searchState.query}
@@ -251,6 +259,7 @@ function SearchBar({ isPage }) {
             </div>
           )}
         </div>
+        {searchState.query &&  <button onClick={()=>onClearText()}>X</button> }
       </form>
     </div>
   );

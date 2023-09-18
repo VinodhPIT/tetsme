@@ -1,6 +1,6 @@
 // actions.js//
 import { searchParam, prepareRequest2 } from "@/helpers/helper";
-import { postApiCall } from "@/utils/apiUtils";
+import { postApiCall ,getApiCall } from "@/utils/apiUtils";
 
 export const fetchCategoryData = async (params) => {
   try {
@@ -8,10 +8,16 @@ export const fetchCategoryData = async (params) => {
       `/${params.category}/search`,
       searchParam(params)
     );
+
+
+  
     return reposneCategory; // Return the actual data
+
+
     }
    catch (error) {
-    console.log(error ,"error")
+    console.log(error ,"Error")
+   
     return [];
   }
 };
@@ -103,8 +109,38 @@ try {
   };
   
 } catch (error) {
-  console.log(error,"Error")
+  console.log(error ,"Error")
+
 }
 
  
 }
+
+
+
+
+
+
+export const fetchTattooDetail = async (params) => {
+  try {
+    const reponse = await getApiCall(`/tattoo/detail?tattoo_uid=${params}`);
+    return reponse;
+    }
+   catch (error) {
+
+    return [];
+  }
+};
+
+
+export const fetchArtistDetail = async (slug) => {
+ 
+  try {
+    const reponse = await getApiCall(`/artist/detail/${slug}`);
+    return reponse;
+    }
+   catch (error) {
+
+    return [];
+  }
+};

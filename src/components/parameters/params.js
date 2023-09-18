@@ -14,11 +14,4 @@ export { Parameters }; // Named export
 
 
 
-const tabs = [
-    { id: "all", label: "All" },
-    { id: "tattoo", label: "Tattoo" },
-    { id: "flash", label: "Flash" },
-    { id: "artist", label: "Artist" }
-];
 
-export { tabs }; // Named export

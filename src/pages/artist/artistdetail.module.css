@@ -1,0 +1,255 @@
+.search_profile_block {
+    display: flex;
+    margin: 0;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: #F8F8F8;
+}
+.search_profile_pic {
+    width: 88px;
+    height: 88px;
+    display: inline-block;
+    margin-right: 15px;
+}
+.search_profile_pic img {
+    border-radius: 50%;
+    height: 88px;
+    object-fit: cover;
+    object-position: center;
+    width: 88px
+}
+.search_profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.search_profile_content {
+
+}
+.search_profile_name {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 27px;
+    color: #212121;
+    width: 100%;
+    display: inline-block;
+}
+.search_profile_details {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #212121;
+    width: 100%;
+    display: inline-block;
+}
+.search_profile_link {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+.search_profile_link .profile_getin {
+    order: 1;
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 6px 32px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    border: 0;
+    background: var(--black-450);
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    min-width: 125px;
+}
+.search_profile_link .profile_getin:hover {
+    color: var(--white);
+    background: var(--gray-600);
+    text-decoration: none;
+}
+.search_profile_link .profile_bookmark {
+    order: 3;
+}
+.search_profile_link .profile_share {
+    order: 2;
+}
+
+.product_info_col {
+    width: 100%;
+    padding-top: 20px;
+}
+.product_info_wrap {
+    display: flex;
+}
+.product_info_wrap .product_detail_location {
+    margin-top: 25px;
+    width: 50%;
+}
+.product_location_label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--black);
+    width: 100%;
+    display: inline-block;
+    margin: 0 0 16px 0;
+}
+.product_location_list {
+
+}
+.product_loc_title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: var(--black);
+    display: inline-block;
+    margin: 0 0 10px 0;
+}
+.product_loc_title img {
+    margin-right: 8px;
+    position: relative;
+    top: -1px;
+}
+.product_loc_title svg {
+    margin-right: 8px;
+    position: relative;
+    top: -1px;    
+}
+
+.product_info_wrap .product_style {
+    margin-top: 25px;
+    width: 50%;
+}
+.product_style_label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--black);
+    width: 100%;
+    display: inline-block;
+}
+.product_style_list {
+    padding: 0;
+    margin: 14px 0 0px 0;
+    list-style: none;
+}
+.product_style_list li {
+    display: inline-block;
+    border-radius: 8px;
+    background: var(--gray-light-150);
+    padding: 6px 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: var(--black);
+    margin: 0 16px 16px 0;
+}
+.product_style_list li a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+
+/* .tattoodetail_grid_wrapper_tattoo__c0pBi {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 2px;
+    margin-top: 18px;
+}
+.tattoodetail_grid_wrapper_tattoo__c0pBi .tattoodetail_listing_gridItem__J2PvN {
+    position: relative;
+    height: 230px;
+}
+ */
+
+
+@media screen and (max-width: 380px) {
+    .search_profile_pic {       
+        margin-right: 10px;
+    }
+    .search_profile_link .profile_getin {
+        padding: 6px 10px;
+        min-width: 100px;
+    }    
+}
+
+@media screen and (max-width: 767.98px) {
+    .search_profile_block {
+        background: #fff;
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .search_profile {
+        flex-flow: column;
+        align-items: flex-start;
+    }
+    .search_profile_name {
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .search_profile_details {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+    }    
+    .search_profile_link {
+        margin-top: 8px;
+        grid-gap: 16px;
+    }
+    .search_profile_link .profile_bookmark img,
+    .search_profile_link .profile_share img {
+        width: 16px;
+        height: 16px;
+    }    
+
+    .product_info_col {
+        margin-right: -15px;
+        margin-left: -15px;
+        width: calc(100% + 30px);
+        padding-bottom: 16px;
+        background-color: var(--gray-light-150);
+    }
+    .product_style {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .product_info_wrap {
+        flex-direction: column;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .product_info_wrap .product_detail_location {
+        border-top: 1px solid var(--gray-light-300);
+        padding-top: 20px;
+        margin-top: 8px;
+        width: 100%;
+        border-bottom: 1px solid var(--gray-light-300);
+        padding-bottom: 10px;
+    }
+    .product_info_wrap .product_style {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 20px;
+        width: 100%;
+    } 
+    .product_style_list li {
+        background: var(--white);
+    }
+
+}
+@media screen and (min-width: 768px) and (max-width: 991.98px) {
+    .search_profile_link .profile_getin {
+        padding: 6px 15px;
+    }
+}
