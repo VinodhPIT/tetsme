@@ -6,7 +6,7 @@ const commonTabData = [
 
 const tabs = [...commonTabData ,{ id: "artist", label: "Artist" ,image :'./tabArtist.svg'  ,activeImage:'./activeArtist.svg'} 
 ];
-const artistTab = [...commonTabData, { id: "Information", label: "Info", image: './tabArtist.svg', activeImage: './activeArtist.svg' }];
+const artistTab = [...commonTabData, { id: "Information", label: "Info", image: './tabInfo.svg', activeImage: './activeArtist.svg' }];
 
 export { tabs, artistTab };
 
