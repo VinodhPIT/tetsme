@@ -1,14 +1,13 @@
 .sideDrawer {
     background: #fff;
     position: absolute;
-    /* width: 320px; */
     padding: 120px 15px 15px 15px;
     height: 100%;
     z-index: 99;
     top: 0;
     right: 0;
     max-width: 633px;
-    width: 100%;    position: fixed;
+    width: 100%;
 }
 
 .sideDrawer ul {
@@ -42,6 +41,7 @@
 @media screen and (max-width: 991.98px) {
     .sideDrawer { 
         width: 100%;
+        padding-top: 60px;
     }
     
     .sideDrawer ul {
@@ -63,9 +63,20 @@
 
 
 @media screen and (max-width: 767.98px) {
-    .sideDrawer {       
-        padding: 60px 15px 15px 15px;
+    .sideDrawer {     
         max-width: 100%;
         width: 100%;
     } 
+    .closeWrapper img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media only screen and (min-width: 280px) and (max-width: 991px) (orientation:landscape) {
+    .sideDrawer ul {
+        overflow-y: auto;
+        height: calc(100vh - 80px);
+    }
+    
 }

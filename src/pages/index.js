@@ -8,23 +8,14 @@ import HomLoading from "@/components/homeLoading";
 import SearchField from "@/components/searchField";
 import Header from "@/components/header/header";
 import ImageSlider from "@/components/ImageSlider";
+import ImageSwiper from "@/components/ImageSwiper";
 import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
   blurDataURL,
 } from "@/constants/constants";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import { EffectCoverflow, Navigation, Pagination } from "swiper"; 
-SwiperCore.use([Autoplay]);
-
-
 export default function Home() {
   const { state, serverLoad ,styleCollection} = useGlobalState();
-
 
   // href={`}
 
@@ -307,8 +298,9 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div class="img_box_wrap ">
-                    <Swiper
+                  <div class="img_box_wrap custom_slick_slider_one">
+                    <ImageSwiper></ImageSwiper>
+                    {/* <Swiper
                       style={{
                         "--swiper-pagination-bullet-horizontal-gap": "6px",
                       }}
@@ -386,7 +378,7 @@ export default function Home() {
                           />
                         </div>
                       </SwiperSlide>
-                    </Swiper>
+                    </Swiper> */}
                     {/* <CarouselComponent items={items} /> */}
                   </div>
                 </div>

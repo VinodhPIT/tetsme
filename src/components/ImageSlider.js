@@ -31,8 +31,8 @@ const ImageSlider = () => {
       dots: false,
       infinite: true,
       speed: 200,
-      slidesToShow: 2,
-      slidesToScroll: 1,
+      slidesToShow: 1.5,
+      slidesToScroll: 1.5,
     };
   }
 

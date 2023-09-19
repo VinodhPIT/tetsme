@@ -1965,7 +1965,16 @@ form.form_floating .form_group.radio_block > label {
 }
 
 
-
+.img_box_wrap.custom_slick_slider_one .swiper {
+  padding-bottom: 40px;
+}
+.img_box_wrap.custom_slick_slider_one {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.custom_slick_slider_one .swiper .swiper-pagination {
+  bottom: 22px;
+}
 
 
 
@@ -2417,6 +2426,9 @@ form.form_floating .form_group.radio_block > label {
   .slick_custom_slider .slick-slider button.slick-arrow {
     opacity: 0;
   } 
+  .img_box_wrap.slick_custom_slider {
+    padding-left: 15px;
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -2431,6 +2443,12 @@ form.form_floating .form_group.radio_block > label {
 @media screen and (max-width: 560px) {
   ul.custom-listing-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 640px) {
+  .img_box_wrap.custom_slick_slider_one {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
@@ -2798,7 +2816,6 @@ form.form_floating .form_group.radio_block > label {
   background-size: cover;
   /* border: 1px solid white; */
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
   /* background-image: url(./assets/slideBG.png); */
   color: #ffffff;
 }
@@ -2827,7 +2844,6 @@ form.form_floating .form_group.radio_block > label {
   align-items: center;
   font-size: 2.5em;
   font-weight: 500;
-  font-family: "Courier New", Courier, monospace;
 }
       
 
