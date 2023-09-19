@@ -12,10 +12,8 @@ import {
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
 import style from "@/pages/search/search.module.css";
-import { getStyles} from "@/action/action";
 import { useGlobalState } from "@/context/Context";
 import SearchField from "@/components/tattooSearch/index";
-import Autocomplete from "react-google-autocomplete";
 import {useRouter} from 'next/router'
 
 

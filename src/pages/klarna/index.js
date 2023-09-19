@@ -9,42 +9,37 @@ import {
   APP_LINK_GOOGLE,
   blurDataURL,
 } from "@/constants/constants";
-import CarouselComponent from "@/components/carousel/Carousel";
+import CarouselKlarna from "@/components/carousel/CarouselKlarna";
 
 export default function klarna() {
   const items = [
     {
-      image: "./Group 82721.png",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
+      image: "./paylater_bg.svg",
+      text: "Tattoo now and pay up to 30 days later. No interest. No fees, when you pay on time.",
+      option1: "Option 1",
+      heading: "Pay Later",
     },
     {
       image: "./Group.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Cancer",
+      text: "Tattoo now and pay up to 30 days later. No interest. No fees, when you pay on time.",
+      option1: "Option 2",
+      heading: "Pay Later 2",
     },
     {
       image: "./Group 82677.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
+      text: "Tattoo now and pay up to 30 days later. No interest. No fees, when you pay on time.",
+      option1: "Option 3",
+      heading: "Pay Later 3",
     },
     {
       image: "./Group 82674.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
-      heading: "Itzscuintli",
+      text: "Tattoo now and pay up to 30 days later. No interest. No fees, when you pay on time.",
+      option1: "Option 4",
+      heading: "Pay Later 4",
     },
     {
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
-      button2: "Trust",
+      option1: "Wake",
       heading: "Itzscuintli",
     },
   ];
@@ -62,7 +57,7 @@ export default function klarna() {
               </div>
             </div>
             <div className={styles.banner_content}>
-              <div className={styles.banner_content_wrap}>
+              <div className={styles.banner_content_wrap_klarna}>
                 <div className={styles.banner_caption}>
                   <Image
                     src="/Klarna-logotype(white.svg)-19.svg"
@@ -84,6 +79,9 @@ export default function klarna() {
                   </p>
                 </div>
                 <ul className={styles.download_app}>
+                  <li className={styles.download_app_title}>
+                    <h6>Download our app from</h6>
+                  </li>
                   <li>
                     <Link href={APP_LINK_APPLE} target="_blank">
                       <img src="./app-store.svg" alt="apple store" />
@@ -107,8 +105,8 @@ export default function klarna() {
             <div class="text_box_wrap right">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner max_w_100pc">
-                    <h2 class="letter_spacing_03">How it Works!</h2>
+                  <div class="text_box_content_inner max_w_100pc m_pr_0">
+                    <h2 class="letter_spacing_03 color_gray_550">How it Works!</h2>
                     <ul class="custom-listing how_work_list">
                       <li>
                         <img
@@ -187,7 +185,7 @@ export default function klarna() {
                   <div class="klarna_bg">
                     <img src="./klarna-white.svg" alt="" />
                   </div>
-                  <div class="box_text_img_over color_pink">
+                  <div class="box_text_img_over color_pink m_left_0 m_right_0 m_text_center">
                     <h2 class="txt_mob_fs50">
                       You choose <br />
                       how you <br />
@@ -207,9 +205,8 @@ export default function klarna() {
                   />
                 </div>
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner max_w_100pc w_100pc">
-                    <CarouselComponent items={items} />
-
+                  <div class="text_box_content_inner custom_carousel_wrap">
+                    <CarouselKlarna items={items}/>
                   </div>
                 </div>
               </div>
@@ -218,8 +215,8 @@ export default function klarna() {
             <div class="text_box_wrap right ">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start align_item_start">
-                  <div class="text_box_content_inner w_100pc custom_full_block">
-                    <h2 class="letter_spacing_03">Availability</h2>
+                  <div class="text_box_content_inner w_100pc custom_full_block m_pr_0">
+                    <h2 class="letter_spacing_03 m_text_center">Availability</h2>
                     <ul class="custom-listing-grid">
                       <li>
                         <img src="./afghanistan.svg" alt="afghanistan" />
@@ -286,7 +283,7 @@ export default function klarna() {
                 </div>
                 <div class="img_box_wrap block_bg_gradient_1 justify_content_right img-btm-7pc">
                   <div class="box_text_img_over color_pink txt-right-align">
-                    <h2 class="letter_spacing_03 text_right">
+                    <h2 class="letter_spacing_03 text_right m_text_center">
                       Where i can pay my tattoo with Klarna?
                     </h2>
                   </div>
@@ -307,8 +304,8 @@ export default function klarna() {
 
             <div class="text_box_wrap right app_download_box_wrap block_bg_pink">
               <div class="img_text_box_inner">
-                <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner">
+                <div class="text_box_content justify_content_start m_justify_content_center m_pt_45">
+                  <div class="text_box_content_inner m_pr_0">
                     <ul class="download_app">
                       <li class="download_app_title">
                         <h6>Download the App & Explore more!</h6>
