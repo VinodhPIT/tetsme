@@ -7,8 +7,8 @@ import { useGlobalState } from "@/context/Context";
 import HomLoading from "@/components/homeLoading";
 import SearchField from "@/components/searchField";
 import Header from "@/components/header/header";
-import ImageSlider from "@/components/ImageSlider";
-import ImageSwiper from "@/components/ImageSwiper";
+import ImageSlider from "@/components/slider/ImageSlider";
+import ImageSwiper from "@/components/slider/ImageSwiper";
 import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
@@ -325,87 +325,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div class="img_box_wrap custom_slick_slider_one">
-                    <ImageSwiper></ImageSwiper>
-                    {/* <Swiper
-                      style={{
-                        "--swiper-pagination-bullet-horizontal-gap": "6px",
-                      }}
-                      loop={true}
-                      loopFillGroupWithBlank={true}
-                      pagination={{ clickable: true }}
-                      spaceBetween={110}
-                      centeredSlides={true}
-                      navigation={true}
-                      slidesPerView={"auto"}
-                      modules={[EffectCoverflow, Pagination, Navigation]}
-                      className="mySwiper"
-                      effect={"coverflow"}
-                      coverflowEffect={{
-                        rotate: 0,
-                        stretch: 80,
-                        depth: 150,
-                        modifier: 1,
-                        slideShadows: false,
-                      }}
-                      breakpoints={{
-                        640: {
-                          slidesPerView: 1,
-                          spaceBetween: 110,
-                        },
-                        768: {
-                          slidesPerView: 2,
-                          spaceBetween: 110,
-                        },
-                        1024: {
-                          slidesPerView: 2,
-                          spaceBetween: 110,
-                        },
-                      }}
-                    >
-                      <SwiperSlide className=" ">
-                        <div className="testimonials-profile-circle">
-                          <img
-                            style={{
-                              height: "450px",
-                              width: "400px",
-                              borderRadius: "20px",
-                             paddingTop:"60px"
-                            }}
-                            src="./dragon.png"
-                            alt=""
-                          />
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide className=" ">
-                        <div className="testimonials-profile-circle">
-                          <img
-                            style={{
-                              height: "450px",
-                              width: "400px",
-                              borderRadius: "20px",
-                              paddingTop:"70px"
-                            }}
-                            src="./egyptian.jpeg"
-                            alt=""
-                          />
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide className=" ">
-                        <div className="testimonials-profile-circle">
-                          <img
-                            style={{
-                              height: "450px",
-                              width: "400px",
-                              borderRadius: "20px",
-                              paddingTop:"70px"
-                            }}
-                            src="./butterfly.jpeg"
-                            alt=""
-                          />
-                        </div>
-                      </SwiperSlide>
-                    </Swiper> */}
-                    {/* <CarouselComponent items={items} /> */}
+                    <ImageSwiper imgHeight="450px" imgWidth="400px"></ImageSwiper>
                   </div>
                 </div>
               </div>
@@ -577,7 +497,12 @@ export default function Home() {
                     </div>
                     ) : ("")}
               </div>
-              {isMobileView ? <ImageSlider></ImageSlider> : ""}
+              {isMobileView ? <ImageSlider
+              imgPath="/img-mobile-new-01.png" 
+              imgAlt="Picture of the author" 
+              imgblurDataURL=""
+              imgWidth="218"
+              imgHeight="446"></ImageSlider> : ""}
             </div> 
             
           </div>

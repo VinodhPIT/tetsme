@@ -6,9 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Image from "next/image";
 
-const ImageSlider = () => {
+const ImageSlider = ({imgPath,imgAlt,imgblurDataURL,imgWidth,imgHeight}) => {
   const [isMobileView, setIsMobileView] = useState(false);
-
+console.log(imgPath,imgAlt,imgblurDataURL,imgWidth,imgHeight)
   useEffect(() => {
     // Check the window width and set isMobileView accordingly
     const handleResize = () => {
@@ -40,29 +40,35 @@ const ImageSlider = () => {
     <div className="img_box_wrap slick_custom_slider">
       <Slider {...sliderSettings}>
         <div>
-          <img
-            src="/img-mobile-new-01.png"
-            alt="Image 1"
-            width={218}
-            height={446}
+        <Image
+            priority={true}
+            src={imgPath}
+            width={imgWidth}
+            height={imgHeight}
+            alt={imgAlt}
+            placeholder="empty"
             className="responsive-image"
           />
         </div>
         <div>
-          <img
-            src="/img-mobile-new-01.png"
-            alt="Image 2"
-            width={218}
-            height={446}
+        <Image
+            priority={true}
+            src={imgPath}
+            width={imgWidth}
+            height={imgHeight}
+            alt={imgAlt}
+            placeholder="empty"
             className="responsive-image"
           />
         </div>
         <div>
-          <img
-            src="/img-mobile-new-01.png"
-            alt="Image 3"
-            width={218}
-            height={446}
+          <Image
+            priority={true}
+            src={imgPath}
+            width={imgWidth}
+            height={imgHeight}
+            alt={imgAlt}
+            placeholder="empty"
             className="responsive-image"
           />
         </div>

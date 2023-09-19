@@ -7,7 +7,8 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Navigation, Pagination } from "swiper";
 SwiperCore.use([Autoplay]);
 
-const ImageSwiper = () => {
+const ImageSwiper = ({imgWidth,imgHeight}) => {
+
   return (
     <Swiper
       style={{
@@ -46,12 +47,12 @@ const ImageSwiper = () => {
         },
       }}
     >
-      <SwiperSlide className=" ">
-        <div className="testimonials-profile-circle">
+      <SwiperSlide >
+        <div className="testimonials-profile-circle" >
           <img
             style={{
-              height: "450px",
-              width: "400px",
+              height: imgHeight,
+              width: imgWidth,
               borderRadius: "20px",
               paddingTop: "60px",
             }}
@@ -60,12 +61,12 @@ const ImageSwiper = () => {
           />
         </div>
       </SwiperSlide>
-      <SwiperSlide className=" ">
-        <div className="testimonials-profile-circle">
+      <SwiperSlide >
+        <div className="testimonials-profile-circle" >
           <img
             style={{
-              height: "450px",
-              width: "400px",
+              height: imgHeight,
+              width: imgWidth,
               borderRadius: "20px",
               paddingTop: "70px",
             }}
@@ -74,12 +75,12 @@ const ImageSwiper = () => {
           />
         </div>
       </SwiperSlide>
-      <SwiperSlide className=" ">
-        <div className="testimonials-profile-circle">
+      <SwiperSlide >
+        <div className="testimonials-profile-circle" >
           <img
             style={{
-              height: "450px",
-              width: "400px",
+              height: imgHeight,
+              width: imgWidth,
               borderRadius: "20px",
               paddingTop: "70px",
             }}

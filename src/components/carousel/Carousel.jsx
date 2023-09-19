@@ -2,12 +2,12 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const CarouselComponent = ({ items }) => {
+const CarouselComponent = ({ items,itemStyle }) => {
   return (
     <Carousel >
       {items.map((item, index) => item.image?(
         <div key={index} className='d-flex flex-column  custom-container '>
-          <div className='d-flex justify-content-end gap-2'>
+          <div className={itemStyle}>
           <h4 className="bg-dark text-light fs-3 px-2 py-1">{item.button1}</h4>
           <h4 className="bg-dark text-light fs-3 px-2 py-1">{item.button2}</h4>
           </div>

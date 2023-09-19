@@ -2398,9 +2398,7 @@ form.form_floating .form_group.radio_block > label {
   } 
 
   /* custom slick slider home */
-  .slick_custom_slider {
-
-  }
+ 
   .slick_custom_slider .slick-slider .slick-slide > div {
     margin-right: 21px;
   }
