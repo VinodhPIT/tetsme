@@ -2427,7 +2427,7 @@ form.form_floating .form_group.radio_block > label {
     opacity: 0;
   } 
   .img_box_wrap.slick_custom_slider {
-    padding-left: 15px;
+    padding-left: 15px;padding-bottom: 50px;
   }
 }
 
@@ -2791,6 +2791,12 @@ form.form_floating .form_group.radio_block > label {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+
+@media screen and (max-width: 699px) {
+  .header_cookie_desktop{display: none;}
+  }
+  
 
 
 

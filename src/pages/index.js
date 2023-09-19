@@ -30,6 +30,10 @@ export default function Home() {
     "./path428.svg",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [cookieDropdown, setCoookieDropdown] = useState(false);
+  const [toggle, setToggle] = useState(false);
+
 
   useEffect(() => {
     styleCollection()
@@ -41,13 +45,12 @@ export default function Home() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
   };
 
-  const [isMobileView, setIsMobileView] = useState(false);
+
   useEffect(() => {
-    // Check the window width and set isMobileView accordingly
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 767.98); // Adjust the breakpoint as needed
+      setCoookieDropdown(window.innerWidth <= 699.98);
     };
-    // Initially check the width and add a resize event listener
     handleResize();
     window.addEventListener("resize", handleResize);
     // Clean up the event listener when the component unmounts
@@ -56,6 +59,12 @@ export default function Home() {
     };
 
   }, []);
+
+
+
+  const onToggle = () => {
+    setToggle(!toggle);
+  };
 
   return (
     <div className="page_wrapper tete">
@@ -66,14 +75,31 @@ export default function Home() {
         <div className="header_cookie_txt">
           <p>
             <span>
-              Get tattoo now, pay later.</span>{" "}
+              Get tattoo now, pay later.</span>
+                 <span className="header_cookie_desktop">
+                 That&apos;s right, there&apos;s a new way to get tattooed smoooth!{" "}
+                 <Link href="/klarna">Learn more</Link>
+               </span>
+       
+               {toggle && (
               <span className="header_cookie_mob">
                 That&apos;s right, there&apos;s a new way to get tattooed
-                smoooth! <a href="#">Learn more</a>
-              </span>             
-            {" "}
+                smoooth! <Link href="/klarna">Learn more</Link>
+              </span>
+            )}
+
           </p>
+         
+
         </div>
+        {cookieDropdown &&
+         <Image
+          onClick={() => onToggle()}
+          src={"/arrowDown.svg"}
+          alt="arrowDown"
+          width={20}
+          height={20}
+        />}
       </div>
       <Header />
 

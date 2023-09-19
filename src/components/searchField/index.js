@@ -259,7 +259,7 @@ function SearchBar({ isPage }) {
             </div>
           )}
         </div>
-        {searchState.query &&  <button onClick={()=>onClearText()}>X</button> }
+        
       </form>
     </div>
   );

@@ -73,10 +73,9 @@
     }
 }
 
-@media only screen and (min-width: 280px) and (max-width: 991px) (orientation:landscape) {
+@media only screen and (min-width: 280px) and (max-width: 991px) and (orientation: landscape) {
     .sideDrawer ul {
         overflow-y: auto;
         height: calc(100vh - 80px);
     }
-    
 }
