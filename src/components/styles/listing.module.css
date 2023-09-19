@@ -11,7 +11,7 @@
   height: 208px;
   border-radius: 8px;
 }*/
-.pageContainer{float: left;width: 100%;}
+.pageContainer{float: left;width: 100%; margin-bottom: 30px;}
 
 .custom_adv_block_1 {
   padding: 9px;

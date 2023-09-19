@@ -100,6 +100,8 @@ const reducer = (state, action) => {
             
 
 
+            
+
       };
 
     case "SEARCH_STYLE":
@@ -233,6 +235,8 @@ export const GlobalStateProvider = ({ children }) => {
         page_no: updatedPageNo,
         style: state.selectedStyle,
         search_key: state.searchKey,
+
+
       };
       let responseData;
       if (state.currentTab === "all") {
@@ -344,6 +348,7 @@ export const GlobalStateProvider = ({ children }) => {
         ...Parameters,
         category: state.currentTab,
         search_key: payload,
+        style:state.selectedStyle
 
       };
    

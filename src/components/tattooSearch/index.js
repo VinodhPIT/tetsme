@@ -87,7 +87,7 @@ function SearchBar({ isPage }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-      searchData(searchState.query, router);
+    searchData(searchState.query, router);
   
     addToSearchHistory(searchState.query);
   };

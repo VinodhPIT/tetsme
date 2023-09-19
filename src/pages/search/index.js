@@ -60,6 +60,11 @@ const Search = ({
     findArtist({ latitude, longitude } ,router);
   };
 
+
+  const collectionLength = state.categoryCollection.filter((e)=>e._index!== 'ad')
+
+
+
   return (
 
 <>
@@ -152,10 +157,15 @@ const Search = ({
 
         {renderCategoryComponent(state.currentTab, state.categoryCollection)}
 
-        {!state.loading &&
-          state.categoryCollection.length !== 0 &&
-          state.categoryCollection.length !== state.totalItems && (
-            <div className={style.grid_more_view}>
+    
+
+
+{!state.loading &&
+
+collectionLength.length !== 0 &&
+  collectionLength.length !== state.totalItems && (
+
+    <div className={style.grid_more_view}>
               <p>
                 See out of {state.categoryCollection.length}/{state.totalItems}
               </p>
@@ -170,7 +180,16 @@ const Search = ({
                 </button>
               </div>
             </div>
-          )}
+           
+
+ )}
+
+
+
+
+
+
+          
       </div>
     </div>
     </>

@@ -285,7 +285,10 @@ img.nav_btn_toggle {
 
 /* footer */
 footer {
+
   background-color: #F8F8F8;
+    float: left;
+    width: 100%;
 }
 
 .footer {
