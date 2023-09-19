@@ -96,7 +96,7 @@ body {
   min-height: 100%;
   scroll-behavior: smooth;
   position: relative;
-  background-color: #F8F8F8;
+  /* background-color: #F8F8F8; */
 }
 
 body.theme-dark {
