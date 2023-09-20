@@ -115,9 +115,10 @@
     padding: 16px 36px;
 }
 .tabBox {
-    display: FLEX;
+    display: flex;
     align-items: center;
     gap: 11px;
+    cursor: pointer;
 }
 .tabSection button {
     background-color: transparent;
