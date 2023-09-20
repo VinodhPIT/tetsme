@@ -96,7 +96,7 @@ body {
   min-height: 100%;
   scroll-behavior: smooth;
   position: relative;
-  /* background-color: #F8F8F8; */
+  /*background-color: #F8F8F8;*/
 }
 
 body.theme-dark {
@@ -285,10 +285,7 @@ img.nav_btn_toggle {
 
 /* footer */
 footer {
-
   background-color: #F8F8F8;
-    float: left;
-    width: 100%;
 }
 
 .footer {
@@ -2089,6 +2086,16 @@ form.form_floating .form_group.radio_block>label {
   background: url lightgray -183.109px -81.848px / 212.178% 158.542% no-repeat;
 }
 
+.img_box_wrap.custom_slick_slider_one .swiper {
+  padding-bottom: 40px;
+}
+.img_box_wrap.custom_slick_slider_one {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.custom_slick_slider_one .swiper .swiper-pagination {
+  bottom: 22px;
+}
 .text_box_wrap.app_download_box_wrap .img_text_box_inner .img_box_wrap ul.app_download_img_list img {
   border-radius: 31px;
   background: lightgray 50% / cover no-repeat;
@@ -2620,6 +2627,10 @@ form.form_floating .form_group.radio_block>label {
   .slick_custom_slider .slick-slider button.slick-arrow {
     opacity: 0;
   }
+  .img_box_wrap.slick_custom_slider {
+    padding-left: 15px;
+    padding-bottom: 50px;
+  }
 
   /* custom carouser slider */
   .custom_option_block {
@@ -2706,7 +2717,12 @@ form.form_floating .form_group.radio_block>label {
     padding-top: 45px !important;
   }
 }
-
+@media screen and (max-width: 640px) {
+  .img_box_wrap.custom_slick_slider_one {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 @media screen and (max-width: 560px) {
   ul.custom-listing-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3105,9 +3121,12 @@ form.form_floating .form_group.radio_block>label {
 
 
 
-@media screen and (max-width: 699px) {
-.header_cookie_desktop{display: none;}
-}
+/* @media screen and (max-width: 1199px) {
+  .nav-block {
+   display: none;
+  }
+
+} */
 
 
 

@@ -1,6 +1,7 @@
 //
 
 import React from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./custom.module.css";
@@ -10,8 +11,23 @@ import {
   blurDataURL,
 } from "@/constants/constants";
 import CarouselKlarna from "@/components/carousel/CarouselKlarna";
-
+import ImageSlider from "@/components/slider/ImageSlider";
 export default function klarna() {
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [cookieDropdown, setCoookieDropdown] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 767.98); // Adjust the breakpoint as needed
+      setCoookieDropdown(window.innerWidth <= 699.98);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+
+  }, []);
   const items = [
     {
       image: "./paylater_bg.svg",
@@ -323,6 +339,7 @@ export default function klarna() {
                     </ul>
                   </div>
                 </div>
+                {!isMobileView ? (
                 <div class="img_box_wrap">
                   <ul class="app_download_img_list img_box_img_m20pc justify_content_center">
                     <li>
@@ -338,7 +355,20 @@ export default function klarna() {
                       />
                     </li>
                   </ul>
-                </div>
+                </div>):""}
+              </div>
+              <div className="img_box_wrap">
+                {isMobileView ? (
+                  <ImageSlider
+                    imgPath="/iPhone-192.png"
+                    imgAlt="Picture of the author"
+                    imgblurDataURL={blurDataURL}
+                    imgWidth={215}
+                    imgHeight={443}
+                  ></ImageSlider>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
