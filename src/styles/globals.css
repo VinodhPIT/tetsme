@@ -2717,6 +2717,10 @@ form.form_floating .form_group.radio_block>label {
     padding-top: 45px !important;
   }
 }
+@media screen and (max-width: 699px) {
+
+  .header_cookie_desktop{display: none;}
+}
 @media screen and (max-width: 640px) {
   .img_box_wrap.custom_slick_slider_one {
     padding-left: 15px;
@@ -3120,6 +3124,10 @@ form.form_floating .form_group.radio_block>label {
 }
 
 
+/* @media screen and  (max-width: 699px) {
+  
+  
+} */
 
 /* @media screen and (max-width: 1199px) {
   .nav-block {
