@@ -176,7 +176,7 @@ const collectionLength = state.categoryCollection.filter((e)=>e._index!== 'ad')
                   onClick={() => {
                     loadMore();
                   }}
-                  className="btn_primary btn_view_more"
+                  className="btn_secondary btn_view_more"
                 >
                   Load more
                 </button>

@@ -31,36 +31,36 @@ export default function Dictionary() {
     {
       image: "./Group 82721.png",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Response",
-      button2: "Trust",
-      heading: "Itzscuintli",
-    },
-    {
-      image: "./Group.svg",
-      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Response",
+      button1: "Remembrance",
       button2: "Trust",
       heading: "Cancer",
     },
     {
-      image: "./Group 82677.svg",
+      image: "./Group.svg",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Response",
+      button1: "Remembrance",
       button2: "Trust",
       heading: "Itzscuintli",
+    },
+    {
+      image: "./Group 82677.svg",
+      text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
+      button1: "Remembrance",
+      button2: "Trust",
+      heading: "Cancer",
     },
     {
       image: "./Group 82674.svg",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Wake",
+      button1: "Remembrance",
       button2: "Trust",
       heading: "Itzscuintli",
     },
     {
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Response",
+      button1: "Remembrance",
       button2: "Trust",
-      heading: "Itzscuintli",
+      heading: "Cancer",
     },
   ];
 
@@ -157,11 +157,11 @@ export default function Dictionary() {
                   </div>
                   <img src="./mythology.png" alt="" />
                 </div>
-                <div className="text_box_content justify_content_start p_0">
-                  <div className="text_box_content_inner max_w_100pc w_100pc">
+                <div className="text_box_content justify_content_start">
+                  <div className="text_box_content_inner custom_carousel_wrap">
                     {/* 
                        <CarouselComponent items={items} />            */}
-                    <CarouselComponent items={items} itemStyle="d-flex justify-content-end gap-2" />
+                    <CarouselComponent items={items} itemStyle="d_flex justify_content_end" />
                   </div>
                 </div>
               </div>
@@ -247,11 +247,11 @@ export default function Dictionary() {
 
             <div class="text_box_wrap right">
               <div class="img_text_box_inner">
-                <div class="text_box_content justify_content_start p_0">
-                  <div class="text_box_content_inner max_w_100pc w_100pc">
+                <div class="text_box_content justify_content_start">
+                  <div class="text_box_content_inner custom_carousel_wrap">
                     {/* <img src="./slider-dummy-2.png" alt="Zodiac Signs" class="w_100pc"/>                      */}
 
-                    <CarouselComponent items={items} itemStyle="d-flex justify-content-first gap-2" />
+                    <CarouselComponent items={items} itemStyle="d_flex justify_content_start" />
                   </div>
                 </div>
                 <div class="img_box_wrap block_bg_gradient_2 justify_content_right">
@@ -325,9 +325,9 @@ export default function Dictionary() {
                   </div>
                   <img src="./aztec-symbols.png" alt="" />
                 </div>
-                <div class="text_box_content justify_content_start p_0">
-                  <div class="text_box_content_inner max_w_100pc w_100pc">
-                    <CarouselComponent items={items} itemStyle="d-flex justify-content-end gap-2" />
+                <div class="text_box_content justify_content_start">
+                  <div class="text_box_content_inner custom_carousel_wrap">
+                    <CarouselComponent items={items} itemStyle="d_flex justify_content_end" />
                     {/* <img src="./slider-dummy-2.png" alt="Aztec Symbols" class="w_100pc"/>                      */}
                   </div>
                 </div>

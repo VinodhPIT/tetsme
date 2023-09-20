@@ -174,7 +174,7 @@ collectionLength.length !== 0 &&
                   onClick={() => {
                     loadMore();
                   }}
-                  className="btn_primary btn_view_more"
+                  className="btn_secondary btn_view_more"
                 >
                   Load more
                 </button>
