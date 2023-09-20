@@ -15,7 +15,7 @@ import {
   blurDataURL,
 } from "@/constants/constants";
 export default function Home() {
-  const { state, serverLoad ,styleCollection} = useGlobalState();
+  const { state, serverLoad, styleCollection } = useGlobalState();
 
   // href={`}
 
@@ -34,9 +34,8 @@ export default function Home() {
   const [cookieDropdown, setCoookieDropdown] = useState(false);
   const [toggle, setToggle] = useState(false);
 
-
   useEffect(() => {
-    styleCollection()
+    styleCollection();
     const timer = setInterval(changeImage, 2000);
     return () => clearInterval(timer);
   }, []);
@@ -44,7 +43,6 @@ export default function Home() {
   const changeImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
   };
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,10 +55,7 @@ export default function Home() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-
   }, []);
-
-
 
   const onToggle = () => {
     setToggle(!toggle);
@@ -74,33 +69,30 @@ export default function Home() {
         </div>
         <div className="header_cookie_txt">
           <p>
-            <span>
-              Get tattoo now, pay later.</span>
-                 <span className="header_cookie_desktop">
-                 That&apos;s right, there&apos;s a new way to get tattooed smoooth!{" "}
-                 <Link href="/klarna">Learn more</Link>
-               </span>
-       
-               {toggle && (
+            <span>Get tattoo now, pay later.</span>
+            <span className="header_cookie_desktop">
+              That&apos;s right, there&apos;s a new way to get tattooed smoooth!{" "}
+              <Link href="/klarna">Learn more</Link>
+            </span>
+
+            {toggle && (
               <span className="header_cookie_mob">
                 That&apos;s right, there&apos;s a new way to get tattooed
                 smoooth! <Link href="/klarna">Learn more</Link>
               </span>
             )}
-
           </p>
-         
-
         </div>
-        {cookieDropdown &&
-         <Image
-          onClick={() => onToggle()}
-          src={"/arrowDown.svg"}
-          alt="arrowDown"
-          width={20}
-          height={20}
-          className="header_cookie_close"
-        />}
+        {cookieDropdown && (
+          <Image
+            onClick={() => onToggle()}
+            src={"/arrowDown.svg"}
+            alt="arrowDown"
+            width={20}
+            height={20}
+            className="header_cookie_close"
+          />
+        )}
       </div>
       <Header />
 
@@ -120,14 +112,14 @@ export default function Home() {
                   <h1 class="color_aero_blue">
                     <span>
                       Book your dream{" "}
-                      <span className={styles.highlight_border}>tattoo</span> now!
+                      <span className={styles.highlight_border}>tattoo</span>{" "}
+                      now!
                     </span>
                   </h1>
                 </div>
 
                 <div className="search_form">
                   <div className="search_form_wrap">
-                    
                     <SearchField isPage={"all"} />
 
                     {/* <form className="position_relative">
@@ -184,10 +176,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
-
-
-
 
                 <ul className="download_app">
                   <li className="download_app_title">
@@ -287,7 +275,7 @@ export default function Home() {
                   <div class="klarna_bg">
                     <img src="./klarna.svg" alt="" />
                   </div>
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner m_pr_0 pr_0">
                     <h2 class="letter_spacing_02">Tattoo now, Pay later</h2>
                     <p>
                       Get tattoo now, pay later. That&apos;s right, there&apos;s
@@ -304,30 +292,28 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              <div class="text_box_wrap right block_bg_black">
-                <div class="img_text_box_inner">
-                  <div class="text_box_content justify_content_start">
-                    <div class="text_box_content_inner m_pr_0 m_pb_0">
-                      <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
-                      <p>
-                        We hand-pick every tattoo artist to ensure your tattoo
-                        experience is handled with care, quality and
-                        inclusivity.
-                      </p>
-                      <a href="#" class="btn btn_default btn_xxl btn_sm_m">
-                        Find artists
-                        <img
-                          src="./alt-arrow-right-black.svg"
-                          alt=""
-                          class="ml-8 mt-2"
-                        />
-                      </a>
-                    </div>
+            </div>
+            <div class="text_box_wrap right block_bg_black">
+              <div class="img_text_box_inner">
+                <div class="text_box_content justify_content_start">
+                  <div class="text_box_content_inner m_pr_0 m_pb_0">
+                    <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
+                    <p>
+                      We hand-pick every tattoo artist to ensure your tattoo
+                      experience is handled with care, quality and inclusivity.
+                    </p>
+                    <a href="#" class="btn btn_default btn_xxl btn_sm_m">
+                      Find artists
+                      <img
+                        src="./alt-arrow-right-black.svg"
+                        alt=""
+                        class="ml-8 mt-2"
+                      />
+                    </a>
                   </div>
-                  <div class="img_box_wrap custom_slick_slider_one">
-                    <ImageSwiper imgHeight="450px" imgWidth="400px"></ImageSwiper>
-                  </div>
+                </div>
+                <div class="img_box_wrap custom_slick_slider_one">
+                  <ImageSwiper imgHeight="450px" imgWidth="400px"></ImageSwiper>
                 </div>
               </div>
             </div>
@@ -371,10 +357,11 @@ export default function Home() {
                     </svg>
                   </div>
 
-                 
-
                   <div class="text_box_content_inner w_100pc pr_0">
-                    <h2 class="letter_spacing_025">Whats your <br />Style?</h2>
+                    <h2 class="letter_spacing_025">
+                      Whats your <br />
+                      Style?
+                    </h2>
                     <br />
                     <br />
                     <br />
@@ -393,7 +380,7 @@ export default function Home() {
             <div class="text_box_wrap right block_bg_black">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start align_item_end txt-btm-7pc">
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner m_pr_0 pr_0">
                     <h2 class="letter_spacing_05">
                       Boost your <br />
                       business with <br />
@@ -435,8 +422,8 @@ export default function Home() {
               </div>
             </div>
 
-           <div class="text_box_wrap right app_download_box_wrap block_bg_orange" >
-              <div class="img_text_box_inner" >
+            <div class="text_box_wrap right app_download_box_wrap block_bg_orange">
+              <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start">
                   <div class="text_box_content_inner m_pr_0">
                     <ul class="download_app">
@@ -455,57 +442,63 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                </div>  
-                  {!isMobileView ? (
-                    <div class="img_box_wrap">
-                      <ul class="app_download_img_list img_box_img_m20pc">
-                        <li>
-                          <Image
-                            priority={true}
-                            src="/img-mobile-new-01.png"
-                            width={218}
-                            height={1446}
-                            alt="Picture of the author"
-                            placeholder="empty"
-                            className="image_shadow_bg"
-                          />
-                        </li>
-                        <li>
-                          <Image
-                            priority={true}
-                            src="/img-mobile-new-01.png"
-                            width={218}
-                            height={446}
-                            alt="Picture of the author"
-                            placeholder="empty"
-                            layout="responsive"
-                            className="image_shadow_bg"
-                          />
-                        </li>
-                        <li>
-                          <Image
-                            priority={true}
-                            src="/img-mobile-new-01.png"
-                            width={218}
-                            height={446}
-                            alt="Picture of the author"
-                            placeholder="empty"
-                            layout="responsive"
-                            className="image_shadow_bg"
-                          />
-                        </li>
-                      </ul>
-                    </div>
-                    ) : ("")}
+                </div>
+                {!isMobileView ? (
+                  <div class="img_box_wrap">
+                    <ul class="app_download_img_list img_box_img_m20pc">
+                      <li>
+                        <Image
+                          priority={true}
+                          src="/img-mobile-new-01.png"
+                          width={218}
+                          height={1446}
+                          alt="Picture of the author"
+                          placeholder="empty"
+                          className="image_shadow_bg"
+                        />
+                      </li>
+                      <li>
+                        <Image
+                          priority={true}
+                          src="/img-mobile-new-01.png"
+                          width={218}
+                          height={446}
+                          alt="Picture of the author"
+                          placeholder="empty"
+                          layout="responsive"
+                          className="image_shadow_bg"
+                        />
+                      </li>
+                      <li>
+                        <Image
+                          priority={true}
+                          src="/img-mobile-new-01.png"
+                          width={218}
+                          height={446}
+                          alt="Picture of the author"
+                          placeholder="empty"
+                          layout="responsive"
+                          className="image_shadow_bg"
+                        />
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
-              {isMobileView ? <ImageSlider
-              imgPath="/img-mobile-new-01.png" 
-              imgAlt="Picture of the author" 
-              imgblurDataURL=""
-              imgWidth="218"
-              imgHeight="446"></ImageSlider> : ""}
-            </div> 
-            
+              {isMobileView ? (
+                <ImageSlider
+                  imgPath="/img-mobile-new-01.png"
+                  imgAlt="Picture of the author"
+                  imgblurDataURL=""
+                  imgWidth="218"
+                  imgHeight="446"
+                ></ImageSlider>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       </section>

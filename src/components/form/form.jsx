@@ -82,7 +82,7 @@ const _Form = () => {
                             value="Tatoo"
                             checked={values.tattooType === "Tatoo"}
                           />
-                          Tatoo
+                          Tattoo lover
                         </label>
                         <label class="form_radio">
                           <Field
@@ -91,7 +91,7 @@ const _Form = () => {
                             value="Artists"
                             checked={values.tattooType === "Artists"}
                           />
-                          Artists
+                          Artist
                         </label>
                         <label class="form_radio">
                           <Field

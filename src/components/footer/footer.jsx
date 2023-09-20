@@ -25,18 +25,18 @@ export default function Footer() {
   const bookLinks = [
     {
       id: 1,
-      title: "Tattoosearch",
+      title: "Tattoo search",
       url: `/search?term=${""}&category=${"tattoo"}`,
     },
 
     {
       id: 2,
-      title: "Artistsearch",
+      title: "Artist search",
       url: `/search?term=${""}&category=${"artist"}`,
     },
     {
       id: 3,
-      title: "Flashsearch",
+      title: "Flash search",
       url: `/search?term=${""}&category=${"flash"}`,
     },
   ];
