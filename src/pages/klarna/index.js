@@ -1,7 +1,7 @@
 //
 
-import React from "react";
-import { useState, useEffect } from "react";
+import React ,{ useState, useEffect } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./custom.module.css";
@@ -12,9 +12,16 @@ import {
 } from "@/constants/constants";
 import CarouselKlarna from "@/components/carousel/CarouselKlarna";
 import ImageSlider from "@/components/slider/ImageSlider";
-export default function klarna() {
+
+
+
+export default function Klarna() {
   const [isMobileView, setIsMobileView] = useState(false);
+
+
   const [cookieDropdown, setCoookieDropdown] = useState(false);
+
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 767.98); // Adjust the breakpoint as needed
@@ -28,6 +35,9 @@ export default function klarna() {
     };
 
   }, []);
+
+
+  
   const items = [
     {
       image: "./paylater_bg.svg",
