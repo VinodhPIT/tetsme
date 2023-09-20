@@ -238,7 +238,8 @@ export default function Detail({ data, status }) {
         {loading === true ? null : tattoo && tattoo.length > 0 ? (
           <div className={styles.grid_wrapper_tattoo}>
             {tattoo.map((item) => (
-              <div className={styles.listing_gridItem} key={item.tattoo_uid}>
+              <Link  href={`/tattoo/${item.tattoo_uid}`}className={styles.listing_gridItem} key={item.tattoo_uid}>
+
                 <Image
                   alt={item.style_name}
                   priority
@@ -248,7 +249,7 @@ export default function Detail({ data, status }) {
                   placeholder="blur"
                   blurDataURL={blurDataURL}
                 />
-              </div>
+              </Link>
             ))}
           </div>
         ) : null}
@@ -264,9 +265,7 @@ export async function getServerSideProps(context) {
 
     if (!data.data) {
       return {
-        props: {
-          data: null,
-        },
+        notFound: true, 
       };
     }
 
@@ -277,10 +276,9 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
+  
     return {
-      props: {
-        data: null,
-      },
+      notFound: true,
     };
   }
 }

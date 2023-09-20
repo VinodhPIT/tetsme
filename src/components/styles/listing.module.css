@@ -11,7 +11,10 @@
   height: 208px;
   border-radius: 8px;
 }*/
-.pageContainer{float: left;width: 100%; margin-bottom: 30px;}
+.pageContainer{float: left;width: 100%;
+  margin: 14px 0px 25px;
+
+}
 
 .custom_adv_block_1 {
   padding: 9px;
@@ -355,7 +358,9 @@
   height: 230px;
 }
 
-.blockCenter{display: flex;  justify-content: center; align-items:center ; min-height :52vh ;text-align:center}
+.blockCenter{display: flex;  justify-content: center; align-items:center ; min-height :52vh ;text-align:center;
+  float: left;
+  width: 100%;}
   
 
 

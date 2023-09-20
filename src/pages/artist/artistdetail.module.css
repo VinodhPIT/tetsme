@@ -6,7 +6,8 @@
     align-items: center;
     border-radius: 8px;
     background: #F8F8F8;
-    margin-top: 21px;
+    margin: 21px 0px 0px 0px;
+
     float: left;
     width: 100%;
 }

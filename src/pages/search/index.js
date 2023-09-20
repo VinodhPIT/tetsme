@@ -5,13 +5,13 @@ import { fetchCategoryData, getStyles, fetchMultiData } from "@/action/action";
 import { debounce } from "lodash";
 import Autocomplete from "react-google-autocomplete";
 import { Parameters } from "@/components/parameters/params";
-import renderCategoryComponent from "@/components/categoryComponent/categoryComponent";
+import {renderCategoryComponent} from "@/components/customTabs/tab";
 import style from "@/pages/search/search.module.css";
 import { useRouter } from "next/router";
 import { tabs } from "@/components/tabMenu/menu";
 import SearchField from "@/components/tattooSearch/index";
 import { addAdsToResults } from "@/helpers/helper";
-
+import styles from "./search.module.css";
 
 
 import { useGlobalState } from "@/context/Context";
@@ -59,12 +59,7 @@ const Search = ({
     const longitude = lng();
     findArtist({ latitude, longitude } ,router);
   };
-
-
   const collectionLength = state.categoryCollection.filter((e)=>e._index!== 'ad')
-
-
-
   return (
 
 <>
@@ -158,38 +153,31 @@ const Search = ({
         {renderCategoryComponent(state.currentTab, state.categoryCollection)}
 
     
+        {!state.loading &&
 
 
-{!state.loading &&
+
+
 
 collectionLength.length !== 0 &&
   collectionLength.length !== state.totalItems && (
-
-    <div className={style.grid_more_view}>
-              <p>
-                See out of {state.categoryCollection.length}/{state.totalItems}
-              </p>
-              <div className={style.btn_wrapper}>
-                <button
-                  onClick={() => {
-                    loadMore();
-                  }}
-                  className="btn_primary btn_view_more"
-                >
-                  Load more
-                </button>
-              </div>
-            </div>
-           
-
+   <div className={styles.grid_more_view}>
+     <p>
+       See out of {collectionLength.length}/{state.totalItems}
+     </p>
+     <div className={styles.btn_wrapper}>
+       <button
+         onClick={() => {
+           loadMore();
+         }}
+         className="btn_primary btn_view_more"
+       >
+         Load more
+       </button>
+     </div>
+   </div>
  )}
 
-
-
-
-
-
-          
       </div>
     </div>
     </>
@@ -199,6 +187,8 @@ collectionLength.length !== 0 &&
 export default Search;
 
 export async function getServerSideProps(context) {
+
+  
 
 
     try {
@@ -211,6 +201,7 @@ export async function getServerSideProps(context) {
         });
   
         let addData = await addAdsToResults(results.data);
+        console.log(addData.length ,"ocdcdcd")
   
         return {
           props: {
@@ -237,6 +228,7 @@ export async function getServerSideProps(context) {
   
        
         let addData = await addAdsToResults(data.rows.hits);
+        console.log(addData.length ,"ocdcdcd")
   
         return {
           props: {
