@@ -337,5 +337,6 @@ export default function Dictionary() {
         </div>
       </section>
     </div>
+    
   );
 }
