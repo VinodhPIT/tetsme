@@ -149,7 +149,7 @@ function SearchBar({ isPage }) {
             onFocus={() =>
               setSearchState((prevSearchState) => ({
                 ...prevSearchState,
-                showDropdown: true,
+                // showDropdown: true,
               }))
             }
             value={searchState.query}

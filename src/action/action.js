@@ -36,8 +36,10 @@ export const getStyles = async () => {
       })
     );
 
+    
     return reposneStyles;
   } catch (error) {
+   
     // Handle error if needed
     return [];
   }
@@ -141,6 +143,20 @@ export const fetchArtistDetail = async (slug) => {
     }
    catch (error) {
 
+    return [];
+  }
+};
+
+
+
+
+export const artistGallery = async (uid) => {
+  try {
+    const response = await getApiCall(`/tattoo/artist?artist_uid=${uid}`);
+  
+    return response;
+    }
+   catch (error) {
     return [];
   }
 };

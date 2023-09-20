@@ -17,7 +17,7 @@ import {
 export default function Home() {
   const { state, serverLoad, styleCollection } = useGlobalState();
 
-  // href={`}
+
 
   const imagePaths = [
     "./Group 82674.svg",
@@ -36,8 +36,10 @@ export default function Home() {
 
   useEffect(() => {
     styleCollection();
+
     const timer = setInterval(changeImage, 2000);
     return () => clearInterval(timer);
+
   }, []);
 
   const changeImage = () => {

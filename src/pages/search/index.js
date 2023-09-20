@@ -5,48 +5,50 @@ import { fetchCategoryData, getStyles, fetchMultiData } from "@/action/action";
 import { debounce } from "lodash";
 import Autocomplete from "react-google-autocomplete";
 import { Parameters } from "@/components/parameters/params";
-import renderCategoryComponent from "@/components/categoryComponent/categoryComponent";
+import {renderCategoryComponent} from "@/components/customTabs/tab";
 import style from "@/pages/search/search.module.css";
 import { useRouter } from "next/router";
 import { tabs } from "@/components/tabMenu/menu";
 import SearchField from "@/components/tattooSearch/index";
 import { addAdsToResults } from "@/helpers/helper";
-
+import styles from "./search.module.css";
 
 
 import { useGlobalState } from "@/context/Context";
 
 const Search = ({
-    data,
-    currentTab,
-    pageNo,
-    totalItems,
-    searchKey,
-    selectedStyle,
-  }) => {
-    const {
-      state,
-      fetchServerlData,
-      updateTab,
-      loadMore,
-      searchStyle,
-      findArtist,
-    } = useGlobalState();
+  data,
+  currentTab,
+  pageNo,
+  totalItems,
+  searchKey,
+  selectedStyle,
+}) => {
+  const {
+    state,
+    fetchServerlData,
+    updateTab,
+    loadMore,
+    searchStyle,
+    findArtist,
+  } = useGlobalState();
 
-   
-    useEffect(() => {
-        try {
-          fetchServerlData({
-            data,
-            currentTab,
-            pageNo,
-            totalItems,
-            searchKey,
-            selectedStyle,
-          });
-        } catch (error) {
-        }
-      }, [data]);
+ 
+  useEffect(() => {
+      try {
+        fetchServerlData({
+          data,
+          currentTab,
+          pageNo,
+          totalItems,
+          searchKey,
+          selectedStyle,
+        });
+      } catch (error) {
+      }
+    }, [data]);
+
+
 
 
 
@@ -158,9 +160,11 @@ const Search = ({
         {renderCategoryComponent(state.currentTab, state.categoryCollection)}
 
     
+        {!state.loading &&
 
 
-{!state.loading &&
+
+
 
 collectionLength.length !== 0 &&
   collectionLength.length !== state.totalItems && (
@@ -184,12 +188,6 @@ collectionLength.length !== 0 &&
 
  )}
 
-
-
-
-
-
-          
       </div>
     </div>
     </>
@@ -200,62 +198,67 @@ export default Search;
 
 export async function getServerSideProps(context) {
 
+  
 
-    try {
-      if (context.query.category === "all") {
-        const results = await fetchMultiData({
-          ...Parameters,
-          category: context.query.category,
-          search_key: context.query.term,
-          style: context.query.style ?? "",
-        });
-  
-        let addData = await addAdsToResults(results.data);
-  
-        return {
-          props: {
-            data: addData,
-            currentTab: context.query.category,
-            pageNo: 0,
-            totalItems: results.totalCount,
-            searchKey: context.query.term,
-            selectedStyle: context.query.style ?? "",
-          },
-        };
-      } else {
-  
-       
-  
-        const data = await fetchCategoryData({
-          ...Parameters,
-          category: context.query.category,
-          style: context.query.style ?? "",
-          search_key: context.query.term,
-          latitude:context.query.lat ?? "",
-          longitude:context.query.lon ?? "",
-        });
-  
-       
-        let addData = await addAdsToResults(data.rows.hits);
-  
-        return {
-          props: {
-            data: addData,
-            currentTab: context.query.category,
-            pageNo: 0,
-            totalItems: data.rows.total.value,
-            searchKey: context.query.term,
-            selectedStyle: context.query.style ?? "",
-          },
-        };
-      }
-    } catch (error) {
-    
+
+  try {
+    if (context.query.category === "all") {
+      const results = await fetchMultiData({
+        ...Parameters,
+        category: context.query.category,
+        search_key: context.query.term,
+        style: context.query.style ?? "",
+      });
+
+      let addData = await addAdsToResults(results.data);
+     
+
       return {
         props: {
-          data: null,
+          data: addData,
+          currentTab: context.query.category,
+          pageNo: 0,
+          totalItems: results.totalCount,
+          searchKey: context.query.term,
+          selectedStyle: context.query.style ?? "",
+        },
+      };
+    } else {
+
+     
+
+      const data = await fetchCategoryData({
+        ...Parameters,
+        category: context.query.category,
+        style: context.query.style ?? "",
+        search_key: context.query.term,
+        latitude:context.query.lat ?? "",
+        longitude:context.query.lon ?? "",
+      });
+
+     
+      let addData = await addAdsToResults(data.rows.hits);
+      
+
+      return {
+        props: {
+          data: addData,
+          currentTab: context.query.category,
+          pageNo: 0,
+          totalItems: data.rows.total.value,
+          searchKey: context.query.term,
+          selectedStyle: context.query.style ?? "",
         },
       };
     }
+  } catch (error) {
+  
+    return {
+      props: {
+        data: null,
+      },
+    };
   }
+}
+
   
