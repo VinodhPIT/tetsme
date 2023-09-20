@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import SideDrawer from "@/components/sideDrawer/sideDrawer";
@@ -6,6 +6,16 @@ import Image from "next/image";
 
 export default function Header({ logo, theme, isPosition }) {
   const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    if (toggle) {
+      document.body.classList.add("nav_open");
+    } else {
+      document.body.classList.remove("nav_open");
+    }
+    return () => {
+      document.body.classList.remove("nav_open");
+    };
+  }, [toggle]);
 
   const onToggle = () => {
     setToggle(true);

@@ -229,7 +229,7 @@ export default function klarna() {
             </div>
 
             <div class="text_box_wrap right ">
-              <div class="img_text_box_inner">
+              <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content justify_content_start align_item_start">
                   <div class="text_box_content_inner w_100pc custom_full_block m_pr_0">
                     <h2 class="letter_spacing_03 m_text_center">Availability</h2>

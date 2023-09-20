@@ -2161,14 +2161,12 @@ form.form_floating .form_group.radio_block>label {
   height: 100%;
 }
 
-
+.nav_open {
+  overflow: hidden;
+}
 
 /* responsive */
-@media screen and (max-width: 767.98px) {
-  .m_pr_0 {
-    padding-right: 0 !important;
-  }
-
+@media screen and (max-width: 767.98px) { 
   main {
     min-height: 40vh;
   }
@@ -2226,6 +2224,7 @@ form.form_floating .form_group.radio_block>label {
     order: 1;
     width: 100%;
     margin-top: 20px;
+    padding-bottom: 15px;
   }
 
   .footer .footer_secondary .social_icons ul {
@@ -2665,6 +2664,18 @@ form.form_floating .form_group.radio_block>label {
 
 
   /* responsive */
+  .m_pt_0 {
+    padding-top: 0 !important;
+  }
+  .m_pr_0 {
+    padding-right: 0 !important;
+  }
+  .m_pb_0 {
+    padding-bottom: 0 !important;
+  }
+  .m_pl_0 {
+    padding-left: 0 !important;
+  }
   .btn_sm_m {
     height: 48px;
     padding: 8px 20px;
@@ -2716,11 +2727,26 @@ form.form_floating .form_group.radio_block>label {
   .m_pt_45 {
     padding-top: 45px !important;
   }
-}
-@media screen and (max-width: 699px) {
 
-  .header_cookie_desktop{display: none;}
+  .header_cookie_desktop{
+    display: none;
+  }
+  .header_cookies {
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .header_cookie_close {
+    cursor: pointer;
+  }
+  .text_box_wrap.right .m_switcher .img_box_wrap {
+    order: 1;
+  }
+  .text_box_wrap.right .m_switcher .text_box_content {
+      order: 2;
+  }
 }
+
 @media screen and (max-width: 640px) {
   .img_box_wrap.custom_slick_slider_one {
     padding-left: 15px;
@@ -2926,7 +2952,7 @@ form.form_floating .form_group.radio_block>label {
   }
 
   .keywords_wrap ul.keywords_list {
-    width: 80%;
+    width: 95%;
     margin: 0;
     padding-bottom: 5px;
     overflow-x: scroll;
@@ -2956,6 +2982,20 @@ form.form_floating .form_group.radio_block>label {
   ul.keywords_list::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+    
+  .block_bg_yellow_500 ul.keywords_list::-webkit-scrollbar-track {
+    background: #F8E8CA;
+  }
+
+  .block_bg_yellow_500 ul.keywords_list::-webkit-scrollbar-thumb {
+    background: #F8E8CA;
+  }
+
+  .block_bg_yellow_500 ul.keywords_list::-webkit-scrollbar-thumb:hover {
+    background: #F8E8CA;
+  }
+
 
   .custom_carousel_wrap {
     padding-right: 0;

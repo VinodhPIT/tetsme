@@ -49,7 +49,7 @@ export default function Home() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 767.98); // Adjust the breakpoint as needed
-      setCoookieDropdown(window.innerWidth <= 699.98);
+      setCoookieDropdown(window.innerWidth <= 767.98);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -99,6 +99,7 @@ export default function Home() {
           alt="arrowDown"
           width={20}
           height={20}
+          className="header_cookie_close"
         />}
       </div>
       <Header />
@@ -307,7 +308,7 @@ export default function Home() {
               <div class="text_box_wrap right block_bg_black">
                 <div class="img_text_box_inner">
                   <div class="text_box_content justify_content_start">
-                    <div class="text_box_content_inner m_pr_0">
+                    <div class="text_box_content_inner m_pr_0 m_pb_0">
                       <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
                       <p>
                         We hand-pick every tattoo artist to ensure your tattoo

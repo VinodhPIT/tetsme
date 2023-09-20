@@ -101,7 +101,7 @@ export default function StyleGuide() {
                       />
                     </svg>
                   </div>
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_025">
                       Whats <br />
                       your Style?
@@ -112,12 +112,12 @@ export default function StyleGuide() {
             </div>
 
             <div class="text_box_wrap right block_bg_orange">
-              <div class="img_text_box_inner">
+              <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content text_center no-space-center">
                   <div class="bg_overlay_img">
                     <img src="./g10.svg" alt="" class="svg_h_inherit" />
                   </div>
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_025 color_black_h">
                       Tell me <br />
                       your Style?
@@ -148,7 +148,7 @@ export default function StyleGuide() {
             <div class="text_box_wrap right app_download_box_wrap mb_0 block_bg_gray_150">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner w_100pc">
+                  <div class="text_box_content_inner w_100pc m_pr_0">
                     <ul class="download_app ml_0 w_100pc max_w_100pc">
                       <li class="download_app_title">
                         <h6>
@@ -252,7 +252,7 @@ export default function StyleGuide() {
                   <div class="bg_overlay_img">
                     <img src="./g12.svg" alt="" class="svg_h_inherit" />
                   </div>
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_025">
                       Whats <br />
                       your Style?
@@ -263,7 +263,7 @@ export default function StyleGuide() {
             </div>
 
             <div class="text_box_wrap right block_bg_aero_blue">
-              <div class="img_text_box_inner">
+              <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content text_center no_space_center">
                   <div class="bg_overlay_img">
                     <img
@@ -272,7 +272,7 @@ export default function StyleGuide() {
                       class="svg_h_inherit"
                     />
                   </div>
-                  <div class="text_box_content_inner">
+                  <div class="text_box_content_inner m_pr_0">
                     <h2 class="letter_spacing_025 color_black_h">
                       Tell me <br />
                       your Style?
