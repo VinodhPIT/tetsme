@@ -180,7 +180,7 @@ export default function Klarna() {
                     <img
                       src="./inckd-klarna-works.png"
                       alt="How it Works!"
-                      class="svg_h_inherit"
+                      class="svg_h_inherit img_box_shadow"
                     />
                   </div>
                   <div class="bg_overlay_img">
@@ -308,8 +308,11 @@ export default function Klarna() {
                   </div>
                 </div>
                 <div class="img_box_wrap block_bg_gradient_1 justify_content_right img-btm-7pc">
+                  <div class="klarna_bg klarna_page_align">
+                    <img src="./klarna-white.svg" alt="" />                    
+                  </div>
                   <div class="box_text_img_over color_pink txt-right-align">
-                    <h2 class="letter_spacing_03 text_right m_text_center">
+                    <h2 class="letter_spacing_03 text_right m_text_center txt_mob_fs50">
                       Where i can pay my tattoo with Klarna?
                     </h2>
                   </div>

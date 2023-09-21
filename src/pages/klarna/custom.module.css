@@ -25,6 +25,7 @@
 	height: 100%;
 	position: relative;
 	transition-property: transform;
+	min-height: calc(100vh - 75px);
 }
 
 .banner {
@@ -155,12 +156,8 @@
 
 /* responsive */
 @media screen and (max-width: 767.98px) {
-	.banner_block {
-		min-height: 40rem;
-	}
-
 	.banner_item {
-		min-height: 40rem;
+		min-height: calc(100vh - 162px);
 	}
 
 	.banner:before {
@@ -215,26 +212,12 @@
 	
 }
 @media screen and (min-width: 768px) {
-	.banner_block {
-		min-height: 45rem;
-	}
-
-	.banner_item {
-		min-height: 45rem;
-	}
 	.banner_content {
 		padding-left: 5.5vw;
 		padding-right: 5.5vw;
 	}
 }
-@media screen and (min-width: 1200px) {
-	.banner_block {
-		min-height: 55rem;
-	}
-
-	.banner_item {
-		min-height: 55rem;
-	}
+@media screen and (min-width: 1200px) {	
 	.banner_content {
 		padding-left: 10.0694444444vw;
     	padding-right: 9.375vw;

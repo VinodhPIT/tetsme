@@ -74,8 +74,8 @@ export default function Dictionary() {
             <div className="text_box_wrap right block_bg_black full_banner_custom_slider">
               <div className="container">
                 <div className="img_text_box_inner">
-                  <div className="text_box_content justify_content_start pl_0 pr_2_pc">
-                    <div className="text_box_content_inner">
+                  <div className="text_box_content justify_content_start pl_0 pr_2_pc m_text_center m_pb_0">
+                    <div className="text_box_content_inner m_pr_0">
                       <h2 className="letter_spacing_05">Tattoo Dictonary</h2>
                       <p>
                         We hand-pick every tattoo artist to ensure your tattoo
@@ -206,8 +206,8 @@ export default function Dictionary() {
                
 
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner w_100pc">
-                    <ul class="download_app ml_0 w_100pc max_w_100pc">
+                  <div class="text_box_content_inner w_100pc pr_0 dictionary_explore">
+                    <ul class="download_app ml_0 w_100pc max_w_100pc m_pb_50 text_left">
                       <li class="download_app_title">
                         <h6>Explore more in the App</h6>
                         <p>
@@ -246,16 +246,16 @@ export default function Dictionary() {
             </div>
 
             <div class="text_box_wrap right">
-              <div class="img_text_box_inner">
+              <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content justify_content_start">
                   <div class="text_box_content_inner custom_carousel_wrap">
                     {/* <img src="./slider-dummy-2.png" alt="Zodiac Signs" class="w_100pc"/>                      */}
 
-                    <CarouselComponent items={items} itemStyle="d_flex justify_content_start" />
+                    <CarouselComponent items={items} itemStyle="d_flex justify_content_start m_justify_content_right" />
                   </div>
                 </div>
                 <div class="img_box_wrap block_bg_gradient_2 justify_content_right">
-                  <div class="box_text_img_over color_white text_right justify_content_right">
+                  <div class="box_text_img_over color_white text_right justify_content_right m_justify_content_left m_text_left">
                     <h2 class="txt_mob_fs50 custom_spc_right_d_430 list_inline_item">
                       Greek <span>Mythology</span>
                     </h2>
