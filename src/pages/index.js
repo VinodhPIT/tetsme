@@ -90,8 +90,8 @@ export default function Home() {
             onClick={() => onToggle()}
             src={"/arrowDown.svg"}
             alt="arrowDown"
-            width={20}
-            height={20}
+            width={16}
+            height={16}
             className="header_cookie_close"
           />
         )}
@@ -103,9 +103,10 @@ export default function Home() {
           <div className={styles.home_banner_item}>
             <div className={styles.home_banner}>
               <div className={styles.home_banner_inner}>
-                <video loop autoPlay muted>
+                <video loop autoPlay muted className="mob_hidden">
                   <source src="./home-video.mp4" type="video/mp4" />
                 </video>
+                <img src="./istockphoto-1386481647-640_adpp_is1-mob.png" alt="" className={`${styles.desk_hidden} ${styles.home_banner_img}`} />
               </div>
             </div>
             <div className={styles.home_banner_content}>
@@ -214,7 +215,7 @@ export default function Home() {
                       We hand-pick every tattoo artist to ensure your tattoo
                       experience is handled with care, quality and inclusivity.
                     </p>
-                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m">
+                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m btn_img">
                       Find artists
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -278,12 +279,12 @@ export default function Home() {
                     <img src="./klarna.svg" alt="" />
                   </div>
                   <div class="text_box_content_inner m_pr_0 pr_0">
-                    <h2 class="letter_spacing_02">Tattoo now, Pay later</h2>
+                    <h2 class="letter_spacing_02">Tattoo now, <br />Pay later</h2>
                     <p>
                       Get tattoo now, pay later. That&apos;s right, there&apos;s
                       a new way to get tattooed smoooth!
                     </p>
-                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m">
+                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m btn_img">
                       Learn more
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -304,7 +305,7 @@ export default function Home() {
                       We hand-pick every tattoo artist to ensure your tattoo
                       experience is handled with care, quality and inclusivity.
                     </p>
-                    <a href="#" class="btn btn_default btn_xxl btn_sm_m">
+                    <a href="#" class="btn btn_default btn_xxl btn_sm_m btn_img">
                       Find artists
                       <img
                         src="./alt-arrow-right-black.svg"
@@ -367,7 +368,7 @@ export default function Home() {
                     <br />
                     <br />
                     <br />
-                    <a href="#" class="btn btn_secondary btn_xxl custom_fs_20">
+                    <a href="#" class="btn btn_primary btn_xxl custom_fs_20">
                       Check the Styleguide
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -380,7 +381,7 @@ export default function Home() {
               </div>
             </div>
             <div class="text_box_wrap right block_bg_black">
-              <div class="img_text_box_inner">
+              <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content justify_content_start align_item_end txt-btm-7pc">
                   <div class="text_box_content_inner m_pr_0 pr_0">
                     <h2 class="letter_spacing_05">
@@ -392,7 +393,7 @@ export default function Home() {
                       Grow your tattoo business by fulfilling your customers
                       tattoo vision and offering them flexible payment options.
                     </p>
-                    <a href="#" class="btn btn_default btn_xxl btn_sm_m">
+                    <a href="#" class="btn btn_default btn_xxl btn_sm_m btn_img">
                       Learn more
                       <img
                         src="./alt-arrow-right-black.svg"
@@ -451,36 +452,36 @@ export default function Home() {
                       <li>
                         <Image
                           priority={true}
-                          src="/img-mobile-new-01.png"
+                          src="/img-mobile-new-02.png"
                           width={218}
                           height={1446}
                           alt="Picture of the author"
                           placeholder="empty"
-                          className="image_shadow_bg"
+                          className=""
                         />
                       </li>
                       <li>
                         <Image
                           priority={true}
-                          src="/img-mobile-new-01.png"
+                          src="/img-mobile-new-02.png"
                           width={218}
                           height={446}
                           alt="Picture of the author"
                           placeholder="empty"
                           layout="responsive"
-                          className="image_shadow_bg"
+                          className=""
                         />
                       </li>
                       <li>
                         <Image
                           priority={true}
-                          src="/img-mobile-new-01.png"
+                          src="/img-mobile-new-02.png"
                           width={218}
                           height={446}
                           alt="Picture of the author"
                           placeholder="empty"
                           layout="responsive"
-                          className="image_shadow_bg"
+                          className=""
                         />
                       </li>
                     </ul>
@@ -491,7 +492,7 @@ export default function Home() {
               </div>
               {isMobileView ? (
                 <ImageSlider
-                  imgPath="/img-mobile-new-01.png"
+                  imgPath="/img-mobile-new-02.png"
                   imgAlt="Picture of the author"
                   imgblurDataURL=""
                   imgWidth="218"

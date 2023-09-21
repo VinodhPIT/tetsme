@@ -38,14 +38,17 @@ export default function StyleGuide() {
               </div>
             </div>
             <div className={styles.banner_content}>
-              <div className={styles.banner_content_wrap}>
+              <div className={`${styles.banner_content_wrap} ${styles.text_center}`}>
                 <div className={styles.banner_caption}>
                   <h1 class="color_yellow">
                     <span>Know your style</span>
                   </h1>
                   <h5>with the inckd. Styleguide in our App</h5>
                 </div>
-                <ul className="download_app mt_0">
+                <ul className="download_app mt_0 m_mt_50">
+                  <li class="download_app_title desk_hidden">
+                    <h6>Download our app from</h6>
+                  </li>
                   <li>
                     <Link href={APP_LINK_APPLE} target="_blank">
                       <img src="./app-store.svg" alt="Appstore" />
@@ -85,7 +88,7 @@ export default function StyleGuide() {
                     layout="responsive"
                   />
                 </div>
-                <div class="text_box_content text_center no-space-center">
+                <div class="text_box_content text_center no-space-center no_space_center">
                   <div class="bg_overlay_img">
                     <svg
                       width="704"
@@ -101,7 +104,7 @@ export default function StyleGuide() {
                       />
                     </svg>
                   </div>
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner pr_0">
                     <h2 class="letter_spacing_025">
                       Whats <br />
                       your Style?
@@ -113,11 +116,11 @@ export default function StyleGuide() {
 
             <div class="text_box_wrap right block_bg_orange">
               <div class="img_text_box_inner m_switcher">
-                <div class="text_box_content text_center no-space-center">
+                <div class="text_box_content text_center no-space-center no_space_center">
                   <div class="bg_overlay_img">
                     <img src="./g10.svg" alt="" class="svg_h_inherit" />
                   </div>
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner pr_0">
                     <h2 class="letter_spacing_025 color_black_h">
                       Tell me <br />
                       your Style?
@@ -174,10 +177,10 @@ export default function StyleGuide() {
                       <li>
                         <Image
                           priority={true}
-                          src="/iPhone-192.png"
-                          className="image_shadow_bg"
-                          width={215}
-                          height={443}
+                          src="/Style-page.png"
+                          className=""
+                          width={221}
+                          height={447}
                           alt="Picture of the author"
                           placeholder="blur"
                           blurDataURL={blurDataURL}
@@ -187,10 +190,10 @@ export default function StyleGuide() {
                       <li>
                         <Image
                           priority={true}
-                          src="/iPhone-192.png"
-                          className="image_shadow_bg"
-                          width={215}
-                          height={443}
+                          src="/Style-page.png"
+                          className=""
+                          width={221}
+                          height={447}
                           alt="Picture of the author"
                           placeholder="blur"
                           blurDataURL={blurDataURL}
@@ -200,10 +203,10 @@ export default function StyleGuide() {
                       <li>
                         <Image
                           priority={true}
-                          src="/iPhone-192.png"
-                          className="image_shadow_bg"
-                          width={215}
-                          height={443}
+                          src="/Style-page.png"
+                          className=""
+                          width={221}
+                          height={447}
                           alt="Picture of the author"
                           placeholder="blur"
                           blurDataURL={blurDataURL}
@@ -218,11 +221,11 @@ export default function StyleGuide() {
               </div>
               {isMobileView ? (
                 <ImageSlider
-                  imgPath="/iPhone-192.png"
+                  imgPath="/Style-page.png"
                   imgAlt="Picture of the author"
                   imgblurDataURL={blurDataURL}
-                  imgWidth={215}
-                  imgHeight={443}
+                  imgWidth={221}
+                  imgHeight={447}
                 ></ImageSlider>
               ) : (
                 ""
@@ -252,7 +255,7 @@ export default function StyleGuide() {
                   <div class="bg_overlay_img">
                     <img src="./g12.svg" alt="" class="svg_h_inherit" />
                   </div>
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner pr_0">
                     <h2 class="letter_spacing_025">
                       Whats <br />
                       your Style?
@@ -272,7 +275,7 @@ export default function StyleGuide() {
                       class="svg_h_inherit"
                     />
                   </div>
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner pr_0">
                     <h2 class="letter_spacing_025 color_black_h">
                       Tell me <br />
                       your Style?
