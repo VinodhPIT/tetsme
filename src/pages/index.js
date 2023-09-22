@@ -20,14 +20,16 @@ export default function Home() {
 
 
   const imagePaths = [
-    "./Group 82674.svg",
-    "./Group 82675.svg",
-    "./Group 82677.svg",
-    "./Group 82678.svg",
-    "./path14.svg",
-    "./path430.svg",
-    "./path466.svg",
-    "./path428.svg",
+    "./s-1.svg",
+    "./s-2.svg",
+    "./s-3.svg",
+    "./s-4.svg",
+    "./s-5.svg",
+    "./s-6.svg",
+    "./s-7.svg",
+    "./s-8.svg",
+    "./s-9.svg",
+    "./s-10.svg",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
@@ -226,12 +228,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div class="img_box_wrap">
-                  <div class="bg_overlay_img">
+                  <div class="bg_overlay_img bg_slider_img">
                     {imagePaths.map((imagePath, index) => (
                       <img
                         key={index}
                         style={{
-                          height: "474px",
+                          height: "400px",
                           width: "400px",
                           zIndex: "2",
                           position: "absolute",

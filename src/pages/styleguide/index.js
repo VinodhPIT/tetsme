@@ -45,18 +45,18 @@ export default function StyleGuide() {
                   </h1>
                   <h5>with the inckd. Styleguide in our App</h5>
                 </div>
-                <ul className="download_app mt_0 m_mt_50">
+                <ul className="download_app mt_0 m_mt_50 d_mxw_325">
                   <li class="download_app_title desk_hidden">
                     <h6>Download our app from</h6>
                   </li>
                   <li>
                     <Link href={APP_LINK_APPLE} target="_blank">
-                      <img src="./app-store.svg" alt="Appstore" />
+                      <img src="./app-store.svg" alt="Appstore"  className="d_w_156"/>
                     </Link>
                   </li>
                   <li>
                     <Link href={APP_LINK_GOOGLE} target="_blank">
-                      <img src="./g-play.svg" alt="Playstore" />
+                      <img src="./g-play.svg" alt="Playstore"  className="d_w_156"/>
                     </Link>
                   </li>
                 </ul>

@@ -25,7 +25,8 @@
 	height: 100%;
 	position: relative;
 	transition-property: transform;
-	min-height: calc(100vh - 75px);
+	min-height: 92vh;
+    padding: 29vh 0 15vh 0;
 }
 
 .banner {
@@ -69,7 +70,7 @@
 	display: flex;
 	margin-left: auto;
 	margin-right: auto;
-	align-items: end;
+	align-items: center;
 	justify-content: flex-start;
 	width: 100%;
 	/*max-width: 812px;*/
@@ -78,7 +79,6 @@
 .banner_content_wrap_klarna {
 	padding: 0;
 	max-width: 100%;
-	padding-bottom: 10%;
 }
 
 .banner_caption {
@@ -157,16 +157,17 @@
 /* responsive */
 @media screen and (max-width: 767.98px) {
 	.banner_item {
-		min-height: calc(100vh - 162px);
+		min-height: 76vh;
+    	padding: 15.5vh 0 4.7vh 0;
 	}
-
 	.banner:before {
 		background: linear-gradient(0deg, #0D0D0D -29.06%, rgba(13, 13, 13, 0) 100%);
 	}
-
 	.banner_content {
+		max-width: 100%;
 		padding-left: 15px;
 		padding-right: 15px;
+		align-items: end;
 	}
 
 	.banner_content_wrap_klarna {
@@ -215,6 +216,11 @@
 	.banner_content {
 		padding-left: 5.5vw;
 		padding-right: 5.5vw;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {	
+	.banner_caption p {		
+		max-width: 80%;
 	}
 }
 @media screen and (min-width: 1200px) {	
