@@ -4,8 +4,10 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const CarouselKlarna = ({ items}) => {
   return (
-    <Carousel  preventMovementUntilSwipeScrollTolerance={true}
-    swipeScrollTolerance={50} >
+    <Carousel
+    preventMovementUntilSwipeScrollTolerance={true}
+    swipeScrollTolerance={50}
+  >
       {items.map((item, index) => item.image?(
         <div key={index} className='custom_carousel_slider'>
           <div className='custom_option_block'>
