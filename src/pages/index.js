@@ -450,7 +450,7 @@ export default function Home() {
                 </div>
                 {!isMobileView ? (
                   <div class="img_box_wrap">
-                    <ul class="app_download_img_list img_box_img_m20pc">
+                    <ul class="app_download_img_list img_box_img_m20pc justify_content_end">
                       <li>
                         <Image
                           priority={true}

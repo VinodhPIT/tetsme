@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from '@/components/pageHeader/Header'
+import Header from "@/components/pageHeader/Header";
 import Image from "next/image";
 import styles from "./tattoodetail.module.css";
 import { fetchTattooDetail } from "@/action/action";
@@ -10,35 +10,35 @@ import {
 } from "@/constants/constants";
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
-import { getStyles} from "@/action/action";
+import { getStyles } from "@/action/action";
 import { useGlobalState } from "@/context/Context";
 import SearchField from "@/components/tattooSearch/index";
 import Autocomplete from "react-google-autocomplete";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 import style from "@/pages/search/search.module.css";
-
+import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 export default function Detail({ data, status }) {
-  const router = useRouter()
+  const router = useRouter();
   const {
     state,
 
     searchStyle,
-  
   } = useGlobalState();
-
-
-
-
 
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
   const [getStyle, setStyle] = useState([]);
   const [location, setLocation] = useState([]);
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
 
-
-
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
 
   useEffect(() => {
     if (!data) {
@@ -58,158 +58,146 @@ export default function Detail({ data, status }) {
     }
   }, []);
 
-
-
-
-  
   if (!data) {
     return null;
   }
 
   return (
-<>
+    <>
+      <Header logo={"/tattooSearch.svg"} theme={"white"} isPosition={false} />
 
-<Header logo={'/tattooSearch.svg'} theme={'white'} isPosition={false} />
-
-
-
-
-
-    <div className="page_wrapper">
-      <div className="container">
-
-
-
-      <div className={style.filter_container}>
-          <div className={style.tattoo_search_wrap}>
-            <div className={style.search_form}>
-              <div className="search_form_wrap">
-                <SearchField />
+      <div className="page_wrapper">
+        <div className="container">
+          <div className={style.filter_container}>
+            <div className={style.tattoo_search_wrap}>
+              <div className={style.search_form}>
+                <div className="search_form_wrap">
+                  <SearchField />
+                </div>
               </div>
             </div>
-          </div>
 
-         <div className={style.main_wrap}>
-        
-
-            <div className={style.wrapper_filter}>
-              <img
-                src="/setting_tuning.svg"
-                alt="location"
-                className={style.filter_icon}
-              />
-              <select
-                onChange={(event) => searchStyle(event.target.value ,router)}
-                value={state.selectedStyle}
-              >
-                <option value="0">Choose Style</option>
-                {state.styleCollection.map((el) => (
-                  <option key={el._id} value={el._id}>
-                    {el.sort[0]}
-                  </option>
-                ))}
-              </select>
-
-
-
-            </div>
-          </div> 
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-        <div className={styles.product_detail_wrap}>
-          <div className={styles.product_media}>
-            <Image
-              alt={data.style.name}
-              priority
-              src={data.tattoo.image}
-              layout="fill"
-              objectFit="cover"
-              // width={500}
-              // height={500}
-              // layout="responsive"
-              placeholder="blur"
-              blurDataURL={blurDataURL}
-            />
-          </div>
-
-          <div className={styles.product_info_col}>
-            <div className={styles.search_profile_block}>
-              <div className={styles.search_profile_pic}>
-                <Image
-                  alt={"data.tattoo.image"}
-                  priority
-                  src={data.artist.profile_image}
-                  width={100}
-                  height={100}
-                  placeholder="blur"
-                  blurDataURL={blurDataURL}
+            <div className={style.main_wrap}>
+              <div className={style.wrapper_filter}>
+                <img
+                  src="/setting_tuning.svg"
+                  alt="location"
+                  className={style.filter_icon}
                 />
+                <select
+                  onChange={(event) => searchStyle(event.target.value, router)}
+                  value={state.selectedStyle}
+                >
+                  <option value="0">Choose Style</option>
+                  {state.styleCollection.map((el) => (
+                    <option key={el._id} value={el._id}>
+                      {el.sort[0]}
+                    </option>
+                  ))}
+                </select>
               </div>
-              <div className={styles.search_profile}>
-                <div className={styles.search_profile_content}>
-                  <div className={styles.search_profile_name}>
-                    {data.artist.artist_name}
+            </div>
+          </div>
+
+          <div className={styles.product_detail_wrap}>
+            <div className={styles.product_media}>
+              <Image
+                alt={data.style.name}
+                priority
+                src={data.tattoo.image}
+                layout="fill"
+                objectFit="cover"
+                // width={500}
+                // height={500}
+                // layout="responsive"
+                placeholder="blur"
+                blurDataURL={blurDataURL}
+              />
+            </div>
+
+            <div className={styles.product_info_col}>
+              <div className={styles.search_profile_block}>
+                <div className={styles.search_profile_pic}>
+                  <Image
+                    alt={"data.tattoo.image"}
+                    priority
+                    src={data.artist.profile_image}
+                    width={100}
+                    height={100}
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
+                  />
+                </div>
+                <div className={styles.search_profile}>
+                  <div className={styles.search_profile_content}>
+                    <div className={styles.search_profile_name}>
+                      {data.artist.artist_name}
+                    </div>
+                    <div className={styles.search_profile_details}>
+                      Switzerland, Germany
+                    </div>
                   </div>
-                  <div className={styles.search_profile_details}>
-                    Switzerland, Germany
+                  <div className={styles.search_profile_link}>
+                    <Link
+                      href={`/artist/${data.artist.slug}`}
+                      className={styles.profile_getin}
+                    >
+                      Get in Touch
+                    </Link>
+                    <a
+                      onClick={openPopup}
+                      target="_blank"
+                      className={styles.profile_bookmark}
+                    >
+                      <img src="/bookmark-icon.svg" alt="bookmark icon" />
+                    </a>
+                    <a
+                      onClick={openPopup}
+                      target="_blank"
+                      className={styles.profile_share}
+                    >
+                      <img src="/share-icon.svg" alt="share icon" />
+                    </a>
                   </div>
                 </div>
-                <div className={styles.search_profile_link}>
-                  <Link  href={`/artist/${data.artist.slug}`} className={styles.profile_getin}>
-                    Get in Touch
-                  </Link>
-                  <a
-                    href="/"
-                    target="_blank"
-                    className={styles.profile_bookmark}
-                  >
-                    <img src="/bookmark-icon.svg" alt="bookmark icon" />
-                  </a>
-                  <a href="/" target="_blank" className={styles.profile_share}>
-                    <img src="/share-icon.svg" alt="share icon" />
-                  </a>
+              </div>
+
+              <div className={styles.product_style}>
+                <span className={styles.product_style_label}>
+                  Image tattoo style
+                </span>
+
+                {getStyle.length > 0 && (
+                  <ul className={styles.product_style_list}>
+                    {getStyle.map((e) => {
+                      return <li key={e.id}>{e.name}</li>;
+                    })}
+                  </ul>
+                )}
+              </div>
+
+              <div className={styles.product_detail_location}>
+                <span className={styles.product_location_label}>Locations</span>
+                <div className={styles.product_location_list}>
+                  {location.length > 0 &&
+                    location.map((el) => {
+                      return (
+                        <span
+                          className={styles.product_loc_title}
+                          key={el.studio_uid}
+                        >
+                          <img
+                            src="/location-small.svg"
+                            alt="Berlin, Germany"
+                          />
+                          {el.city} {el.country}
+                        </span>
+                      );
+                    })}
                 </div>
               </div>
-            </div>
 
-            <div className={styles.product_style}>
-              <span className={styles.product_style_label}>
-                Image tattoo style
-              </span>
-
-              {getStyle.length > 0 && (
-                <ul className={styles.product_style_list}>
-                  {getStyle.map((e) => {
-                    return <li key={e.id}>{e.name}</li>;
-                  })}
-                </ul>
-              )}
-            </div>
-
-            <div className={styles.product_detail_location}>
-              <span className={styles.product_location_label}>Locations</span>
-              <div className={styles.product_location_list}>
-                {location.length > 0 &&
-                  location.map((el) => {
-                 return   <span className={styles.product_loc_title} key={el.studio_uid}>
-                      <img src="/location-small.svg" alt="Berlin, Germany" />
-                    {el.city} {el.country}
-                    </span>;
-                  })}
-              </div>
-            </div>
-
-            {/* <div className={styles.product_price_block}>
+              {/* <div className={styles.product_price_block}>
               <div className={styles.product_price_wrap}>
                 <span className={styles.product_price_label}>Fixed price</span>                
                 <span className={styles.product_price_value}>CHF 200</span>
@@ -217,44 +205,52 @@ export default function Detail({ data, status }) {
                 <span className={styles.product_price_value}>CHF 400</span>
               </div>
             </div> */}
-            <ul className={styles.download_app}>
-              <li className={styles.download_app_title}>
-                <h6>Download our app from</h6>
-              </li>
-              <li>
-                <Link target="_blank" href={APP_LINK_APPLE}>
-                  <img src="/app-store.svg" alt="app store" />
-                </Link>
-              </li>
-              <li>
-                <Link target="_blank" href={APP_LINK_GOOGLE}>
-                  <img src="/g-play.svg" alt="g play" />
-                </Link>
-              </li>
-            </ul>
+              <ul className={styles.download_app}>
+                <li className={styles.download_app_title}>
+                  <h6>Download our app from</h6>
+                </li>
+                <li>
+                  <Link target="_blank" href={APP_LINK_APPLE}>
+                    <img src="/app-store.svg" alt="app store" />
+                  </Link>
+                </li>
+                <li>
+                  <Link target="_blank" href={APP_LINK_GOOGLE}>
+                    <img src="/g-play.svg" alt="g play" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
+
+          {loading === true ? null : tattoo && tattoo.length > 0 ? (
+            <div className={styles.grid_wrapper_tattoo}>
+              {tattoo.map((item) => (
+                <Link
+                  href={`/tattoo/${item.tattoo_uid}`}
+                  className={styles.listing_gridItem}
+                  key={item.tattoo_uid}
+                >
+                  <Image
+                    alt={item.style_name}
+                    priority
+                    src={item.tattoo_image}
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
+                  />
+                </Link>
+              ))}
+            </div>
+          ) : null}
         </div>
-
-        {loading === true ? null : tattoo && tattoo.length > 0 ? (
-          <div className={styles.grid_wrapper_tattoo}>
-            {tattoo.map((item) => (
-              <Link  href={`/tattoo/${item.tattoo_uid}`}className={styles.listing_gridItem} key={item.tattoo_uid}>
-
-                <Image
-                  alt={item.style_name}
-                  priority
-                  src={item.tattoo_image}
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={blurDataURL}
-                />
-              </Link>
-            ))}
-          </div>
-        ) : null}
+        <TattooSearchModalPopup
+          className="custom-modal"
+          isOpen={isPopupOpen}
+          closeModal={closePopup}
+        />
       </div>
-    </div>
     </>
   );
 }
@@ -265,7 +261,7 @@ export async function getServerSideProps(context) {
 
     if (!data.data) {
       return {
-        notFound: true, 
+        notFound: true,
       };
     }
 
@@ -276,7 +272,6 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-  
     return {
       notFound: true,
     };

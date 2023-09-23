@@ -80,11 +80,11 @@
     background: var(--gray-600);
     text-decoration: none;
 }
-.search_profile_link .profile_bookmark {
+.search_profile_link .profile_bookmark { cursor: pointer;
     order: 3;
 }
 .search_profile_link .profile_share {
-    order: 2;
+    order: 2;cursor: pointer;
 }
 
 .product_info_col {

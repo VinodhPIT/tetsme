@@ -85,8 +85,8 @@ export default function Header() {
               <div className="nav_block">
                 <ul className="nav main_nav navbar_collapse collapse">
                   {links.map((link) => (
-                    <li key={link.id} className="nav_item">
-                      <Link href={link.url}>{link.title}</Link>
+                    <li key={link.id} className="nav_item ">
+                      <Link href={link.url} className="navColor" >{link.title}</Link>
                     </li>
                   ))}
                 </ul>
