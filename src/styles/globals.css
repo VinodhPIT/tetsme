@@ -76,6 +76,7 @@ a {
 
 a:hover {
   text-decoration: none;
+  color: #b6b6b6;
 }
 
 html {
@@ -161,13 +162,16 @@ header ul.nav.main_nav>li {
 header ul.nav.main_nav>li>a {
   text-decoration: none;
   display: block;
-
   text-align: left;
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   padding: 0;
   margin: 0;
+  color: #fff;
+}
+header ul.nav.main_nav>li>a:hover {
+  color: #b6b6b6;
 }
 
 .header_right {
@@ -361,7 +365,7 @@ footer {
 }
 
 .footer .footer_block ul.footer_list li a:hover {
-  color: var(--black);
+  color: #8c8c8c;
   text-decoration: none;
 }
 
@@ -380,7 +384,7 @@ footer {
 .footer .footer_block .footer_left ul.footer_list {
   display: inline-block;
   width: 100%;
-  margin: 36px 0 0 0;
+  margin: 40px 0 0 0;
 }
 
 .footer .footer_block .footer_left ul.footer_list li {
@@ -450,7 +454,7 @@ footer {
 }
 
 .footer .foot_links ul.links li a:hover {
-  color: var(--black);
+  color: #8c8c8c;
   text-decoration: none;
 }
 
@@ -1240,6 +1244,9 @@ button.btn_view_more {
   width: 100%;
 }
 
+.bdr_rad_4 {
+  border-radius: 4px!important;
+}
 
 /* content styles */
 main {
@@ -1395,7 +1402,9 @@ main {
 .trend_list_wrap ul.trend_list li.list_inline_item a {
   display: flex;
 }
-
+.trend_list_wrap ul.trend_list li.list_inline_item a:hover {
+  color: #b6b6b6;
+}
 .trend_list_wrap ul.trend_list li.list_inline_item a img {
   margin-right: 20px;
 }
