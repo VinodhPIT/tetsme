@@ -167,14 +167,14 @@ export default function Detail({ data, status }) {
                   Image tattoo style
                 </span>
 
-                {getStyle.length > 0 && (
-                  <ul className={styles.product_style_list}>
-                    {getStyle.map((e) => {
-                      return <li key={e.id}>{e.name}</li>;
-                    })}
-                  </ul>
-                )}
-              </div>
+              {getStyle.length > 0 && (
+                <ul className={styles.product_style_list}>
+                  {getStyle.map((e) => {
+                    return <li key={e.id}>  <Link href={`/search?term=${e.name}&category=${"tattoo"}`}> {e.name} </Link> </li>;
+                  })}
+                </ul>
+              )}
+            </div>
 
               <div className={styles.product_detail_location}>
                 <span className={styles.product_location_label}>Locations</span>

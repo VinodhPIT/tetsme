@@ -193,7 +193,7 @@ const router = useRouter()
               {getStyle.length > 0 && (
                 <ul className={styles.product_style_list}>
                   {getStyle.map((e) => {
-                    return <li key={e.id}>{e.name}</li>;
+                    return <li key={e.id}> <Link href={`/search?term=${e.name}&category=${"flash"}`}> {e.name} </Link></li>;
                   })}
                 </ul>
               )}

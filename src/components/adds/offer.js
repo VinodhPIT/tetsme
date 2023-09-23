@@ -1,7 +1,22 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import styles from "@/components/styles/listing.module.css";
+import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
+
+
 
 export default function Offer() {
+
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
+
   return (
     <div className={styles.custom_adv_block_3}>
     <div className={styles.custom_adv_wrap}>
@@ -10,7 +25,8 @@ export default function Offer() {
         <span className={styles.adv_price}>CHF 30</span>
         <p>off on your next tattoo</p>
         <span className={styles.adv_btn_wrap}>
-          <a href="#" className={styles.btn_secondary}>
+          <a   onClick={openPopup}
+                    target="_blank"   className={styles.btn_secondary}>
             Refer and Earn
           </a>
         </span>
@@ -20,6 +36,14 @@ export default function Offer() {
         />
       </div>
     </div>
+
+        <TattooSearchModalPopup
+          className="custom-modal"
+          isOpen={isPopupOpen}
+          closeModal={closePopup}
+        />
+
+
   </div>
   )
 }
