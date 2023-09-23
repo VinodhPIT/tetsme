@@ -11,12 +11,9 @@ import style from "@/pages/search/search.module.css";
 import { useGlobalState } from "@/context/Context";
 import { artistTab } from "@/components/tabMenu/menu";
 import { renderArtistGallery } from "@/components/customTabs/tab";
-
+import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 export default function Detail({ data }) {
-
- 
-
   const { state, searchStyle, findArtist } = useGlobalState();
 
   const router = useRouter();
@@ -25,10 +22,17 @@ export default function Detail({ data }) {
   const [getAll, setAll] = useState([]);
   const [tattooList, setTattooList] = useState([]);
   const [flashList, setFlashList] = useState([]);
-  const [artistProfile ,setProfile] =useState()
-
+  const [artistProfile, setProfile] = useState();
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const changeTab = (tab) => {
     setCurrentTab(tab);
+  };
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
   };
 
   useEffect(() => {
@@ -36,7 +40,7 @@ export default function Detail({ data }) {
       return null;
     } else {
       const fetchData = async () => {
-        setProfile(data)
+        setProfile(data);
         try {
           const res = await artistGallery(data.profile_uid);
           setAll(res.data);
@@ -127,21 +131,30 @@ export default function Detail({ data }) {
               </div> */}
               </div>
               <div className={styles.search_profile_link}>
-                <a href="/" target="_blank" className={styles.profile_getin}>
+                <a
+                  onClick={openPopup}
+                  target="_blank"
+                  className={styles.profile_getin}
+                >
                   Get in Touch
                 </a>
-                <a href="/" target="_blank" className={styles.profile_bookmark}>
+                <a
+                  onClick={openPopup}
+                  target="_blank"
+                  className={styles.profile_bookmark}
+                >
                   <img src="/bookmark-icon.svg" alt="bookmark icon" />
                 </a>
-                <a href="/" target="_blank" className={styles.profile_share}>
+                <a
+                  onClick={openPopup}
+                  target="_blank"
+                  className={styles.profile_share}
+                >
                   <img src="/share-icon.svg" alt="share icon" />
                 </a>
               </div>
             </div>
           </div>
-
-          
-
 
           <div className={style.tabSection}>
             <ul>
@@ -173,6 +186,11 @@ export default function Detail({ data }) {
             artistProfile
           )}
         </div>
+        <TattooSearchModalPopup
+          className="custom-modal"
+          isOpen={isPopupOpen}
+          closeModal={closePopup}
+        />
       </div>
     </>
   );
