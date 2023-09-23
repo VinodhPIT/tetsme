@@ -190,7 +190,7 @@ export default function Detail({ data, status }) {
               {getStyle.length > 0 && (
                 <ul className={styles.product_style_list}>
                   {getStyle.map((e) => {
-                    return <li key={e.id}>{e.name}</li>;
+                    return <li key={e.id}>  <Link href={`/search?term=${e.name}&category=${"tattoo"}`}> {e.name} </Link> </li>;
                   })}
                 </ul>
               )}
