@@ -217,14 +217,14 @@ export default function Home() {
                       We hand-pick every tattoo artist to ensure your tattoo
                       experience is handled with care, quality and inclusivity.
                     </p>
-                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m btn_img">
+                    < Link href={`/search?term=${""}&category=${"artist"}`} class="btn btn_secondary btn_xxl btn_sm_m btn_img">
                       Find artists
                       <img
                         src="./alt-arrow-right-white.svg"
                         alt=""
                         class="ml-8 mt-2"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div class="img_box_wrap">
@@ -286,14 +286,14 @@ export default function Home() {
                       Get tattoo now, pay later. That&apos;s right, there&apos;s
                       a new way to get tattooed smoooth!
                     </p>
-                    <a href="#" class="btn btn_secondary btn_xxl btn_sm_m btn_img">
+                    <Link href="/klarna" class="btn btn_secondary btn_xxl btn_sm_m btn_img">
                       Learn more
                       <img
                         src="./alt-arrow-right-white.svg"
                         alt=""
                         class="ml-8 mt-2"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -307,14 +307,14 @@ export default function Home() {
                       We hand-pick every tattoo artist to ensure your tattoo
                       experience is handled with care, quality and inclusivity.
                     </p>
-                    <a href="#" class="btn btn_default btn_xxl btn_sm_m btn_img">
+                    <Link href={`/search?term=${""}&category=${"artist"}`}  class="btn btn_default btn_xxl btn_sm_m btn_img">
                       Find artists
                       <img
                         src="./alt-arrow-right-black.svg"
                         alt=""
                         class="ml-8 mt-2"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div class="img_box_wrap custom_slick_slider_one">
@@ -370,14 +370,14 @@ export default function Home() {
                     <br />
                     <br />
                     <br />
-                    <a href="#" class="btn btn_primary btn_xxl custom_fs_20">
+                    <Link href="/styleguide" class="btn btn_primary btn_xxl custom_fs_20">
                       Check the Styleguide
                       <img
                         src="./alt-arrow-right-white.svg"
                         alt=""
                         class="ml-8 mt-2"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -395,14 +395,14 @@ export default function Home() {
                       Grow your tattoo business by fulfilling your customers
                       tattoo vision and offering them flexible payment options.
                     </p>
-                    <a href="#" class="btn btn_default btn_xxl btn_sm_m btn_img">
+                    <Link href="/fortattooartists" class="btn btn_default btn_xxl btn_sm_m btn_img">
                       Learn more
                       <img
                         src="./alt-arrow-right-black.svg"
                         alt=""
                         class="ml-8 mt-2"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div class="img_box_wrap block_bg_gradient_1 justify_content_right img-btm-7pc">

@@ -91,10 +91,12 @@ export default function Footer() {
             <div class="footer_left">
               <div class="footer_logo">
                 <Link href="/">
-                  <img
-                    src="./Inckd-logo-footer-black.svg"
-                    class="img_fluid"
+                <Image
+                    src={"/Inckd-logo-footer-black.svg"}
                     alt="logo"
+                    width={127}
+                    height={37}
+                    priority
                   />
                 </Link>
               </div>
@@ -104,12 +106,25 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href={APP_LINK_APPLE}>
-                    <img src="./app-store.svg" alt="app store" />
+                   
+                    <Image
+                      src={"/app-store.svg"}
+                      alt="AppStore"
+                      width={135}
+                      height={42}
+                      priority
+                    />
                   </Link>
                 </li>
                 <li>
                   <Link href={APP_LINK_GOOGLE}>
-                    <img src="./g-play.svg" alt="google play" />
+                  <Image
+                      src={"/g-play.svg"}
+                      alt="GooglePlay"
+                      width={135}
+                      height={42}
+                      priority
+                    />
                   </Link>
                 </li>
               </ul>
@@ -170,17 +185,38 @@ export default function Footer() {
                 <li class="footer_title">Follow us on</li>
                 <li>
                   <Link href={INSTAGRAM_PROFILE_LINK} target="_blank">
-                    <img src="./insta-icon.svg" alt="INSTAGRAM" />
+                  <Image
+                      src={"/insta-icon.svg"}
+                      alt="Instagram"
+                      width={24}
+                      height={25}
+                      priority
+                    />
+                    
+                  
                   </Link>
                 </li>
                 <li>
                   <Link href={FACEBOOK_PROFILE_LINK} target="_blank">
-                    <img src="./fb-icon.svg" alt="FACEBOOK" />
+                  <Image
+                      src={"/fb-icon.svg"}
+                      alt="Facebook"
+                      width={24}
+                      height={25}
+                      priority
+                    />
+                  
                   </Link>
                 </li>
                 <li>
                   <Link href={LINKEDIN_PROFILE_LINK} target="_blank">
-                    <img src="./linkedin-icon.svg" alt="LINKEDIN" />
+                  <Image
+                      src={"/linkedin-icon.svg"}
+                      alt="LinkedIn"
+                      width={24}
+                      height={25}
+                      priority
+                    />
                   </Link>
                 </li>
               </ul>
