@@ -186,11 +186,16 @@ export default function Detail({ data }) {
             artistProfile
           )}
         </div>
+
+        
         <TattooSearchModalPopup
           className="custom-modal"
           isOpen={isPopupOpen}
           closeModal={closePopup}
         />
+
+
+
       </div>
     </>
   );

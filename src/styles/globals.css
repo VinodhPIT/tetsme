@@ -168,8 +168,10 @@ header ul.nav.main_nav>li>a {
   line-height: 27px;
   padding: 0;
   margin: 0;
-  color: #fff;
+  /* color: #fff; */
 }
+.navColor {color: #fff;}
+
 header ul.nav.main_nav>li>a:hover {
   color: #b6b6b6;
 }

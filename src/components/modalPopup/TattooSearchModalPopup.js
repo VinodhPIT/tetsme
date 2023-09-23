@@ -1,18 +1,19 @@
 import React from 'react';
 import Modal from 'react-modal';
-import style from './popup.module.css'
 import Image from 'next/image';
-// Make sure to set the app element to avoid accessibility issues.
+import {APP_LINK_APPLE,APP_LINK_GOOGLE} from '@/constants/constants'
+import Link from 'next/link';
+
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(6, 6, 6, 0.78)', // Adjust the opacity and color as needed
-    zIndex: 1000, // Ensure the modal appears above other elements
+    backgroundColor: 'rgba(6, 6, 6, 0.78)', 
+    zIndex: 1000, 
   },
   content: {
-    border: 'none', // Remove the default border
-    background: 'transparent', // Make the modal background transparent
-    maxWidth: '800px', // Adjust the modal width as needed
-    margin: '0 auto', // Center the modal horizontally
+    border: 'none', 
+    background: 'transparent', 
+    maxWidth: '800px', 
+    margin: '0 auto', 
     padding: '0px',
     top:'0',
     bottom: '0px',
@@ -29,8 +30,8 @@ const TattooSearchModalPopup = ({ isOpen, closeModal }) => {
     isOpen={isOpen}
     onRequestClose={closeModal}
     contentLabel="Example Modal"
-    style={customStyles} // Apply custom styles
-    ariaHideApp={false} //
+    style={customStyles} 
+    ariaHideApp={false}
     >
       <div className='popup_wrap'>        
         <div className="popup_container">
@@ -53,14 +54,14 @@ const TattooSearchModalPopup = ({ isOpen, closeModal }) => {
                       <h6>Download our app from</h6>
                     </li>
                     <li>
-                      <a target="_blank" href="https://apps.apple.com/us/app/inckd/id1526690381">
-                        <img src="/app-store.svg" alt="app store" />
-                      </a>
+                      <Link target="_blank" href={APP_LINK_APPLE}>
+                        <img src="/app-store.svg" alt="Appstore" />
+                      </Link>
                     </li>
                     <li>
-                      <a target="_blank" href="https://play.google.com/store/apps/details?id=com.inckd.tattoo">
-                        <img src="/g-play.svg" alt="google play" />
-                      </a>
+                      <Link target="_blank" href={APP_LINK_GOOGLE}>
+                        <img src="/g-play.svg" alt="Googleplay" />
+                      </Link>
                     </li>
                   </ul>
                 </div>

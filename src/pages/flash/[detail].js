@@ -3,7 +3,6 @@ import Header from '@/components/pageHeader/Header'
 import Image from "next/image";
 import styles from "@/pages/tattoo/tattoodetail.module.css";
 import { fetchTattooDetail } from "@/action/action";
-import PageLoad from "@/components/pageLoad";
 import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
@@ -15,8 +14,7 @@ import style from "@/pages/search/search.module.css";
 import { useGlobalState } from "@/context/Context";
 import SearchField from "@/components/tattooSearch/index";
 import {useRouter} from 'next/router'
-
-
+import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 
 
@@ -35,6 +33,17 @@ const router = useRouter()
   const [tattoo, setTattoo] = useState([]);
   const [getStyle, setStyle] = useState([]);
   const [location, setLocation] = useState([]);
+
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
 
 
 
@@ -163,13 +172,13 @@ const router = useRouter()
                     Get in Touch
                   </Link>
                   <a
-                    href="/"
+                    onClick={openPopup}
                     target="_blank"
                     className={styles.profile_bookmark}
                   >
                     <img src="/bookmark-icon.svg" alt="bookmark icon" />
                   </a>
-                  <a href="/" target="_blank" className={styles.profile_share}>
+                  <a  onClick={openPopup} target="_blank" className={styles.profile_share}>
                     <img src="/share-icon.svg" alt="share icon" />
                   </a>
                 </div>
@@ -263,6 +272,14 @@ const router = useRouter()
           </div>
         ) : null}
       </div>
+
+      <TattooSearchModalPopup
+          className="custom-modal"
+          isOpen={isPopupOpen}
+          closeModal={closePopup}
+        />
+
+
     </div>
     </>
   );
