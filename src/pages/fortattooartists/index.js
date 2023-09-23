@@ -132,7 +132,7 @@ export default function Tattooartists() {
                     </p>
                     <Link
                       href={"/joinartist"}
-                      className="btn_default btn_custom_m"
+                      className="btn_default btn_custom_m bdr_rad_4"
                     >
                       {" "}
                       Get started{" "}
@@ -156,7 +156,7 @@ export default function Tattooartists() {
                     </p>
                     <Link
                       href={"/joinartist"}
-                      className="btn_default btn_custom_m"
+                      className="btn_default btn_custom_m bdr_rad_4"
                     >
                       {" "}
                       Get started{" "}
@@ -182,7 +182,7 @@ export default function Tattooartists() {
                     </h3>
                     <Link
                       href={"/joinartist"}
-                      className="btn_secondary btn_custom_m"
+                      className="btn_secondary btn_custom_m bdr_rad_4"
                     >
                       {" "}
                       Get started{" "}
@@ -214,7 +214,7 @@ export default function Tattooartists() {
                     </p>
                     <Link
                       href={"/joinartist"}
-                      className="btn_default btn_custom_m"
+                      className="btn_default btn_custom_m bdr_rad_4"
                     >
                       {" "}
                       Get started{" "}
@@ -239,7 +239,7 @@ export default function Tattooartists() {
                     </p>
                     <Link
                       href={"/joinartist"}
-                      className="btn_default btn_custom_m"
+                      className="btn_default btn_custom_m bdr_rad_4"
                     >
                       {" "}
                       Get started{" "}
@@ -278,7 +278,7 @@ export default function Tattooartists() {
                     </p>
                     <Link
                       href={"/joinartist"}
-                      className="btn_default btn_custom_m"
+                      className="btn_default btn_custom_m bdr_rad_4"
                     >
                       {" "}
                       Get started{" "}
