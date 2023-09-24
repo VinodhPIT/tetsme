@@ -8,5 +8,15 @@ const tabs = [...commonTabData ,{ id: "artist", label: "Artist" ,image :'/tabArt
 ];
 const artistTab = [...commonTabData, { id: "Information", label: "Information", image: '/tabInfo.svg', activeImage: '/activeInfo.svg' }];
 
-export { tabs, artistTab };
+const faqTab = [   { id: "general", label: "General", image: '/tabAll.svg', activeImage: '/activeAll.svg' },
+{ id: "artist", label: "Artist", image :'/tabArtist.svg'  ,activeImage:'/activeArtist.svg'},
+
+{ id: "tattoo", label: "TattooLovers", image: '/tabTattoo.svg', activeImage: '/activeTattoo.svg' },]
+
+
+
+
+
+
+export { tabs, artistTab,faqTab };
 

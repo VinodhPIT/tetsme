@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
       "/joinartist",
 
       "/all/[detail]",
-      "/404"
+      "/404" ,'/faq'
 
     ];
 

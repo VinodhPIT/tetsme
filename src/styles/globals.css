@@ -2419,6 +2419,140 @@ form.form_floating .form_group.radio_block>label {
   text-align: left;
 }
 
+/* tab */
+
+.tabSection{float: left;width: 100%;}
+.tabSection ul {
+    margin: 14px 0px 0px 0px;
+    padding: 0;
+    text-align: center;
+    border-bottom: 2px solid rgba(225, 228, 232, 0.5);
+    gap: 54px;
+    display: flex;
+    justify-content: center;
+  
+}
+.tabSection ul>li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px 3px 17px 5px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -2px;
+}
+.tabSection ul>li.activeTab {
+    border-bottom: 2px solid #101010;
+    color: var(--black)
+}
+.tabSection ul>li.inActivetab {
+    color: #212121;
+}
+.tabBox {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    cursor: pointer;
+}
+.tabSection button {
+    background-color: transparent;
+    border: 0;
+    padding: 10px 40px;
+}
+
+
+
+/* faq */
+.faq_search_wrap {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+.faq_wrap {
+  border-top: 1px solid rgba(225, 228, 232, 0.5);
+  padding: 40px 0 0 0;
+}
+.faq_wrap h1 {
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 70px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.faq_tab_wrap {
+  display: inline-block;
+  clear: left;
+  width: 100%;
+}
+.faq_accordion_wrap {
+  margin-bottom: 20px;
+  display: inline-block;
+  clear: left;
+  width: 100%;
+}
+.faq_wrap .accordion {
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+  margin-top: 8px;
+  clear: left;
+}
+.faq_wrap .accordion .accordion__item { 
+  border: 0;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.5);
+  margin-bottom: 0;
+  padding-top: 54px;
+  padding-bottom: 30px;
+}
+.faq_wrap .accordion .accordion__item:first-child {
+  padding-top: 14px;
+}
+.faq_wrap .accordion .accordion__item .accordion__heading {
+  padding: 0 10px;
+}
+.faq_wrap .accordion .accordion__item .accordion__heading .accordion__button {
+  padding: 0 25px 0 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  color: #212121;
+  background-color: #fff;
+  border: 0;
+  position: relative;
+}
+.faq_wrap .accordion .accordion__item .accordion__panel {
+  padding: 0px 10px 0 10px;    
+}
+.faq_wrap .accordion .accordion__item .accordion__heading .accordion__button:before {
+  display: none;
+}
+.faq_wrap .accordion .accordion__item .accordion__heading .accordion__button:after {
+  content:"";
+  width: 24px;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url("/accordion-arrow.svg") no-repeat;
+}
+.faq_wrap .accordion .accordion__item .accordion__heading .accordion__button[aria-expanded='true']:after,
+.faq_wrap .accordion .accordion__item .accordion__heading .accordion__button[aria-selected='true']:after {
+  transform: rotate(180deg);
+}
+.faq_wrap .accordion .accordion__item .accordion__panel p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 0;
+  padding-top: 20px;
+  color: #212121;
+}
+
+
+
+
+
+
+
 /* siddique styles ------   12 sep */
 .swiper-slide {
   background-color: transparent;
@@ -3208,16 +3342,6 @@ header .navbar {
     font-weight: 600;
     line-height: 21px;
   }
-
-
-
-
-
-
-
-
-
-
   .popup_wrap {
     max-height: inherit;
   }
@@ -3260,6 +3384,67 @@ header .navbar {
   .popup_wrap .popup_box_inner ul.download_app li a img {
     max-width: 115px;
   }
+
+
+  .faq_wrap {
+    border: 0;
+    padding-top: 0;
+  }
+  .faq_wrap h1 {
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 10px;
+  }
+  .faq_tab_wrap {
+    display: inline-block;
+    clear: left;
+    width: 100%;
+  }
+  .faq_tab_wrap .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .faq_tab_wrap .tabSection ul {
+    gap: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .faq_tab_wrap .tabSection ul>li {
+    padding: 6px 40px 6px 5px;
+    margin-left: 5%;
+    font-size: 14px;
+    font-weight: 400;
+  }    
+  .faq_wrap .accordion .accordion__item { 
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .faq_wrap .accordion .accordion__item:first-child {
+    padding-top: 26px;
+  }
+  .faq_wrap .accordion .accordion__item .accordion__heading {
+    padding: 0;
+  }
+  .faq_wrap .accordion .accordion__item .accordion__heading .accordion__button {
+    padding: 0 16px 0 0;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .faq_wrap .accordion .accordion__item .accordion__heading .accordion__button:after {  
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+  }
+  .faq_wrap .accordion .accordion__item .accordion__panel {
+    padding: 0px ;    
+  }
+  .faq_wrap .accordion .accordion__item .accordion__panel p {
+    font-size: 12px;
+    line-height: 19px;
+    color: #666666;
+    padding-top: 10px;
+  }
+
 
 
 }

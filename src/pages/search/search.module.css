@@ -104,20 +104,32 @@
 .btn_wrapper {
     width: 100%;
 }
+
 .tabSection{float: left;width: 100%;}
 .tabSection ul {
     margin: 14px 0px 0px 0px;
-
     padding: 0;
-
     text-align: center;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid rgba(225, 228, 232, 0.5);
+    gap: 54px;
+    display: flex;
+    justify-content: center;
   
 }
 .tabSection ul>li {
     list-style: none;
     display: inline-block;
-    padding: 16px 36px;
+    padding: 10px 3px 17px 5px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -2px;
+}
+.tabSection ul>li.activeTab {
+    border-bottom: 2px solid #101010;
+    color: var(--black)
+}
+.tabSection ul>li.inActivetab {
+    color: #212121;
 }
 .tabBox {
     display: flex;
@@ -130,13 +142,7 @@
     border: 0;
     padding: 10px 40px;
 }
-.activeTab {
-    border-bottom: 2px solid #000;
-    color: var(--black)
-}
-.inActivetab {
-    color: var(--gray-400)
-}
+
 
 @media screen and (max-width: 640px) {
     .filter_container {
@@ -163,8 +169,8 @@
 @media screen and (max-width: 479px) {
   
     .tabSection ul>li{
-  padding: 6px 11px;
-     font-size: 12px;
+        padding: 6px 11px;
+        font-size: 12px;
     }
     
     
