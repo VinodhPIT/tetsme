@@ -3546,6 +3546,12 @@ header .navbar {
   .d_mxw_325 {
     max-width: 325px!important;
   }
+  .down_klarna-right-spc .img_box_wrap ul.app_download_img_list {
+    margin-right: 5.5vw;
+  }
+  .down_home-right-spc .img_box_wrap ul.app_download_img_list {
+    margin-right: 3.69vw;
+  }
 
 }
 
@@ -3864,6 +3870,12 @@ header .navbar {
   }
   .m_pl_60 {
     padding-left: 60px!important;
+  }
+  .down_klarna-right-spc .img_box_wrap ul.app_download_img_list {
+    margin-right: 9.375vw;
+  }
+  .down_home-right-spc .img_box_wrap ul.app_download_img_list {
+    margin-right: 7.89vw;
   }
 }
 

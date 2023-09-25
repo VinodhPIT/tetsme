@@ -427,7 +427,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div class="text_box_wrap right app_download_box_wrap block_bg_orange">
+            <div class="text_box_wrap right app_download_box_wrap block_bg_orange down_home-right-spc">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start">
                   <div class="text_box_content_inner m_pr_0">

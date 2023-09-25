@@ -331,7 +331,7 @@ export default function Klarna() {
               </div>
             </div>
 
-            <div class="text_box_wrap right app_download_box_wrap block_bg_pink">
+            <div class="text_box_wrap right app_download_box_wrap block_bg_pink down_klarna-right-spc">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start m_justify_content_center m_pt_45">
                   <div class="text_box_content_inner m_pr_0">
@@ -354,7 +354,7 @@ export default function Klarna() {
                 </div>
                 {!isMobileView ? (
                 <div class="img_box_wrap">
-                  <ul class="app_download_img_list img_box_img_m20pc justify_content_center">
+                  <ul class="app_download_img_list img_box_img_m20pc justify_content_right">
                     <li>
                       <img
                         src="./mockup-iPhone-download.png"
