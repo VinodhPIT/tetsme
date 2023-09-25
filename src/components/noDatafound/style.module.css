@@ -1,0 +1,19 @@
+.title{
+    MARGIN: 14px 0px 13px 0px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.d{
+    font-size: 14px; color: #666666;
+}
+
+.button{
+    background-color: #F8F8F8;
+    padding: 10px 15px;
+    border: 0;
+    border: #E1E4E8;
+    border-radius: 6px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    font-weight: 600;    border: 1px solid #E1E4E8;
+}

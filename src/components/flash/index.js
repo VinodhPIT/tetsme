@@ -22,7 +22,7 @@ export default function Flash({ data }) {
   return (
     <div className={styles.pageContainer}>
 
-{state.loading ? <div className={styles.blockCenter}>  <PageLoad /> </div>  : data.length === 0 ?   <div className={styles.blockCenter}> <NoData/> </div>  :
+{state.loading ? <div className={styles.blockCenter}>  <PageLoad /> </div>  : data.length === 0 ?   <div className={styles.blockCenter}> <NoData category={'flash'}  /> </div>  :
 
        
       <div className={styles.grid_wrapper_tattoo}>

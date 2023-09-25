@@ -3,6 +3,7 @@ import { searchParam, prepareRequest } from "@/helpers/helper";
 import { postApiCall ,getApiCall } from "@/utils/apiUtils";
 
 export const fetchCategoryData = async (params) => {
+  console.log(params,'paramsparamsparams')
   try {
     const reposneCategory = await postApiCall(
       `/${params.category}/search`,

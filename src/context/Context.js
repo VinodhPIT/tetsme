@@ -2,6 +2,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 import { fetchCategoryData, fetchMultiData, getStyles } from "@/action/action";
 import { Parameters } from "@/components/parameters/params";
+import {getUrl} from '@/utils/getUrl'
 
 const initialState = {
   categoryCollection: [],
@@ -62,6 +63,15 @@ const reducer = (state, action) => {
         latitude: lat,
         longitude: lon,
       };
+      
+
+
+      case "CHANGE_TAB":
+        console.log(action.payload ,"curent tab")
+       
+        return { ...state, currentTab:action.payload };
+
+
 
     case "COUNT":
       const pageNo = action.payload;
@@ -135,6 +145,25 @@ export const GlobalStateProvider = ({ children }) => {
   const fetchServerlData = async (payload) => {
     try {
       dispatch({ type: "INITIAL_SERVER_DATA", payload: payload });
+    } catch (error) {}
+  };
+
+  const changeTab = async (payload ,router) => {
+
+
+
+
+    try {
+      let url = `/search?term=${state.searchKey}&category=${payload}`
+   
+      if (state.selectedStyle!=='') {
+          url += `&style=${state.selectedStyle}`
+        }
+      if (state.latitude!=='') {
+        url += `&lon=${state.longitude}&lat=${state.latitude}`
+      }
+      router.push(url)
+      dispatch({ type: "CHANGE_TAB", payload: payload });
     } catch (error) {}
   };
 
@@ -222,6 +251,7 @@ export const GlobalStateProvider = ({ children }) => {
       value={{
         state,
         fetchServerlData,
+        changeTab,
         loadMore,
         getHintsBySearch,
         searchData,

@@ -142,8 +142,13 @@ const router = useRouter()
              alt={data.style.name}
               priority
               src={data.tattoo.image}
-              layout="fill"
-              objectFit="cover"
+              height={200}
+              width={200}
+              sizes="100vw"
+              style={{
+                height: 'auto',
+                width: '100%',
+              }}
               placeholder="blur"
               blurDataURL={blurDataURL}
             />
@@ -173,7 +178,7 @@ const router = useRouter()
                 </div>
                 <div className={styles.search_profile_link}>
                   <Link href={`/artist/${data.artist.slug}`} className={styles.profile_getin}>
-                    Get in Touch
+                    View Profile
                   </Link>
                   <a
                     onClick={openPopup}
@@ -265,7 +270,7 @@ const router = useRouter()
                 <Image
                   alt={item.style_name}
                   priority
-                  src={item.tattoo_image}
+                  src={item.image_medium}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"

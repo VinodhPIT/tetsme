@@ -21,7 +21,7 @@ export default function All({ data }) {
         </div>
       ) : data.length === 0 ? (
         <div className={styles.blockCenter}>
-          <NoData />
+          <NoData   category={'all'} /> 
         </div>
       ) : (
         <div className={styles.grid_wrapper_tattoo}>

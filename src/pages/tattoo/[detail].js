@@ -18,13 +18,7 @@ import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPop
 
 export default function Detail({ data, status }) {
   const router = useRouter();
-  const {
-    state,
-
- 
-  } = useGlobalState();
-
-  console.log(data ,"cdcjopdcjdp")
+  const { state } = useGlobalState();
 
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
@@ -48,6 +42,8 @@ export default function Detail({ data, status }) {
         setLoading(true);
         try {
           const res = await fetchArtistDetail(data.artist.slug);
+
+
           setTattoo(res.data.tattoo);
           setStyle(res.data.style);
           setLocation(res.data.studio);
@@ -62,14 +58,9 @@ export default function Detail({ data, status }) {
     return null;
   }
 
-
-  const searchStyle =(searchStyle)=>{
-    router.push(`/search?term=${""}&category=${'tattoo'}&style=${searchStyle}`)
-  }
-  
-
-
-
+  const searchStyle = (searchStyle) => {
+    router.push(`/search?term=${""}&category=${"tattoo"}&style=${searchStyle}`);
+  };
 
   return (
     <>
@@ -81,7 +72,7 @@ export default function Detail({ data, status }) {
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>
                 <div className="search_form_wrap">
-                  <SearchField  currentTab={'tattoo'}   />
+                  <SearchField currentTab={"tattoo"} />
                 </div>
               </div>
             </div>
@@ -114,10 +105,13 @@ export default function Detail({ data, status }) {
                 alt={data.style.name}
                 priority
                 src={data.tattoo.image}
-         
-                 width={500}
-                 height={500}
-            
+                height={200}
+                width={200}
+                sizes="100vw"
+                style={{
+                  height: "auto",
+                  width: "100%",
+                }}
                 placeholder="blur"
                 blurDataURL={blurDataURL}
               />
@@ -130,13 +124,8 @@ export default function Detail({ data, status }) {
                     alt={"data.tattoo.image"}
                     priority
                     src={data.artist.profile_image}
-                    height={200}
-                    width={200}
-                    // sizes="100vw"
-                    // style={{
-                    //   height: 'auto',
-                    //   width: '100%',
-                    // }}
+                    width={100}
+                    height={100}
                     placeholder="blur"
                     blurDataURL={blurDataURL}
                   />
@@ -155,7 +144,7 @@ export default function Detail({ data, status }) {
                       href={`/artist/${data.artist.slug}`}
                       className={styles.profile_getin}
                     >
-                      Get in Touch
+                      View Profile
                     </Link>
                     <a
                       onClick={openPopup}
@@ -180,14 +169,24 @@ export default function Detail({ data, status }) {
                   Image tattoo style
                 </span>
 
-              {getStyle.length > 0 && (
-                <ul className={styles.product_style_list}>
-                  {getStyle.map((e) => {
-                    return <li key={e.id}>  <Link href={`/search?term=${e.name}&category=${"tattoo"}`}> {e.name} </Link> </li>;
-                  })}
-                </ul>
-              )}
-            </div>
+                {getStyle.length > 0 && (
+                  <ul className={styles.product_style_list}>
+                    {getStyle.map((e) => {
+                      return (
+                        <li key={e.id}>
+                          {" "}
+                          <Link
+                            href={`/search?term=${e.name}&category=${"tattoo"}`}
+                          >
+                            {" "}
+                            {e.name}{" "}
+                          </Link>{" "}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
 
               <div className={styles.product_detail_location}>
                 <span className={styles.product_location_label}>Locations</span>
@@ -247,7 +246,7 @@ export default function Detail({ data, status }) {
                   <Image
                     alt={item.style_name}
                     priority
-                    src={item.tattoo_image}
+                    src={item.image_medium}
                     layout="fill"
                     objectFit="cover"
                     placeholder="blur"

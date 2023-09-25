@@ -90,6 +90,8 @@ function SearchBar({ isPage  ,currentTab}) {
     router.push(`/search?term=${searchState.query}&category=${currentTab}`)
 
     
+
+    
     addToSearchHistory(searchState.query);
   };
 
