@@ -94,6 +94,8 @@
 }
 .product_media {position: relative;
     width: 50%;
+    background: #f8f8f8;
+
 }
 /* .product_media img {
     width: 100%;

@@ -24,6 +24,8 @@ export default function Detail({ data, status }) {
  
   } = useGlobalState();
 
+  console.log(data ,"cdcjopdcjdp")
+
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
   const [getStyle, setStyle] = useState([]);
@@ -112,11 +114,10 @@ export default function Detail({ data, status }) {
                 alt={data.style.name}
                 priority
                 src={data.tattoo.image}
-                layout="fill"
-                objectFit="cover"
-                // width={500}
-                // height={500}
-                // layout="responsive"
+         
+                 width={500}
+                 height={500}
+            
                 placeholder="blur"
                 blurDataURL={blurDataURL}
               />
@@ -129,8 +130,13 @@ export default function Detail({ data, status }) {
                     alt={"data.tattoo.image"}
                     priority
                     src={data.artist.profile_image}
-                    width={100}
-                    height={100}
+                    height={200}
+                    width={200}
+                    // sizes="100vw"
+                    // style={{
+                    //   height: 'auto',
+                    //   width: '100%',
+                    // }}
                     placeholder="blur"
                     blurDataURL={blurDataURL}
                   />

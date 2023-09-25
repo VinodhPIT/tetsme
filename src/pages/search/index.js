@@ -73,12 +73,19 @@ const Search = ({
   };
 
 
-  const collectionLength = state.categoryCollection.filter((e)=>e._index!== 'ad')
+   const collectionLength = state.categoryCollection.filter((e)=>e._index!== 'ad')
 
 
 
 const updateTab =(tab)=>{
+  console.log(tab,"dmcldmc")
+
+
 router.push(`/search?term=${""}&category=${tab}`)
+
+
+
+
 }
 const searchStyle =(searchStyle)=>{
   router.push(`/search?term=${""}&category=${currentTab}&style=${searchStyle}`)
@@ -259,7 +266,7 @@ export async function getServerSideProps(context) {
 
      
       let addData = await addAdsToResults(data.rows.hits);
-      
+     
 
       return {
         props: {
