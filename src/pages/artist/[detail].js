@@ -14,7 +14,7 @@ import { renderArtistGallery } from "@/components/customTabs/tab";
 import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 export default function Detail({ data }) {
-  const { state, searchStyle, findArtist } = useGlobalState();
+  const { state, findArtist } = useGlobalState();
 
   const router = useRouter();
 
@@ -56,8 +56,19 @@ export default function Detail({ data }) {
     const { lat, lng } = place.geometry.location;
     const latitude = lat();
     const longitude = lng();
-    findArtist({ latitude, longitude }, router);
+
+    router.push(`/search?term=${""}&category=${'artist'}&lat=${latitude}&lon=${longitude}`)
+
+
+
   };
+
+  const searchStyle =(searchStyle)=>{
+    router.push(`/search?term=${""}&category=${'artist'}&style=${searchStyle}`)
+  }
+  
+
+
 
   return (
     <>
@@ -69,7 +80,7 @@ export default function Detail({ data }) {
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>
                 <div className="search_form_wrap">
-                  <SearchField />
+                  <SearchField   currentTab={'artist'}  />
                 </div>
               </div>
             </div>
@@ -94,7 +105,7 @@ export default function Detail({ data }) {
                   className={style.filter_icon}
                 />
                 <select
-                  onChange={(event) => searchStyle(event.target.value, router)}
+                  onChange={(event) => searchStyle(event.target.value)}
                   value={state.selectedStyle}
                 >
                   <option value="0">Choose Style</option>

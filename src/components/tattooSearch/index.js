@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useGlobalState } from "@/context/Context";
 import { v4 as uuidv4 } from "uuid";
 
-function SearchBar({ isPage }) {
+function SearchBar({ isPage  ,currentTab}) {
 
 
   
@@ -86,9 +86,10 @@ function SearchBar({ isPage }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    router.push(`/search?term=${searchState.query}&category=${currentTab}`)
+
     
-    searchData(searchState.query, router);
-  
     addToSearchHistory(searchState.query);
   };
 
@@ -116,6 +117,9 @@ function SearchBar({ isPage }) {
     }
     addToSearchHistory(item);
   };
+
+
+
 
   const addToSearchHistory = (name) => {
     const newItem = { id: uuidv4(), name };

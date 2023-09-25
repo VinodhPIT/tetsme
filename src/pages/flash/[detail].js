@@ -24,8 +24,8 @@ const router = useRouter()
   const {
     state,
 
-    searchStyle,
-    findArtist,
+
+
   } = useGlobalState();
 
 
@@ -72,6 +72,10 @@ const router = useRouter()
 
 
 
+  const searchStyle =(searchStyle)=>{
+    router.push(`/search?term=${""}&category=${'flash'}&style=${searchStyle}`)
+  }
+  
 
 
 
@@ -87,7 +91,7 @@ const router = useRouter()
           <div className={style.tattoo_search_wrap}>
             <div className={style.search_form}>
               <div className="search_form_wrap">
-                <SearchField />
+                <SearchField  currentTab={'flash'} />
               </div>
             </div>
           </div>
@@ -114,7 +118,7 @@ const router = useRouter()
                 className={style.filter_icon}
               />
               <select
-                onChange={(event) => searchStyle(event.target.value ,router)}
+                onChange={(event) => searchStyle(event.target.value)}
                 value={state.selectedStyle}
               >
                 <option value="0">Choose Style</option>

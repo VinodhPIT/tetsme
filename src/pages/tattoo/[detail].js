@@ -10,10 +10,8 @@ import {
 } from "@/constants/constants";
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
-import { getStyles } from "@/action/action";
 import { useGlobalState } from "@/context/Context";
 import SearchField from "@/components/tattooSearch/index";
-import Autocomplete from "react-google-autocomplete";
 import { useRouter } from "next/router";
 import style from "@/pages/search/search.module.css";
 import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
@@ -23,7 +21,7 @@ export default function Detail({ data, status }) {
   const {
     state,
 
-    searchStyle,
+ 
   } = useGlobalState();
 
   const [loading, setLoading] = useState(false);
@@ -62,6 +60,15 @@ export default function Detail({ data, status }) {
     return null;
   }
 
+
+  const searchStyle =(searchStyle)=>{
+    router.push(`/search?term=${""}&category=${'tattoo'}&style=${searchStyle}`)
+  }
+  
+
+
+
+
   return (
     <>
       <Header logo={"/tattooSearch.svg"} theme={"white"} isPosition={false} />
@@ -72,7 +79,7 @@ export default function Detail({ data, status }) {
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>
                 <div className="search_form_wrap">
-                  <SearchField />
+                  <SearchField  currentTab={'tattoo'}   />
                 </div>
               </div>
             </div>
@@ -85,7 +92,7 @@ export default function Detail({ data, status }) {
                   className={style.filter_icon}
                 />
                 <select
-                  onChange={(event) => searchStyle(event.target.value, router)}
+                  onChange={(event) => searchStyle(event.target.value)}
                   value={state.selectedStyle}
                 >
                   <option value="0">Choose Style</option>

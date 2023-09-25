@@ -22,15 +22,15 @@ const Search = ({
   pageNo,
   totalItems,
   searchKey,
-  selectedStyle,
+  selectedStyle,lat,lon
 }) => {
   const {
     state,
     fetchServerlData,
-    updateTab,
+    // updateTab,
     loadMore,
-    searchStyle,
-    findArtist,
+    // searchStyle,
+    // findArtist,
   } = useGlobalState();
 
  
@@ -42,7 +42,7 @@ const Search = ({
           pageNo,
           totalItems,
           searchKey,
-          selectedStyle,
+          selectedStyle, lat,lon
         });
       } catch (error) {
       }
@@ -59,11 +59,30 @@ const Search = ({
     const { lat, lng } = place.geometry.location;
     const latitude = lat();
     const longitude = lng();
-    findArtist({ latitude, longitude } ,router);
+
+
+
+    router.push(`/search?term=${""}&category=${currentTab}&lat=${latitude}&lon=${longitude}`)
+  
+    // findArtist({ latitude, longitude } ,router);
+
+
+
+
+
   };
 
 
   const collectionLength = state.categoryCollection.filter((e)=>e._index!== 'ad')
+
+
+
+const updateTab =(tab)=>{
+router.push(`/search?term=${""}&category=${tab}`)
+}
+const searchStyle =(searchStyle)=>{
+  router.push(`/search?term=${""}&category=${currentTab}&style=${searchStyle}`)
+}
 
 
 
@@ -86,7 +105,7 @@ const Search = ({
           <div className={style.tattoo_search_wrap}>
             <div className={style.search_form}>
               <div className="search_form_wrap">
-                <SearchField />
+                <SearchField  currentTab={currentTab}  />
               </div>
             </div>
           </div>
@@ -113,7 +132,7 @@ const Search = ({
                 className={style.filter_icon}
               />
               <select
-                onChange={(event) => searchStyle(event.target.value ,router)}
+                onChange={(event) => searchStyle(event.target.value)}
                 value={state.selectedStyle}
               >
                 <option value="0">Choose Style</option>
@@ -138,7 +157,7 @@ const Search = ({
                       ? style.activeTab
                       : style.inActivetab
                   }
-                  onClick={() => updateTab(tab.id, router, true)}
+                  onClick={() => updateTab(tab.id)}
                 >
                   <div className={style.tabBox}>
                     <img
@@ -221,6 +240,8 @@ export async function getServerSideProps(context) {
           totalItems: results.totalCount,
           searchKey: context.query.term,
           selectedStyle: context.query.style ?? "",
+
+
         },
       };
     } else {
@@ -248,6 +269,8 @@ export async function getServerSideProps(context) {
           totalItems: data.rows.total.value,
           searchKey: context.query.term,
           selectedStyle: context.query.style ?? "",
+          lat:context.query.lat ?? "",
+          lon:context.query.lon ?? "",
         },
       };
     }
