@@ -84,9 +84,13 @@
   line-height: 150%;
   display: flex;
   align-items: center;
-  color: #C3C3C3;
+  color: #212121;
   border: 1px solid #E1E4E8;
   outline: none;
+}
+.search_bar input.input_txt::placeholder {
+  color: #C3C3C3;
+  opacity: 1;
 }
 .search_bar .btn_search {
   padding: 0.5rem 0.8rem;

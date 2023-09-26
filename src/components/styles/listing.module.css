@@ -402,3 +402,9 @@
   }
 
 }
+
+@media screen and (max-width: 491px) {
+  .grid_wrapper_tattoo {
+    grid-template-columns: repeat(2, minmax(230px, 1fr));
+  }
+}

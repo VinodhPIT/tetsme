@@ -33,6 +33,9 @@ export default function Tattooartists() {
                   </p>
                 </div>
                 <ul className={styles.download_app}>
+                  <li className={styles.download_app_title}>
+                    <h6>Download our app from</h6>
+                  </li>
                   <li>
                     <Link href={APP_LINK_APPLE} target="_blank">
                       <img src="./app-store.svg" alt="apple store" />
@@ -72,7 +75,7 @@ export default function Tattooartists() {
             <div class="text_box_wrap right block_bg_black">
               <div class="img_text_box_inner">
                 <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner m_pr_0">
+                  <div class="text_box_content_inner m_pr_0 tattoo_art_mgt_mob">
                     <h2 class="letter_spacing_03">Manage your business</h2>
                     <ul class="custom-listing">
                       <li>
@@ -291,7 +294,7 @@ export default function Tattooartists() {
             <div className="text_box_wrap full-block-wrap block_bg_gray_150">
               <div className="img_text_box_inner">
                 <div className="justify_content_start container w_100pc ">
-                  <div className="text_box_content_inner m_pr_0 pb_0">
+                  <div className="text_box_content_inner m_pr_0 pb_20 m_pb_40">
                     <h3 className="mb_0">
                       Explore more <br />
                       Features in the App

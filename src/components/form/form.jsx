@@ -137,10 +137,9 @@ const _Form = () => {
                         <Field
                           as="textarea"
                           name="message"
-                          placeholder=""
+                          placeholder="How we can help you ?"
                           className="form_control"
-                        />
-                        <label for="Message">How we can help you ?</label>
+                        />                        
                         <ErrorMessage
                           name="message"
                           component="div"
