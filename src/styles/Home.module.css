@@ -42,12 +42,23 @@
 
 .home_banner:before {
 	content: "";
+    background: linear-gradient(0deg, #0D0D0D -29.06%, rgba(13, 13, 13, 0.00) 100%);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+.home_banner:after {
+	content: "";
 	background: linear-gradient(1deg, #0D0D0D 16.96%, rgba(13, 13, 13, 0.05) 55.01%, rgba(13, 13, 13, 0.05) 98.26%);
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	z-index: 1;
+	bottom: 0;
 }
 
 .home_banner_inner {
@@ -82,7 +93,6 @@
 .home_banner_content_wrap {
 	padding: 0;
 	max-width: 100%;
-	/*margin-bottom: 95px;*/
 }
 
 .home_banner_caption {
@@ -129,14 +139,17 @@
 	.mob_hidden {
 		display: none!important
 	}
-
 	.home_banner_item {
 		min-height: 76vh;
     	padding: 13.5vh 0 3.5vh 0;
 	}
-
 	.home_banner:before {
-		background: linear-gradient(0deg, #0D0D0D -29.06%, rgba(13, 13, 13, 0) 100%);
+		background: linear-gradient(0deg, #0D0D0D -29.06%, rgba(13, 13, 13, 0.00) 100%);
+	}
+
+	.home_banner:after {
+		box-shadow: none;
+		background: linear-gradient(1deg, #0D0D0D 16.96%, rgba(13, 13, 13, 0.22) 55.01%, rgba(13, 13, 13, 0.05) 98.26%);
 	}
 
 	.home_banner_content {

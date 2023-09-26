@@ -40,7 +40,7 @@
 
 .banner:before {
 	content: "";
-	background: linear-gradient(1deg, #222 16.96%, rgba(13, 13, 13, 0.05) 55.01%, rgba(13, 13, 13, 0.05) 98.26%);
+	background: linear-gradient(1deg, rgba(0, 0, 0, 0.70) 14.26%, rgba(0, 0, 0, 0.05) 53.68%, rgba(0, 0, 0, 0.05) 98.48%);
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -161,7 +161,7 @@
     	padding: 15.5vh 0 4.7vh 0;
 	}
 	.banner:before {
-		background: linear-gradient(0deg, #0D0D0D -29.06%, rgba(13, 13, 13, 0) 100%);
+		background: linear-gradient(1deg, #0D0D0D 16.96%, rgba(13, 13, 13, 0.22) 55.01%, rgba(13, 13, 13, 0.05) 98.26%);
 	}
 	.banner_content {
 		max-width: 100%;
@@ -209,7 +209,7 @@
 	
 	.download_app li.download_app_title h6 {		
 		text-align: center;
-	}
+	}	
 	
 }
 @media screen and (min-width: 768px) {

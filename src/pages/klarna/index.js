@@ -78,7 +78,11 @@ export default function Klarna() {
               <div className={styles.banner_inner}>
                 <img
                   src="./pexels-cottonbro-studio-5320148-14-klarna.png"
-                  alt="Boost your business with inckd"
+                  alt="Boost your business with inckd" className="mob_hidden"
+                />
+                <img
+                  src="./pexels-cottonbro-studio-5320148-14-klarna-mob.png"
+                  alt="Boost your business with inckd" className="desk_hidden"
                 />
               </div>
             </div>
@@ -175,13 +179,13 @@ export default function Klarna() {
                     </ul>
                   </div>
                 </div>
-                <div class="img_box_wrap block_bg_orange justify_content_center">
+                <div class="img_box_wrap block_bg_orange justify_content_center block_bg_gradient_3">
                   <div class="bg_overlay_img z_index_1">
                     <img
                       src="./inckd-klarna-works.png"
                       alt="How it Works!"
-                      class="svg_h_inherit img_box_shadow"
-                    />
+                      class="svg_h_inherit img_box_shadow_2 m_klarna_work_reset"
+                    />                                    
                   </div>
                   <div class="bg_overlay_img">
                     <img

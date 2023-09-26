@@ -265,7 +265,7 @@ export default function Home() {
 
             <div class="text_box_wrap left block_bg_pink">
               <div class="img_text_box_inner">
-                <div class="img_box_wrap block_bg_gradient_1">
+                <div class="img_box_wrap block_bg_gradient_1 m_min_h_425">
                   <div class="klarna_bg">
                     <img src="./klarna-white.svg" alt="" />
                   </div>
@@ -274,7 +274,7 @@ export default function Home() {
                       Pay all at once? <br /> Never again!
                     </h2>
                   </div>
-                  <img src="./pexels-cottonbro-studio-5320148-6.png" alt="" />
+                  <img src="./pexels-cottonbro-studio-5320148-6.png" alt="" className="object_position_left"/>
                 </div>
                 <div class="text_box_content justify_content_start">
                   <div class="klarna_bg">
@@ -336,11 +336,23 @@ export default function Home() {
                     priority={true}
                     src="/pexels-ademola.png"
                     alt="pexels-ademola"
-                    width={600}
-                    height={730}
+                    width={719}
+                    height={628}
                     placeholder="blur"
                     blurDataURL={blurDataURL}
                     layout="responsive"
+                    className="mob_hidden"
+                  />
+                   <Image
+                    priority={true}
+                    src="/pexels-ademola-mob.png"
+                    alt="pexels-ademola"
+                    width={375}
+                    height={387}
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
+                    layout="responsive"
+                    className="desk_hidden"
                   />
 
                   {/* <img src="./pexels-ademola.png" alt="" />  */}
@@ -384,7 +396,7 @@ export default function Home() {
             </div>
             <div class="text_box_wrap right block_bg_black">
               <div class="img_text_box_inner m_switcher">
-                <div class="text_box_content justify_content_start align_item_end txt-btm-7pc">
+                <div class="text_box_content justify_content_start align_item_end txt-btm-7pc m_txt-btm-40">
                   <div class="text_box_content_inner m_pr_0 pr_0">
                     <h2 class="letter_spacing_05">
                       Boost your <br />
@@ -409,7 +421,7 @@ export default function Home() {
                   <div class="box_text_img_over color_aero_blue_lite txt-right-align">
                     <h2 class="letter_spacing_03 text_right">
                       <span class="small letter_spacing_02">Are you a </span>
-                      Tattooartist?
+                      Tattoo artist?
                     </h2>
                   </div>
 
@@ -454,7 +466,7 @@ export default function Home() {
                       <li>
                         <Image
                           priority={true}
-                          src="/img-mobile-new-02.png"
+                          src="/img-mobile-new-03.png"
                           width={218}
                           height={1446}
                           alt="Picture of the author"
@@ -465,7 +477,7 @@ export default function Home() {
                       <li>
                         <Image
                           priority={true}
-                          src="/img-mobile-new-02.png"
+                          src="/img-mobile-new-03.png"
                           width={218}
                           height={446}
                           alt="Picture of the author"
@@ -477,7 +489,7 @@ export default function Home() {
                       <li>
                         <Image
                           priority={true}
-                          src="/img-mobile-new-02.png"
+                          src="/img-mobile-new-03.png"
                           width={218}
                           height={446}
                           alt="Picture of the author"
@@ -494,7 +506,7 @@ export default function Home() {
               </div>
               {isMobileView ? (
                 <ImageSlider
-                  imgPath="/img-mobile-new-02.png"
+                  imgPath="/img-mobile-new-03.png"
                   imgAlt="Picture of the author"
                   imgblurDataURL=""
                   imgWidth="218"

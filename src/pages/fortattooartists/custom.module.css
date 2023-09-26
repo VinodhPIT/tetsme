@@ -190,12 +190,12 @@
 /* responsive */
 @media screen and (max-width: 767.98px) {
 	.banner_item {
-		min-height: 76vh;
-		padding: 17vh 0 4vh 0;
+		min-height: 70vh;
+		padding: 14vh 0 3.45vh 0;
 	}
 
 	.banner:before {
-		background: linear-gradient(0deg, #0D0D0D -29.06%, rgba(13, 13, 13, 0) 100%);
+		background: linear-gradient(1deg, #222 16.96%, rgba(13, 13, 13, 0.05) 55.01%, rgba(13, 13, 13, 0.05) 98.26%);
 	}
 
 	.banner_content {
@@ -227,17 +227,29 @@
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 24px;
-		margin: 25px auto 25px auto;
+		margin: 17px auto 11px auto;
 		padding: 0;
 	}
 	.download_app {
 		order: 3;
 		margin: 0px auto;
 	}
+	.download_app li.download_app_title {
+		width: 100%;
+		margin: 0;
+	}
+	.download_app li.download_app_title h6 {
+		padding: 0;
+		margin: 0 0 10px 0;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		color: var(--white);
+	}
 	.trend_list_wrap {
 		order: 2;
     	padding-top: 0;
-    	padding-bottom: 35px;
+    	padding-bottom: 26px;
 	  } 
 	  .trend_list_wrap ul.trend_list li.list_inline_item {
 		margin: 0 25px 0 0;
@@ -253,7 +265,8 @@
 	  .trend_list_wrap ul.trend_list li.list_inline_item img {
 		margin-right: 0;
 		top: 0;
-		width: 16px;
+		height: 16px;
+		margin-bottom: 8px;
 	  }
 	  .trend_list_wrap ul.trend_list li.list_inline_item span {
 		display: block;
@@ -266,6 +279,9 @@
 	  
 	.trend_list_wrap ul.trend_list li.list_inline_item {
 		display: flex;
+	}
+	.download_app li.download_app_title {
+		display: none;
 	}
 }
 @media screen and (min-width: 768px) and (max-width: 1300px) {

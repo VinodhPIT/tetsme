@@ -105,7 +105,7 @@ export default function Header() {
 
                 <Image
                  onClick={() => onToggle(true)} className="nav_btn_toggle"
-        src="/Hamburger Menu.png"
+        src="/hamburger-menu.svg"
         alt="Picture of the author"
         width={32}
         height={32}
