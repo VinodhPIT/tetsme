@@ -61,8 +61,8 @@ export default function Header({ logo, theme, isPosition }) {
                   <Image
                     src={logo}
                     alt="Logo"
-                    width={105}
-                    height={31}
+                    width={110}
+                    height={52}
                     priority
                   />
                 </Link>

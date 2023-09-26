@@ -2,7 +2,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 import { fetchCategoryData, fetchMultiData, getStyles } from "@/action/action";
 import { Parameters } from "@/components/parameters/params";
-import {getUrl} from '@/utils/getUrl'
+
 
 const initialState = {
   categoryCollection: [],
