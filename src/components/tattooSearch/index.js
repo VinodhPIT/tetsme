@@ -241,9 +241,9 @@ function SearchBar({ isPage  ,currentTab}) {
             </div>
           )}
         </div>
-        {searchState.query &&  <button className={style.close_search}>
+        {/* {searchState.query &&  <button className={style.close_search}>
           <img src="/search-close.svg" alt="search close" className={style.close_search_icon}/> 
-        </button> }
+        </button> } */}
       </form>
     </div>
   );

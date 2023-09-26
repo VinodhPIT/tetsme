@@ -238,7 +238,7 @@ export default function Detail({ data, status }) {
         
 
 <div className={styles.titleWrapper}>
-<h1>Related images updated by this artist</h1>
+<h1>You might also like</h1>
 </div>
          
 

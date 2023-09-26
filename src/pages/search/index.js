@@ -57,6 +57,7 @@ const Search = ({
   };
 
   const updateTab = (tab) => {
+    console.log('dd', tab)
     getUrl(searchKey, tab, selectedStyle, lat, lon, router);
   };
 
@@ -127,7 +128,7 @@ const Search = ({
                   <li
                     key={tab.id}
                     className={
-                      state.currentTab === tab.id
+                      currentTab === tab.id
                         ? style.activeTab
                         : style.inActivetab
                     }
@@ -136,7 +137,7 @@ const Search = ({
                     <div className={style.tabBox}>
                       <img
                         src={
-                          state.currentTab === tab.id
+                          currentTab === tab.id
                             ? tab.activeImage
                             : tab.image
                         }
@@ -181,7 +182,7 @@ const Search = ({
 export default Search;
 
 export async function getServerSideProps(context) {
-  console.log(context, "contextcontext");
+
 
   //  let isLoading = true; // Initialize isLoading to true
 

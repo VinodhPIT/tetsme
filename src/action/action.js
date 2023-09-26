@@ -3,7 +3,7 @@ import { searchParam, prepareRequest } from "@/helpers/helper";
 import { postApiCall ,getApiCall } from "@/utils/apiUtils";
 
 export const fetchCategoryData = async (params) => {
-  console.log(params ,'mcsdlmcs;ldcmsd')
+
   try {
     const reposneCategory = await postApiCall(
       `/${params.category}/search`,
@@ -158,7 +158,7 @@ export const artistGallery = async (uid) => {
     return response;
     }
    catch (error) {
-    console.log(error ,"myt errr")
+    
     return [];
   }
 };
