@@ -10,8 +10,6 @@ import ArtistAdd from "../adds/artistAdd";
 import KlarnaAdd from "../adds/klarnaAdd";
 import Offer from "../adds/offer";
 
-
-
 export default function All({ data }) {
   const { state } = useGlobalState();
 
@@ -19,13 +17,11 @@ export default function All({ data }) {
     <div className={styles.pageContainer}>
       {state.loading ? (
         <div className={styles.blockCenter}>
-          {" "}
-          <PageLoad />{" "}
+          <PageLoad />
         </div>
       ) : data.length === 0 ? (
         <div className={styles.blockCenter}>
-          {" "}
-          <NoData />{" "}
+          <NoData   category={'all'} /> 
         </div>
       ) : (
         <div className={styles.grid_wrapper_tattoo}>
@@ -34,31 +30,24 @@ export default function All({ data }) {
 
             return item._index === "ad" ? (
               item.add === 1 ? (
-                <ArtistAdd/>
+                <ArtistAdd />
               ) : item.add === 2 ? (
-                <KlarnaAdd/>
+                <KlarnaAdd />
               ) : (
-                <Offer/>
+                <Offer />
               )
             ) : (
-
-
-
               <Link
-              className={styles.listing_gridItem}
-              key={key}
-              href={
-                item._source.tattoo_type === "normal"
-                  ? `/tattoo/${item._source.tattoo_uid}`
-                  : item._source.tattoo_type === "flash"
-                  ? `/flash/${item._source.tattoo_uid}`
-                  : `/artist/${item._source.slug}`
-              }
-            >
-              
-              
-              
-
+                className={styles.listing_gridItem}
+                key={key}
+                href={
+                  item._source.tattoo_type === "normal"
+                    ? `/tattoo/${item._source.tattoo_uid}`
+                    : item._source.tattoo_type === "flash"
+                    ? `/flash/${item._source.tattoo_uid}`
+                    : `/artist/${item._source.slug}`
+                }
+              >
                 <Image
                   priority={true}
                   src={
@@ -77,9 +66,6 @@ export default function All({ data }) {
                   blurDataURL={blurDataURL}
                 />
               </Link>
-
-
-
             );
           })}
         </div>

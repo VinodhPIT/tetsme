@@ -10,21 +10,15 @@ import {
 } from "@/constants/constants";
 import { fetchArtistDetail } from "@/action/action";
 import Link from "next/link";
-import { getStyles } from "@/action/action";
 import { useGlobalState } from "@/context/Context";
 import SearchField from "@/components/tattooSearch/index";
-import Autocomplete from "react-google-autocomplete";
 import { useRouter } from "next/router";
 import style from "@/pages/search/search.module.css";
 import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 export default function Detail({ data, status }) {
   const router = useRouter();
-  const {
-    state,
-
-    searchStyle,
-  } = useGlobalState();
+  const { state } = useGlobalState();
 
   const [loading, setLoading] = useState(false);
   const [tattoo, setTattoo] = useState([]);
@@ -48,6 +42,8 @@ export default function Detail({ data, status }) {
         setLoading(true);
         try {
           const res = await fetchArtistDetail(data.artist.slug);
+
+
           setTattoo(res.data.tattoo);
           setStyle(res.data.style);
           setLocation(res.data.studio);
@@ -62,6 +58,10 @@ export default function Detail({ data, status }) {
     return null;
   }
 
+  const searchStyle = (searchStyle) => {
+    router.push(`/search?term=${""}&category=${"tattoo"}&style=${searchStyle}`);
+  };
+
   return (
     <>
       <Header logo={"/tattooSearch.svg"} theme={"white"} isPosition={false} />
@@ -72,7 +72,7 @@ export default function Detail({ data, status }) {
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>
                 <div className="search_form_wrap">
-                  <SearchField />
+                  <SearchField currentTab={"tattoo"} />
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Detail({ data, status }) {
                   className={style.filter_icon}
                 />
                 <select
-                  onChange={(event) => searchStyle(event.target.value, router)}
+                  onChange={(event) => searchStyle(event.target.value)}
                   value={state.selectedStyle}
                 >
                   <option value="0">Choose Style</option>
@@ -105,11 +105,13 @@ export default function Detail({ data, status }) {
                 alt={data.style.name}
                 priority
                 src={data.tattoo.image}
-                layout="fill"
-                objectFit="cover"
-                // width={500}
-                // height={500}
-                // layout="responsive"
+                height={200}
+                width={200}
+                sizes="100vw"
+                style={{
+                  height: "auto",
+                  width: "100%",
+                }}
                 placeholder="blur"
                 blurDataURL={blurDataURL}
               />
@@ -142,7 +144,7 @@ export default function Detail({ data, status }) {
                       href={`/artist/${data.artist.slug}`}
                       className={styles.profile_getin}
                     >
-                      Get in Touch
+                      View Profile
                     </Link>
                     <a
                       onClick={openPopup}
@@ -167,14 +169,24 @@ export default function Detail({ data, status }) {
                   Image tattoo style
                 </span>
 
-              {getStyle.length > 0 && (
-                <ul className={styles.product_style_list}>
-                  {getStyle.map((e) => {
-                    return <li key={e.id}>  <Link href={`/search?term=${e.name}&category=${"tattoo"}`}> {e.name} </Link> </li>;
-                  })}
-                </ul>
-              )}
-            </div>
+                {getStyle.length > 0 && (
+                  <ul className={styles.product_style_list}>
+                    {getStyle.map((e) => {
+                      return (
+                        <li key={e.id}>
+                          {" "}
+                          <Link
+                            href={`/search?term=${e.name}&category=${"tattoo"}`}
+                          >
+                            {" "}
+                            {e.name}{" "}
+                          </Link>{" "}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
 
               <div className={styles.product_detail_location}>
                 <span className={styles.product_location_label}>Locations</span>
@@ -223,8 +235,18 @@ export default function Detail({ data, status }) {
             </div>
           </div>
 
+        
+
+<div className={styles.titleWrapper}>
+<h1>Related images updated by this artist</h1>
+</div>
+         
+
+
           {loading === true ? null : tattoo && tattoo.length > 0 ? (
             <div className={styles.grid_wrapper_tattoo}>
+              
+
               {tattoo.map((item) => (
                 <Link
                   href={`/tattoo/${item.tattoo_uid}`}
@@ -234,7 +256,7 @@ export default function Detail({ data, status }) {
                   <Image
                     alt={item.style_name}
                     priority
-                    src={item.tattoo_image}
+                    src={item.image_medium}
                     layout="fill"
                     objectFit="cover"
                     placeholder="blur"

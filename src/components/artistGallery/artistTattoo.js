@@ -3,13 +3,13 @@ import styles from "@/pages/tattoo/tattoodetail.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { blurDataURL } from "@/constants/constants";
-import NoData from '@/components/noDatafound/noData'
-import style from "@/components/styles/listing.module.css";
 
+import style from "@/components/styles/listing.module.css";
+import NoData from './noData'
 
 const Tattoo = ({ data }) => {
   return (
-    <div>
+<div className={styles.galleryWrapper} >
       {data.length == 0 ? <div className={style.blockCenter}>   <NoData/>  </div>:
       
         <div className={styles.grid_wrapper_tattoo}>

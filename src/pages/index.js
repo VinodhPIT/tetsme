@@ -507,7 +507,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {state.serverLoad && <HomLoading />}
+
+      {/* {state.serverLoad && <HomLoading />} */}
+
+
     </div>
   );
 }

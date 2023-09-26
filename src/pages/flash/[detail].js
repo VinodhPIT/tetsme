@@ -24,8 +24,8 @@ const router = useRouter()
   const {
     state,
 
-    searchStyle,
-    findArtist,
+
+
   } = useGlobalState();
 
 
@@ -72,6 +72,10 @@ const router = useRouter()
 
 
 
+  const searchStyle =(searchStyle)=>{
+    router.push(`/search?term=${""}&category=${'flash'}&style=${searchStyle}`)
+  }
+  
 
 
 
@@ -87,7 +91,7 @@ const router = useRouter()
           <div className={style.tattoo_search_wrap}>
             <div className={style.search_form}>
               <div className="search_form_wrap">
-                <SearchField />
+                <SearchField  currentTab={'flash'} />
               </div>
             </div>
           </div>
@@ -114,7 +118,7 @@ const router = useRouter()
                 className={style.filter_icon}
               />
               <select
-                onChange={(event) => searchStyle(event.target.value ,router)}
+                onChange={(event) => searchStyle(event.target.value)}
                 value={state.selectedStyle}
               >
                 <option value="0">Choose Style</option>
@@ -138,8 +142,13 @@ const router = useRouter()
              alt={data.style.name}
               priority
               src={data.tattoo.image}
-              layout="fill"
-              objectFit="cover"
+              height={200}
+              width={200}
+              sizes="100vw"
+              style={{
+                height: 'auto',
+                width: '100%',
+              }}
               placeholder="blur"
               blurDataURL={blurDataURL}
             />
@@ -169,7 +178,7 @@ const router = useRouter()
                 </div>
                 <div className={styles.search_profile_link}>
                   <Link href={`/artist/${data.artist.slug}`} className={styles.profile_getin}>
-                    Get in Touch
+                    View Profile
                   </Link>
                   <a
                     onClick={openPopup}
@@ -253,6 +262,10 @@ const router = useRouter()
           </div>
         </div>
 
+        <div className={styles.titleWrapper}>
+<h1>Related images updated by this artist</h1>
+</div>
+         
         {loading === true ? null : tattoo && tattoo.length > 0 ? (
           <div className={styles.grid_wrapper_tattoo}>
             {tattoo.map((item) => (
@@ -261,7 +274,7 @@ const router = useRouter()
                 <Image
                   alt={item.style_name}
                   priority
-                  src={item.tattoo_image}
+                  src={item.image_medium}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"

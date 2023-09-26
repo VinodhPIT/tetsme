@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from "@/pages/artist/artistdetail.module.css";
 
+
 const ArtistInfo = ({data}) => {
   return (
-    <div>
+    <div className={styles.galleryWrapper} >
       <div className={styles.product_info_col}>
             <div className={styles.product_style}>
              {data.style.length > 0 &&  <span className={styles.product_style_label}>Styles</span>}
