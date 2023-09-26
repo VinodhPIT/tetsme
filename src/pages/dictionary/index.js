@@ -93,9 +93,7 @@ export default function Dictionary() {
                     </div>
                   </div>
                   <div className="img_box_wrap custom_slick_slider_one">
-                    <ImageSwiper
-                    imgHeight="450px" imgWidth="400px"
-                    ></ImageSwiper>
+                    <ImageSwiper/>
                   </div>
                 </div>
               </div>
@@ -161,7 +159,10 @@ export default function Dictionary() {
                   <div className="text_box_content_inner custom_carousel_wrap">
                     {/* 
                        <CarouselComponent items={items} />            */}
-                    <CarouselComponent items={items} itemStyle="d_flex justify_content_end" />
+                    <CarouselComponent
+                      items={items}
+                      itemStyle="d_flex justify_content_end"
+                    />
                   </div>
                 </div>
               </div>
@@ -203,7 +204,6 @@ export default function Dictionary() {
                 ) : (
                   ""
                 )}
-               
 
                 <div class="text_box_content justify_content_start">
                   <div class="text_box_content_inner w_100pc pr_0 dictionary_explore">
@@ -251,7 +251,10 @@ export default function Dictionary() {
                   <div class="text_box_content_inner custom_carousel_wrap">
                     {/* <img src="./slider-dummy-2.png" alt="Zodiac Signs" class="w_100pc"/>                      */}
 
-                    <CarouselComponent items={items} itemStyle="d_flex justify_content_start m_justify_content_right" />
+                    <CarouselComponent
+                      items={items}
+                      itemStyle="d_flex justify_content_start m_justify_content_right"
+                    />
                   </div>
                 </div>
                 <div class="img_box_wrap block_bg_gradient_2 justify_content_right">
@@ -327,7 +330,10 @@ export default function Dictionary() {
                 </div>
                 <div class="text_box_content justify_content_start">
                   <div class="text_box_content_inner custom_carousel_wrap">
-                    <CarouselComponent items={items} itemStyle="d_flex justify_content_end" />
+                    <CarouselComponent
+                      items={items}
+                      itemStyle="d_flex justify_content_end"
+                    />
                     {/* <img src="./slider-dummy-2.png" alt="Aztec Symbols" class="w_100pc"/>                      */}
                   </div>
                 </div>
@@ -337,6 +343,5 @@ export default function Dictionary() {
         </div>
       </section>
     </div>
-    
   );
 }

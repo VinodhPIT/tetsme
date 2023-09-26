@@ -17,8 +17,6 @@ import {
 export default function Home() {
   const { state, serverLoad, styleCollection } = useGlobalState();
 
-
-
   const imagePaths = [
     "./s-1.svg",
     "./s-2.svg",
@@ -41,7 +39,6 @@ export default function Home() {
 
     const timer = setInterval(changeImage, 2000);
     return () => clearInterval(timer);
-
   }, []);
 
   const changeImage = () => {
@@ -108,7 +105,11 @@ export default function Home() {
                 <video loop autoPlay muted className="mob_hidden">
                   <source src="./home-video.mp4" type="video/mp4" />
                 </video>
-                <img src="./istockphoto-1386481647-640_adpp_is1-mob.png" alt="" className={`${styles.desk_hidden} ${styles.home_banner_img}`} />
+                <img
+                  src="./istockphoto-1386481647-640_adpp_is1-mob.png"
+                  alt=""
+                  className={`${styles.desk_hidden} ${styles.home_banner_img}`}
+                />
               </div>
             </div>
             <div className={styles.home_banner_content}>
@@ -217,7 +218,10 @@ export default function Home() {
                       We hand-pick every tattoo artist to ensure your tattoo
                       experience is handled with care, quality and inclusivity.
                     </p>
-                    < Link href={`/search?term=${""}&category=${"artist"}`} class="btn btn_secondary btn_xxl btn_sm_m btn_img">
+                    <Link
+                      href={`/search?term=${""}&category=${"artist"}`}
+                      class="btn btn_secondary btn_xxl btn_sm_m btn_img"
+                    >
                       Find artists
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -274,19 +278,29 @@ export default function Home() {
                       Pay all at once? <br /> Never again!
                     </h2>
                   </div>
-                  <img src="./pexels-cottonbro-studio-5320148-6.png" alt="" className="object_position_left"/>
+                  <img
+                    src="./pexels-cottonbro-studio-5320148-6.png"
+                    alt=""
+                    className="object_position_left"
+                  />
                 </div>
                 <div class="text_box_content justify_content_start">
                   <div class="klarna_bg">
                     <img src="./klarna.svg" alt="" />
                   </div>
                   <div class="text_box_content_inner m_pr_0 pr_0">
-                    <h2 class="letter_spacing_02">Tattoo now, <br />Pay later</h2>
+                    <h2 class="letter_spacing_02">
+                      Tattoo now, <br />
+                      Pay later
+                    </h2>
                     <p>
                       Get tattoo now, pay later. That&apos;s right, there&apos;s
                       a new way to get tattooed smoooth!
                     </p>
-                    <Link href="/klarna" class="btn btn_secondary btn_xxl btn_sm_m btn_img">
+                    <Link
+                      href="/klarna"
+                      class="btn btn_secondary btn_xxl btn_sm_m btn_img"
+                    >
                       Learn more
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -298,27 +312,30 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div class="text_box_wrap right block_bg_black">
-              <div class="img_text_box_inner">
-                <div class="text_box_content justify_content_start">
-                  <div class="text_box_content_inner m_pr_0 m_pb_0">
-                    <h2 class="letter_spacing_05">Tattoo Dictonary</h2>
-                    <p>
-                      We hand-pick every tattoo artist to ensure your tattoo
-                      experience is handled with care, quality and inclusivity.
-                    </p>
-                    <Link href={`/search?term=${""}&category=${"artist"}`}  class="btn btn_default btn_xxl btn_sm_m btn_img">
-                      Find artists
-                      <img
-                        src="./alt-arrow-right-black.svg"
-                        alt=""
-                        class="ml-8 mt-2"
-                      />
-                    </Link>
+            <div className="text_box_wrap right block_bg_black full_banner_custom_slider">
+              <div className="container">
+                <div className="img_text_box_inner">
+                  <div className="text_box_content justify_content_start pl_0 pr_2_pc m_text_center m_pb_0">
+                    <div className="text_box_content_inner m_pr_0">
+                      <h2 className="letter_spacing_05">Tattoo Dictonary</h2>
+                      <p>
+                        We hand-pick every tattoo artist to ensure your tattoo
+                        experience is handled with care, quality and
+                        inclusivity.
+                      </p>
+                      <a href="#" className="btn btn_default btn_xxl btn_sm_m">
+                        Find artists
+                        <img
+                          src="./alt-arrow-right-black.svg"
+                          alt=""
+                          className="ml-8 mt-2"
+                        />
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div class="img_box_wrap custom_slick_slider_one">
-                  <ImageSwiper imgHeight="450px" imgWidth="400px"></ImageSwiper>
+                  <div className="img_box_wrap custom_slick_slider_one">
+                    <ImageSwiper/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -343,7 +360,7 @@ export default function Home() {
                     layout="responsive"
                     className="mob_hidden"
                   />
-                   <Image
+                  <Image
                     priority={true}
                     src="/pexels-ademola-mob.png"
                     alt="pexels-ademola"
@@ -382,7 +399,10 @@ export default function Home() {
                     <br />
                     <br />
                     <br />
-                    <Link href="/styleguide" class="btn btn_primary btn_xxl custom_fs_20">
+                    <Link
+                      href="/styleguide"
+                      class="btn btn_primary btn_xxl custom_fs_20"
+                    >
                       Check the Styleguide
                       <img
                         src="./alt-arrow-right-white.svg"
@@ -407,7 +427,10 @@ export default function Home() {
                       Grow your tattoo business by fulfilling your customers
                       tattoo vision and offering them flexible payment options.
                     </p>
-                    <Link href="/fortattooartists" class="btn btn_default btn_xxl btn_sm_m btn_img">
+                    <Link
+                      href="/fortattooartists"
+                      class="btn btn_default btn_xxl btn_sm_m btn_img"
+                    >
                       Learn more
                       <img
                         src="./alt-arrow-right-black.svg"
@@ -521,8 +544,6 @@ export default function Home() {
       </section>
 
       {/* {state.serverLoad && <HomLoading />} */}
-
-
     </div>
   );
 }

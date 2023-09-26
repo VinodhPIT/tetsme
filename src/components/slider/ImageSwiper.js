@@ -1,95 +1,82 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import { EffectCoverflow, Navigation, Pagination } from "swiper";
-SwiperCore.use([Autoplay]);
+import "swiper/swiper-bundle.min.css"; // Import the CSS file from your styles directory
+import SwiperCore, {
+  EffectCoverflow,
+  Pagination,
+  Keyboard,
+  Mousewheel,
+} from "swiper";
 
-const ImageSwiper = ({imgWidth,imgHeight}) => {
+SwiperCore.use([EffectCoverflow, Pagination, Keyboard, Mousewheel]);
+const images = ["./dragon.png", "./egyptian.jpeg", "./butterfly.jpeg"];
+const ImageSwiper = () => {
+  const params = {
+    autoHeight: false,
+    
+    pagination: { clickable: true },
+    grabCursor: true,
+    centeredSlides: true,
+    intialSlide: 1,
+    slidesPerView: 1.5,
+    loop: true,
+    spaceBetween: 10,
+    effect: "coverflow",
+    coverflowEffect: {
+      rotate: 0,
+      depth: 200,
+      slideShadows: false,
+      modifier:1
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+      
+      clickable: true,
+    },
+    autoplay: { delay: 5000 },
+
+    breakpoints: {
+      320: {
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+      },
+      414: {
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+      },
+      560: {
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+      },
+      820: {
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+      },
+      1024: {
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+      },
+    },
+  };
 
   return (
-    <Swiper
-      style={{
-        "--swiper-pagination-bullet-horizontal-gap": "6px",
-      }}
-      loop={true}
-      loopFillGroupWithBlank={true}
-      pagination={{ clickable: true }}
-      spaceBetween={110}
-      centeredSlides={true}
-      navigation={true}
-      slidesPerView={"auto"}
-      modules={[EffectCoverflow, Pagination, Navigation]}
-      className="mySwiper"
-      effect={"coverflow"}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 80,
-        depth: 150,
-        modifier: 1,
-        slideShadows: false,
-      }}
-      breakpoints={{
-        // Define breakpoints for different screen sizes
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 10, // Adjust spacing for smaller screens
-        },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20, // Adjust spacing for medium screens
-        },
-        1024: {
-          slidesPerView: 2,
-          spaceBetween: 30, // Adjust spacing for larger screens
-        },
-      }}
-    >
-      <SwiperSlide >
-        <div className="testimonials-profile-circle" >
-          <img
-            style={{
-              height: imgHeight,
-              width: imgWidth,
-              borderRadius: "20px",
-              paddingTop: "60px",
-            }}
-            src="./dragon.png"
-            alt=""
-          />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide >
-        <div className="testimonials-profile-circle" >
-          <img
-            style={{
-              height: imgHeight,
-              width: imgWidth,
-              borderRadius: "20px",
-              paddingTop: "70px",
-            }}
-            src="./egyptian.jpeg"
-            alt=""
-          />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide >
-        <div className="testimonials-profile-circle" >
-          <img
-            style={{
-              height: imgHeight,
-              width: imgWidth,
-              borderRadius: "20px",
-              paddingTop: "70px",
-            }}
-            src="./butterfly.jpeg"
-            alt=""
-          />
-        </div>
-      </SwiperSlide>
+    <Swiper {...params}>
+      {images.map((image, index) => (
+        <SwiperSlide key={index} swiper-container>
+          <div className="swiper-slide">
+            <img src={image} alt="" />
+          </div>
+        </SwiperSlide>
+      ))}
+      <div className="swiper-pagination"></div>
     </Swiper>
   );
 };
+
 export default ImageSwiper;
