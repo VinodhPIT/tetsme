@@ -90,7 +90,7 @@
 .product_detail_wrap {
     display: flex;    float: left;
     width: 100%;
-    margin-top: 25px;
+    margin: 25px 0px 26px 0px;
 }
 .product_media {position: relative;
     width: 50%;
@@ -393,7 +393,7 @@ ul.download_app li.download_app_title h6 {
   
   /* flash page */
   .grid_wrapper_tattoo {
-    display: grid;    margin: 22px 0px;
+    display: grid;       margin: 7px 0px 20px 0px;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     grid-gap: 2px;   float: left;
     width: 100%;
@@ -403,6 +403,22 @@ ul.download_app li.download_app_title h6 {
     position: relative;
     height: 230px;
   }
+
+.titleWrapper{
+    float: left;width: 100% ;text-align: center;
+}
+.titleWrapper {
+    float: left;width: 100% ;text-align: center;
+}
+.titleWrapper h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.galleryWrapper{float:left;width: 100%;margin-top: 11px;}
+
+
+
 
 @media screen and (max-width: 380px) {
     .search_profile_pic {       
@@ -522,6 +538,10 @@ ul.download_app li.download_app_title h6 {
         width: calc(100% + 30px);
     }
 }
+
+
+
+
 @media screen and (min-width: 768px) and (max-width: 991.98px) {
     .profile_getin {
         padding: 6px 15px;

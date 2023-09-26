@@ -235,8 +235,18 @@ export default function Detail({ data, status }) {
             </div>
           </div>
 
+        
+
+<div className={styles.titleWrapper}>
+<h1>Related images updated by this artist</h1>
+</div>
+         
+
+
           {loading === true ? null : tattoo && tattoo.length > 0 ? (
             <div className={styles.grid_wrapper_tattoo}>
+              
+
               {tattoo.map((item) => (
                 <Link
                   href={`/tattoo/${item.tattoo_uid}`}
