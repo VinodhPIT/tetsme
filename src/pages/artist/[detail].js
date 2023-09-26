@@ -46,7 +46,11 @@ export default function Detail({ data }) {
           setAll(res.data);
           setTattooList(res.data.filter((e) => e.tattoo_type === "normal"));
           setFlashList(res.data.filter((e) => e.tattoo_type === "flash"));
-        } catch (error) {}
+        } catch (error) {
+
+
+
+        }
       };
       fetchData();
     }
@@ -216,13 +220,13 @@ export async function getServerSideProps(context) {
   try {
     const data = await fetchArtistDetail(context.query.detail);
 
+    
     if (!data.data) {
       return {
-        props: {
-          data: null,
-        },
+        notFound: true,
       };
     }
+
 
     return {
       props: {
@@ -231,10 +235,11 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.log(error, "error");
+   
     return {
       props: {
         data: null,
+        notFound: true,
       },
     };
   }

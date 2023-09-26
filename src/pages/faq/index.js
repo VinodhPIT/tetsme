@@ -28,7 +28,7 @@ export default function FAQ() {
       />
       <div className="faq_search_wrap">
         <div className="container">
-          <Search />
+          <Search  currentTab={'all'}  />
         </div>
       </div>
 

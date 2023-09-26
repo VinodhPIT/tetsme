@@ -66,12 +66,7 @@ const reducer = (state, action) => {
       
 
 
-      case "CHANGE_TAB":
-        console.log(action.payload ,"curent tab")
-       
-        return { ...state, currentTab:action.payload };
-
-
+ 
 
     case "COUNT":
       const pageNo = action.payload;
@@ -148,25 +143,6 @@ export const GlobalStateProvider = ({ children }) => {
     } catch (error) {}
   };
 
-  const changeTab = async (payload ,router) => {
-
-
-
-
-    try {
-      let url = `/search?term=${state.searchKey}&category=${payload}`
-   
-      if (state.selectedStyle!=='') {
-          url += `&style=${state.selectedStyle}`
-        }
-      if (state.latitude!=='') {
-        url += `&lon=${state.longitude}&lat=${state.latitude}`
-      }
-      router.push(url)
-      dispatch({ type: "CHANGE_TAB", payload: payload });
-    } catch (error) {}
-  };
-
 
   const loadMore = async () => {
     const updatedPageNo = state.pageNo + 1;
@@ -178,6 +154,11 @@ export const GlobalStateProvider = ({ children }) => {
         page_no: updatedPageNo,
         style: state.selectedStyle,
         search_key: state.searchKey,
+        latitude:state.latitude,
+        longitude:state.longitude
+
+
+
       };
       let responseData;
       if (state.currentTab === "all") {
@@ -251,7 +232,7 @@ export const GlobalStateProvider = ({ children }) => {
       value={{
         state,
         fetchServerlData,
-        changeTab,
+      
         loadMore,
         getHintsBySearch,
         searchData,
