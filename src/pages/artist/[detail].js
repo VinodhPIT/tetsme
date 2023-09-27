@@ -15,6 +15,8 @@ import { renderArtistGallery } from "@/components/customTabs/tab";
 import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 export default function Detail({ data }) {
+
+
   const { state, findArtist } = useGlobalState();
 
   const router = useRouter();
@@ -156,9 +158,9 @@ priority
                 <div className={styles.search_profile_name}>
                   {data.first_name} {data.last_name}
                 </div>
-                {/* <div className={styles.search_profile_details}>
-                
-              </div> */}
+                 <div className={styles.search_profile_details}>
+                {data.studio[0].city},{data.studio[0].country}
+              </div> 
               </div>
               <div className={styles.search_profile_link}>
                 <a
@@ -208,13 +210,13 @@ priority
             </ul>
           </div>
 
-          {renderArtistGallery(
+         {renderArtistGallery(
             currenState,
             getAll,
             tattooList,
             flashList,
             artistProfile
-          )}
+          )} 
         </div>
 
         
