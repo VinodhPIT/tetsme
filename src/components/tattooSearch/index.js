@@ -76,13 +76,13 @@ function SearchBar({ isPage  ,currentTab}) {
     });
   }
 
-  const handleChange = debounce((e) => {
+  const handleChange =(e) => {
     setSearchState((prevSearchState) => ({
       ...prevSearchState,
       query: e,
     }));
     getHintsBySearch(e, router);
-  }, 100);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
