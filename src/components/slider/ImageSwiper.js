@@ -4,23 +4,25 @@ import "swiper/swiper-bundle.min.css"; // Import the CSS file from your styles d
 import SwiperCore, {
   EffectCoverflow,
   Pagination,
-  Keyboard,
-  Mousewheel,
+
+  Autoplay,
 } from "swiper";
 
-SwiperCore.use([EffectCoverflow, Pagination, Keyboard, Mousewheel]);
+SwiperCore.use([EffectCoverflow, Pagination,Autoplay]);
 const images = ["./dragon.png", "./egyptian.jpeg", "./butterfly.jpeg"];
 const ImageSwiper = () => {
   const params = {
     autoHeight: false,
     
     pagination: { clickable: true },
+    preventInteractionOnTransition:true,
     grabCursor: true,
     centeredSlides: true,
     intialSlide: 1,
     slidesPerView: 1.5,
     loop: true,
-    spaceBetween: 10,
+   speed:150,
+    
     effect: "coverflow",
     coverflowEffect: {
       rotate: 0,
@@ -31,12 +33,14 @@ const ImageSwiper = () => {
 
     pagination: {
       el: ".swiper-pagination",
-      dynamicBullets: true,
+      dynamicBullets:false,
       
       clickable: true,
     },
-    autoplay: { delay: 5000 },
-
+    autoplay:{
+      delay: 2500,
+      disableOnInteraction: false,
+    },
     breakpoints: {
       320: {
         slidesPerView: 1.5,

@@ -1,8 +1,15 @@
 import { useEffect } from "react";
 
 const Layout = ({ children, pathname }) => {
+  
   useEffect(() => {
-    if (pathname === "/klarna" || pathname === "/") {
+    if (pathname === "/") {
+      document.body.style.backgroundColor = "#F8F8F8";
+      document.body.className = "home";
+    } else if (pathname === "/dictionary") {
+      document.body.style.backgroundColor = "#fff";
+      document.body.className = "dictionary";
+    } else if (pathname === "/klarna") {
       document.body.style.backgroundColor = "#F8F8F8";
     } else {
       // Reset styles for other pages

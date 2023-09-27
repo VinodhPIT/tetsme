@@ -2122,6 +2122,11 @@ form.form_floating .form_group.radio_block>label {
   padding-top: 135px;
   padding-bottom: 35px;
 }
+/* full banner custom slider */
+.full_banner_custom_slider_home {
+  padding-top: 135px;
+  padding-bottom: 35px;
+}
 
 .full-block-wrap .img_text_box_inner .text_box_find_tattoo {
   width: 100%;
@@ -2197,7 +2202,7 @@ form.form_floating .form_group.radio_block>label {
 
 .img_box_wrap.custom_slick_slider_one .swiper {
   padding-bottom: 40px;
-}
+} 
 .img_box_wrap.custom_slick_slider_one {
   padding-top: 20px;
   padding-bottom: 40px;
@@ -2806,9 +2811,25 @@ header .navbar {
   
 }
 
+.swiper-pagination span:nth-child(1),.swiper-pagination span:nth-child(3)
+{
+  width:7px;
+  height: 7px;
+  margin-bottom: -2px;
+display: inline-block;
+position: relative;
+top: -2px;
+}
+
+.swiper-pagination span:nth-child(2){
+  width:10px;
+  height: 10px;
+}
+
  .swiper-pagination-bullet 
 {
   background: white !important;
+  transition:.0s transform !important
 }
  
 
@@ -2818,8 +2839,7 @@ header .navbar {
 
 .swiper-slide img {
   width: 100%;
-  height: auto;
-  border-radius: "20px";
+  height:auto;
   margin: auto;
 }
 .swiper-slide-prev img {
@@ -2878,6 +2898,10 @@ header .navbar {
   }
 }
 @media (max-width: 821px) {
+  .img_box_wrap.custom_slick_slider_one .swiper
+  {
+    padding-bottom: 0px;
+  }
   .swiper-container {
     width: 100%;
   }
@@ -2894,6 +2918,11 @@ header .navbar {
   }
 }
 @media (max-width: 542px) {
+
+  .custom_slick_slider_one .swiper .swiper-pagination {
+    bottom: 0px
+   
+  }
   .swiper-container {
     width: 100%;
   }
@@ -2903,8 +2932,10 @@ header .navbar {
   .swiper-slide-next img {
     object-position: -211px center !important;
   }
+ 
 }
 @media (max-width: 415px) {
+ 
   .swiper-container {
     width: 100%;
   }
@@ -2916,6 +2947,16 @@ header .navbar {
   }
 }
 @media (max-width: 376px) {
+  
+  .dictionary .text_box_wrap .img_text_box_inner .text_box_content h2
+  {
+    margin-top: 0px !important;
+  }
+  
+  .full_banner_custom_slider {
+    padding-top: 32px;
+    padding-bottom: 35px;
+  }
   .swiper-container {
     width: 100%;
   }
@@ -2927,6 +2968,20 @@ header .navbar {
   }
 }
 @media (max-width: 281px) {
+  .dictionary .text_box_wrap .img_text_box_inner .text_box_content h2
+  {
+    margin-top: -50px !important;
+  }
+  .home .text_box_wrap .img_text_box_inner .img_box_wrap .swiper-wrapper img{
+    margin:0;
+  }
+  .custom_slick_slider_one .swiper .swiper-pagination {
+    bottom: 70px;
+  }
+  .full_banner_custom_slider {
+    padding-top: 32px;
+    padding-bottom: 35px;
+  }
   .swiper-container {
     width: 100%;
   }
@@ -2942,6 +2997,37 @@ header .navbar {
 
 /* responsive */
 @media screen and (max-width: 767.98px) { 
+
+   .home .text_box_wrap .img_text_box_inner .img_box_wrap.custom_slick_slider_one {
+    margin-top: -20px;
+  } 
+  .home .text_box_wrap .img_text_box_inner .img_box_wrap .swiper-wrapper img{
+    margin-bottom: 20px;
+  } 
+
+  .dictionary .swiper-slide{
+    padding:0;
+  }
+
+  .dictionary .text_box_wrap.block_bg_black .img_text_box_inner .text_box_content
+  {
+    padding-top: 0px;
+  }
+  .dictionary .img_box_wrap.custom_slick_slider_one
+  {
+    padding-bottom: 0px;
+  }
+  .dictionary .text_box_wrap .img_text_box_inner .text_box_content h2
+  {
+    margin-top: -70px;
+  }
+  .img_box_wrap.custom_slick_slider_one .swiper {
+    padding-bottom: 0px;
+  } 
+  .full_banner_custom_slider {
+    padding-top: 32px;
+    padding-bottom: 35px;
+  }
   main {
     min-height: 40vh;
   }
@@ -3241,6 +3327,8 @@ header .navbar {
     min-height: 380px;
   }
 
+  
+
   /** custom listing */
   ul.custom-listing {
     margin-top: 35px;
@@ -3357,15 +3445,18 @@ header .navbar {
     letter-spacing: -2px;
   }
 
-  .full_banner_custom_slider .img_text_box_inner .img_box_wrap {
+   .full_banner_custom_slider .img_text_box_inner .img_box_wrap {
     order: 1;
-  }
+  } 
 
   .full_banner_custom_slider .img_text_box_inner .text_box_content {
-    order: 2;
+     order: 2; 
     padding-right: 0 !important;
   }
 
+ 
+
+  
   .app_download_box_wrap.dictionary_app .img_text_box_inner .img_box_wrap ul.app_download_img_list {
     padding-bottom: 30px;
   }

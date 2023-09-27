@@ -312,10 +312,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="text_box_wrap right block_bg_black full_banner_custom_slider">
+            <div className="text_box_wrap right block_bg_black ">
               <div className="container">
                 <div className="img_text_box_inner">
-                  <div className="text_box_content justify_content_start pl_0 pr_2_pc m_text_center m_pb_0">
+                  <div className="text_box_content justify_content_start pl_0 pr_2_pc  m_pb_0">
                     <div className="text_box_content_inner m_pr_0">
                       <h2 className="letter_spacing_05">Tattoo Dictonary</h2>
                       <p>
