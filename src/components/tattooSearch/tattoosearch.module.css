@@ -107,6 +107,9 @@
   text-decoration: none;
   vertical-align: middle;
 }
+.search_bar .btn_search img {
+  vertical-align: top;
+}
 
 .close_search {
     border: 0;

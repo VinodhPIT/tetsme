@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./artistdetail.module.css";
 import Header from "@/components/pageHeader/Header";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { fetchArtistDetail, artistGallery } from "@/action/action";
 import { blurDataURL } from "@/constants/constants";
 import SearchField from "@/components/tattooSearch/index";
@@ -80,6 +81,16 @@ export default function Detail({ data }) {
 
       <div className="page_wrapper">
         <div className="container">
+        <Link  href={`/search?term=${""}&category=${"artist"}`} className="back_arrow" >
+          <Image
+          src={'/back-arrow.svg'}
+          alt="backArrow"
+          width={40} 
+          height={40}
+          priority
+          />
+        </Link>
+
           <div className={style.filter_container}>
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>

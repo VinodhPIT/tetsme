@@ -104,8 +104,7 @@ export default function Klarna() {
                     </span>
                   </h1>
                   <p>
-                    Grow your tattoo business by fulfilling your customers
-                    tattoo vision and offering them flexible payment options.
+                  Get tattoo now, pay later. That's right, there's a new way to get tattooed smoooth!
                   </p>
                 </div>
                 <ul className={styles.download_app}>
@@ -358,7 +357,7 @@ export default function Klarna() {
                 </div>
                 {!isMobileView ? (
                 <div class="img_box_wrap">
-                  <ul class="app_download_img_list img_box_img_m20pc justify_content_right">
+                  <ul class="app_download_img_list img_box_img_m20pc justify_content_right slider_resize">
                     <li>
                       <img
                         src="./mockup-iPhone-download.png"
