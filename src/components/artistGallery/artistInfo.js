@@ -39,7 +39,7 @@ const ArtistInfo = ({data}) => {
                             src="/location-small.svg"
                             alt="Berlin, Germany"
                           />
-                          {e.city} {e.country}
+                          {e.city}, {e.country}
                         </span>
                       </div>
                     );

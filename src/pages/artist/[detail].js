@@ -152,9 +152,9 @@ export default function Detail({ data }) {
                 <div className={styles.search_profile_name}>
                   {data.first_name} {data.last_name}
                 </div>
-                {/* <div className={styles.search_profile_details}>
-                
-              </div> */}
+               <div className={styles.search_profile_details}>
+                {data.studio[0].city},{data.studio[0].country}
+              </div> 
               </div>
               <div className={styles.search_profile_link}>
                 <a
