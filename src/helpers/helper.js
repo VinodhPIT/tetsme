@@ -26,8 +26,7 @@ export const searchParam = (parameters) => {
   }
   request.style = parameters.style ? [parameters.style] : [];
 
-  console.log(request ,"dpkcdkpcksd[ckpsdcscdsdcsdcs")
-  
+ 
   
   return request;
 };
