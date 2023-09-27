@@ -2785,13 +2785,13 @@ header .navbar {
   color: #ffffff;
 }
 
-.swiper-slide-duplicate-next,
+/* .swiper-slide-duplicate-next,
 .swiper-slide-duplicate-prev {
   visibility: hidden;
 }
 .swiper-slide-duplicate-active {
   visibility: hidden;
-}
+} */
 
 .swiper-slide .ImgHolder {
   display: flex;
