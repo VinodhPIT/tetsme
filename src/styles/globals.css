@@ -2818,7 +2818,7 @@ header .navbar {
   margin-bottom: -2px;
 display: inline-block;
 position: relative;
-top: -2px;
+top: -1px;
 }
 
 .swiper-pagination span:nth-child(2){
