@@ -16,7 +16,7 @@ const ImageSwiper = () => {
     intialSlide: 1,
     slidesPerView: 1.5,
     loop: true,
-    speed: 150,
+    speed: 1000,
     simulateTouch: false,
 
     effect: "coverflow",
