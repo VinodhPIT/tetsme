@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./artistdetail.module.css";
 import Header from "@/components/pageHeader/Header";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { fetchArtistDetail, artistGallery } from "@/action/action";
 import { blurDataURL } from "@/constants/constants";
@@ -80,6 +81,20 @@ export default function Detail({ data }) {
 
       <div className="page_wrapper">
         <div className="container">
+
+        <Link    href={`/search?term=${""}&category=${"artist"}`} >
+
+<Image
+src={'/backArrow.svg'}
+alt="backArrow"
+width={40} 
+height={40}
+priority
+/>
+</Link>
+
+
+
           <div className={style.filter_container}>
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>
