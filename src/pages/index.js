@@ -485,13 +485,13 @@ export default function Home() {
                 </div>
                 {!isMobileView ? (
                   <div class="img_box_wrap">
-                    <ul class="app_download_img_list img_box_img_m20pc justify_content_end">
+                    <ul class="app_download_img_list img_box_img_m20pc justify_content_end slider_resize">
                       <li>
                         <Image
                           priority={true}
                           src="/img-mobile-new-03.png"
                           width={218}
-                          height={1446}
+                          height={446}
                           alt="Picture of the author"
                           placeholder="empty"
                           className=""

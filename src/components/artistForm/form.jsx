@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
   instagram: Yup.string()
     .required("instagram must be at least 2 characters")
     .min(2, "Too Short!"),
-  location: Yup.string().required("Location field is required"),
+  location: Yup.string().required("Country field is required"),
 });
 
 const _Form = () => {
@@ -121,7 +121,7 @@ const router = useRouter()
                       name="location"
                       className="form_control_select"
                     >
-                      <option value="">Location</option>
+                      <option value="">Country</option>
                       {countryList.map((option) => (
                         <option key={option.country} value={option.country}>
                           {option.title}
@@ -172,7 +172,7 @@ const router = useRouter()
                     placeholder=""
                     className="form_control"
                   />
-                  <label for="Your instagram" className="required">
+                  <label for="Your instagram">
                     Your instagram
                   </label>
                   <ErrorMessage

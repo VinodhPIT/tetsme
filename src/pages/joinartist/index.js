@@ -28,16 +28,22 @@ export default function JoinArtist() {
                 <section class="progress_block">
                   <ul class="progressbar">
                     <li class="active">
-                      <h4>Submit the contact from</h4>
-                      <p>Tell us more about yourself.</p>
+                      <div className="progressbar_block">
+                        <h4>Submit the contact from</h4>
+                        <p>Tell us more about yourself.</p>
+                      </div>
                     </li>
                     <li>
-                      <h4>Download the App & complete your profile</h4>
-                      <p>Tell us more about yourself.</p>
+                      <div className="progressbar_block">
+                        <h4>Download the App & complete your profile</h4>
+                        <p>Tell us more about yourself.</p>
+                      </div>
                     </li>
                     <li>
-                      <h4>Get verified & bring your Profile live</h4>
-                      <p>Tell us more about yourself.</p>
+                      <div className="progressbar_block">
+                        <h4>Get verified & bring your Profile live</h4>
+                        <p>Tell us more about yourself.</p>
+                      </div>
                     </li>
                   </ul>
                 </section>
