@@ -323,14 +323,14 @@ export default function Home() {
                         experience is handled with care, quality and
                         inclusivity.
                       </p>
-                      <a href="#" className="btn btn_default btn_xxl btn_sm_m">
-                        Find artists
+                      <Link href="/dictionary" className="btn btn_default btn_xxl btn_sm_m">
+                      Visit Tattoo Dictionary
                         <img
                           src="./alt-arrow-right-black.svg"
                           alt=""
                           className="ml-8 mt-2"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="img_box_wrap custom_slick_slider_one">

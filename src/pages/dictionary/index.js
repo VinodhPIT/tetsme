@@ -82,14 +82,14 @@ export default function Dictionary() {
                         experience is handled with care, quality and
                         inclusivity.
                       </p>
-                      <a href="#" className="btn btn_default btn_xxl btn_sm_m">
+                      <Link  href={`/search?term=${""}&category=${"artist"}`} className="btn btn_default btn_xxl btn_sm_m">
                         Find artists
                         <img
                           src="./alt-arrow-right-black.svg"
                           alt=""
                           className="ml-8 mt-2"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="img_box_wrap custom_slick_slider_one">
