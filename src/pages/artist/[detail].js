@@ -85,8 +85,7 @@ export default function Detail({ data }) {
       <div className="page_wrapper">
         <div className="container">
 
-
-
+     
         <Link  href={`/search?term=${""}&category=${"artist"}`} className="back_arrow" >
           <Image
           src={'/back-arrow.svg'}
