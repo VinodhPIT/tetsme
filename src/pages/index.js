@@ -1,13 +1,12 @@
 import React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
 import { useGlobalState } from "@/context/Context";
-import HomLoading from "@/components/homeLoading";
 import SearchField from "@/components/searchField";
 import Header from "@/components/header/header";
-import ImageSlider from "@/components/slider/ImageSlider";
+// import ImageSlider from "@/components/slider/ImageSlider";
 import ImageSwiper from "@/components/slider/ImageSwiper";
 import {
   APP_LINK_APPLE,
@@ -527,7 +526,7 @@ export default function Home() {
                   ""
                 )}
               </div>
-              {isMobileView ? (
+              {/* {isMobileView ? (
                 <ImageSlider
                   imgPath="/img-mobile-new-03.png"
                   imgAlt="Picture of the author"
@@ -537,13 +536,13 @@ export default function Home() {
                 ></ImageSlider>
               ) : (
                 ""
-              )}
+              )} */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* {state.serverLoad && <HomLoading />} */}
+     
     </div>
   );
 }
