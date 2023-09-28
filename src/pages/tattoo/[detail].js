@@ -1,3 +1,6 @@
+
+/////
+
 import React, { useEffect, useState } from "react";
 import Header from "@/components/pageHeader/Header";
 import Image from "next/image";
@@ -68,6 +71,24 @@ export default function Detail({ data, status }) {
 
       <div className="page_wrapper">
         <div className="container">
+
+
+<Link    href={`/search?term=${""}&category=${"tattoo"}`} >
+
+        <Image
+      src={'/backArrow.svg'}
+      alt="backArrow"
+       width={40} 
+       height={40}
+      priority
+    />
+    </Link>
+
+
+
+
+
+
           <div className={style.filter_container}>
             <div className={style.tattoo_search_wrap}>
               <div className={style.search_form}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./artistdetail.module.css";
 import Header from "@/components/pageHeader/Header";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { fetchArtistDetail, artistGallery } from "@/action/action";
@@ -15,6 +16,8 @@ import { renderArtistGallery } from "@/components/customTabs/tab";
 import TattooSearchModalPopup from "@/components/modalPopup/TattooSearchModalPopup";
 
 export default function Detail({ data }) {
+
+
   const { state, findArtist } = useGlobalState();
 
   const router = useRouter();
@@ -81,6 +84,9 @@ export default function Detail({ data }) {
 
       <div className="page_wrapper">
         <div className="container">
+
+
+
         <Link  href={`/search?term=${""}&category=${"artist"}`} className="back_arrow" >
           <Image
           src={'/back-arrow.svg'}
@@ -90,6 +96,7 @@ export default function Detail({ data }) {
           priority
           />
         </Link>
+
 
           <div className={style.filter_container}>
             <div className={style.tattoo_search_wrap}>
@@ -152,7 +159,9 @@ export default function Detail({ data }) {
                 <div className={styles.search_profile_name}>
                   {data.first_name} {data.last_name}
                 </div>
+
                <div className={styles.search_profile_details}>
+
                 {data.studio[0].city},{data.studio[0].country}
               </div> 
               </div>
@@ -204,13 +213,13 @@ export default function Detail({ data }) {
             </ul>
           </div>
 
-          {renderArtistGallery(
+         {renderArtistGallery(
             currenState,
             getAll,
             tattooList,
             flashList,
             artistProfile
-          )}
+          )} 
         </div>
 
         
