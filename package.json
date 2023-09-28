@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-   
+    "build": "CI=false  next build",
     "start": "next start",
-    "lint": "next lint",
-    "build": "CI=false react-scripts build"
+    "lint": "next lint"
+    
   },
   "dependencies": {
     "bootstrap": "^5.3.1",
