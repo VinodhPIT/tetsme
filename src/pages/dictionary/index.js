@@ -6,6 +6,7 @@ import Link from "next/link";
 import CarouselComponent from "@/components/carousel/Carousel";
 import ImageSwiper from "@/components/slider/ImageSwiper";
 import ImageSlider from "@/components/slider/ImageSlider";
+import Header from '@/components/pageHeader/Header'
 import {
   APP_LINK_APPLE,
   APP_LINK_GOOGLE,
@@ -29,37 +30,37 @@ export default function Dictionary() {
 
   const items = [
     {
-      image: "./Group 82721.png",
+      image: "./Group.svg",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Remembrance",
-      button2: "Trust",
+      button1: "Trust",
+      button2: "Remembrance",
       heading: "Cancer",
     },
     {
-      image: "./Group.svg",
+      image: "./Group 82721.png",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Remembrance",
-      button2: "Trust",
+      button1: "Trust",
+      button2: "Remembrance",
       heading: "Itzscuintli",
     },
     {
       image: "./Group 82677.svg",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Remembrance",
-      button2: "Trust",
+      button1: "Trust",
+      button2: "Remembrance",
       heading: "Cancer",
     },
     {
       image: "./Group 82674.svg",
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Remembrance",
-      button2: "Trust",
+      button1: "Trust",
+      button2: "Remembrance",
       heading: "Itzscuintli",
     },
     {
       text: "Learn about greek mythology and find the tattoo with the right meaning for you in the app",
-      button1: "Remembrance",
-      button2: "Trust",
+      button1: "Trust",
+      button2: "Remembrance",
       heading: "Cancer",
     },
   ];
@@ -67,6 +68,8 @@ export default function Dictionary() {
   // const data = await getData()
 
   return (
+    <>
+    <Header logo={'/inckd-logo.svg'} theme={'black'} isPosition={true}/>
     <div className="page_wrapper">
       <section className="img_text_banner_box">
         <div className="col_full">
@@ -82,14 +85,14 @@ export default function Dictionary() {
                         experience is handled with care, quality and
                         inclusivity.
                       </p>
-                      <a href="#" className="btn btn_default btn_xxl btn_sm_m">
+                      <Link  href={`/search?term=${""}&category=${"artist"}`} className="btn btn_default btn_xxl btn_sm_m">
                         Find artists
                         <img
                           src="./alt-arrow-right-black.svg"
                           alt=""
                           className="ml-8 mt-2"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="img_box_wrap custom_slick_slider_one">
@@ -155,7 +158,7 @@ export default function Dictionary() {
                   </div>
                   <img src="./mythology.png" alt="" />
                 </div>
-                <div className="text_box_content justify_content_start">
+                <div className="text_box_content justify_content_start block_bg_gray_150">
                   <div className="text_box_content_inner custom_carousel_wrap">
                     {/* 
                        <CarouselComponent items={items} />            */}
@@ -172,11 +175,11 @@ export default function Dictionary() {
               <div className="img_text_box_inner">
                 {!isMobileView ? (
                   <div className="img_box_wrap">
-                    <ul className="app_download_img_list mt_mb_6pc after_none justify_content_right text_center mr_0">
+                    <ul className="app_download_img_list mt_mb_80 after_none justify_content_right text_center mr_0 ml_15">
                       <li>
                         <Image
                           priority={true}
-                          src="/iPhone-192.png"
+                          src="/image-189-exp.png"
                           width={215}
                           height={443}
                           alt="Picture of the author"
@@ -189,7 +192,7 @@ export default function Dictionary() {
                       <li>
                         <Image
                           priority={true}
-                          src="/iPhone-192.png"
+                          src="/image-189-exp.png"
                           width={215}
                           height={443}
                           alt="Picture of the author"
@@ -247,7 +250,7 @@ export default function Dictionary() {
 
             <div class="text_box_wrap right">
               <div class="img_text_box_inner m_switcher">
-                <div class="text_box_content justify_content_start">
+                <div class="text_box_content justify_content_start block_bg_gray_150">
                   <div class="text_box_content_inner custom_carousel_wrap">
                     {/* <img src="./slider-dummy-2.png" alt="Zodiac Signs" class="w_100pc"/>                      */}
 
@@ -328,7 +331,7 @@ export default function Dictionary() {
                   </div>
                   <img src="./aztec-symbols.png" alt="" />
                 </div>
-                <div class="text_box_content justify_content_start">
+                <div class="text_box_content justify_content_start block_bg_gray_150">
                   <div class="text_box_content_inner custom_carousel_wrap">
                     <CarouselComponent
                       items={items}
@@ -343,5 +346,6 @@ export default function Dictionary() {
         </div>
       </section>
     </div>
+    </>
   );
 }

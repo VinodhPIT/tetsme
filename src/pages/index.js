@@ -312,10 +312,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="text_box_wrap right block_bg_black full_banner_custom_slider">
+            <div className="text_box_wrap right block_bg_black ">
               <div className="container">
                 <div className="img_text_box_inner">
-                  <div className="text_box_content justify_content_start pl_0 pr_2_pc m_text_center m_pb_0">
+                  <div className="text_box_content justify_content_start pl_0 pr_2_pc  m_pb_0">
                     <div className="text_box_content_inner m_pr_0">
                       <h2 className="letter_spacing_05">Tattoo Dictonary</h2>
                       <p>
@@ -323,14 +323,14 @@ export default function Home() {
                         experience is handled with care, quality and
                         inclusivity.
                       </p>
-                      <a href="#" className="btn btn_default btn_xxl btn_sm_m">
-                        Find artists
+                      <Link href="/dictionary" className="btn btn_default btn_xxl btn_sm_m">
+                      Visit Tattoo Dictionary
                         <img
                           src="./alt-arrow-right-black.svg"
                           alt=""
                           className="ml-8 mt-2"
                         />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="img_box_wrap custom_slick_slider_one">
@@ -485,13 +485,13 @@ export default function Home() {
                 </div>
                 {!isMobileView ? (
                   <div class="img_box_wrap">
-                    <ul class="app_download_img_list img_box_img_m20pc justify_content_end">
+                    <ul class="app_download_img_list img_box_img_m20pc justify_content_end slider_resize">
                       <li>
                         <Image
                           priority={true}
                           src="/img-mobile-new-03.png"
                           width={218}
-                          height={1446}
+                          height={446}
                           alt="Picture of the author"
                           placeholder="empty"
                           className=""

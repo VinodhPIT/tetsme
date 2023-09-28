@@ -1,66 +1,47 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css"; // Import the CSS file from your styles directory
-import SwiperCore, {
-  EffectCoverflow,
-  Pagination,
-  Keyboard,
-  Mousewheel,
-} from "swiper";
+import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper";
 
-SwiperCore.use([EffectCoverflow, Pagination, Keyboard, Mousewheel]);
+SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 const images = ["./dragon.png", "./egyptian.jpeg", "./butterfly.jpeg"];
 const ImageSwiper = () => {
   const params = {
     autoHeight: false,
-    
+
     pagination: { clickable: true },
+    preventInteractionOnTransition: true,
     grabCursor: true,
     centeredSlides: true,
     intialSlide: 1,
     slidesPerView: 1.5,
     loop: true,
-    spaceBetween: 10,
+    speed: 1000,
+    simulateTouch: false,
+
     effect: "coverflow",
     coverflowEffect: {
       rotate: 0,
       depth: 200,
       slideShadows: false,
-      modifier:1
+      modifier: 1,
     },
 
     pagination: {
       el: ".swiper-pagination",
-      dynamicBullets: true,
-      
+      dynamicBullets: false,
+
       clickable: true,
     },
-    autoplay: { delay: 5000 },
-
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
     breakpoints: {
-      320: {
-        slidesPerView: 1.5,
-        spaceBetween: 10,
-      },
-      414: {
-        slidesPerView: 1.5,
-        spaceBetween: 10,
-      },
-      560: {
-        slidesPerView: 1.5,
-        spaceBetween: 10,
-      },
       768: {
         slidesPerView: 1.5,
-        spaceBetween: 20,
-      },
-      820: {
-        slidesPerView: 1.5,
         spaceBetween: 10,
-      },
-      1024: {
-        slidesPerView: 1.5,
-        spaceBetween: 10,
+        simulateTouch: true,
       },
     },
   };

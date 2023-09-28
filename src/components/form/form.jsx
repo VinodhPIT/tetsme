@@ -25,6 +25,7 @@ const _Form = () => {
           {!state.isShown ? (
             <div>
               <h4>Get in touch</h4>
+              <h6>Who you are?</h6>
               <Formik
                 initialValues={{
                   tattooType: "",
@@ -123,7 +124,7 @@ const _Form = () => {
                           placeholder=""
                           className="form_control"
                         />
-                        <label for="your e-mail">Enter Email Address</label>
+                        <label for="your e-mail">Enter email address</label>
                         <ErrorMessage
                           name="email"
                           component="div"
@@ -137,7 +138,7 @@ const _Form = () => {
                         <Field
                           as="textarea"
                           name="message"
-                          placeholder="How we can help you ?"
+                          placeholder="How we can help you?"
                           className="form_control"
                         />                        
                         <ErrorMessage
@@ -163,7 +164,7 @@ const _Form = () => {
               </Formik>
             </div>
           ) : (
-            <div class="form_submit_block hidden">
+            <div class="form_submit_block">
               <img src="./success-tick.svg" alt="Form submitted" />
 
               <h4>Form submitted</h4>

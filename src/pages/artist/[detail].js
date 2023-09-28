@@ -4,6 +4,7 @@ import styles from "./artistdetail.module.css";
 import Header from "@/components/pageHeader/Header";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { fetchArtistDetail, artistGallery } from "@/action/action";
 import { blurDataURL } from "@/constants/constants";
 import SearchField from "@/components/tattooSearch/index";
@@ -84,17 +85,17 @@ export default function Detail({ data }) {
       <div className="page_wrapper">
         <div className="container">
 
-        <Link    href={`/search?term=${""}&category=${"artist"}`} >
 
-<Image
-src={'/backArrow.svg'}
-alt="backArrow"
-width={40} 
-height={40}
-priority
-/>
-</Link>
 
+        <Link  href={`/search?term=${""}&category=${"artist"}`} className="back_arrow" >
+          <Image
+          src={'/back-arrow.svg'}
+          alt="backArrow"
+          width={40} 
+          height={40}
+          priority
+          />
+        </Link>
 
 
           <div className={style.filter_container}>
@@ -158,7 +159,9 @@ priority
                 <div className={styles.search_profile_name}>
                   {data.first_name} {data.last_name}
                 </div>
-                 <div className={styles.search_profile_details}>
+
+               <div className={styles.search_profile_details}>
+
                 {data.studio[0].city},{data.studio[0].country}
               </div> 
               </div>

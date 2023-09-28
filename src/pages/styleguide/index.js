@@ -117,7 +117,7 @@ export default function StyleGuide() {
             <div class="text_box_wrap right block_bg_orange">
               <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content text_center no-space-center no_space_center">
-                  <div class="bg_overlay_img">
+                  <div class="bg_overlay_img m_img_resize">
                     <img src="./g10.svg" alt="" class="svg_h_inherit" />
                   </div>
                   <div class="text_box_content_inner pr_0">
@@ -252,7 +252,7 @@ export default function StyleGuide() {
                   />
                 </div>
                 <div class="text_box_content text_center no_space_center">
-                  <div class="bg_overlay_img">
+                  <div class="bg_overlay_img m_img_resize">
                     <img src="./g12.svg" alt="" class="svg_h_inherit" />
                   </div>
                   <div class="text_box_content_inner pr_0">
@@ -268,7 +268,7 @@ export default function StyleGuide() {
             <div class="text_box_wrap right block_bg_aero_blue">
               <div class="img_text_box_inner m_switcher">
                 <div class="text_box_content text_center no_space_center">
-                  <div class="bg_overlay_img">
+                  <div class="bg_overlay_img m_img_resize">
                     <img
                       src="./traditional-82713.svg"
                       alt=""
@@ -277,7 +277,7 @@ export default function StyleGuide() {
                   </div>
                   <div class="text_box_content_inner pr_0">
                     <h2 class="letter_spacing_025 color_black_h">
-                      Tell me <br />
+                      Show me<br />
                       your Style?
                     </h2>
                   </div>
@@ -298,6 +298,18 @@ export default function StyleGuide() {
                     placeholder="blur"
                     blurDataURL={blurDataURL}
                     layout="responsive"
+                    className="mob_hidden"
+                  />
+                  <Image
+                    priority={true}
+                    src="/pexels-ralph-rabago-3214805 6-mob.png"
+                    alt="pexels-ademola"
+                    width={720}
+                    height={620}
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
+                    layout="responsive"
+                    className="desk_hidden"
                   />
                 </div>
               </div>

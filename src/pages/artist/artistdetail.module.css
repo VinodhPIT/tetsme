@@ -93,6 +93,7 @@
 }
 .product_info_wrap {
     display: flex;
+    margin-bottom: 110px;
 }
 .product_info_wrap .product_detail_location {
     margin-top: 25px;
@@ -232,6 +233,7 @@
         flex-direction: column;
         padding-left: 15px;
         padding-right: 15px;
+        margin-bottom: 0;
     }
     .product_info_wrap .product_detail_location {
         border-top: 1px solid var(--gray-light-300);

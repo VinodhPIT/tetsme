@@ -121,7 +121,7 @@ const Search = ({
             </div>
           </div>
 
-          <div>
+          <div className={style.tab_container}>
             <div className={style.tabSection}>
               <ul>
                 {tabs.map((tab) => (
