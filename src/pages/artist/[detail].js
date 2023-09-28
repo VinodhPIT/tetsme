@@ -4,7 +4,7 @@ import styles from "./artistdetail.module.css";
 import Header from "@/components/pageHeader/Header";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Link from "next/link";
+
 import { fetchArtistDetail, artistGallery } from "@/action/action";
 import { blurDataURL } from "@/constants/constants";
 import SearchField from "@/components/tattooSearch/index";
