@@ -8,18 +8,12 @@ import Image from "next/image";
 
 const ImageSlider = ({imgPath,imgAlt,imgblurDataURL,imgWidth,imgHeight}) => {
   const [isMobileView, setIsMobileView] = useState(false);
-console.log(imgPath,imgAlt,imgblurDataURL,imgWidth,imgHeight)
   useEffect(() => {
-    // Check the window width and set isMobileView accordingly
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 768); // Adjust the breakpoint as needed
+      setIsMobileView(window.innerWidth <= 768);
     };
-
-    // Initially check the width and add a resize event listener
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
     };
